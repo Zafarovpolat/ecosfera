@@ -7,12 +7,12 @@ export function DS06ZhivyeFoto() {
     <>
       <div className="n" style={{ left: '-257px', top: '5231px', width: '2644px', height: '901px' }}>
         <div className="n" style={{ left: '900px', top: '0px', width: '702.94px', height: '192.49px' }}>
-          <div className="t" style={{ left: '0px', top: '0px', width: '415px', height: '80px', fontFamily: 'var(--font-forma)', fontSize: '80px', fontWeight: '400', lineHeight: '80px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Живые фото `}</div>
+          <div className="t" style={{ left: '0px', top: '0px', width: '415px', height: '80px', fontFamily: 'var(--font-forma)', fontSize: '80px', fontWeight: '400', lineHeight: '80px', whiteSpace: 'pre', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Живые фото `}</div>
           <div className="n" style={{ left: '206.93px', top: '61.17px', width: '492.09px', height: '109.63px', transform: 'matrix(1, -0.09, 0.09, 1, 0, 0)', borderRadius: '15px 0px 15px 0px', boxShadow: '-2px -3px 7px 0px rgba(0, 0, 0, 0.15), -8px -11px 13px 0px rgba(0, 0, 0, 0.13), -18px -24px 18px 0px rgba(0, 0, 0, 0.08), -33px -43px 21px 0px rgba(0, 0, 0, 0.02), -51px -67px 23px 0px rgba(0, 0, 0, 0)', background: '#a0f447' }}>
             <div className="n" style={{ left: '18.7px', top: '48.28px', width: '49.31px', height: '49.31px', transform: 'matrix(1, 0, 0, 1, 0, 0)' }} aria-hidden>
               <img src={asset('/icons/vuesax-bulk-video.svg')} alt="" />
             </div>
-            <div className="t" style={{ left: '79.72px', top: '-0.36px', width: '392px', height: '70px', fontFamily: 'var(--font-forma)', fontSize: '70px', fontWeight: '400', lineHeight: '70px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#000000' }}>{`без фильтров`}</div>
+            <div className="t" style={{ left: '79.72px', top: '-0.36px', width: '392px', height: '70px', fontFamily: 'var(--font-forma)', fontSize: '70px', fontWeight: '400', lineHeight: '70px', whiteSpace: 'pre', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#000000' }}>{`без фильтров`}</div>
           </div>
         </div>
         <div className="n" style={{ left: '0px', top: '235px', width: '2644px', height: '666px' }}>

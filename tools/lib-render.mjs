@@ -99,6 +99,10 @@ function textStyle(node, st) {
   else if (t.case === 'TITLE') st.textTransform = 'capitalize';
   if (t.decoration === 'UNDERLINE') st.textDecoration = 'underline';
   else if (t.decoration === 'STRIKETHROUGH') st.textDecoration = 'line-through';
+  // Figma hug-sized text (WIDTH_AND_HEIGHT) never auto-wraps — the frame is
+  // measured to the glyphs. Allowing a wrap here pushed "руб." onto a second
+  // line and over the label beneath it. Fixed-width text (HEIGHT) does wrap.
+  st.whiteSpace = t.autoResize === 'WIDTH_AND_HEIGHT' ? 'pre' : 'pre-wrap';
   st.display = 'grid';
   st.alignContent = t.valign === 'CENTER' ? 'center' : t.valign === 'BOTTOM' ? 'end' : 'start';
   st.textAlign =
@@ -163,9 +167,14 @@ export function buildTree(label, manifest) {
     const grads = node.fills.filter((f) => f.kind === 'gradient');
     const solid = node.fills.filter((f) => f.kind === 'solid');
 
-    // exported icon — its subtree is baked into the SVG
+    // Exported icon — fills AND strokes are already baked into the SVG, so the
+    // container must not paint them again. Leaving the stroke on drew a closed
+    // white box around each L-shaped corner bracket.
     const icon = icons[node.id];
     if (icon) {
+      delete st.border;
+      delete st.outline;
+      delete st.background;
       stats.icons++; stats.nodes++;
       return { tag: 'div', cls: 'n', style: st, ariaHidden: true, children: [{ tag: 'img', src: icon, alt: '' }] };
     }
