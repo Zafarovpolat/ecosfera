@@ -63,29 +63,74 @@ function boxOf(node, origin) {
 }
 
 // ---------- paint ----------
-function gradientCss(fill) {
-  const stops = (fill.gradientStops || []).map(
-    (s) => `${toCss(s.color)} ${+(s.position * 100).toFixed(1)}%`
-  );
+/**
+ * Figma gradient → CSS gradient.
+ *
+ * Figma stop positions run 0→1 along the segment between the gradient handles,
+ * which is usually SHORTER than the node. CSS percentages instead run along the
+ * full gradient line across the box. Treating the two as equivalent stretches
+ * every gradient: the hero's dark-green top edge became a curtain over the whole
+ * photo. So project the handles onto the CSS gradient line and rescale.
+ */
+function gradientCss(fill, size) {
   const hp = fill.gradientHandlePositions || [];
+  const raw = (fill.gradientStops || []).map((s) => ({ color: toCss(s.color), t: s.position }));
+  if (!raw.length) return null;
+
   if (fill.type === 'GRADIENT_RADIAL' || fill.type === 'GRADIENT_DIAMOND') {
+    const stops = raw.map((s) => `${s.color} ${+(s.t * 100).toFixed(2)}%`);
+    if (hp.length >= 3 && size) {
+      const cx = hp[0].x * 100, cy = hp[0].y * 100;
+      const rx = Math.hypot((hp[1].x - hp[0].x) * size.w, (hp[1].y - hp[0].y) * size.h);
+      const ry = Math.hypot((hp[2].x - hp[0].x) * size.w, (hp[2].y - hp[0].y) * size.h);
+      return `radial-gradient(${+rx.toFixed(1)}px ${+ry.toFixed(1)}px at ${+cx.toFixed(2)}% ${+cy.toFixed(2)}%, ${stops.join(', ')})`;
+    }
     return `radial-gradient(${stops.join(', ')})`;
   }
-  // linear: derive angle from handles (Figma y grows downward)
-  let deg = 180;
-  if (hp.length >= 2) {
-    const dx = hp[1].x - hp[0].x, dy = hp[1].y - hp[0].y;
-    deg = +((Math.atan2(dy, dx) * 180) / Math.PI + 90).toFixed(2);
+
+  if (hp.length < 2 || !size || !size.w || !size.h) {
+    return `linear-gradient(180deg, ${raw.map((s) => `${s.color} ${+(s.t * 100).toFixed(2)}%`).join(', ')})`;
   }
-  return `linear-gradient(${deg}deg, ${stops.join(', ')})`;
+
+  const w = size.w, h = size.h;
+  // handles in pixel space (Figma y grows downward, same as CSS)
+  const P0 = { x: hp[0].x * w, y: hp[0].y * h };
+  const P1 = { x: hp[1].x * w, y: hp[1].y * h };
+  const vx = P1.x - P0.x, vy = P1.y - P0.y;
+  const len = Math.hypot(vx, vy);
+  if (len < 1e-6) return raw[raw.length - 1].color;
+  const ux = vx / len, uy = vy / len;
+
+  // CSS angle: 0deg points up, grows clockwise
+  const deg = +(((Math.atan2(vx, -vy) * 180) / Math.PI + 360) % 360).toFixed(2);
+
+  // length of the CSS gradient line for this angle over a w×h box
+  const rad = (deg * Math.PI) / 180;
+  const L = Math.abs(w * Math.sin(rad)) + Math.abs(h * Math.cos(rad));
+
+  // the CSS line is centred on the box centre
+  const C = { x: w / 2, y: h / 2 };
+  const proj = (p) => (p.x - C.x) * ux + (p.y - C.y) * uy; // signed distance along the axis
+  const start = -L / 2; // where CSS 0% sits, relative to the centre
+
+  const stops = raw.map((s) => {
+    const p = { x: P0.x + vx * s.t, y: P0.y + vy * s.t };
+    const pct = ((proj(p) - start) / L) * 100;
+    return { color: s.color, pct: +pct.toFixed(2) };
+  });
+  // CSS requires non-decreasing stops
+  for (let i = 1; i < stops.length; i++)
+    if (stops[i].pct < stops[i - 1].pct) stops[i].pct = stops[i - 1].pct;
+
+  return `linear-gradient(${deg}deg, ${stops.map((s) => `${s.color} ${s.pct}%`).join(', ')})`;
 }
 
-function paintsOf(list, imageRefs) {
+function paintsOf(list, imageRefs, size) {
   const out = [];
   for (const f of list || []) {
     if (f.visible === false) continue;
     if (f.type === 'SOLID') out.push({ kind: 'solid', color: toCss(f.color, f.opacity), blend: f.blendMode });
-    else if (f.type?.startsWith('GRADIENT')) out.push({ kind: 'gradient', css: gradientCss(f), blend: f.blendMode, opacity: f.opacity ?? 1 });
+    else if (f.type?.startsWith('GRADIENT')) out.push({ kind: 'gradient', css: gradientCss(f, size), blend: f.blendMode, opacity: f.opacity ?? 1 });
     else if (f.type === 'IMAGE') {
       if (f.imageRef) imageRefs.add(f.imageRef);
       out.push({
@@ -126,7 +171,7 @@ function radiusOf(node) {
 }
 
 // ---------- text ----------
-function textOf(node) {
+function textOf(node, size) {
   const s = node.style || {};
   const lineHeight = s.lineHeightPx ? +s.lineHeightPx.toFixed(2) : null;
   const base = {
@@ -170,7 +215,7 @@ function textOf(node) {
             size: r.style.fontSize,
             lineHeight: r.style.lineHeightPx,
             letterSpacing: r.style.letterSpacing,
-            fills: r.style.fills ? paintsOf(r.style.fills, new Set()) : null,
+            fills: r.style.fills ? paintsOf(r.style.fills, new Set(), size) : null,
             decoration: r.style.textDecoration ?? null,
           }
         : null,
@@ -193,8 +238,9 @@ function extract(frame, label) {
   (function walk(node, parentId, depth, inheritedHidden) {
     const hidden = inheritedHidden || node.visible === false;
     const box = boxOf(node, origin);
-    const fills = paintsOf(node.fills, imageRefs);
-    const strokes = paintsOf(node.strokes, imageRefs);
+    const size = box ? { w: box.w, h: box.h } : null;
+    const fills = paintsOf(node.fills, imageRefs, size);
+    const strokes = paintsOf(node.strokes, imageRefs, size);
     const { shadows, blurs } = effectsOf(node);
 
     const rec = {
@@ -234,7 +280,7 @@ function extract(frame, label) {
       childCount: (node.children || []).length,
     };
 
-    if (node.type === 'TEXT') rec.text = textOf(node);
+    if (node.type === 'TEXT') rec.text = textOf(node, size);
     if (VECTORISH.has(node.type)) { rec.vector = true; vectorIds.add(node.id); }
 
     nodes.push(rec);
@@ -253,7 +299,7 @@ function extract(frame, label) {
   const spec = {
     label,
     frame: { id: frame.id, name: frame.name, w: Math.round(frame.absoluteBoundingBox.width), h: Math.round(frame.absoluteBoundingBox.height) },
-    background: paintsOf(frame.fills, imageRefs),
+    background: paintsOf(frame.fills, imageRefs, { w: frame.absoluteBoundingBox.width, h: frame.absoluteBoundingBox.height }),
     sections,
     nodes,
   };

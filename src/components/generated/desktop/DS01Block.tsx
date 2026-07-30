@@ -10,8 +10,8 @@ export function DS01Block() {
           <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '954px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', borderRadius: '0px 0px 20px 20px' }}>
             <img src={asset('/images/wide-shot-brown-house-surrounded-by-forest-spruc-0c4a2df57c.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
           </div>
-          <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '954px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', background: 'linear-gradient(0.05deg, #0f3318 5.6%, rgba(16, 53, 26, 0) 39.8%)' }} />
-          <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '975px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', background: 'linear-gradient(180deg, #123206 7.9%, rgba(18, 50, 6, 0) 100%)' }} />
+          <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '954px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', background: 'linear-gradient(0.1deg, #0f3318 3.75%, rgba(16, 53, 26, 0) 37.92%)' }} />
+          <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '975px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', background: 'linear-gradient(180deg, #123206 -7.03%, rgba(18, 50, 6, 0) 40.78%)' }} />
         </div>
         <div className="n" style={{ left: '0px', top: '0px', width: '1928px', height: '109px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
           <div className="n" style={{ left: '1164px', top: '20px', width: '663px', height: '70px' }}>

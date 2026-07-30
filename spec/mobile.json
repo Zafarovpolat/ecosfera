@@ -498,7 +498,7 @@
    "fills": [
     {
      "kind": "gradient",
-     "css": "linear-gradient(0.05deg, #0f3318 5.6%, rgba(16, 53, 26, 0) 57%)",
+     "css": "linear-gradient(0.02deg, #0f3318 3.59%, rgba(16, 53, 26, 0) 55.21%)",
      "blend": "NORMAL",
      "opacity": 1
     }
@@ -544,7 +544,7 @@
    "fills": [
     {
      "kind": "gradient",
-     "css": "linear-gradient(180deg, #123206 7.9%, rgba(18, 50, 6, 0) 100%)",
+     "css": "linear-gradient(180deg, #123206 -7.03%, rgba(18, 50, 6, 0) 40.78%)",
      "blend": "NORMAL",
      "opacity": 0.8500000238418579
     }
@@ -4532,7 +4532,7 @@
    "strokes": [
     {
      "kind": "gradient",
-     "css": "linear-gradient(138.22deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%)",
+     "css": "linear-gradient(133.04deg, #ffffff 7.03%, rgba(255, 255, 255, 0) 116.51%)",
      "blend": "NORMAL",
      "opacity": 1
     }
@@ -4901,7 +4901,7 @@
    "strokes": [
     {
      "kind": "gradient",
-     "css": "linear-gradient(138.22deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%)",
+     "css": "linear-gradient(133.04deg, #ffffff 7.03%, rgba(255, 255, 255, 0) 116.51%)",
      "blend": "NORMAL",
      "opacity": 1
     }
@@ -31444,7 +31444,7 @@
    "fills": [
     {
      "kind": "gradient",
-     "css": "linear-gradient(44.98deg, #ffd521 0%, #ffd521 5%, #f50000 50.1%, #b900b4 95%, #b900b4 95%, #b900b4 100%)",
+     "css": "linear-gradient(46.1deg, #ffd521 -580.68%, #ffd521 -542.88%, #f50000 -201.85%, #b900b4 137.49%, #b900b4 137.55%, #b900b4 175.29%)",
      "blend": "NORMAL",
      "opacity": 1
     }
@@ -31485,7 +31485,7 @@
    "fills": [
     {
      "kind": "gradient",
-     "css": "linear-gradient(45deg, #ffd521 0%, #ffd521 5%, #f50000 50.1%, #b900b4 95%, #b900b4 95%, #b900b4 100%)",
+     "css": "linear-gradient(46.04deg, #ffd521 0.91%, #ffd521 5.45%, #f50000 46.43%, #b900b4 87.21%, #b900b4 87.21%, #b900b4 91.75%)",
      "blend": "NORMAL",
      "opacity": 1
     }
@@ -31526,7 +31526,7 @@
    "fills": [
     {
      "kind": "gradient",
-     "css": "linear-gradient(45.01deg, #ffd521 0%, #ffd521 5%, #f50000 50.1%, #b900b4 95%, #b900b4 95%, #b900b4 100%)",
+     "css": "linear-gradient(46.06deg, #ffd521 -45.59%, #ffd521 -36.75%, #f50000 43.04%, #b900b4 122.43%, #b900b4 122.44%, #b900b4 131.27%)",
      "blend": "NORMAL",
      "opacity": 1
     }

@@ -10,8 +10,8 @@ export function MS01Block() {
           <div className="n" style={{ left: '0px', top: '0px', width: '375px', height: '812px', transform: 'matrix(-1, 0, 0, 1, 0, 0)' }}>
             <img src={asset('/images/wide-shot-brown-house-surrounded-by-forest-spruc-3b889de315.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
           </div>
-          <div className="n" style={{ left: '0px', top: '0px', width: '375px', height: '812px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', background: 'linear-gradient(0.05deg, #0f3318 5.6%, rgba(16, 53, 26, 0) 57%)' }} />
-          <div className="n" style={{ left: '0px', top: '0px', width: '375px', height: '812px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', background: 'linear-gradient(180deg, #123206 7.9%, rgba(18, 50, 6, 0) 100%)' }} />
+          <div className="n" style={{ left: '0px', top: '0px', width: '375px', height: '812px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', background: 'linear-gradient(0.02deg, #0f3318 3.59%, rgba(16, 53, 26, 0) 55.21%)' }} />
+          <div className="n" style={{ left: '0px', top: '0px', width: '375px', height: '812px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', background: 'linear-gradient(180deg, #123206 -7.03%, rgba(18, 50, 6, 0) 40.78%)' }} />
         </div>
         <div className="n" style={{ left: '20px', top: '44px', width: '335px', height: '60px' }}>
           <div className="n" style={{ left: '0px', top: '0px', width: '90px', height: '60px', background: '#ffffff' }}>
