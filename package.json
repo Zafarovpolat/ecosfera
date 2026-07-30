@@ -1,0 +1,55 @@
+{
+  "name": "ecosfera-clone",
+  "version": "0.3.1",
+  "private": true,
+  "description": "Экосфера — 1:1 reconstruction of the Figma design as a static Next.js site",
+  "author": "JCodesMore",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JCodesMore/ai-website-cloner-template.git"
+  },
+  "homepage": "https://github.com/JCodesMore/ai-website-cloner-template",
+  "bugs": {
+    "url": "https://github.com/JCodesMore/ai-website-cloner-template/issues"
+  },
+  "keywords": [
+    "claude-code",
+    "website-clone",
+    "reverse-engineering",
+    "nextjs",
+    "ai",
+    "template",
+    "tailwindcss",
+    "shadcn-ui"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run lint && npm run typecheck && npm run build",
+    "export": "next build"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "next": "16.2.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
