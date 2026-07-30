@@ -56,7 +56,10 @@ function baseStyle(node, parent) {
   st.top = px(b.y - (parent?.box?.y ?? 0));
   st.width = px(b.w);
   st.height = px(b.h);
-  if (b.rot) st.transform = `rotate(${num(b.rot)}deg)`;
+  // Full 2x2 rather than an angle: the design mirrors 20 nodes (the hero photo
+  // is [[-1,0],[0,1]]) and transposes the chevrons. atan2 would read a mirror
+  // as a 180° rotation and silently flip artwork.
+  if (b.lin) st.transform = `matrix(${num(b.lin.a)}, ${num(b.lin.b)}, ${num(b.lin.c)}, ${num(b.lin.d)}, 0, 0)`;
   if (node.opacity < 1) st.opacity = num(node.opacity);
   if (node.blend) st.mixBlendMode = node.blend.toLowerCase().replace(/_/g, '-');
   if (node.radius) st.borderRadius = typeof node.radius === 'number' ? px(node.radius) : node.radius;
@@ -177,22 +180,34 @@ export function buildTree(label, manifest) {
       return { tag: 'div', cls, style: st, text: runs ? null : node.text.chars, runs, children: [] };
     }
 
-    if (grads.length) st.background = grads.map((g) => g.css).join(', ');
-    else if (solid.length) st.background = solid[solid.length - 1].color;
-
     const children = [];
-    const fi = node.fills.findIndex((f) => f.kind === 'image');
-    if (fi >= 0) {
-      const src = usages[`${node.id}:${fi}`];
-      if (src) {
+
+    // Figma paints fills bottom-first; CSS background layers paint top-first,
+    // and an <img> child always sits above the node's own background. So when a
+    // node stacks more than one fill — the page backdrop is photo + dark green
+    // veil — emit an explicit layer per fill in Figma's order. Getting this
+    // wrong buries the veil under the photo and the tint disappears.
+    const single = node.fills.length === 1;
+    if (single && grads.length) st.background = grads[0].css;
+    else if (single && solid.length) st.background = solid[0].color;
+
+    node.fills.forEach((f, i) => {
+      if (single && f.kind !== 'image') return; // already on the node
+      const s = { position: 'absolute', inset: '0', borderRadius: 'inherit' };
+      if (f.opacity !== undefined && f.opacity < 1) s.opacity = num(f.opacity);
+      if (f.blend && f.blend !== 'NORMAL') s.mixBlendMode = f.blend.toLowerCase().replace(/_/g, '-');
+
+      if (f.kind === 'image') {
+        const src = usages[`${node.id}:${i}`];
+        if (!src) return;
         stats.imgs++;
-        const f = node.fills[fi];
-        const s = {};
-        if (f.opacity !== undefined && f.opacity < 1) s.opacity = num(f.opacity);
-        if (f.blend && f.blend !== 'NORMAL') s.mixBlendMode = f.blend.toLowerCase().replace(/_/g, '-');
-        children.push({ tag: 'img', src, alt: '', style: Object.keys(s).length ? s : null });
+        children.push({ tag: 'img', src, alt: '', style: s });
+      } else {
+        s.background = f.kind === 'gradient' ? f.css : f.color;
+        children.push({ tag: 'div', cls: '', style: s, children: [] });
       }
-    }
+    });
+
     for (const c of kids.get(node.id) || []) {
       const r = walk(c, node);
       if (r) children.push(r);

@@ -9,7 +9,7 @@ export function DS10ChtoGovoryatTe() {
         <div className="n" style={{ left: '0px', top: '0px', width: '1721px', height: '208.04px' }}>
           <div className="n" style={{ left: '0px', top: '0px', width: '625.77px', height: '208.04px' }}>
             <div className="t" style={{ left: '0px', top: '0px', width: '481px', height: '80px', fontFamily: 'var(--font-forma)', fontSize: '80px', fontWeight: '400', lineHeight: '80px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Что говорят те`}</div>
-            <div className="n" style={{ left: '106.88px', top: '75.7px', width: '515px', height: '109.63px', transform: 'rotate(-5.11deg)', borderRadius: '15px 0px 15px 0px', boxShadow: '-2px -3px 7px 0px rgba(0, 0, 0, 0.15), -8px -11px 13px 0px rgba(0, 0, 0, 0.13), -18px -24px 18px 0px rgba(0, 0, 0, 0.08), -33px -43px 21px 0px rgba(0, 0, 0, 0.02), -51px -67px 23px 0px rgba(0, 0, 0, 0)', background: '#a0f447' }}>
+            <div className="n" style={{ left: '106.88px', top: '75.7px', width: '515px', height: '109.63px', transform: 'matrix(1, -0.09, 0.09, 1, 0, 0)', borderRadius: '15px 0px 15px 0px', boxShadow: '-2px -3px 7px 0px rgba(0, 0, 0, 0.15), -8px -11px 13px 0px rgba(0, 0, 0, 0.13), -18px -24px 18px 0px rgba(0, 0, 0, 0.08), -33px -43px 21px 0px rgba(0, 0, 0, 0.02), -51px -67px 23px 0px rgba(0, 0, 0, 0)', background: '#a0f447' }}>
               <div className="t" style={{ left: '12.83px', top: '-1.63px', width: '485px', height: '70px', fontFamily: 'var(--font-forma)', fontSize: '70px', fontWeight: '400', lineHeight: '70px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#000000' }}>{`кто уже побывал`}</div>
             </div>
           </div>
@@ -18,7 +18,7 @@ export function DS10ChtoGovoryatTe() {
             <div className="n" style={{ left: '10px', top: '10px', width: '9px', height: '8px', border: '1px solid #000000' }} aria-hidden>
               <img src={asset('/icons/vector-1-3.svg')} alt="" />
             </div>
-            <div className="n" style={{ left: '332px', top: '80px', width: '9px', height: '8px', transform: 'rotate(-180deg)', border: '1px solid #000000' }} aria-hidden>
+            <div className="n" style={{ left: '332px', top: '80px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #000000' }} aria-hidden>
               <img src={asset('/icons/vector-2-3.svg')} alt="" />
             </div>
           </div>
@@ -35,11 +35,11 @@ export function DS10ChtoGovoryatTe() {
               <div className="t" style={{ left: '25px', top: '92px', width: '515px', height: '92px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '400', lineHeight: '22.68px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Современные и уютные домики, очень чисто, красивая территория с бассейном и горячим чаном. Тишина, свежий воздух и всё необходимое для комфортного отдыха. Обязательно приедем ещё!`}</div>
               <div className="n" style={{ left: '25px', top: '219px', width: '186px', height: '63px' }}>
                 <div className="n" style={{ left: '0px', top: '0px', width: '63px', height: '63px', borderRadius: '15px', overflow: 'hidden' }}>
-                  <img src={asset('/images/frame-403-b0f27b4e15.webp')} alt="" />
+                  <img src={asset('/images/frame-403-b0f27b4e15.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="n" style={{ left: '81px', top: '0px', width: '105px', height: '50.02px' }}>
-                  <div className="t" style={{ left: '0px', top: '0px', width: '105px', height: '25px', fontFamily: 'var(--font-cofo)', fontSize: '20px', fontWeight: '500', lineHeight: '25.2px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Алексей`}</div>
-                  <div className="t" style={{ left: '0px', top: '30.01px', width: '114px', height: '20px', fontFamily: 'var(--font-cofo)', fontSize: '16px', fontWeight: '400', lineHeight: '20.16px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(0, 0, 0, 0.4)' }}>{`12 марта, 2026`}</div>
+                  <div className="t" style={{ left: '0px', top: '0px', width: '105px', height: '25px', transform: 'matrix(1, 0, 0, 1, 0, 0)', fontFamily: 'var(--font-cofo)', fontSize: '20px', fontWeight: '500', lineHeight: '25.2px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Алексей`}</div>
+                  <div className="t" style={{ left: '0px', top: '30.01px', width: '114px', height: '20px', transform: 'matrix(1, 0, 0, 1, 0, 0)', fontFamily: 'var(--font-cofo)', fontSize: '16px', fontWeight: '400', lineHeight: '20.16px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(0, 0, 0, 0.4)' }}>{`12 марта, 2026`}</div>
                 </div>
               </div>
             </div>
@@ -53,11 +53,11 @@ export function DS10ChtoGovoryatTe() {
               <div className="t" style={{ left: '25px', top: '92px', width: '515px', height: '92px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '400', lineHeight: '22.68px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Современные и уютные домики, очень чисто, красивая территория с бассейном и горячим чаном. Тишина, свежий воздух и всё необходимое для комфортного отдыха. Обязательно приедем ещё!`}</div>
               <div className="n" style={{ left: '25px', top: '219px', width: '186px', height: '63px' }}>
                 <div className="n" style={{ left: '0px', top: '0px', width: '63px', height: '63px', borderRadius: '15px', overflow: 'hidden' }}>
-                  <img src={asset('/images/frame-403-b0f27b4e15.webp')} alt="" />
+                  <img src={asset('/images/frame-403-b0f27b4e15.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="n" style={{ left: '81px', top: '0px', width: '105px', height: '50.02px' }}>
-                  <div className="t" style={{ left: '0px', top: '0px', width: '105px', height: '25px', fontFamily: 'var(--font-cofo)', fontSize: '20px', fontWeight: '500', lineHeight: '25.2px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Алексей`}</div>
-                  <div className="t" style={{ left: '0px', top: '30.01px', width: '114px', height: '20px', fontFamily: 'var(--font-cofo)', fontSize: '16px', fontWeight: '400', lineHeight: '20.16px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(0, 0, 0, 0.4)' }}>{`12 марта, 2026`}</div>
+                  <div className="t" style={{ left: '0px', top: '0px', width: '105px', height: '25px', transform: 'matrix(1, 0, 0, 1, 0, 0)', fontFamily: 'var(--font-cofo)', fontSize: '20px', fontWeight: '500', lineHeight: '25.2px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Алексей`}</div>
+                  <div className="t" style={{ left: '0px', top: '30.01px', width: '114px', height: '20px', transform: 'matrix(1, 0, 0, 1, 0, 0)', fontFamily: 'var(--font-cofo)', fontSize: '16px', fontWeight: '400', lineHeight: '20.16px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(0, 0, 0, 0.4)' }}>{`12 марта, 2026`}</div>
                 </div>
               </div>
             </div>
@@ -71,11 +71,11 @@ export function DS10ChtoGovoryatTe() {
               <div className="t" style={{ left: '25px', top: '92px', width: '515px', height: '92px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '400', lineHeight: '22.68px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Современные и уютные домики, очень чисто, красивая территория с бассейном и горячим чаном. Тишина, свежий воздух и всё необходимое для комфортного отдыха. Обязательно приедем ещё!`}</div>
               <div className="n" style={{ left: '25px', top: '219px', width: '186px', height: '63px' }}>
                 <div className="n" style={{ left: '0px', top: '0px', width: '63px', height: '63px', borderRadius: '15px', overflow: 'hidden' }}>
-                  <img src={asset('/images/frame-403-b0f27b4e15.webp')} alt="" />
+                  <img src={asset('/images/frame-403-b0f27b4e15.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="n" style={{ left: '81px', top: '0px', width: '105px', height: '50.02px' }}>
-                  <div className="t" style={{ left: '0px', top: '0px', width: '105px', height: '25px', fontFamily: 'var(--font-cofo)', fontSize: '20px', fontWeight: '500', lineHeight: '25.2px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Алексей`}</div>
-                  <div className="t" style={{ left: '0px', top: '30.01px', width: '114px', height: '20px', fontFamily: 'var(--font-cofo)', fontSize: '16px', fontWeight: '400', lineHeight: '20.16px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(0, 0, 0, 0.4)' }}>{`12 марта, 2026`}</div>
+                  <div className="t" style={{ left: '0px', top: '0px', width: '105px', height: '25px', transform: 'matrix(1, 0, 0, 1, 0, 0)', fontFamily: 'var(--font-cofo)', fontSize: '20px', fontWeight: '500', lineHeight: '25.2px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Алексей`}</div>
+                  <div className="t" style={{ left: '0px', top: '30.01px', width: '114px', height: '20px', transform: 'matrix(1, 0, 0, 1, 0, 0)', fontFamily: 'var(--font-cofo)', fontSize: '16px', fontWeight: '400', lineHeight: '20.16px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(0, 0, 0, 0.4)' }}>{`12 марта, 2026`}</div>
                 </div>
               </div>
             </div>
@@ -89,11 +89,11 @@ export function DS10ChtoGovoryatTe() {
               <div className="t" style={{ left: '25px', top: '92px', width: '515px', height: '92px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '400', lineHeight: '22.68px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Современные и уютные домики, очень чисто, красивая территория с бассейном и горячим чаном. Тишина, свежий воздух и всё необходимое для комфортного отдыха. Обязательно приедем ещё!`}</div>
               <div className="n" style={{ left: '25px', top: '219px', width: '186px', height: '63px' }}>
                 <div className="n" style={{ left: '0px', top: '0px', width: '63px', height: '63px', borderRadius: '15px', overflow: 'hidden' }}>
-                  <img src={asset('/images/frame-403-b0f27b4e15.webp')} alt="" />
+                  <img src={asset('/images/frame-403-b0f27b4e15.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="n" style={{ left: '81px', top: '0px', width: '105px', height: '50.02px' }}>
-                  <div className="t" style={{ left: '0px', top: '0px', width: '105px', height: '25px', fontFamily: 'var(--font-cofo)', fontSize: '20px', fontWeight: '500', lineHeight: '25.2px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Алексей`}</div>
-                  <div className="t" style={{ left: '0px', top: '30.01px', width: '114px', height: '20px', fontFamily: 'var(--font-cofo)', fontSize: '16px', fontWeight: '400', lineHeight: '20.16px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(0, 0, 0, 0.4)' }}>{`12 марта, 2026`}</div>
+                  <div className="t" style={{ left: '0px', top: '0px', width: '105px', height: '25px', transform: 'matrix(1, 0, 0, 1, 0, 0)', fontFamily: 'var(--font-cofo)', fontSize: '20px', fontWeight: '500', lineHeight: '25.2px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Алексей`}</div>
+                  <div className="t" style={{ left: '0px', top: '30.01px', width: '114px', height: '20px', transform: 'matrix(1, 0, 0, 1, 0, 0)', fontFamily: 'var(--font-cofo)', fontSize: '16px', fontWeight: '400', lineHeight: '20.16px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(0, 0, 0, 0.4)' }}>{`12 марта, 2026`}</div>
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@ export function DS10ChtoGovoryatTe() {
           </div>
         </div>
       </div>
-      <div className="n" style={{ left: '947.01px', top: '10199.01px', width: '26px', height: '28px', transform: 'rotate(89.95deg)', overflow: 'hidden' }} aria-hidden>
+      <div className="n" style={{ left: '947.01px', top: '10199.01px', width: '26px', height: '28px', transform: 'matrix(0, 1, 1, 0, 0, 0)', overflow: 'hidden' }} aria-hidden>
         <img src={asset('/icons/fi-ss-angle-double-small-right-9.svg')} alt="" />
       </div>
     </>

@@ -7,11 +7,11 @@ export function DS02UezzhatDaleko() {
     <>
       <div className="n" style={{ left: '-65px', top: '1540px', width: '2050px', height: '913px' }}>
         <div className="n" style={{ left: '0px', top: '0px', width: '2050px', height: '913px' }}>
-          <img src={asset('/images/image-33-4415fc2162.webp')} alt="" />
+          <img src={asset('/images/image-33-4415fc2162.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
         </div>
         <div className="n" style={{ left: '691px', top: '81px', width: '668.47px', height: '189.64px' }}>
           <div className="t" style={{ left: '0px', top: '0px', width: '589px', height: '80px', fontFamily: 'var(--font-forma)', fontSize: '80px', fontWeight: '400', lineHeight: '80px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Уезжать далеко — `}</div>
-          <div className="n" style={{ left: '327.24px', top: '64.82px', width: '337px', height: '110px', transform: 'rotate(-5.12deg)', borderRadius: '15px 0px 15px 0px', boxShadow: '-2px -3px 7px 0px rgba(0, 0, 0, 0.15), -8px -11px 13px 0px rgba(0, 0, 0, 0.13), -18px -24px 18px 0px rgba(0, 0, 0, 0.08), -33px -43px 21px 0px rgba(0, 0, 0, 0.02), -51px -67px 23px 0px rgba(0, 0, 0, 0)', background: '#a0f447' }}>
+          <div className="n" style={{ left: '327.24px', top: '64.82px', width: '337px', height: '110px', transform: 'matrix(1, -0.09, 0.09, 1, 0, 0)', borderRadius: '15px 0px 15px 0px', boxShadow: '-2px -3px 7px 0px rgba(0, 0, 0, 0.15), -8px -11px 13px 0px rgba(0, 0, 0, 0.13), -18px -24px 18px 0px rgba(0, 0, 0, 0.08), -33px -43px 21px 0px rgba(0, 0, 0, 0.02), -51px -67px 23px 0px rgba(0, 0, 0, 0)', background: '#a0f447' }}>
             <div className="t" style={{ left: '12.04px', top: '1.46px', width: '307px', height: '80px', fontFamily: 'var(--font-forma)', fontSize: '80px', fontWeight: '400', lineHeight: '80px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#000000' }}>{`не нужно`}</div>
           </div>
         </div>
@@ -51,7 +51,7 @@ export function DS02UezzhatDaleko() {
           </div>
         </div>
       </div>
-      <div className="n" style={{ left: '947.01px', top: '2502.01px', width: '26px', height: '28px', transform: 'rotate(89.95deg)', overflow: 'hidden' }} aria-hidden>
+      <div className="n" style={{ left: '947.01px', top: '2502.01px', width: '26px', height: '28px', transform: 'matrix(0, 1, 1, 0, 0, 0)', overflow: 'hidden' }} aria-hidden>
         <img src={asset('/icons/node.svg')} alt="" />
       </div>
     </>

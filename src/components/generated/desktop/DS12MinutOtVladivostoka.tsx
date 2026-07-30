@@ -7,7 +7,7 @@ export function DS12MinutOtVladivostoka() {
     <>
       <div className="n" style={{ left: '0px', top: '11407px', width: '1920px', height: '736px', overflow: 'hidden', background: '#ffffff' }}>
         <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '736px' }}>
-          <img src={asset('/images/image-22-81957ddd52.webp')} alt="" />
+          <img src={asset('/images/image-22-81957ddd52.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
         </div>
         <div className="n" style={{ left: '100px', top: '22px', width: '587px', height: '640px', borderRadius: '25px', overflow: 'hidden', boxShadow: '0px 12px 25px 0px rgba(158, 158, 158, 0.1), 0px 46px 46px 0px rgba(158, 158, 158, 0.09), 0px 104px 62px 0px rgba(158, 158, 158, 0.05), 0px 185px 74px 0px rgba(158, 158, 158, 0.01), 0px 289px 81px 0px rgba(158, 158, 158, 0)', background: '#ffffff' }}>
           <div className="t" style={{ left: '30px', top: '30px', width: '452px', height: '120px', fontFamily: 'var(--font-forma)', fontSize: '50px', fontWeight: '400', lineHeight: '60px', letterSpacing: '-1.5px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`40 минут от Владивостока`}</div>

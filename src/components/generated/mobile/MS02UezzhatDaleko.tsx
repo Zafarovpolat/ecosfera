@@ -8,7 +8,7 @@ export function MS02UezzhatDaleko() {
       <div className="n" style={{ left: '20px', top: '1191px', width: '671px', height: '495.64px' }}>
         <div className="n" style={{ left: '0px', top: '0px', width: '332px', height: '101.69px' }}>
           <div className="t" style={{ left: '0px', top: '0px', width: '332px', height: '41px', fontFamily: 'var(--font-forma)', fontSize: '45px', fontWeight: '400', lineHeight: '40.09px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Уезжать далеко — `}</div>
-          <div className="n" style={{ left: '133.09px', top: '38.28px', width: '188.03px', height: '55.13px', transform: 'rotate(-5.12deg)', borderRadius: '7.517124652862549px 0px 7.517124652862549px 0px', boxShadow: '-1.0022833347320557px -1.503425121307373px 3.5079917907714844px 0px rgba(0, 0, 0, 0.15), -4.009133338928223px -5.512558460235596px 6.514841556549072px 0px rgba(0, 0, 0, 0.13), -9.020549774169922px -12.027400970458984px 9.020549774169922px 0px rgba(0, 0, 0, 0.08), -16.537675857543945px -21.54909324645996px 10.523975372314453px 0px rgba(0, 0, 0, 0.02), -25.558223724365234px -33.57649230957031px 11.52625846862793px 0px rgba(0, 0, 0, 0)', background: '#a0f447' }}>
+          <div className="n" style={{ left: '133.09px', top: '38.28px', width: '188.03px', height: '55.13px', transform: 'matrix(1, -0.09, 0.09, 1, 0, 0)', borderRadius: '7.517124652862549px 0px 7.517124652862549px 0px', boxShadow: '-1.0022833347320557px -1.503425121307373px 3.5079917907714844px 0px rgba(0, 0, 0, 0.15), -4.009133338928223px -5.512558460235596px 6.514841556549072px 0px rgba(0, 0, 0, 0.13), -9.020549774169922px -12.027400970458984px 9.020549774169922px 0px rgba(0, 0, 0, 0.08), -16.537675857543945px -21.54909324645996px 10.523975372314453px 0px rgba(0, 0, 0, 0.02), -25.558223724365234px -33.57649230957031px 11.52625846862793px 0px rgba(0, 0, 0, 0)', background: '#a0f447' }}>
             <div className="t" style={{ left: '6.03px', top: '-0.57px', width: '173px', height: '41px', fontFamily: 'var(--font-forma)', fontSize: '45px', fontWeight: '400', lineHeight: '40.09px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#000000' }}>{`не нужно`}</div>
           </div>
         </div>
@@ -50,7 +50,7 @@ export function MS02UezzhatDaleko() {
         </div>
       </div>
       <div className="n" style={{ left: '0px', top: '1406px', width: '375px', height: '223px' }}>
-        <img src={asset('/images/image-33-cb2f9a5cba.webp')} alt="" />
+        <img src={asset('/images/image-33-cb2f9a5cba.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
       </div>
     </>
   );

@@ -7,7 +7,7 @@ export function MS11MinutOtVladivostoka() {
     <>
       <div className="n" style={{ left: '0px', top: '9911px', width: '375px', height: '887px', overflow: 'hidden' }}>
         <div className="n" style={{ left: '-2px', top: '0px', width: '377px', height: '887px' }}>
-          <img src={asset('/images/image-22-86d6455de7.webp')} alt="" />
+          <img src={asset('/images/image-22-86d6455de7.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
         </div>
         <div className="n" style={{ left: '20px', top: '16px', width: '335px', height: '500px', borderRadius: '25px', overflow: 'hidden', background: '#ffffff' }}>
           <div className="t" style={{ left: '15px', top: '15px', width: '199px', height: '72px', fontFamily: 'var(--font-forma)', fontSize: '30px', fontWeight: '400', lineHeight: '36px', letterSpacing: '-0.9px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`40 минут от Владивостока`}</div>

@@ -9,7 +9,7 @@ export function DS08PodhoditDlya() {
         <div className="n" style={{ left: '1px', top: '273px', width: '1720px', height: '693px', borderRadius: '95px' }}>
           <div className="n" style={{ left: '0px', top: '0px', width: '421px', height: '579px', borderRadius: '95px', overflow: 'hidden', background: '#f8f8f8' }}>
             <div className="n" style={{ left: '10px', top: '10px', width: '401px', height: '379px', borderRadius: '90px' }}>
-              <img src={asset('/images/rectangle-20-a97113c13d.webp')} alt="" />
+              <img src={asset('/images/rectangle-20-a97113c13d.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
             </div>
             <div className="n" style={{ left: '49px', top: '429px', width: '323px', height: '103px' }}>
               <div className="t" style={{ left: '0px', top: '0px', width: '323px', height: '30px', fontFamily: 'var(--font-forma)', fontSize: '25px', fontWeight: '400', lineHeight: '30px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#000000' }}>{`Семьям с детьми`}</div>
@@ -19,7 +19,7 @@ export function DS08PodhoditDlya() {
           </div>
           <div className="n" style={{ left: '433px', top: '114px', width: '421px', height: '579px', borderRadius: '95px', overflow: 'hidden', background: '#f8f8f8' }}>
             <div className="n" style={{ left: '9.94px', top: '10px', width: '400px', height: '379px', borderRadius: '90px' }}>
-              <img src={asset('/images/rectangle-20-c4d1d93504.webp')} alt="" />
+              <img src={asset('/images/rectangle-20-c4d1d93504.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
             </div>
             <div className="n" style={{ left: '72.94px', top: '429px', width: '277px', height: '82px' }}>
               <div className="t" style={{ left: '0px', top: '0px', width: '277px', height: '30px', fontFamily: 'var(--font-forma)', fontSize: '25px', fontWeight: '400', lineHeight: '30px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#000000' }}>{`Романтический выезд`}</div>
@@ -28,7 +28,7 @@ export function DS08PodhoditDlya() {
           </div>
           <div className="n" style={{ left: '866px', top: '0px', width: '421px', height: '579px', borderRadius: '95px', overflow: 'hidden', background: '#f8f8f8' }}>
             <div className="n" style={{ left: '9.88px', top: '10px', width: '400px', height: '379px', borderRadius: '90px' }}>
-              <img src={asset('/images/rectangle-20-7697270bff.webp')} alt="" />
+              <img src={asset('/images/rectangle-20-7697270bff.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
             </div>
             <div className="n" style={{ left: '72px', top: '429px', width: '277px', height: '82px' }}>
               <div className="t" style={{ left: '0px', top: '0px', width: '277px', height: '30px', fontFamily: 'var(--font-forma)', fontSize: '25px', fontWeight: '400', lineHeight: '30px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#000000' }}>{`Праздник или ДР`}</div>
@@ -37,7 +37,7 @@ export function DS08PodhoditDlya() {
           </div>
           <div className="n" style={{ left: '1299px', top: '114px', width: '421px', height: '579px', borderRadius: '95px', overflow: 'hidden', background: '#f8f8f8' }}>
             <div className="n" style={{ left: '9.83px', top: '10px', width: '401px', height: '379px', borderRadius: '90px' }}>
-              <img src={asset('/images/rectangle-20-d9e4243751.webp')} alt="" />
+              <img src={asset('/images/rectangle-20-d9e4243751.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
             </div>
             <div className="n" style={{ left: '72px', top: '429px', width: '277px', height: '103px' }}>
               <div className="t" style={{ left: '0px', top: '0px', width: '277px', height: '30px', fontFamily: 'var(--font-forma)', fontSize: '25px', fontWeight: '400', lineHeight: '30px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#000000' }}>{`Большая компания`}</div>
@@ -48,7 +48,7 @@ export function DS08PodhoditDlya() {
         <div className="n" style={{ left: '0px', top: '0px', width: '1721px', height: '203.5px' }}>
           <div className="n" style={{ left: '0px', top: '0px', width: '562.97px', height: '203.5px' }}>
             <div className="t" style={{ left: '0px', top: '0px', width: '457px', height: '80px', fontFamily: 'var(--font-forma)', fontSize: '80px', fontWeight: '400', lineHeight: '80px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Подходит для`}</div>
-            <div className="n" style={{ left: '94.98px', top: '73.43px', width: '464px', height: '109.63px', transform: 'rotate(-5.11deg)', borderRadius: '15px 0px 15px 0px', boxShadow: '-2px -3px 7px 0px rgba(0, 0, 0, 0.15), -8px -11px 13px 0px rgba(0, 0, 0, 0.13), -18px -24px 18px 0px rgba(0, 0, 0, 0.08), -33px -43px 21px 0px rgba(0, 0, 0, 0.02), -51px -67px 23px 0px rgba(0, 0, 0, 0)', background: '#a0f447' }}>
+            <div className="n" style={{ left: '94.98px', top: '73.43px', width: '464px', height: '109.63px', transform: 'matrix(1, -0.09, 0.09, 1, 0, 0)', borderRadius: '15px 0px 15px 0px', boxShadow: '-2px -3px 7px 0px rgba(0, 0, 0, 0.15), -8px -11px 13px 0px rgba(0, 0, 0, 0.13), -18px -24px 18px 0px rgba(0, 0, 0, 0.08), -33px -43px 21px 0px rgba(0, 0, 0, 0.02), -51px -67px 23px 0px rgba(0, 0, 0, 0)', background: '#a0f447' }}>
               <div className="t" style={{ left: '12.73px', top: '0.64px', width: '434px', height: '70px', fontFamily: 'var(--font-forma)', fontSize: '70px', fontWeight: '400', lineHeight: '70px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#000000' }}>{`любого повода`}</div>
             </div>
           </div>
@@ -60,7 +60,7 @@ export function DS08PodhoditDlya() {
           </div>
         </div>
       </div>
-      <div className="n" style={{ left: '947.01px', top: '8394.01px', width: '26px', height: '28px', transform: 'rotate(89.95deg)', overflow: 'hidden' }} aria-hidden>
+      <div className="n" style={{ left: '947.01px', top: '8394.01px', width: '26px', height: '28px', transform: 'matrix(0, 1, 1, 0, 0, 0)', overflow: 'hidden' }} aria-hidden>
         <img src={asset('/icons/node.svg')} alt="" />
       </div>
     </>

@@ -7,16 +7,16 @@ export function MS01Block() {
     <>
       <div className="n" style={{ left: '0px', top: '0px', width: '375px', height: '812px', overflow: 'hidden' }}>
         <div className="n" style={{ left: '0px', top: '0px', width: '375px', height: '812px' }}>
-          <div className="n" style={{ left: '0px', top: '0px', width: '375px', height: '812px', transform: 'rotate(180deg)' }}>
-            <img src={asset('/images/wide-shot-brown-house-surrounded-by-forest-spruc-3b889de315.webp')} alt="" />
+          <div className="n" style={{ left: '0px', top: '0px', width: '375px', height: '812px', transform: 'matrix(-1, 0, 0, 1, 0, 0)' }}>
+            <img src={asset('/images/wide-shot-brown-house-surrounded-by-forest-spruc-3b889de315.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
           </div>
-          <div className="n" style={{ left: '0px', top: '0px', width: '375px', height: '812px', transform: 'rotate(180deg)', background: 'linear-gradient(0.05deg, #0f3318 5.6%, rgba(16, 53, 26, 0) 57%)' }} />
-          <div className="n" style={{ left: '0px', top: '0px', width: '375px', height: '812px', transform: 'rotate(180deg)', background: 'linear-gradient(180deg, #123206 7.9%, rgba(18, 50, 6, 0) 100%)' }} />
+          <div className="n" style={{ left: '0px', top: '0px', width: '375px', height: '812px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', background: 'linear-gradient(0.05deg, #0f3318 5.6%, rgba(16, 53, 26, 0) 57%)' }} />
+          <div className="n" style={{ left: '0px', top: '0px', width: '375px', height: '812px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', background: 'linear-gradient(180deg, #123206 7.9%, rgba(18, 50, 6, 0) 100%)' }} />
         </div>
         <div className="n" style={{ left: '20px', top: '44px', width: '335px', height: '60px' }}>
           <div className="n" style={{ left: '0px', top: '0px', width: '90px', height: '60px', background: '#ffffff' }}>
             <div className="n" style={{ left: '9px', top: '1px', width: '69px', height: '58px', borderRadius: '519.12px' }}>
-              <img src={asset('/images/image-31-d6e8c19eca.webp')} alt="" />
+              <img src={asset('/images/image-31-d6e8c19eca.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
             </div>
           </div>
           <div className="n" style={{ left: '121px', top: '21px', width: '214px', height: '39px' }}>
@@ -39,7 +39,7 @@ export function MS01Block() {
                 <div className="t" style={{ left: '8px', top: '110px', width: '286px', height: '55px', fontFamily: 'var(--font-forma)', fontSize: '60px', fontWeight: '400', lineHeight: '55px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`становится `}</div>
                 <div className="t" style={{ left: '0px', top: '0px', width: '313px', height: '110px', fontFamily: 'var(--font-forma)', fontSize: '60px', fontWeight: '400', lineHeight: '55px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Отдых, где природа `}</div>
               </div>
-              <div className="n" style={{ left: '3.82px', top: '159.13px', width: '285.93px', height: '44.34px', transform: 'rotate(-2.47deg)', borderRadius: '0px 5.250783443450928px 0px 5.250783443450928px', boxShadow: '1.0501567125320435px -1.0501567125320435px 3.15047025680542px 0px rgba(0, 0, 0, 0.39), 3.5005223751068115px -4.900731086730957px 5.950888156890869px 0px rgba(0, 0, 0, 0.34), 8.051201820373535px -10.851619720458984px 8.051201820373535px 0px rgba(0, 0, 0, 0.2), 14.352141380310059px -19.252872467041016px 9.451410293579102px 0px rgba(0, 0, 0, 0.06), 22.403343200683594px -30.1044921875px 10.501566886901855px 0px rgba(0, 0, 0, 0.01)', background: '#a0f447' }}>
+              <div className="n" style={{ left: '3.82px', top: '159.13px', width: '285.93px', height: '44.34px', transform: 'matrix(1, -0.04, 0.04, 1, 0, 0)', borderRadius: '0px 5.250783443450928px 0px 5.250783443450928px', boxShadow: '1.0501567125320435px -1.0501567125320435px 3.15047025680542px 0px rgba(0, 0, 0, 0.39), 3.5005223751068115px -4.900731086730957px 5.950888156890869px 0px rgba(0, 0, 0, 0.34), 8.051201820373535px -10.851619720458984px 8.051201820373535px 0px rgba(0, 0, 0, 0.2), 14.352141380310059px -19.252872467041016px 9.451410293579102px 0px rgba(0, 0, 0, 0.06), 22.403343200683594px -30.1044921875px 10.501566886901855px 0px rgba(0, 0, 0, 0.01)', background: '#a0f447' }}>
                 <div className="t" style={{ left: '6.99px', top: '2.35px', width: '271px', height: '28px', fontFamily: 'var(--font-forma)', fontSize: '35px', fontWeight: '400', lineHeight: '28px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`вашим комфортом`}</div>
               </div>
             </div>

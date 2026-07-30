@@ -9,7 +9,7 @@ export function DS11Chasto() {
         <div className="n" style={{ left: '0px', top: '0px', width: '1720px', height: '197.98px' }}>
           <div className="n" style={{ left: '0px', top: '0px', width: '410.22px', height: '197.98px' }}>
             <div className="t" style={{ left: '38px', top: '0px', width: '198px', height: '80px', fontFamily: 'var(--font-forma)', fontSize: '80px', fontWeight: '400', lineHeight: '80px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Часто`}</div>
-            <div className="n" style={{ left: '4.11px', top: '70.67px', width: '402px', height: '109.63px', transform: 'rotate(-5.11deg)', borderRadius: '15px 0px 15px 0px', boxShadow: '-2px -3px 7px 0px rgba(0, 0, 0, 0.15), -8px -11px 13px 0px rgba(0, 0, 0, 0.13), -18px -24px 18px 0px rgba(0, 0, 0, 0.08), -33px -43px 21px 0px rgba(0, 0, 0, 0.02), -51px -67px 23px 0px rgba(0, 0, 0, 0)', background: '#a0f447' }}>
+            <div className="n" style={{ left: '4.11px', top: '70.67px', width: '402px', height: '109.63px', transform: 'matrix(1, -0.09, 0.09, 1, 0, 0)', borderRadius: '15px 0px 15px 0px', boxShadow: '-2px -3px 7px 0px rgba(0, 0, 0, 0.15), -8px -11px 13px 0px rgba(0, 0, 0, 0.13), -18px -24px 18px 0px rgba(0, 0, 0, 0.08), -33px -43px 21px 0px rgba(0, 0, 0, 0.02), -51px -67px 23px 0px rgba(0, 0, 0, 0)', background: '#a0f447' }}>
               <div className="t" style={{ left: '12.6px', top: '3.4px', width: '372px', height: '70px', fontFamily: 'var(--font-forma)', fontSize: '70px', fontWeight: '400', lineHeight: '70px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#000000' }}>{`спрашивают`}</div>
             </div>
           </div>
@@ -23,7 +23,7 @@ export function DS11Chasto() {
               <div className="n" style={{ left: '10px', top: '10px', width: '9px', height: '8px', border: '1px solid #000000' }} aria-hidden>
                 <img src={asset('/icons/vector-1-3.svg')} alt="" />
               </div>
-              <div className="n" style={{ left: '272px', top: '80px', width: '9px', height: '8px', transform: 'rotate(-180deg)', border: '1px solid #000000' }} aria-hidden>
+              <div className="n" style={{ left: '272px', top: '80px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #000000' }} aria-hidden>
                 <img src={asset('/icons/vector-2-3.svg')} alt="" />
               </div>
             </div>
@@ -88,7 +88,7 @@ export function DS11Chasto() {
           </div>
         </div>
       </div>
-      <div className="n" style={{ left: '947.01px', top: '11320.01px', width: '26px', height: '28px', transform: 'rotate(89.95deg)', overflow: 'hidden' }} aria-hidden>
+      <div className="n" style={{ left: '947.01px', top: '11320.01px', width: '26px', height: '28px', transform: 'matrix(0, 1, 1, 0, 0, 0)', overflow: 'hidden' }} aria-hidden>
         <img src={asset('/icons/fi-ss-angle-double-small-right-7.svg')} alt="" />
       </div>
     </>

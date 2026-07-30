@@ -7,11 +7,11 @@ export function DS01Block() {
     <>
       <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '976px' }}>
         <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '975px' }}>
-          <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '954px', transform: 'rotate(180deg)', borderRadius: '0px 0px 20px 20px' }}>
-            <img src={asset('/images/wide-shot-brown-house-surrounded-by-forest-spruc-0c4a2df57c.webp')} alt="" />
+          <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '954px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', borderRadius: '0px 0px 20px 20px' }}>
+            <img src={asset('/images/wide-shot-brown-house-surrounded-by-forest-spruc-0c4a2df57c.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
           </div>
-          <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '954px', transform: 'rotate(180deg)', background: 'linear-gradient(0.05deg, #0f3318 5.6%, rgba(16, 53, 26, 0) 39.8%)' }} />
-          <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '975px', transform: 'rotate(180deg)', background: 'linear-gradient(180deg, #123206 7.9%, rgba(18, 50, 6, 0) 100%)' }} />
+          <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '954px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', background: 'linear-gradient(0.05deg, #0f3318 5.6%, rgba(16, 53, 26, 0) 39.8%)' }} />
+          <div className="n" style={{ left: '0px', top: '0px', width: '1920px', height: '975px', transform: 'matrix(-1, 0, 0, 1, 0, 0)', background: 'linear-gradient(180deg, #123206 7.9%, rgba(18, 50, 6, 0) 100%)' }} />
         </div>
         <div className="n" style={{ left: '0px', top: '0px', width: '1928px', height: '109px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
           <div className="n" style={{ left: '1164px', top: '20px', width: '663px', height: '70px' }}>
@@ -30,14 +30,14 @@ export function DS01Block() {
               <div className="n" style={{ left: '8px', top: '8px', width: '9px', height: '8px', border: '1px solid #000000' }} aria-hidden>
                 <img src={asset('/icons/vector-1-3.svg')} alt="" />
               </div>
-              <div className="n" style={{ left: '206px', top: '54px', width: '9px', height: '8px', transform: 'rotate(-180deg)', border: '1px solid #000000' }} aria-hidden>
+              <div className="n" style={{ left: '206px', top: '54px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #000000' }} aria-hidden>
                 <img src={asset('/icons/vector-2-8.svg')} alt="" />
               </div>
             </div>
           </div>
           <div className="n" style={{ left: '100px', top: '0px', width: '125px', height: '109px', background: '#ffffff' }}>
             <div className="n" style={{ left: '5px', top: '6px', width: '114px', height: '97px', borderRadius: '721px' }}>
-              <img src={asset('/images/image-31-7848d9a61e.webp')} alt="" />
+              <img src={asset('/images/image-31-7848d9a61e.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
             </div>
           </div>
           <div className="n" style={{ left: '285px', top: '40px', width: '645px', height: '30px' }}>
@@ -54,7 +54,7 @@ export function DS01Block() {
               <div className="t" style={{ left: '184px', top: '97px', width: '572px', height: '80px', fontFamily: 'var(--font-forma)', fontSize: '120px', fontWeight: '400', lineHeight: '80px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`становится `}</div>
               <div className="t" style={{ left: '0px', top: '0px', width: '957px', height: '80px', fontFamily: 'var(--font-forma)', fontSize: '120px', fontWeight: '400', lineHeight: '80px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Отдых, где природа `}</div>
             </div>
-            <div className="n" style={{ left: '173.79px', top: '185.08px', width: '610px', height: '96.3px', transform: 'rotate(-2.47deg)', borderRadius: '0px 15px 0px 15px', boxShadow: '3px -3px 9px 0px rgba(0, 0, 0, 0.39), 10px -14px 17px 0px rgba(0, 0, 0, 0.34), 23px -31px 23px 0px rgba(0, 0, 0, 0.2), 41px -55px 27px 0px rgba(0, 0, 0, 0.06), 64px -86px 30px 0px rgba(0, 0, 0, 0.01)', background: '#a0f447' }}>
+            <div className="n" style={{ left: '173.79px', top: '185.08px', width: '610px', height: '96.3px', transform: 'matrix(1, -0.04, 0.04, 1, 0, 0)', borderRadius: '0px 15px 0px 15px', boxShadow: '3px -3px 9px 0px rgba(0, 0, 0, 0.39), 10px -14px 17px 0px rgba(0, 0, 0, 0.34), 23px -31px 23px 0px rgba(0, 0, 0, 0.2), 41px -55px 27px 0px rgba(0, 0, 0, 0.06), 64px -86px 30px 0px rgba(0, 0, 0, 0.01)', background: '#a0f447' }}>
               <div className="t" style={{ left: '13.55px', top: '-4.29px', width: '580px', height: '80px', fontFamily: 'var(--font-forma)', fontSize: '75px', fontWeight: '400', lineHeight: '80px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`вашим комфортом`}</div>
             </div>
           </div>
@@ -77,8 +77,8 @@ export function DS01Block() {
           <div className="t" style={{ left: '0px', top: '126px', width: '86px', height: '46px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '500', lineHeight: '22.68px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Уютных дома`}</div>
         </div>
       </div>
-      <div className="n" style={{ left: '-31.68px', top: '897.58px', width: '459.62px', height: '149.5px', transform: 'rotate(168.43deg)' }}>
-        <img src={asset('/images/image-33-0362237225.webp')} alt="" />
+      <div className="n" style={{ left: '-31.68px', top: '897.58px', width: '459.62px', height: '149.5px', transform: 'matrix(-0.98, 0.2, 0.2, 0.98, 0, 0)' }}>
+        <img src={asset('/images/image-33-0362237225.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
       </div>
       <div className="n" style={{ left: '841px', top: '976px', width: '238px', height: '55px' }}>
         <div className="n" style={{ left: '113px', top: '0px', width: '12px', height: '13px' }} aria-hidden>
@@ -86,8 +86,8 @@ export function DS01Block() {
         </div>
         <div className="t" style={{ left: '0px', top: '23px', width: '238px', height: '32px', fontFamily: 'var(--font-cofo)', fontSize: '25px', fontWeight: '400', lineHeight: '31.5px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Наши преимущества`}</div>
       </div>
-      <div className="n" style={{ left: '1481.65px', top: '1001.56px', width: '593.44px', height: '193.03px', transform: 'rotate(11.57deg)' }}>
-        <img src={asset('/images/image-34-6e68fd7e22.webp')} alt="" />
+      <div className="n" style={{ left: '1481.65px', top: '1001.56px', width: '593.44px', height: '193.03px', transform: 'matrix(0.98, 0.2, -0.2, 0.98, 0, 0)' }}>
+        <img src={asset('/images/image-34-6e68fd7e22.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
       </div>
       <div className="n" style={{ left: '97px', top: '1080px', width: '1740px', height: '352px' }}>
         <div className="n" style={{ left: '0px', top: '0px', width: '560px', height: '352px', borderRadius: '150px', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', background: 'rgba(255, 255, 255, 0.1)' }}>
@@ -150,7 +150,7 @@ export function DS01Block() {
           </div>
         </div>
       </div>
-      <div className="n" style={{ left: '926.01px', top: '1472.99px', width: '26px', height: '28px', transform: 'rotate(89.95deg)', overflow: 'hidden' }} aria-hidden>
+      <div className="n" style={{ left: '926.01px', top: '1472.99px', width: '26px', height: '28px', transform: 'matrix(0, 1, 1, 0, 0, 0)', overflow: 'hidden' }} aria-hidden>
         <img src={asset('/icons/fi-ss-angle-double-small-right-6.svg')} alt="" />
       </div>
     </>

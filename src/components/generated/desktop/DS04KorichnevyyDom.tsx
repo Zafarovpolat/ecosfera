@@ -8,7 +8,7 @@ export function DS04KorichnevyyDom() {
       <div className="n" style={{ left: '101px', top: '3462px', width: '1719px', height: '750px' }}>
         <div className="n" style={{ left: '810px', top: '0px', width: '909px', height: '750px', overflow: 'hidden' }}>
           <div className="n" style={{ left: '0px', top: '0px', width: '909px', height: '750px', borderRadius: '25px' }}>
-            <img src={asset('/images/8c50a548-3790-4a2f-abf2-1feb6309988b-2-81bfc546e9.webp')} alt="" />
+            <img src={asset('/images/8c50a548-3790-4a2f-abf2-1feb6309988b-2-81bfc546e9.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
           </div>
           <div className="n" style={{ left: '392px', top: '675px', width: '124px', height: '45px', borderRadius: '25px', overflow: 'hidden', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', background: 'rgba(255, 255, 255, 0.1)' }}>
             <div className="n" style={{ left: '14px', top: '21px', width: '21px', height: '4px', borderRadius: '11px', background: '#ffffff' }} />
@@ -61,37 +61,37 @@ export function DS04KorichnevyyDom() {
             <div className="n" style={{ left: '0px', top: '148px', width: '755px', height: '125px' }}>
               <div className="n" style={{ left: '0px', top: '0px', width: '120px', height: '125px', borderRadius: '25px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '68px', height: '42px' }}>
-                  <img src={asset('/images/image-35-44c151b7a2.webp')} alt="" />
+                  <img src={asset('/images/image-35-44c151b7a2.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '86px', width: '98px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Бассейн`}</div>
               </div>
               <div className="n" style={{ left: '127px', top: '0px', width: '120px', height: '125px', borderRadius: '25px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '57px', height: '48px' }}>
-                  <img src={asset('/images/image-37-bc0f6b3a51.webp')} alt="" />
+                  <img src={asset('/images/image-37-bc0f6b3a51.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '86px', width: '98px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Беседка`}</div>
               </div>
               <div className="n" style={{ left: '254px', top: '0px', width: '120px', height: '125px', borderRadius: '25px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '59px', height: '51px' }}>
-                  <img src={asset('/images/image-36-9a140b3c64.webp')} alt="" />
+                  <img src={asset('/images/image-36-9a140b3c64.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '86px', width: '98px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Чан`}</div>
               </div>
               <div className="n" style={{ left: '381px', top: '0px', width: '120px', height: '125px', borderRadius: '25px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '55px', height: '47px' }}>
-                  <img src={asset('/images/image-38-04a00a26e3.webp')} alt="" />
+                  <img src={asset('/images/image-38-04a00a26e3.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '86px', width: '98px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Мангал`}</div>
               </div>
               <div className="n" style={{ left: '508px', top: '0px', width: '120px', height: '125px', borderRadius: '25px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '39px', height: '41px' }}>
-                  <img src={asset('/images/image-38-856dd823cf.webp')} alt="" />
+                  <img src={asset('/images/image-38-856dd823cf.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '86px', width: '98px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Wi-Fi`}</div>
               </div>
               <div className="n" style={{ left: '635px', top: '0px', width: '120px', height: '125px', borderRadius: '25px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '44px', height: '44px' }}>
-                  <img src={asset('/images/image-37-7ed89f7b62.webp')} alt="" />
+                  <img src={asset('/images/image-37-7ed89f7b62.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '65px', width: '98px', height: '42px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Косторовая зона`}</div>
               </div>
@@ -106,7 +106,7 @@ export function DS04KorichnevyyDom() {
               <div className="n" style={{ left: '10px', top: '10px', width: '9px', height: '8px', border: '1px solid #ffffff' }} aria-hidden>
                 <img src={asset('/icons/node.svg')} alt="" />
               </div>
-              <div className="n" style={{ left: '272px', top: '80px', width: '9px', height: '8px', transform: 'rotate(-180deg)', border: '1px solid #ffffff' }} aria-hidden>
+              <div className="n" style={{ left: '272px', top: '80px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #ffffff' }} aria-hidden>
                 <img src={asset('/icons/node.svg')} alt="" />
               </div>
             </div>
@@ -122,8 +122,8 @@ export function DS04KorichnevyyDom() {
           </div>
         </div>
       </div>
-      <div className="n" style={{ left: '-657px', top: '3524px', width: '832px', height: '744px', transform: 'rotate(180deg)' }}>
-        <img src={asset('/images/facee_no_watermark-3-bfab73b321.webp')} alt="" style={{ opacity: '0.1' }} />
+      <div className="n" style={{ left: '-657px', top: '3524px', width: '832px', height: '744px', transform: 'matrix(-1, 0, 0, 1, 0, 0)' }}>
+        <img src={asset('/images/facee_no_watermark-3-bfab73b321.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit', opacity: '0.1' }} />
       </div>
     </>
   );

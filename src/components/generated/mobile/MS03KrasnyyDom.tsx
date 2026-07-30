@@ -9,7 +9,7 @@ export function MS03KrasnyyDom() {
         <div className="n" style={{ left: '0px', top: '0px', width: '336px', height: '1125px' }}>
           <div className="n" style={{ left: '0px', top: '0px', width: '336px', height: '364px', borderRadius: '20px', overflow: 'hidden', background: '#ffffff' }}>
             <div className="n" style={{ left: '0px', top: '0px', width: '336px', height: '364px' }}>
-              <img src={asset('/images/8c50a548-3790-4a2f-abf2-1feb6309988b-2-3fd4342010.webp')} alt="" />
+              <img src={asset('/images/8c50a548-3790-4a2f-abf2-1feb6309988b-2-3fd4342010.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
             </div>
             <div className="n" style={{ left: '10px', top: '322px', width: '86px', height: '31.21px', borderRadius: '17.34px', overflow: 'hidden', backdropFilter: 'blur(13.87px)', WebkitBackdropFilter: 'blur(13.87px)', background: 'rgba(255, 255, 255, 0.1)' }}>
               <div className="n" style={{ left: '9.71px', top: '14.56px', width: '14.56px', height: '2.77px', borderRadius: '7.63px', background: '#ffffff' }} />
@@ -65,37 +65,37 @@ export function MS03KrasnyyDom() {
             <div className="n" style={{ left: '0px', top: '374px', width: '336px', height: '220px' }}>
               <div className="n" style={{ left: '3.5px', top: '0px', width: '79px', height: '107px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '68px', height: '42px' }}>
-                  <img src={asset('/images/image-35-44c151b7a2.webp')} alt="" />
+                  <img src={asset('/images/image-35-44c151b7a2.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '83px', width: '50px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Бассейн`}</div>
               </div>
               <div className="n" style={{ left: '87.5px', top: '0px', width: '79px', height: '107px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '57px', height: '48px' }}>
-                  <img src={asset('/images/image-37-bc0f6b3a51.webp')} alt="" />
+                  <img src={asset('/images/image-37-bc0f6b3a51.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '83px', width: '49px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Беседка`}</div>
               </div>
               <div className="n" style={{ left: '171.5px', top: '0px', width: '78px', height: '107px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '59px', height: '51px' }}>
-                  <img src={asset('/images/image-36-9a140b3c64.webp')} alt="" />
+                  <img src={asset('/images/image-36-9a140b3c64.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '83px', width: '23px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Чан`}</div>
               </div>
               <div className="n" style={{ left: '254.5px', top: '0px', width: '78px', height: '107px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '55px', height: '47px' }}>
-                  <img src={asset('/images/image-38-04a00a26e3.webp')} alt="" />
+                  <img src={asset('/images/image-38-04a00a26e3.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '83px', width: '45px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Мангал`}</div>
               </div>
               <div className="n" style={{ left: '86.5px', top: '112px', width: '79px', height: '108px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '39px', height: '41px' }}>
-                  <img src={asset('/images/image-38-856dd823cf.webp')} alt="" />
+                  <img src={asset('/images/image-38-856dd823cf.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '84px', width: '57px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Wi-Fi`}</div>
               </div>
               <div className="n" style={{ left: '170.5px', top: '112px', width: '79px', height: '108px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '10px', width: '44px', height: '44px' }}>
-                  <img src={asset('/images/image-37-7ed89f7b62.webp')} alt="" />
+                  <img src={asset('/images/image-37-7ed89f7b62.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '10.5px', top: '68px', width: '64px', height: '32px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Косторо-вая зона`}</div>
               </div>
@@ -107,7 +107,7 @@ export function MS03KrasnyyDom() {
                   <div className="n" style={{ left: '10px', top: '10px', width: '9px', height: '8px', border: '1px solid #ffffff' }} aria-hidden>
                     <img src={asset('/icons/vector-1-5.svg')} alt="" />
                   </div>
-                  <div className="n" style={{ left: '260px', top: '67px', width: '9px', height: '8px', transform: 'rotate(-180deg)', border: '1px solid #ffffff' }} aria-hidden>
+                  <div className="n" style={{ left: '260px', top: '67px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #ffffff' }} aria-hidden>
                     <img src={asset('/icons/vector-2-5.svg')} alt="" />
                   </div>
                 </div>
@@ -127,7 +127,7 @@ export function MS03KrasnyyDom() {
         <div className="n" style={{ left: '0px', top: '1175px', width: '336px', height: '1125px' }}>
           <div className="n" style={{ left: '0px', top: '0px', width: '336px', height: '364px', borderRadius: '20px', overflow: 'hidden', background: '#ffffff' }}>
             <div className="n" style={{ left: '0px', top: '0px', width: '336px', height: '364px' }}>
-              <img src={asset('/images/8c50a548-3790-4a2f-abf2-1feb6309988b-2-3fd4342010.webp')} alt="" />
+              <img src={asset('/images/8c50a548-3790-4a2f-abf2-1feb6309988b-2-3fd4342010.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
             </div>
             <div className="n" style={{ left: '10px', top: '322px', width: '86px', height: '31.21px', borderRadius: '17.34px', overflow: 'hidden', backdropFilter: 'blur(13.87px)', WebkitBackdropFilter: 'blur(13.87px)', background: 'rgba(255, 255, 255, 0.1)' }}>
               <div className="n" style={{ left: '9.71px', top: '14.56px', width: '14.56px', height: '2.77px', borderRadius: '7.63px', background: '#ffffff' }} />
@@ -183,37 +183,37 @@ export function MS03KrasnyyDom() {
             <div className="n" style={{ left: '0px', top: '374px', width: '336px', height: '220px' }}>
               <div className="n" style={{ left: '3.5px', top: '0px', width: '79px', height: '107px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '68px', height: '42px' }}>
-                  <img src={asset('/images/image-35-44c151b7a2.webp')} alt="" />
+                  <img src={asset('/images/image-35-44c151b7a2.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '83px', width: '50px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Бассейн`}</div>
               </div>
               <div className="n" style={{ left: '87.5px', top: '0px', width: '79px', height: '107px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '57px', height: '48px' }}>
-                  <img src={asset('/images/image-37-bc0f6b3a51.webp')} alt="" />
+                  <img src={asset('/images/image-37-bc0f6b3a51.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '83px', width: '49px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Беседка`}</div>
               </div>
               <div className="n" style={{ left: '171.5px', top: '0px', width: '78px', height: '107px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '59px', height: '51px' }}>
-                  <img src={asset('/images/image-36-9a140b3c64.webp')} alt="" />
+                  <img src={asset('/images/image-36-9a140b3c64.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '83px', width: '23px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Чан`}</div>
               </div>
               <div className="n" style={{ left: '254.5px', top: '0px', width: '78px', height: '107px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '55px', height: '47px' }}>
-                  <img src={asset('/images/image-38-04a00a26e3.webp')} alt="" />
+                  <img src={asset('/images/image-38-04a00a26e3.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '83px', width: '45px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Мангал`}</div>
               </div>
               <div className="n" style={{ left: '86.5px', top: '112px', width: '79px', height: '108px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '18px', width: '39px', height: '41px' }}>
-                  <img src={asset('/images/image-38-856dd823cf.webp')} alt="" />
+                  <img src={asset('/images/image-38-856dd823cf.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '11px', top: '84px', width: '57px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Wi-Fi`}</div>
               </div>
               <div className="n" style={{ left: '170.5px', top: '112px', width: '79px', height: '108px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
                 <div className="n" style={{ left: '11px', top: '10px', width: '44px', height: '44px' }}>
-                  <img src={asset('/images/image-37-7ed89f7b62.webp')} alt="" />
+                  <img src={asset('/images/image-37-7ed89f7b62.webp')} alt="" style={{ position: 'absolute', inset: '0', borderRadius: 'inherit' }} />
                 </div>
                 <div className="t" style={{ left: '10.5px', top: '68px', width: '64px', height: '32px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Косторо-вая зона`}</div>
               </div>
@@ -225,7 +225,7 @@ export function MS03KrasnyyDom() {
                   <div className="n" style={{ left: '10px', top: '10px', width: '9px', height: '8px', border: '1px solid #ffffff' }} aria-hidden>
                     <img src={asset('/icons/vector-1-5.svg')} alt="" />
                   </div>
-                  <div className="n" style={{ left: '260px', top: '67px', width: '9px', height: '8px', transform: 'rotate(-180deg)', border: '1px solid #ffffff' }} aria-hidden>
+                  <div className="n" style={{ left: '260px', top: '67px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #ffffff' }} aria-hidden>
                     <img src={asset('/icons/vector-2-5.svg')} alt="" />
                   </div>
                 </div>

@@ -21,32 +21,45 @@ function toCss(color, opacity = 1) {
 }
 
 // ---------- geometry ----------
-function rotationOf(node) {
+/**
+ * The linear part of a node's transform, as a CSS matrix.
+ *
+ * Deriving an angle with atan2 is not enough: this file mirrors nodes
+ * (determinant −1, e.g. the hero photo is [[-1,0],[0,1]]) and transposes others
+ * (the chevron dividers). An angle silently turns a mirror into a 180° rotation.
+ * Carrying the whole 2x2 through to `matrix()` reproduces rotation, mirroring
+ * and skew exactly, with no special cases.
+ */
+function linearOf(node) {
   const t = node.relativeTransform;
-  if (!t) return 0;
-  const deg = Math.atan2(t[1][0], t[0][0]) * (180 / Math.PI);
-  return Math.abs(deg) < 0.01 ? 0 : +deg.toFixed(2);
+  if (!t) return null;
+  const m = { a: t[0][0], b: t[1][0], c: t[0][1], d: t[1][1] };
+  const identity =
+    Math.abs(m.a - 1) < 1e-6 && Math.abs(m.d - 1) < 1e-6 &&
+    Math.abs(m.b) < 1e-6 && Math.abs(m.c) < 1e-6;
+  if (identity) return null;
+  const r = (n) => +n.toFixed(5);
+  return { a: r(m.a), b: r(m.b), c: r(m.c), d: r(m.d), det: +(m.a * m.d - m.b * m.c).toFixed(4) };
 }
 
-/** Unrotated box. Figma's absoluteBoundingBox is the AABB, so for rotated
- *  nodes we must use `size` and re-derive the top-left corner. */
+/** Untransformed box. absoluteBoundingBox is the AABB, so for any transformed
+ *  node we take `size` and re-centre it on the AABB centre. */
 function boxOf(node, origin) {
   const bb = node.absoluteBoundingBox;
   if (!bb) return null;
-  const rot = rotationOf(node);
+  const lin = linearOf(node);
   const w = node.size ? node.size.x : bb.width;
   const h = node.size ? node.size.y : bb.height;
   let x = bb.x - origin.x;
   let y = bb.y - origin.y;
-  if (rot !== 0 && node.size) {
-    // centre of the AABB equals centre of the rotated box
+  if (lin && node.size) {
     const cx = bb.x + bb.width / 2 - origin.x;
     const cy = bb.y + bb.height / 2 - origin.y;
     x = cx - w / 2;
     y = cy - h / 2;
   }
   const r = (n) => +n.toFixed(2);
-  return { x: r(x), y: r(y), w: r(w), h: r(h), rot };
+  return { x: r(x), y: r(y), w: r(w), h: r(h), lin };
 }
 
 // ---------- paint ----------
@@ -270,7 +283,8 @@ for (const [label, [file, id]] of Object.entries(files)) {
     vectors: vectorIds.length,
     imageFills: spec.nodes.filter((n) => n.fills.some((f) => f.kind === 'image')).length,
     gradients: spec.nodes.filter((n) => n.fills.some((f) => f.kind === 'gradient')).length,
-    rotated: spec.nodes.filter((n) => n.box?.rot).length,
+    transformed: spec.nodes.filter((n) => n.box?.lin).length,
+    mirrored: spec.nodes.filter((n) => n.box?.lin && n.box.lin.det < 0).length,
     shadowed: spec.nodes.filter((n) => n.shadows.length).length,
     blurred: spec.nodes.filter((n) => n.blurs.length).length,
     autolayout: spec.nodes.filter((n) => n.layout).length,
