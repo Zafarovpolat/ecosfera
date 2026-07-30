@@ -67,7 +67,7 @@ export function DS07ChemEkosferaOtlichaetsya() {
         </div>
         <div className="n" style={{ left: '1128px', top: '802.2px', width: '123.93px', height: '142px' }}>
           <div className="n" style={{ left: '20.46px', top: '0px', width: '83px', height: '51px', borderRadius: '20px', background: '#f8f8f8' }}>
-            <div className="t" style={{ left: '15px', top: '15px', width: '53px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', whiteSpace: 'pre', display: 'grid', alignContent: 'center', textAlign: 'center', color: 'rgba(0, 0, 0, 0.4)' }}><span style={{ color: '#000000' }}>{`03/`}</span><span style={{ color: 'rgba(0, 0, 0, 0.2)' }}>{`05`}</span></div>
+            <div className="t" style={{ left: '15px', top: '15px', width: '53px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', whiteSpace: 'pre', display: 'grid', alignContent: 'center', textAlign: 'center', color: 'rgba(0, 0, 0, 0.4)' }}><span><span style={{ color: '#000000' }}>{`03/`}</span><span style={{ color: 'rgba(0, 0, 0, 0.2)' }}>{`05`}</span></span></div>
           </div>
           <div className="n" style={{ left: '0px', top: '73px', width: '123.93px', height: '69px' }} aria-hidden>
             <img src={asset('/icons/arrows.svg')} alt="" />

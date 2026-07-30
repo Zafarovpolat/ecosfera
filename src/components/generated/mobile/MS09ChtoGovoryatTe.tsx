@@ -53,7 +53,7 @@ export function MS09ChtoGovoryatTe() {
           </div>
           <div className="n" style={{ left: '106px', top: '245px', width: '123.93px', height: '115.64px' }}>
             <div className="n" style={{ left: '26.96px', top: '0px', width: '70px', height: '40px', borderRadius: '15px', background: '#f8f8f8' }}>
-              <div className="t" style={{ left: '13.5px', top: '11px', width: '43px', height: '18px', fontFamily: 'var(--font-cofo)', fontSize: '14px', fontWeight: '400', lineHeight: '17.64px', whiteSpace: 'pre', display: 'grid', alignContent: 'center', textAlign: 'center', color: 'rgba(0, 0, 0, 0.4)' }}><span style={{ fontSize: '14px', color: '#000000' }}>{`03/`}</span><span style={{ fontSize: '14px', color: 'rgba(0, 0, 0, 0.2)' }}>{`05`}</span></div>
+              <div className="t" style={{ left: '13.5px', top: '11px', width: '43px', height: '18px', fontFamily: 'var(--font-cofo)', fontSize: '14px', fontWeight: '400', lineHeight: '17.64px', whiteSpace: 'pre', display: 'grid', alignContent: 'center', textAlign: 'center', color: 'rgba(0, 0, 0, 0.4)' }}><span><span style={{ fontSize: '14px', color: '#000000' }}>{`03/`}</span><span style={{ fontSize: '14px', color: 'rgba(0, 0, 0, 0.2)' }}>{`05`}</span></span></div>
             </div>
             <div className="n" style={{ left: '12px', top: '60px', width: '99.93px', height: '55.64px' }} aria-hidden>
               <img src={asset('/icons/arrows-3.svg')} alt="" />

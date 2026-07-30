@@ -17,7 +17,11 @@ const DIST = 'dist';
 const manifest = JSON.parse(fs.readFileSync('spec/manifest.json', 'utf8'));
 
 const camelToKebab = (k) =>
-  k.replace(/^Webkit/, '-webkit-').replace(/[A-Z]/g, (m) => '-' + m.toLowerCase());
+  k
+    // lowercase the char after the vendor prefix, or it kebabs again into
+    // "-webkit--backdrop-filter" and Safari drops the declaration
+    .replace(/^Webkit([A-Z])/, (_, c) => `-webkit-${c.toLowerCase()}`)
+    .replace(/[A-Z]/g, (m) => '-' + m.toLowerCase());
 
 const escHtml = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -47,13 +51,17 @@ function toTsx(el, indent) {
 
   let inner = '';
   if (el.runs) {
-    inner = el.runs
+    // One wrapper, because the text box is a grid container for vertical
+    // alignment — bare sibling spans would each become their own grid row and
+    // break a styled phrase onto separate lines.
+    const parts = el.runs
       .map((r) => {
         if (!r.style) return `{\`${jsxStr(r.text)}\`}`;
         const c = r.cls ? ` className="${r.cls}"` : '';
         return `<span${c} style={${styleObj(r.style)}}>{\`${jsxStr(r.text)}\`}</span>`;
       })
       .join('');
+    inner = `<span>${parts}</span>`;
   } else if (el.text != null) {
     inner = `{\`${jsxStr(el.text)}\`}`;
   }
@@ -65,6 +73,9 @@ function toTsx(el, indent) {
 }
 
 // ---------------------------------------------------------------- HTML side
+/** Imagery in the first screen must not be lazy, or it pops in after paint. */
+let EAGER = false;
+
 function toHtml(el, indent) {
   const pad = '  '.repeat(indent);
   const style = (o) =>
@@ -78,7 +89,8 @@ function toHtml(el, indent) {
     // Relative, so the static build works from any subdirectory — GitHub Pages
     // serves project sites from /<repo>/ and absolute paths would 404 there.
     const src = String(el.src).replace(/^\//, '');
-    return `${pad}<img src="${src}" alt="${el.alt ?? ''}"${st} loading="lazy" decoding="async">`;
+    const load = EAGER ? 'eager' : 'lazy';
+    return `${pad}<img src="${src}" alt="${el.alt ?? ''}"${st} loading="${load}" decoding="async">`;
   }
   const cls = el.cls ? ` class="${el.cls}"` : '';
   const st = ` style="${style(el.style)}"`;
@@ -86,13 +98,14 @@ function toHtml(el, indent) {
 
   let inner = '';
   if (el.runs) {
-    inner = el.runs
+    const parts = el.runs
       .map((r) =>
         r.style
           ? `<span${r.cls ? ` class="${r.cls}"` : ''} style="${style(r.style)}">${escHtml(r.text)}</span>`
           : escHtml(r.text)
       )
       .join('');
+    inner = `<span>${parts}</span>`; // single grid item — see toTsx
   } else if (el.text != null) inner = escHtml(el.text);
 
   const kids = (el.children || []).map((c) => toHtml(c, indent + 1));
@@ -155,11 +168,17 @@ for (const d of ['images', 'icons', 'fonts']) {
 const section = (label, els, name) =>
   `      <!-- ${name} -->\n${els.map((e) => toHtml(e, 4)).join('\n')}`;
 
+const FOLD = { desktop: 1100, mobile: 900 };
+
 const body = (key) => {
   const { tree } = frames[key];
   const out = [];
-  if (tree.backdrop.length) out.push(section(key, tree.backdrop, 'backdrop'));
-  for (const b of tree.bands) out.push(section(key, b.els, `${b.name}  (y ${b.start}→${b.end})`));
+  if (tree.backdrop.length) { EAGER = false; out.push(section(key, tree.backdrop, 'backdrop')); }
+  for (const b of tree.bands) {
+    EAGER = b.start < FOLD[key];
+    out.push(section(key, b.els, `${b.name}  (y ${b.start}→${b.end})`));
+  }
+  EAGER = false;
   return out.join('\n');
 };
 

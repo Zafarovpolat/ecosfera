@@ -103,7 +103,7 @@ export function DS10ChtoGovoryatTe() {
               <img src={asset('/icons/arrows-2.svg')} alt="" />
             </div>
             <div className="n" style={{ left: '20.96px', top: '91px', width: '82px', height: '51px', borderRadius: '20px', background: '#f8f8f8' }}>
-              <div className="t" style={{ left: '15px', top: '15px', width: '52px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', whiteSpace: 'pre', display: 'grid', alignContent: 'center', textAlign: 'center', color: 'rgba(0, 0, 0, 0.4)' }}><span style={{ color: '#000000' }}>{`01/`}</span><span style={{ color: 'rgba(0, 0, 0, 0.2)' }}>{`05`}</span></div>
+              <div className="t" style={{ left: '15px', top: '15px', width: '52px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', whiteSpace: 'pre', display: 'grid', alignContent: 'center', textAlign: 'center', color: 'rgba(0, 0, 0, 0.4)' }}><span><span style={{ color: '#000000' }}>{`01/`}</span><span style={{ color: 'rgba(0, 0, 0, 0.2)' }}>{`05`}</span></span></div>
             </div>
           </div>
         </div>
