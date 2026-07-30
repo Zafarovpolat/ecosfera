@@ -15,7 +15,7 @@ export function DS09Zabronirovat() {
           </div>
           <div className="n" style={{ left: '1317px', top: '21.05px', width: '404px', height: '80px' }}>
             <div className="n" style={{ left: '0px', top: '8px', width: '64px', height: '64px', borderRadius: '16.84px', overflow: 'hidden' }} aria-hidden>
-              <img src={asset('/icons/node.svg')} alt="" />
+              <img src={asset('/icons/frame-387.svg')} alt="" />
             </div>
             <div className="n" style={{ left: '84px', top: '0px', width: '320px', height: '80px' }}>
               <div className="t" style={{ left: '0px', top: '0px', width: '320px', height: '30px', fontFamily: 'var(--font-forma)', fontSize: '25px', fontWeight: '400', lineHeight: '30px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Предоплата 50% от стоимости`}</div>
@@ -29,7 +29,7 @@ export function DS09Zabronirovat() {
             <div className="n" style={{ left: '0px', top: '23.13px', width: '826.81px', height: '102.91px', borderRadius: '25px', overflow: 'hidden', background: 'rgba(248, 248, 248, 0.2)' }}>
               <div className="t" style={{ left: '27px', top: '40.96px', width: '130px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Коричневый дом`}</div>
               <div className="n" style={{ left: '790.81px', top: '45.46px', width: '6px', height: '12px', transform: 'matrix(0, 1, -1, 0, 0, 0)', border: '2px solid #ffffff' }} aria-hidden>
-                <img src={asset('/icons/node.svg')} alt="" />
+                <img src={asset('/icons/vector.svg')} alt="" />
               </div>
             </div>
             <div className="t" style={{ left: '27px', top: '0px', width: '105px', height: '20px', fontFamily: 'var(--font-cofo)', fontSize: '16px', fontWeight: '400', lineHeight: '20.16px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(255, 255, 255, 0.6)' }}>{`Выберите дом`}</div>
@@ -39,7 +39,7 @@ export function DS09Zabronirovat() {
             <div className="n" style={{ left: '0px', top: '22.99px', width: '410.22px', height: '102.91px', borderRadius: '25px', overflow: 'hidden', background: 'rgba(248, 248, 248, 0.2)' }}>
               <div className="t" style={{ left: '27px', top: '40.96px', width: '73px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`дд.мм.ггг`}</div>
               <div className="n" style={{ left: '359.21px', top: '39.46px', width: '24px', height: '24px' }} aria-hidden>
-                <img src={asset('/icons/node.svg')} alt="" />
+                <img src={asset('/icons/vuesax-bulk-calendar.svg')} alt="" />
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@ export function DS09Zabronirovat() {
             <div className="n" style={{ left: '0px', top: '22.99px', width: '410.22px', height: '102.91px', borderRadius: '25px', overflow: 'hidden', background: 'rgba(248, 248, 248, 0.2)' }}>
               <div className="t" style={{ left: '27px', top: '40.96px', width: '73px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`дд.мм.ггг`}</div>
               <div className="n" style={{ left: '359.21px', top: '39.46px', width: '24px', height: '24px' }} aria-hidden>
-                <img src={asset('/icons/node.svg')} alt="" />
+                <img src={asset('/icons/vuesax-bulk-calendar.svg')} alt="" />
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@ export function DS09Zabronirovat() {
             <div className="n" style={{ left: '0px', top: '23.14px', width: '826.81px', height: '102.91px', borderRadius: '25px', overflow: 'hidden', background: 'rgba(248, 248, 248, 0.2)' }}>
               <div className="t" style={{ left: '27px', top: '40.95px', width: '100px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`1-2 человека`}</div>
               <div className="n" style={{ left: '790.81px', top: '45.45px', width: '6px', height: '12px', transform: 'matrix(0, 1, -1, 0, 0, 0)', border: '2px solid #ffffff' }} aria-hidden>
-                <img src={asset('/icons/vector-3.svg')} alt="" />
+                <img src={asset('/icons/vector.svg')} alt="" />
               </div>
             </div>
             <div className="t" style={{ left: '27px', top: '0px', width: '136px', height: '20px', fontFamily: 'var(--font-cofo)', fontSize: '16px', fontWeight: '400', lineHeight: '20.16px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(255, 255, 255, 0.6)' }}>{`Количество гостей`}</div>
@@ -80,10 +80,10 @@ export function DS09Zabronirovat() {
                 <div className="t" style={{ left: '0px', top: '0px', width: '142px', height: '20px', fontFamily: 'var(--font-forma)', fontSize: '17px', fontWeight: '400', lineHeight: '20.4px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Забронировать дом `}</div>
               </div>
               <div className="n" style={{ left: '10px', top: '10px', width: '9px', height: '8px', border: '1px solid #000000' }} aria-hidden>
-                <img src={asset('/icons/vector-1-3.svg')} alt="" />
+                <img src={asset('/icons/vector-1-2.svg')} alt="" />
               </div>
               <div className="n" style={{ left: '716px', top: '80px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #000000' }} aria-hidden>
-                <img src={asset('/icons/vector-2-3.svg')} alt="" />
+                <img src={asset('/icons/vector-1-2.svg')} alt="" />
               </div>
             </div>
             <div className="n" style={{ left: '838.81px', top: '29.97px', width: '786.19px', height: '38.05px' }}>
@@ -94,7 +94,7 @@ export function DS09Zabronirovat() {
         </div>
       </div>
       <div className="n" style={{ left: '947.01px', top: '9319.01px', width: '26px', height: '28px', transform: 'matrix(0, 1, 1, 0, 0, 0)', overflow: 'hidden' }} aria-hidden>
-        <img src={asset('/icons/fi-ss-angle-double-small-right-8.svg')} alt="" />
+        <img src={asset('/icons/fi-ss-angle-double-small-right-2.svg')} alt="" />
       </div>
     </>
   );

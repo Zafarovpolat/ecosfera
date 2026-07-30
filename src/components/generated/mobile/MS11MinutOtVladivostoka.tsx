@@ -14,7 +14,7 @@ export function MS11MinutOtVladivostoka() {
           <div className="n" style={{ left: '15px', top: '102px', width: '289.7px', height: '296.14px' }}>
             <div className="n" style={{ left: '0px', top: '0px', width: '289.7px', height: '80.05px' }}>
               <div className="n" style={{ left: '0px', top: '13.27px', width: '53.51px', height: '53.51px', borderRadius: '13.63px', overflow: 'hidden' }} aria-hidden>
-                <img src={asset('/icons/frame-387-8.svg')} alt="" />
+                <img src={asset('/icons/frame-387-6.svg')} alt="" />
               </div>
               <div className="n" style={{ left: '69.7px', top: '0px', width: '177px', height: '80.05px' }}>
                 <div className="t" style={{ left: '0px', top: '0px', width: '177px', height: '22px', fontFamily: 'var(--font-forma)', fontSize: '18px', fontWeight: '400', lineHeight: '21.6px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Адрес`}</div>
@@ -23,7 +23,7 @@ export function MS11MinutOtVladivostoka() {
             </div>
             <div className="n" style={{ left: '0px', top: '90.05px', width: '289.7px', height: '116.05px' }}>
               <div className="n" style={{ left: '0px', top: '31.26px', width: '53.51px', height: '53.51px', borderRadius: '13.63px', overflow: 'hidden' }} aria-hidden>
-                <img src={asset('/icons/frame-387-6.svg')} alt="" />
+                <img src={asset('/icons/frame-387-7.svg')} alt="" />
               </div>
               <div className="n" style={{ left: '69.7px', top: '0px', width: '220px', height: '116.05px' }}>
                 <div className="t" style={{ left: '0px', top: '0px', width: '220px', height: '22px', fontFamily: 'var(--font-forma)', fontSize: '18px', fontWeight: '400', lineHeight: '21.6px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`На машине`}</div>
@@ -32,7 +32,7 @@ export function MS11MinutOtVladivostoka() {
             </div>
             <div className="n" style={{ left: '0px', top: '216.1px', width: '289.7px', height: '80.05px' }}>
               <div className="n" style={{ left: '0px', top: '13.26px', width: '53.51px', height: '53.51px', borderRadius: '13.63px', overflow: 'hidden' }} aria-hidden>
-                <img src={asset('/icons/frame-387-7.svg')} alt="" />
+                <img src={asset('/icons/frame-387-8.svg')} alt="" />
               </div>
               <div className="n" style={{ left: '69.7px', top: '0px', width: '220px', height: '80.05px' }}>
                 <div className="t" style={{ left: '0px', top: '0px', width: '220px', height: '22px', fontFamily: 'var(--font-forma)', fontSize: '18px', fontWeight: '400', lineHeight: '21.6px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Нет машины?`}</div>
@@ -84,6 +84,7 @@ export function MS11MinutOtVladivostoka() {
             </div>
           </div>
           <div className="n" style={{ left: '0px', top: '500.02px', width: '335px', height: '155px' }}>
+            <div className="n" style={{ left: '0px', top: '0px', width: '335px', height: '1px', background: 'rgba(0, 0, 0, 0.1)' }} />
             <div className="n" style={{ left: '0px', top: '20px', width: '335px', height: '135px' }}>
               <div className="t" style={{ left: '0px', top: '0px', width: '335px', height: '60px', fontFamily: 'var(--font-cofo)', fontSize: '12px', fontWeight: '400', lineHeight: '15.12px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(0, 0, 0, 0.4)' }}>{`© 2026 ЭКОСФЕРА. Все права защищены. ООО «КОСМОС» · ИНН 2540282522 · КПП 254001001 · ОГРН 1242500000863 690042, г. Владивосток, ул. Феодосийская, д.37, кв.129`}</div>
               <div className="n" style={{ left: '0px', top: '70px', width: '335px', height: '40px' }}>
@@ -94,7 +95,7 @@ export function MS11MinutOtVladivostoka() {
               <div className="n" style={{ left: '0px', top: '120px', width: '124px', height: '15px' }}>
                 <div className="t" style={{ left: '0px', top: '0px', width: '56px', height: '15px', fontFamily: 'var(--font-cofo)', fontSize: '12px', fontWeight: '400', lineHeight: '15.12px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(0, 0, 0, 0.4)' }}>{`Сделано в`}</div>
                 <div className="n" style={{ left: '66px', top: '0.5px', width: '58px', height: '14px', overflow: 'hidden' }} aria-hidden>
-                  <img src={asset('/icons/873de29f39d705685f8db2b2916e0d4b-ruso-1-2.svg')} alt="" />
+                  <img src={asset('/icons/873de29f39d705685f8db2b2916e0d4b-ruso-1.svg')} alt="" />
                 </div>
               </div>
             </div>

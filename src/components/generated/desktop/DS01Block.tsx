@@ -20,6 +20,7 @@ export function DS01Block() {
                 <div className="t" style={{ left: '0px', top: '0px', width: '190px', height: '23px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '500', lineHeight: '22.68px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Ecosfera2026@mail.ru`}</div>
                 <div className="t" style={{ left: '84px', top: '28px', width: '106px', height: '20px', fontFamily: 'var(--font-cofo)', fontSize: '16px', fontWeight: '700', lineHeight: '20.16px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Написать нам`}</div>
               </div>
+              <div className="n" style={{ left: '182.5px', top: '27.5px', width: '55px', height: '1px', transform: 'matrix(0, 1, -1, 0, 0, 0)', background: '#ffffff' }} />
               <div className="n" style={{ left: '230px', top: '3.5px', width: '178px', height: '48px' }}>
                 <div className="t" style={{ left: '0px', top: '0px', width: '178px', height: '23px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '500', lineHeight: '22.68px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`+7 (950) 282-43-82`}</div>
                 <div className="t" style={{ left: '52px', top: '28px', width: '126px', height: '20px', fontFamily: 'var(--font-cofo)', fontSize: '16px', fontWeight: '700', lineHeight: '20.16px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Заказать звонок`}</div>
@@ -28,10 +29,10 @@ export function DS01Block() {
             <div className="n" style={{ left: '440px', top: '0px', width: '223px', height: '70px', borderRadius: '10px', overflow: 'hidden', background: '#a0f447' }}>
               <div className="t" style={{ left: '37px', top: '26px', width: '148px', height: '19px', fontFamily: 'var(--font-forma)', fontSize: '16px', fontWeight: '400', lineHeight: '19.2px', letterSpacing: '0.8px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Забронировать дом `}</div>
               <div className="n" style={{ left: '8px', top: '8px', width: '9px', height: '8px', border: '1px solid #000000' }} aria-hidden>
-                <img src={asset('/icons/vector-1-3.svg')} alt="" />
+                <img src={asset('/icons/vector-1-2.svg')} alt="" />
               </div>
               <div className="n" style={{ left: '206px', top: '54px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #000000' }} aria-hidden>
-                <img src={asset('/icons/vector-2-8.svg')} alt="" />
+                <img src={asset('/icons/vector-1-2.svg')} alt="" />
               </div>
             </div>
           </div>
@@ -42,9 +43,13 @@ export function DS01Block() {
           </div>
           <div className="n" style={{ left: '285px', top: '40px', width: '645px', height: '30px' }}>
             <div className="t" style={{ left: '0px', top: '0px', width: '68px', height: '30px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '700', lineHeight: '22.68px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Дома`}</div>
+            <div className="n" style={{ left: '89.25px', top: '15px', width: '30px', height: '1px', transform: 'matrix(0, 1, -1, 0, 0, 0)', background: 'rgba(255, 255, 255, 0.25)' }} />
             <div className="t" style={{ left: '140.5px', top: '0px', width: '59px', height: '23px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '700', lineHeight: '22.68px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Услуги`}</div>
+            <div className="n" style={{ left: '220.75px', top: '15px', width: '30px', height: '1px', transform: 'matrix(0, 1, -1, 0, 0, 0)', background: 'rgba(255, 255, 255, 0.25)' }} />
             <div className="t" style={{ left: '272px', top: '0px', width: '68px', height: '23px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '700', lineHeight: '22.68px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Галерея`}</div>
+            <div className="n" style={{ left: '361.25px', top: '15px', width: '30px', height: '1px', transform: 'matrix(0, 1, -1, 0, 0, 0)', background: 'rgba(255, 255, 255, 0.25)' }} />
             <div className="t" style={{ left: '412.5px', top: '0px', width: '77px', height: '23px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '700', lineHeight: '22.68px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Вопросы`}</div>
+            <div className="n" style={{ left: '510.75px', top: '15px', width: '30px', height: '1px', transform: 'matrix(0, 1, -1, 0, 0, 0)', background: 'rgba(255, 255, 255, 0.25)' }} />
             <div className="t" style={{ left: '562px', top: '0px', width: '83px', height: '23px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '700', lineHeight: '22.68px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Контакты`}</div>
           </div>
         </div>
@@ -60,7 +65,7 @@ export function DS01Block() {
           </div>
           <div className="n" style={{ left: '152.5px', top: '324.46px', width: '652px', height: '71px' }}>
             <div className="n" style={{ left: '320px', top: '0px', width: '12px', height: '13px' }} aria-hidden>
-              <img src={asset('/icons/node-5.svg')} alt="" />
+              <img src={asset('/icons/icon-2.svg')} alt="" />
             </div>
             <div className="t" style={{ left: '0px', top: '23px', width: '652px', height: '48px', fontFamily: 'var(--font-cofo)', fontSize: '19px', fontWeight: '400', lineHeight: '23.94px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Уютные домики, свежий воздух, тишина леса и всё необходимое для идеальных выходных, отпуска или семейного отдыха.`}</div>
           </div>
@@ -82,7 +87,7 @@ export function DS01Block() {
       </div>
       <div className="n" style={{ left: '841px', top: '976px', width: '238px', height: '55px' }}>
         <div className="n" style={{ left: '113px', top: '0px', width: '12px', height: '13px' }} aria-hidden>
-          <img src={asset('/icons/node.svg')} alt="" />
+          <img src={asset('/icons/icon.svg')} alt="" />
         </div>
         <div className="t" style={{ left: '0px', top: '23px', width: '238px', height: '32px', fontFamily: 'var(--font-cofo)', fontSize: '25px', fontWeight: '400', lineHeight: '31.5px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Наши преимущества`}</div>
       </div>
@@ -116,7 +121,7 @@ export function DS01Block() {
           </div>
           <div className="n" style={{ left: '0px', top: '-1px', width: '560px', height: '353px', borderRadius: '150px', border: '1px solid rgba(0, 0, 0, 0.15)' }} />
           <div className="n" style={{ left: '268px', top: '-12px', width: '292px', height: '363px' }} aria-hidden>
-            <img src={asset('/icons/node.svg')} alt="" />
+            <img src={asset('/icons/group-4.svg')} alt="" />
           </div>
           <div className="n" style={{ left: '548px', top: '165px', width: '23px', height: '23px' }}>
             <div className="n" style={{ left: '7px', top: '7px', width: '9px', height: '9px', background: '#a0f447' }} />
@@ -151,7 +156,7 @@ export function DS01Block() {
         </div>
       </div>
       <div className="n" style={{ left: '926.01px', top: '1472.99px', width: '26px', height: '28px', transform: 'matrix(0, 1, 1, 0, 0, 0)', overflow: 'hidden' }} aria-hidden>
-        <img src={asset('/icons/fi-ss-angle-double-small-right-6.svg')} alt="" />
+        <img src={asset('/icons/fi-ss-angle-double-small-right.svg')} alt="" />
       </div>
     </>
   );

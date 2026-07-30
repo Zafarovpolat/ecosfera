@@ -21,10 +21,10 @@ export function DS11Chasto() {
                 <div className="t" style={{ left: '35px', top: '0px', width: '71px', height: '20px', fontFamily: 'var(--font-forma)', fontSize: '17px', fontWeight: '400', lineHeight: '20.4px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Whatsapp`}</div>
               </div>
               <div className="n" style={{ left: '10px', top: '10px', width: '9px', height: '8px', border: '1px solid #000000' }} aria-hidden>
-                <img src={asset('/icons/vector-1-3.svg')} alt="" />
+                <img src={asset('/icons/vector-1-2.svg')} alt="" />
               </div>
               <div className="n" style={{ left: '272px', top: '80px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #000000' }} aria-hidden>
-                <img src={asset('/icons/vector-2-3.svg')} alt="" />
+                <img src={asset('/icons/vector-1-2.svg')} alt="" />
               </div>
             </div>
           </div>
@@ -39,7 +39,7 @@ export function DS11Chasto() {
               <div className="t" style={{ left: '78px', top: '13.5px', width: '382px', height: '28px', fontFamily: 'var(--font-forma)', fontSize: '23px', fontWeight: '400', lineHeight: '27.6px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Сколько человек вмещает каждый дом?`}</div>
             </div>
             <div className="n" style={{ left: '1619px', top: '30px', width: '71px', height: '72px', borderRadius: '50px', border: '1px solid #ffffff' }} aria-hidden>
-              <img src={asset('/icons/frame-1000005507-2.svg')} alt="" />
+              <img src={asset('/icons/frame-1000005507.svg')} alt="" />
             </div>
           </div>
           <div className="n" style={{ left: '0px', top: '179px', width: '1720px', height: '132px', borderRadius: '35px', overflow: 'hidden', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', background: 'rgba(248, 248, 248, 0.1)' }}>
@@ -50,7 +50,7 @@ export function DS11Chasto() {
               <div className="t" style={{ left: '80px', top: '13.5px', width: '377px', height: '28px', fontFamily: 'var(--font-forma)', fontSize: '23px', fontWeight: '400', lineHeight: '27.6px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Можно ли арендовать оба дома сразу?`}</div>
             </div>
             <div className="n" style={{ left: '1619px', top: '30px', width: '71px', height: '72px', borderRadius: '50px' }} aria-hidden>
-              <img src={asset('/icons/frame-1000005507.svg')} alt="" />
+              <img src={asset('/icons/frame-1000005507-2.svg')} alt="" />
             </div>
           </div>
           <div className="n" style={{ left: '0px', top: '321px', width: '1720px', height: '132px', borderRadius: '35px', overflow: 'hidden', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', background: 'rgba(248, 248, 248, 0.1)' }}>
@@ -61,7 +61,7 @@ export function DS11Chasto() {
               <div className="t" style={{ left: '81px', top: '13.5px', width: '221px', height: '28px', fontFamily: 'var(--font-forma)', fontSize: '23px', fontWeight: '400', lineHeight: '27.6px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Нужна ли предоплата?`}</div>
             </div>
             <div className="n" style={{ left: '1619px', top: '30px', width: '71px', height: '72px', borderRadius: '50px' }} aria-hidden>
-              <img src={asset('/icons/frame-1000005507.svg')} alt="" />
+              <img src={asset('/icons/frame-1000005507-2.svg')} alt="" />
             </div>
           </div>
           <div className="n" style={{ left: '0px', top: '463px', width: '1720px', height: '132px', borderRadius: '35px', overflow: 'hidden', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', background: 'rgba(248, 248, 248, 0.1)' }}>
@@ -72,7 +72,7 @@ export function DS11Chasto() {
               <div className="t" style={{ left: '81px', top: '13.5px', width: '245px', height: '28px', fontFamily: 'var(--font-forma)', fontSize: '23px', fontWeight: '400', lineHeight: '27.6px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Баня входит в стоимость?`}</div>
             </div>
             <div className="n" style={{ left: '1619px', top: '30px', width: '71px', height: '72px', borderRadius: '50px' }} aria-hidden>
-              <img src={asset('/icons/frame-1000005507.svg')} alt="" />
+              <img src={asset('/icons/frame-1000005507-2.svg')} alt="" />
             </div>
           </div>
           <div className="n" style={{ left: '0px', top: '605px', width: '1720px', height: '132px', borderRadius: '35px', overflow: 'hidden', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', background: 'rgba(248, 248, 248, 0.1)' }}>
@@ -83,13 +83,13 @@ export function DS11Chasto() {
               <div className="t" style={{ left: '80px', top: '13.5px', width: '442px', height: '28px', fontFamily: 'var(--font-forma)', fontSize: '23px', fontWeight: '400', lineHeight: '27.6px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Чем отличаются Коричневый и Красный дома?`}</div>
             </div>
             <div className="n" style={{ left: '1619px', top: '30px', width: '71px', height: '72px', borderRadius: '50px' }} aria-hidden>
-              <img src={asset('/icons/frame-1000005507.svg')} alt="" />
+              <img src={asset('/icons/frame-1000005507-2.svg')} alt="" />
             </div>
           </div>
         </div>
       </div>
       <div className="n" style={{ left: '947.01px', top: '11320.01px', width: '26px', height: '28px', transform: 'matrix(0, 1, 1, 0, 0, 0)', overflow: 'hidden' }} aria-hidden>
-        <img src={asset('/icons/fi-ss-angle-double-small-right-7.svg')} alt="" />
+        <img src={asset('/icons/fi-ss-angle-double-small-right-2.svg')} alt="" />
       </div>
     </>
   );

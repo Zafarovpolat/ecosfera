@@ -26,7 +26,7 @@ export function MS01Block() {
             </div>
             <div className="n" style={{ left: '178px', top: '2px', width: '36px', height: '35px' }}>
               <div className="n" style={{ left: '1.5px', top: '0px', width: '33px', height: '9px', border: '2px solid #ffffff' }} aria-hidden>
-                <img src={asset('/icons/vector-4.svg')} alt="" />
+                <img src={asset('/icons/vector-2.svg')} alt="" />
               </div>
               <div className="t" style={{ left: '0px', top: '19px', width: '36px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Меню`}</div>
             </div>
@@ -45,7 +45,7 @@ export function MS01Block() {
             </div>
             <div className="n" style={{ left: '0px', top: '224.61px', width: '332px', height: '75px' }}>
               <div className="n" style={{ left: '161px', top: '0px', width: '10px', height: '11px' }} aria-hidden>
-                <img src={asset('/icons/node-7.svg')} alt="" />
+                <img src={asset('/icons/icon-3.svg')} alt="" />
               </div>
               <div className="t" style={{ left: '0px', top: '21px', width: '332px', height: '54px', fontFamily: 'var(--font-cofo)', fontSize: '14px', fontWeight: '400', lineHeight: '17.64px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Уютные домики, свежий воздух, тишина леса и всё необходимое для идеальных выходных, отпуска или семейного отдыха.`}</div>
             </div>
@@ -82,7 +82,7 @@ export function MS01Block() {
       <div className="n" style={{ left: '20px', top: '777px', width: '677px', height: '363.64px' }}>
         <div className="n" style={{ left: '95.5px', top: '0px', width: '143px', height: '42px' }}>
           <div className="n" style={{ left: '65.5px', top: '0px', width: '12px', height: '13px' }} aria-hidden>
-            <img src={asset('/icons/node-8.svg')} alt="" />
+            <img src={asset('/icons/icon.svg')} alt="" />
           </div>
           <div className="t" style={{ left: '0px', top: '23px', width: '143px', height: '19px', fontFamily: 'var(--font-cofo)', fontSize: '15px', fontWeight: '400', lineHeight: '18.9px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Наши преимущества`}</div>
         </div>
@@ -126,7 +126,7 @@ export function MS01Block() {
               <div className="n" style={{ left: '0px', top: '0px', width: '114px', height: '3px', borderRadius: '38px', overflow: 'hidden', background: '#ffffff' }} />
             </div>
             <div className="n" style={{ left: '118px', top: '12px', width: '99.93px', height: '55.64px' }} aria-hidden>
-              <img src={asset('/icons/arrows-5.svg')} alt="" />
+              <img src={asset('/icons/arrows-3.svg')} alt="" />
             </div>
           </div>
         </div>

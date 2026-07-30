@@ -18,7 +18,7 @@ export function MS02UezzhatDaleko() {
               <div className="n" style={{ left: '0px', top: '0px', width: '114px', height: '3px', borderRadius: '38px', overflow: 'hidden', background: '#ffffff' }} />
             </div>
             <div className="n" style={{ left: '118px', top: '12px', width: '99.93px', height: '55.64px' }} aria-hidden>
-              <img src={asset('/icons/arrows-5.svg')} alt="" />
+              <img src={asset('/icons/arrows-3.svg')} alt="" />
             </div>
           </div>
           <div className="n" style={{ left: '2px', top: '0px', width: '669px', height: '277px' }}>

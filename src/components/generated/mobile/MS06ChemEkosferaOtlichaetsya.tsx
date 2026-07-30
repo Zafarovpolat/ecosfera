@@ -46,7 +46,7 @@ export function MS06ChemEkosferaOtlichaetsya() {
             <div className="t" style={{ left: '13.5px', top: '11px', width: '43px', height: '18px', fontFamily: 'var(--font-cofo)', fontSize: '14px', fontWeight: '400', lineHeight: '17.64px', display: 'grid', alignContent: 'center', textAlign: 'center', color: 'rgba(0, 0, 0, 0.4)' }}><span style={{ fontSize: '14px', color: '#000000' }}>{`03/`}</span><span style={{ fontSize: '14px', color: 'rgba(0, 0, 0, 0.2)' }}>{`05`}</span></div>
           </div>
           <div className="n" style={{ left: '12px', top: '60px', width: '99.93px', height: '55.64px' }} aria-hidden>
-            <img src={asset('/icons/arrows-5.svg')} alt="" />
+            <img src={asset('/icons/arrows-3.svg')} alt="" />
           </div>
         </div>
       </div>

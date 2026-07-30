@@ -52,7 +52,7 @@ export function DS02UezzhatDaleko() {
         </div>
       </div>
       <div className="n" style={{ left: '947.01px', top: '2502.01px', width: '26px', height: '28px', transform: 'matrix(0, 1, 1, 0, 0, 0)', overflow: 'hidden' }} aria-hidden>
-        <img src={asset('/icons/node.svg')} alt="" />
+        <img src={asset('/icons/fi-ss-angle-double-small-right.svg')} alt="" />
       </div>
     </>
   );

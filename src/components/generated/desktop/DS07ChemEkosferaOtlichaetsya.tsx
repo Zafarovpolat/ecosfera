@@ -70,12 +70,12 @@ export function DS07ChemEkosferaOtlichaetsya() {
             <div className="t" style={{ left: '15px', top: '15px', width: '53px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', display: 'grid', alignContent: 'center', textAlign: 'center', color: 'rgba(0, 0, 0, 0.4)' }}><span style={{ color: '#000000' }}>{`03/`}</span><span style={{ color: 'rgba(0, 0, 0, 0.2)' }}>{`05`}</span></div>
           </div>
           <div className="n" style={{ left: '0px', top: '73px', width: '123.93px', height: '69px' }} aria-hidden>
-            <img src={asset('/icons/node.svg')} alt="" />
+            <img src={asset('/icons/arrows.svg')} alt="" />
           </div>
         </div>
       </div>
       <div className="n" style={{ left: '947.01px', top: '7282.01px', width: '26px', height: '28px', transform: 'matrix(0, 1, 1, 0, 0, 0)', overflow: 'hidden' }} aria-hidden>
-        <img src={asset('/icons/node.svg')} alt="" />
+        <img src={asset('/icons/fi-ss-angle-double-small-right-2.svg')} alt="" />
       </div>
     </>
   );

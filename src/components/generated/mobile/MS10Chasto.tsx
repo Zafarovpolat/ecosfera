@@ -22,7 +22,7 @@ export function MS10Chasto() {
               <div className="t" style={{ left: '0px', top: '49px', width: '209px', height: '112px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Каждый дом рассчитан на комфортное размещение до 5 гостей. В домах есть всё необходимое для отдыха семьи, пары или компании друзей. Если у вас большая компания, вы можете забронировать сразу оба дома.`}</div>
             </div>
             <div className="n" style={{ left: '281px', top: '10px', width: '43.39px', height: '44px', borderRadius: '30.56px', border: '0.61px solid #ffffff' }} aria-hidden>
-              <img src={asset('/icons/frame-1000005507-8.svg')} alt="" />
+              <img src={asset('/icons/frame-1000005507-3.svg')} alt="" />
             </div>
           </div>
           <div className="n" style={{ left: '0px', top: '186px', width: '337.39px', height: '86px', borderRadius: '20px', overflow: 'hidden', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', background: 'rgba(248, 248, 248, 0.1)' }}>
@@ -31,7 +31,7 @@ export function MS10Chasto() {
             </div>
             <div className="t" style={{ left: '68px', top: '21px', width: '193px', height: '44px', fontFamily: 'var(--font-forma)', fontSize: '18px', fontWeight: '400', lineHeight: '21.6px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Можно ли арендовать оба дома сразу?`}</div>
             <div className="n" style={{ left: '284px', top: '21px', width: '43.39px', height: '44px', borderRadius: '30.56px' }} aria-hidden>
-              <img src={asset('/icons/frame-1000005507-6.svg')} alt="" />
+              <img src={asset('/icons/frame-1000005507-4.svg')} alt="" />
             </div>
           </div>
           <div className="n" style={{ left: '0px', top: '277px', width: '337.39px', height: '86px', borderRadius: '20px', overflow: 'hidden', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', background: 'rgba(248, 248, 248, 0.1)' }}>
@@ -40,7 +40,7 @@ export function MS10Chasto() {
             </div>
             <div className="t" style={{ left: '78px', top: '32px', width: '173px', height: '22px', fontFamily: 'var(--font-forma)', fontSize: '18px', fontWeight: '400', lineHeight: '21.6px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Нужна ли предоплата?`}</div>
             <div className="n" style={{ left: '284px', top: '21px', width: '43.39px', height: '44px', borderRadius: '30.56px' }} aria-hidden>
-              <img src={asset('/icons/frame-1000005507-6.svg')} alt="" />
+              <img src={asset('/icons/frame-1000005507-4.svg')} alt="" />
             </div>
           </div>
           <div className="n" style={{ left: '0px', top: '368px', width: '337.39px', height: '86px', borderRadius: '20px', overflow: 'hidden', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', background: 'rgba(248, 248, 248, 0.1)' }}>
@@ -49,7 +49,7 @@ export function MS10Chasto() {
             </div>
             <div className="t" style={{ left: '68px', top: '32px', width: '193px', height: '22px', fontFamily: 'var(--font-forma)', fontSize: '18px', fontWeight: '400', lineHeight: '21.6px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Баня входит в стоимость?`}</div>
             <div className="n" style={{ left: '284px', top: '21px', width: '43.39px', height: '44px', borderRadius: '30.56px' }} aria-hidden>
-              <img src={asset('/icons/frame-1000005507-6.svg')} alt="" />
+              <img src={asset('/icons/frame-1000005507-4.svg')} alt="" />
             </div>
           </div>
           <div className="n" style={{ left: '0px', top: '459px', width: '337.39px', height: '86px', borderRadius: '20px', overflow: 'hidden', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', background: 'rgba(248, 248, 248, 0.1)' }}>
@@ -58,7 +58,7 @@ export function MS10Chasto() {
             </div>
             <div className="t" style={{ left: '56.5px', top: '21px', width: '216px', height: '44px', fontFamily: 'var(--font-forma)', fontSize: '18px', fontWeight: '400', lineHeight: '21.6px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Чем отличаются Коричневый и Красный дома?`}</div>
             <div className="n" style={{ left: '284px', top: '21px', width: '43.39px', height: '44px', borderRadius: '30.56px' }} aria-hidden>
-              <img src={asset('/icons/frame-1000005507-6.svg')} alt="" />
+              <img src={asset('/icons/frame-1000005507-4.svg')} alt="" />
             </div>
           </div>
         </div>

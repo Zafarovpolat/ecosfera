@@ -19,7 +19,7 @@ export function MS08Zabronirovat() {
               <div className="n" style={{ left: '0px', top: '23px', width: '305px', height: '73px', borderRadius: '15px', overflow: 'hidden', background: 'rgba(248, 248, 248, 0.2)' }}>
                 <div className="t" style={{ left: '15px', top: '27.5px', width: '107px', height: '18px', fontFamily: 'var(--font-cofo)', fontSize: '14px', fontWeight: '400', lineHeight: '17.64px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Коричневый дом`}</div>
                 <div className="n" style={{ left: '282.5px', top: '31.5px', width: '5px', height: '10px', transform: 'matrix(0, 1, -1, 0, 0, 0)', border: '2px solid #ffffff' }} aria-hidden>
-                  <img src={asset('/icons/vector-5.svg')} alt="" />
+                  <img src={asset('/icons/vector-3.svg')} alt="" />
                 </div>
               </div>
               <div className="t" style={{ left: '15.15px', top: '0px', width: '85.84px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(255, 255, 255, 0.6)' }}>{`Выберите дом`}</div>
@@ -29,7 +29,7 @@ export function MS08Zabronirovat() {
                 <div className="n" style={{ left: '0px', top: '23px', width: '149.79px', height: '73px', borderRadius: '15px', overflow: 'hidden', background: 'rgba(248, 248, 248, 0.2)' }}>
                   <div className="t" style={{ left: '15px', top: '27.5px', width: '60px', height: '18px', fontFamily: 'var(--font-cofo)', fontSize: '14px', fontWeight: '400', lineHeight: '17.64px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`дд.мм.ггг`}</div>
                   <div className="n" style={{ left: '113.79px', top: '26px', width: '21px', height: '21px' }} aria-hidden>
-                    <img src={asset('/icons/vuesax-bulk-calendar-3.svg')} alt="" />
+                    <img src={asset('/icons/vuesax-bulk-calendar-2.svg')} alt="" />
                   </div>
                 </div>
                 <div className="t" style={{ left: '16.44px', top: '0px', width: '93.18px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(255, 255, 255, 0.6)' }}>{`Дата заезда`}</div>
@@ -38,7 +38,7 @@ export function MS08Zabronirovat() {
                 <div className="n" style={{ left: '0px', top: '23px', width: '149.79px', height: '73px', borderRadius: '15px', overflow: 'hidden', background: 'rgba(248, 248, 248, 0.2)' }}>
                   <div className="t" style={{ left: '15px', top: '27.5px', width: '60px', height: '18px', fontFamily: 'var(--font-cofo)', fontSize: '14px', fontWeight: '400', lineHeight: '17.64px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`дд.мм.ггг`}</div>
                   <div className="n" style={{ left: '113.79px', top: '26px', width: '21px', height: '21px' }} aria-hidden>
-                    <img src={asset('/icons/vuesax-bulk-calendar-3.svg')} alt="" />
+                    <img src={asset('/icons/vuesax-bulk-calendar-2.svg')} alt="" />
                   </div>
                 </div>
                 <div className="t" style={{ left: '16.45px', top: '0px', width: '93.18px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(255, 255, 255, 0.6)' }}>{`Дата выезда`}</div>
@@ -48,7 +48,7 @@ export function MS08Zabronirovat() {
               <div className="n" style={{ left: '0px', top: '23px', width: '305px', height: '73px', borderRadius: '15px', overflow: 'hidden', background: 'rgba(248, 248, 248, 0.2)' }}>
                 <div className="t" style={{ left: '15px', top: '27.5px', width: '82px', height: '18px', fontFamily: 'var(--font-cofo)', fontSize: '14px', fontWeight: '400', lineHeight: '17.64px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`1-2 человека`}</div>
                 <div className="n" style={{ left: '282.5px', top: '31.5px', width: '5px', height: '10px', transform: 'matrix(0, 1, -1, 0, 0, 0)', border: '2px solid #ffffff' }} aria-hidden>
-                  <img src={asset('/icons/vector-5.svg')} alt="" />
+                  <img src={asset('/icons/vector-3.svg')} alt="" />
                 </div>
               </div>
               <div className="t" style={{ left: '15.15px', top: '0px', width: '111px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(255, 255, 255, 0.6)' }}>{`Количество гостей`}</div>
@@ -69,10 +69,10 @@ export function MS08Zabronirovat() {
               <div className="n" style={{ left: '0px', top: '0px', width: '305px', height: '85px', borderRadius: '10px', overflow: 'hidden', background: '#ffffff' }}>
                 <div className="t" style={{ left: '94px', top: '34px', width: '117px', height: '17px', fontFamily: 'var(--font-forma)', fontSize: '14px', fontWeight: '400', lineHeight: '16.8px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Забронировать дом `}</div>
                 <div className="n" style={{ left: '10px', top: '10px', width: '9px', height: '8px', border: '1px solid #000000' }} aria-hidden>
-                  <img src={asset('/icons/vector-1-3.svg')} alt="" />
+                  <img src={asset('/icons/vector-1-2.svg')} alt="" />
                 </div>
                 <div className="n" style={{ left: '286px', top: '67px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #000000' }} aria-hidden>
-                  <img src={asset('/icons/vector-2-9.svg')} alt="" />
+                  <img src={asset('/icons/vector-1-2.svg')} alt="" />
                 </div>
               </div>
               <div className="n" style={{ left: '0px', top: '95px', width: '305px', height: '61.28px' }}>

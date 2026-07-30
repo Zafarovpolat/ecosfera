@@ -17,7 +17,7 @@ export function MS09ChtoGovoryatTe() {
             <div className="n" style={{ left: '0px', top: '0px', width: '331px', height: '225px', borderRadius: '20px', overflow: 'hidden', background: '#ffffff' }}>
               <div className="n" style={{ left: '15px', top: '15px', width: '66px', height: '23px' }}>
                 <div className="n" style={{ left: '0px', top: '0.5px', width: '24px', height: '22px' }} aria-hidden>
-                  <img src={asset('/icons/star-1-5.svg')} alt="" />
+                  <img src={asset('/icons/star-1-2.svg')} alt="" />
                 </div>
                 <div className="t" style={{ left: '39px', top: '0px', width: '27px', height: '23px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '400', lineHeight: '22.68px', letterSpacing: '-0.54px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`5.0`}</div>
               </div>
@@ -35,7 +35,7 @@ export function MS09ChtoGovoryatTe() {
             <div className="n" style={{ left: '336px', top: '0px', width: '331px', height: '225px', borderRadius: '20px', overflow: 'hidden', background: '#ffffff' }}>
               <div className="n" style={{ left: '15px', top: '15px', width: '66px', height: '23px' }}>
                 <div className="n" style={{ left: '0px', top: '0.5px', width: '24px', height: '22px' }} aria-hidden>
-                  <img src={asset('/icons/star-1-5.svg')} alt="" />
+                  <img src={asset('/icons/star-1-2.svg')} alt="" />
                 </div>
                 <div className="t" style={{ left: '39px', top: '0px', width: '27px', height: '23px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '400', lineHeight: '22.68px', letterSpacing: '-0.54px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`5.0`}</div>
               </div>
@@ -56,17 +56,17 @@ export function MS09ChtoGovoryatTe() {
               <div className="t" style={{ left: '13.5px', top: '11px', width: '43px', height: '18px', fontFamily: 'var(--font-cofo)', fontSize: '14px', fontWeight: '400', lineHeight: '17.64px', display: 'grid', alignContent: 'center', textAlign: 'center', color: 'rgba(0, 0, 0, 0.4)' }}><span style={{ fontSize: '14px', color: '#000000' }}>{`03/`}</span><span style={{ fontSize: '14px', color: 'rgba(0, 0, 0, 0.2)' }}>{`05`}</span></div>
             </div>
             <div className="n" style={{ left: '12px', top: '60px', width: '99.93px', height: '55.64px' }} aria-hidden>
-              <img src={asset('/icons/arrows-10.svg')} alt="" />
+              <img src={asset('/icons/arrows-3.svg')} alt="" />
             </div>
           </div>
         </div>
         <div className="n" style={{ left: '0px', top: '522.74px', width: '328px', height: '85px', borderRadius: '10px', overflow: 'hidden', background: '#ffffff' }}>
           <div className="t" style={{ left: '63px', top: '34px', width: '179px', height: '17px', fontFamily: 'var(--font-forma)', fontSize: '14px', fontWeight: '400', lineHeight: '16.8px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Смотреть все фото в Instagram`}</div>
           <div className="n" style={{ left: '10px', top: '10px', width: '9px', height: '8px', border: '1px solid #000000' }} aria-hidden>
-            <img src={asset('/icons/vector-1-3.svg')} alt="" />
+            <img src={asset('/icons/vector-1-2.svg')} alt="" />
           </div>
           <div className="n" style={{ left: '309px', top: '67px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #000000' }} aria-hidden>
-            <img src={asset('/icons/vector-2-3.svg')} alt="" />
+            <img src={asset('/icons/vector-1-2.svg')} alt="" />
           </div>
         </div>
       </div>

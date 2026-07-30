@@ -15,7 +15,7 @@ export function MS07PodhoditDlya() {
           </div>
           <div className="n" style={{ left: '39px', top: '130.15px', width: '257px', height: '64px' }}>
             <div className="n" style={{ left: '122.5px', top: '0px', width: '12px', height: '13px' }} aria-hidden>
-              <img src={asset('/icons/node-5.svg')} alt="" />
+              <img src={asset('/icons/icon-2.svg')} alt="" />
             </div>
             <div className="t" style={{ left: '-21px', top: '28px', width: '299px', height: '36px', fontFamily: 'var(--font-cofo)', fontSize: '14px', fontWeight: '400', lineHeight: '17.64px', display: 'grid', alignContent: 'start', textAlign: 'center', color: '#ffffff' }}>{`Расскажите о своих планах — поможем выбрать лучший вариант`}</div>
           </div>
@@ -46,7 +46,7 @@ export function MS07PodhoditDlya() {
               <div className="n" style={{ left: '0px', top: '0px', width: '114px', height: '3px', borderRadius: '38px', overflow: 'hidden', background: '#ffffff' }} />
             </div>
             <div className="n" style={{ left: '118px', top: '12px', width: '99.93px', height: '55.64px' }} aria-hidden>
-              <img src={asset('/icons/arrows-10.svg')} alt="" />
+              <img src={asset('/icons/arrows-3.svg')} alt="" />
             </div>
           </div>
         </div>

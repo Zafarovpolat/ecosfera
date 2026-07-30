@@ -54,14 +54,14 @@ export function DS08PodhoditDlya() {
           </div>
           <div className="n" style={{ left: '1404px', top: '78.75px', width: '317px', height: '46px' }}>
             <div className="n" style={{ left: '0px', top: '16.5px', width: '12px', height: '13px' }} aria-hidden>
-              <img src={asset('/icons/node.svg')} alt="" />
+              <img src={asset('/icons/icon-2.svg')} alt="" />
             </div>
             <div className="t" style={{ left: '27px', top: '0px', width: '299px', height: '46px', fontFamily: 'var(--font-cofo)', fontSize: '18px', fontWeight: '400', lineHeight: '22.68px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Расскажите о своих планах — поможем выбрать лучший вариант`}</div>
           </div>
         </div>
       </div>
       <div className="n" style={{ left: '947.01px', top: '8394.01px', width: '26px', height: '28px', transform: 'matrix(0, 1, 1, 0, 0, 0)', overflow: 'hidden' }} aria-hidden>
-        <img src={asset('/icons/node.svg')} alt="" />
+        <img src={asset('/icons/fi-ss-angle-double-small-right-2.svg')} alt="" />
       </div>
     </>
   );

@@ -16,10 +16,10 @@ export function DS10ChtoGovoryatTe() {
           <div className="n" style={{ left: '1370px', top: '55.02px', width: '351px', height: '98px', borderRadius: '10px', overflow: 'hidden', background: '#ffffff' }}>
             <div className="t" style={{ left: '58px', top: '38.98px', width: '234px', height: '20px', fontFamily: 'var(--font-forma)', fontSize: '17px', fontWeight: '400', lineHeight: '20.4px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Смотреть все отзывы в Instagram`}</div>
             <div className="n" style={{ left: '10px', top: '10px', width: '9px', height: '8px', border: '1px solid #000000' }} aria-hidden>
-              <img src={asset('/icons/vector-1-3.svg')} alt="" />
+              <img src={asset('/icons/vector-1-2.svg')} alt="" />
             </div>
             <div className="n" style={{ left: '332px', top: '80px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #000000' }} aria-hidden>
-              <img src={asset('/icons/vector-2-3.svg')} alt="" />
+              <img src={asset('/icons/vector-1-2.svg')} alt="" />
             </div>
           </div>
         </div>
@@ -100,7 +100,7 @@ export function DS10ChtoGovoryatTe() {
           </div>
           <div className="n" style={{ left: '798.04px', top: '337px', width: '123.93px', height: '142px' }}>
             <div className="n" style={{ left: '0px', top: '0px', width: '123.93px', height: '69px' }} aria-hidden>
-              <img src={asset('/icons/arrows-4.svg')} alt="" />
+              <img src={asset('/icons/arrows-2.svg')} alt="" />
             </div>
             <div className="n" style={{ left: '20.96px', top: '91px', width: '82px', height: '51px', borderRadius: '20px', background: '#f8f8f8' }}>
               <div className="t" style={{ left: '15px', top: '15px', width: '52px', height: '21px', fontFamily: 'var(--font-cofo)', fontSize: '17px', fontWeight: '400', lineHeight: '21.42px', display: 'grid', alignContent: 'center', textAlign: 'center', color: 'rgba(0, 0, 0, 0.4)' }}><span style={{ color: '#000000' }}>{`01/`}</span><span style={{ color: 'rgba(0, 0, 0, 0.2)' }}>{`05`}</span></div>
@@ -109,7 +109,7 @@ export function DS10ChtoGovoryatTe() {
         </div>
       </div>
       <div className="n" style={{ left: '947.01px', top: '10199.01px', width: '26px', height: '28px', transform: 'matrix(0, 1, 1, 0, 0, 0)', overflow: 'hidden' }} aria-hidden>
-        <img src={asset('/icons/fi-ss-angle-double-small-right-9.svg')} alt="" />
+        <img src={asset('/icons/fi-ss-angle-double-small-right-2.svg')} alt="" />
       </div>
     </>
   );

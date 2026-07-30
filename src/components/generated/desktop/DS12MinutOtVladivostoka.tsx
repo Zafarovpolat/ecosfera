@@ -23,7 +23,7 @@ export function DS12MinutOtVladivostoka() {
             </div>
             <div className="n" style={{ left: '0px', top: '101px', width: '509.11px', height: '92px' }}>
               <div className="n" style={{ left: '0px', top: '12.95px', width: '66.11px', height: '66.11px', borderRadius: '16.84px', overflow: 'hidden' }} aria-hidden>
-                <img src={asset('/icons/frame-387-4.svg')} alt="" />
+                <img src={asset('/icons/frame-387-3.svg')} alt="" />
               </div>
               <div className="n" style={{ left: '86.11px', top: '0px', width: '423px', height: '92px' }}>
                 <div className="t" style={{ left: '0px', top: '0px', width: '423px', height: '24px', fontFamily: 'var(--font-forma)', fontSize: '20px', fontWeight: '400', lineHeight: '24px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`На машине`}</div>
@@ -32,7 +32,7 @@ export function DS12MinutOtVladivostoka() {
             </div>
             <div className="n" style={{ left: '0px', top: '223px', width: '509.11px', height: '71px' }}>
               <div className="n" style={{ left: '0px', top: '2.45px', width: '66.11px', height: '66.11px', borderRadius: '16.84px', overflow: 'hidden' }} aria-hidden>
-                <img src={asset('/icons/frame-387-3.svg')} alt="" />
+                <img src={asset('/icons/frame-387-4.svg')} alt="" />
               </div>
               <div className="n" style={{ left: '86.11px', top: '0px', width: '423px', height: '71px' }}>
                 <div className="t" style={{ left: '0px', top: '0px', width: '423px', height: '24px', fontFamily: 'var(--font-forma)', fontSize: '20px', fontWeight: '400', lineHeight: '24px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#000000' }}>{`Нет машины?`}</div>
@@ -75,6 +75,7 @@ export function DS12MinutOtVladivostoka() {
           </div>
         </div>
         <div className="n" style={{ left: '102px', top: '429px', width: '1718px', height: '87px' }}>
+          <div className="n" style={{ left: '0px', top: '0px', width: '1718px', height: '1px', background: 'rgba(0, 0, 0, 0.1)' }} />
           <div className="n" style={{ left: '0px', top: '33px', width: '1718px', height: '54px' }}>
             <div className="t" style={{ left: '0px', top: '0px', width: '486px', height: '54px', fontFamily: 'var(--font-cofo)', fontSize: '14px', fontWeight: '400', lineHeight: '17.64px', display: 'grid', alignContent: 'start', textAlign: 'left', color: 'rgba(0, 0, 0, 0.4)' }}>{`© 2026 ЭКОСФЕРА. Все права защищены. ООО «КОСМОС» · ИНН 2540282522 · КПП 254001001 · ОГРН 1242500000863 690042, г. Владивосток, ул. Феодосийская, д.37, кв.129`}</div>
             <div className="n" style={{ left: '758px', top: '17.5px', width: '550px', height: '19px' }}>

@@ -20,7 +20,7 @@ export function MS03KrasnyyDom() {
               <div className="n" style={{ left: '72.82px', top: '13.87px', width: '3.47px', height: '3.47px', background: 'rgba(255, 255, 255, 0.4)' }} />
             </div>
             <div className="n" style={{ left: '226px', top: '298px', width: '99.93px', height: '55.64px' }} aria-hidden>
-              <img src={asset('/icons/arrows-5.svg')} alt="" />
+              <img src={asset('/icons/arrows-3.svg')} alt="" />
             </div>
           </div>
           <div className="n" style={{ left: '0px', top: '384px', width: '336px', height: '741px' }}>
@@ -28,7 +28,9 @@ export function MS03KrasnyyDom() {
               <div className="t" style={{ left: '0px', top: '0px', width: '246px', height: '54px', fontFamily: 'var(--font-forma)', fontSize: '45px', fontWeight: '400', lineHeight: '54px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Красный дом`}</div>
               <div className="n" style={{ left: '0px', top: '64px', width: '299px', height: '23px' }}>
                 <div className="t" style={{ left: '0px', top: '3.5px', width: '63px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`3 комнаты`}</div>
+                <div className="n" style={{ left: '64px', top: '11.5px', width: '18px', height: '1px', transform: 'matrix(0, 1, -1, 0, 0, 0)', background: 'rgba(255, 255, 255, 0.25)' }} />
                 <div className="t" style={{ left: '83px', top: '3.5px', width: '88px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`до 6 взрослых `}</div>
+                <div className="n" style={{ left: '172px', top: '11.5px', width: '18px', height: '1px', transform: 'matrix(0, 1, -1, 0, 0, 0)', background: 'rgba(255, 255, 255, 0.25)' }} />
                 <div className="t" style={{ left: '191px', top: '3.5px', width: '88px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`до 10 с детьми`}</div>
               </div>
             </div>
@@ -44,7 +46,7 @@ export function MS03KrasnyyDom() {
                   </div>
                 </div>
                 <div className="n" style={{ left: '277px', top: '10px', width: '49px', height: '106px', borderRadius: '15px', overflow: 'hidden' }} aria-hidden>
-                  <img src={asset('/icons/frame-1000005436-5.svg')} alt="" />
+                  <img src={asset('/icons/frame-1000005436-2.svg')} alt="" />
                 </div>
               </div>
               <div className="n" style={{ left: '0px', top: '131px', width: '336px', height: '126px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
@@ -58,7 +60,7 @@ export function MS03KrasnyyDom() {
                   </div>
                 </div>
                 <div className="n" style={{ left: '277px', top: '10px', width: '49px', height: '106px', borderRadius: '15px', overflow: 'hidden' }} aria-hidden>
-                  <img src={asset('/icons/frame-1000005436-5.svg')} alt="" />
+                  <img src={asset('/icons/frame-1000005436-2.svg')} alt="" />
                 </div>
               </div>
             </div>
@@ -105,19 +107,19 @@ export function MS03KrasnyyDom() {
                 <div className="n" style={{ left: '0px', top: '0px', width: '279px', height: '85px', borderRadius: '10px', overflow: 'hidden', background: '#000000' }}>
                   <div className="t" style={{ left: '64px', top: '34px', width: '117px', height: '17px', fontFamily: 'var(--font-forma)', fontSize: '14px', fontWeight: '400', lineHeight: '16.8px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Забронировать дом `}</div>
                   <div className="n" style={{ left: '10px', top: '10px', width: '9px', height: '8px', border: '1px solid #ffffff' }} aria-hidden>
-                    <img src={asset('/icons/vector-1-5.svg')} alt="" />
+                    <img src={asset('/icons/vector-1.svg')} alt="" />
                   </div>
                   <div className="n" style={{ left: '260px', top: '67px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #ffffff' }} aria-hidden>
-                    <img src={asset('/icons/vector-2-5.svg')} alt="" />
+                    <img src={asset('/icons/vector-1.svg')} alt="" />
                   </div>
                 </div>
                 <div className="n" style={{ left: '283px', top: '0px', width: '52px', height: '85px', borderRadius: '10px', overflow: 'hidden' }} aria-hidden>
-                  <img src={asset('/icons/frame-1000005480-3.svg')} alt="" />
+                  <img src={asset('/icons/frame-1000005480-2.svg')} alt="" />
                 </div>
               </div>
               <div className="n" style={{ left: '0px', top: '100px', width: '336px', height: '32px' }}>
                 <div className="n" style={{ left: '0px', top: '9.5px', width: '12px', height: '13px' }} aria-hidden>
-                  <img src={asset('/icons/node-5.svg')} alt="" />
+                  <img src={asset('/icons/icon-2.svg')} alt="" />
                 </div>
                 <div className="t" style={{ left: '27px', top: '0px', width: '307px', height: '32px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Включает костровую зону и чан — отличие от Коричневого дома. Баня доступна дополнительно.`}</div>
               </div>
@@ -138,7 +140,7 @@ export function MS03KrasnyyDom() {
               <div className="n" style={{ left: '72.82px', top: '13.87px', width: '3.47px', height: '3.47px', background: 'rgba(255, 255, 255, 0.4)' }} />
             </div>
             <div className="n" style={{ left: '226px', top: '298px', width: '99.93px', height: '55.64px' }} aria-hidden>
-              <img src={asset('/icons/arrows-5.svg')} alt="" />
+              <img src={asset('/icons/arrows-3.svg')} alt="" />
             </div>
           </div>
           <div className="n" style={{ left: '0px', top: '384px', width: '336px', height: '741px' }}>
@@ -146,7 +148,9 @@ export function MS03KrasnyyDom() {
               <div className="t" style={{ left: '0px', top: '0px', width: '310px', height: '54px', fontFamily: 'var(--font-forma)', fontSize: '45px', fontWeight: '400', lineHeight: '54px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Коричневый дом`}</div>
               <div className="n" style={{ left: '0px', top: '64px', width: '299px', height: '23px' }}>
                 <div className="t" style={{ left: '0px', top: '3.5px', width: '63px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`3 комнаты`}</div>
+                <div className="n" style={{ left: '64px', top: '11.5px', width: '18px', height: '1px', transform: 'matrix(0, 1, -1, 0, 0, 0)', background: 'rgba(255, 255, 255, 0.25)' }} />
                 <div className="t" style={{ left: '83px', top: '3.5px', width: '88px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`до 6 взрослых `}</div>
+                <div className="n" style={{ left: '172px', top: '11.5px', width: '18px', height: '1px', transform: 'matrix(0, 1, -1, 0, 0, 0)', background: 'rgba(255, 255, 255, 0.25)' }} />
                 <div className="t" style={{ left: '191px', top: '3.5px', width: '88px', height: '16px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`до 10 с детьми`}</div>
               </div>
             </div>
@@ -162,7 +166,7 @@ export function MS03KrasnyyDom() {
                   </div>
                 </div>
                 <div className="n" style={{ left: '277px', top: '10px', width: '49px', height: '106px', borderRadius: '15px', overflow: 'hidden' }} aria-hidden>
-                  <img src={asset('/icons/frame-1000005436-5.svg')} alt="" />
+                  <img src={asset('/icons/frame-1000005436-2.svg')} alt="" />
                 </div>
               </div>
               <div className="n" style={{ left: '0px', top: '131px', width: '336px', height: '126px', borderRadius: '15px', overflow: 'hidden', background: '#f8f8f8' }}>
@@ -176,7 +180,7 @@ export function MS03KrasnyyDom() {
                   </div>
                 </div>
                 <div className="n" style={{ left: '277px', top: '10px', width: '49px', height: '106px', borderRadius: '15px', overflow: 'hidden' }} aria-hidden>
-                  <img src={asset('/icons/frame-1000005436-5.svg')} alt="" />
+                  <img src={asset('/icons/frame-1000005436-2.svg')} alt="" />
                 </div>
               </div>
             </div>
@@ -223,19 +227,19 @@ export function MS03KrasnyyDom() {
                 <div className="n" style={{ left: '0px', top: '0px', width: '279px', height: '85px', borderRadius: '10px', overflow: 'hidden', background: '#000000' }}>
                   <div className="t" style={{ left: '64px', top: '34px', width: '117px', height: '17px', fontFamily: 'var(--font-forma)', fontSize: '14px', fontWeight: '400', lineHeight: '16.8px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Забронировать дом `}</div>
                   <div className="n" style={{ left: '10px', top: '10px', width: '9px', height: '8px', border: '1px solid #ffffff' }} aria-hidden>
-                    <img src={asset('/icons/vector-1-5.svg')} alt="" />
+                    <img src={asset('/icons/vector-1.svg')} alt="" />
                   </div>
                   <div className="n" style={{ left: '260px', top: '67px', width: '9px', height: '8px', transform: 'matrix(-1, 0, 0, -1, 0, 0)', border: '1px solid #ffffff' }} aria-hidden>
-                    <img src={asset('/icons/vector-2-5.svg')} alt="" />
+                    <img src={asset('/icons/vector-1.svg')} alt="" />
                   </div>
                 </div>
                 <div className="n" style={{ left: '283px', top: '0px', width: '52px', height: '85px', borderRadius: '10px', overflow: 'hidden' }} aria-hidden>
-                  <img src={asset('/icons/frame-1000005480-3.svg')} alt="" />
+                  <img src={asset('/icons/frame-1000005480-2.svg')} alt="" />
                 </div>
               </div>
               <div className="n" style={{ left: '0px', top: '100px', width: '336px', height: '32px' }}>
                 <div className="n" style={{ left: '0px', top: '9.5px', width: '12px', height: '13px' }} aria-hidden>
-                  <img src={asset('/icons/node-5.svg')} alt="" />
+                  <img src={asset('/icons/icon-2.svg')} alt="" />
                 </div>
                 <div className="t" style={{ left: '27px', top: '0px', width: '307px', height: '32px', fontFamily: 'var(--font-cofo)', fontSize: '13px', fontWeight: '400', lineHeight: '16.38px', display: 'grid', alignContent: 'start', textAlign: 'left', color: '#ffffff' }}>{`Включает костровую зону и чан — отличие от Коричневого дома. Баня доступна дополнительно.`}</div>
               </div>

@@ -137,9 +137,28 @@ export function buildTree(label, manifest) {
   function walk(node, parent) {
     if (node.hidden || inIcon.has(node.id)) { stats.skipped++; return null; }
     const b = node.box;
-    if (!b || b.w <= 0 || b.h <= 0) { stats.skipped++; return null; }
+    if (!b) { stats.skipped++; return null; }
+
+    // Figma LINE nodes are zero-thickness on one axis. Dropping them for having
+    // no area silently loses the header, footer and tag-row rules, so give them
+    // their stroke weight as thickness instead.
+    const hairline = b.w <= 0 || b.h <= 0;
+    if (hairline && !node.strokes.length) { stats.skipped++; return null; }
+    if (!hairline && (b.w <= 0 || b.h <= 0)) { stats.skipped++; return null; }
 
     const st = baseStyle(node, parent);
+    if (hairline) {
+      const t = node.strokeWeight || 1;
+      st.width = px(Math.max(b.w, t));
+      st.height = px(Math.max(b.h, t));
+      const c = node.strokes.find((s) => s.kind === 'solid')?.color;
+      if (c) st.background = c;
+      delete st.border;
+      delete st.outline;
+      stats.nodes++;
+      stats.rules = (stats.rules || 0) + 1;
+      return { tag: 'div', cls: 'n', style: st, children: [] };
+    }
     const isText = node.type === 'TEXT';
     const grads = node.fills.filter((f) => f.kind === 'gradient');
     const solid = node.fills.filter((f) => f.kind === 'solid');
