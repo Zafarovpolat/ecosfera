@@ -61,12 +61,6 @@
 
   var STEP = 80; // мс между соседями в группе
 
-  /* Насколько глубоко элемент должен зайти в кадр, чтобы начать появляться.
-     Первая версия срабатывала у самой нижней кромки — переход успевал
-     отыграть, пока элемент ещё выезжает из-за края, и движения не было
-     видно вообще. Анимацию замечают только тогда, когда она начинается
-     на уже видимом элементе. */
-  var TRIGGER = 0.72;
   var targets = [];
 
   function mark(section, el, dir, delay) {
@@ -126,6 +120,10 @@
      садилась на карточку-обёртку и глушила её содержимое. */
   var maxHeight = window.innerHeight * 0.36;
 
+  /* Потолок для группы близнецов: выше полутора экранов — разбираем на части,
+     иначе низ списка отыграет переход задолго до того, как его увидят. */
+  var groupMaxHeight = window.innerHeight * 1.5;
+
   /* Направление считается ОДИН раз на уровень — по положению родителя, а не
      каждому элементу отдельно. Иначе однотипные соседи разъезжались: одна
      ссылка в шапке уезжала влево, потому что оказалась левее центра, а
@@ -148,6 +146,40 @@
     return side(section, node, 'up');
   }
 
+  /* ── Однородные группы ────────────────────────────────────────────────
+     Ряд одинаковых карточек — это один объект, а не пять. Разметив каждую
+     отдельно, мы получаем пять наблюдаемых узлов, пять переходов и пять
+     слоёв композитора там, где хватает одного, а глаз всё равно читает
+     движение как единое: соседи стоят рядом и входят в кадр вместе.
+
+     Однородной считаем группу от двух детей с одинаковым тегом и одинаковым
+     набором классов. Совпадение классов — условие жёсткое намеренно: список,
+     где вторая карточка помечена модификатором «популярный тариф», это уже
+     не ряд близнецов, и разбирать его поэлементно правильно.
+
+     Потолок по высоте нужен вот зачем: если лист выше полутора экранов, к
+     моменту, когда низ доедет до глаз, переход давно отыграл — получается
+     блок, который «просто есть». Такие списки по-прежнему разбираем на
+     части. */
+  function uniformGroup(node) {
+    var kids = node.children;
+    if (kids.length < 2) return false;
+
+    var first = kids[0];
+    if (first.nodeType !== 1) return false;
+
+    var tag = first.tagName;
+    var cls = first.className;
+
+    for (var i = 1; i < kids.length; i++) {
+      if (kids[i].nodeType !== 1) return false;
+      if (kids[i].tagName !== tag) return false;
+      if (kids[i].className !== cls) return false;
+    }
+
+    return node.getBoundingClientRect().height <= groupMaxHeight;
+  }
+
   /* Спуск по дереву. Размечаем элемент, только если внутри него нет своего
      содержимого под анимацию: иначе карточка уезжала целиком, а её заголовок,
      текст и кнопка не появлялись по отдельности — именно из-за этого на всю
@@ -157,6 +189,14 @@
     if (!kids.length) return;
 
     var dir = levelDirection(section, node, kids);
+
+    /* Ряд близнецов — размечаем обёртку целиком и внутрь не спускаемся.
+       Обёртка под замком (дорожка слайдера, лента галереи) не годится:
+       её трансформ занят чужой анимацией. */
+    if (node !== section && !node.closest(LOCKED) && uniformGroup(node)) {
+      mark(section, node, dir, 0);
+      if (node.hasAttribute('data-rv')) return;
+    }
 
     for (var i = 0; i < kids.length; i++) {
       var el = kids[i];
@@ -207,10 +247,37 @@
     document.title += ' [rv:' + targets.length + ']';
   }
 
+  /* will-change включаем ровно на время перехода и сразу снимаем.
+
+     Держать его постоянно на всех целях — именно то, о чём предупреждает
+     комментарий в 15-reveal.css: браузер поднимет сотню слоёв и будет держать
+     их всю сессию. А вот выданный на полторы секунды и отобранный обратно, он
+     ровно для того и придуман: слой создаётся под конкретный переход.
+
+     Заодно после показа снимаем сам transition. Иначе у каждой цели он висит
+     до конца жизни страницы, и любое чужое изменение opacity или сдвига
+     запускает лишнюю анимацию. */
   function reveal(el) {
+    el.style.willChange = 'opacity, translate, scale';
     el.classList.add('is-in');
     observer.unobserve(el);
   }
+
+  /* Один слушатель на документ вместо слушателя на каждой цели: transitionend
+     всплывает, ловить его поштучно незачем. */
+  document.addEventListener(
+    'transitionend',
+    function (event) {
+      var el = event.target;
+      if (event.propertyName !== 'opacity') return;
+      if (!el.hasAttribute || !el.hasAttribute('data-rv')) return;
+      if (!el.classList.contains('is-in')) return;
+
+      el.style.willChange = '';
+      el.classList.add('rv-done');
+    },
+    true
+  );
 
   var observer = new IntersectionObserver(
     function (entries) {
@@ -230,59 +297,56 @@
     targets.forEach(function (el) {
       if (!el.classList.contains('is-in')) observer.observe(el);
     });
+    tail.observe(sentinel);
   }
 
   /* Страховка от невидимого контента — главный риск такой механики.
      У самого низа документа отрицательный отступ съедает кромку кадра, и
-     последняя строка (копирайт, подпись студии) может не поймать
-     пересечение: докручивать дальше уже некуда. Поэтому на прокрутке ещё
-     раз проверяем ожидающие элементы по их фактическому положению.
-     Когда показаны все — слушатели снимаются, лишней работы на прокрутке
-     не остаётся. */
-  var pending = targets.slice();
-  var frame = null;
+     последняя строка (копирайт, подпись студии) может не поймать пересечение:
+     докручивать дальше уже некуда.
 
-  /* Докрутили до конца документа — глубже элемент уже не зайдёт, показываем
-     принудительно. Иначе последняя строка (копирайт, подпись студии) осталась
-     бы невидимой навсегда. */
-  function atDocumentEnd() {
-    return (
-      window.innerHeight + window.scrollY >=
-      document.documentElement.scrollHeight - 4
-    );
-  }
+     Раньше это лечилось перебором: на каждом кадре прокрутки скрипт проходил
+     по всем ещё не показанным целям и замерял каждую через
+     getBoundingClientRect. Замер — синхронный, он заставляет браузер прямо
+     сейчас пересчитать раскладку; на старте это две с лишним сотни пересчётов
+     за кадр. Инерционная прокрутка двигает страницу каждый кадр, так что
+     молотило непрерывно всю дорогу вниз. Отсюда и брались рывки: причиной был
+     не сам показ блоков, а проверка, не пора ли их показать.
 
-  function sweep() {
-    frame = null;
-    var h = window.innerHeight;
-    var end = atDocumentEnd();
+     Причём проверка лишняя: наблюдатель уже делает ровно это, только бесплатно
+     и вне основного потока.
 
-    pending = pending.filter(function (el) {
-      if (el.classList.contains('is-in')) return false;
-      var b = el.getBoundingClientRect();
-      if (b.bottom > 0 && (b.top < h * TRIGGER || end)) {
-        reveal(el);
-        return false;
-      }
-      return true;
-    });
+     Вместо перебора — сторожевой элемент в самом низу документа. Он попал в
+     кадр, значит дно достигнуто и всё, что осталось, надо показать. Один
+     наблюдаемый узел вместо двухсот замеров в кадр, слушателя прокрутки нет
+     вообще. */
+  var sentinel = document.createElement('div');
+  sentinel.setAttribute('aria-hidden', 'true');
+  /* В обычном потоке последним элементом body — так он гарантированно стоит на
+     самом дне документа. Абсолютное позиционирование тут не годится: у body без
+     position отсчёт пошёл бы от начального содержащего блока, то есть от нижней
+     кромки окна, а не от конца страницы. Отрицательный отступ гасит его собственный
+     пиксель, высота документа не меняется. */
+  sentinel.style.cssText = 'display:block;width:100%;height:1px;margin-top:-1px;pointer-events:none;';
+  document.body.appendChild(sentinel);
 
-    if (!pending.length) {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    }
-  }
+  var tail = new IntersectionObserver(
+    function (entries) {
+      if (!entries.some(function (e) { return e.isIntersecting; })) return;
 
-  function onScroll() {
-    if (!frame) frame = window.requestAnimationFrame(sweep);
-  }
+      targets.forEach(function (el) {
+        if (!el.classList.contains('is-in')) reveal(el);
+      });
+      tail.disconnect();
+    },
+    { threshold: 0 }
+  );
 
-  window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener(
     'resize',
     function () {
       maxHeight = window.innerHeight * 0.36;
-      onScroll();
+      groupMaxHeight = window.innerHeight * 1.5;
     },
     { passive: true }
   );
@@ -312,10 +376,6 @@
     visible.forEach(function (el, i) {
       el.style.setProperty('--rv-delay', Math.min(i, 12) * 90 + 'ms');
       reveal(el);
-    });
-
-    pending = pending.filter(function (el) {
-      return !el.classList.contains('is-in');
     });
   }
 
