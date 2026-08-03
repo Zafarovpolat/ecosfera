@@ -1,8 +1,4 @@
 node_modules/
-.next/
-out/
-masters/
-*.tsbuildinfo
-next-env.d.ts
 .DS_Store
+*.log
 .env*

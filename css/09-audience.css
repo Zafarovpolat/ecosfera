@@ -1,0 +1,167 @@
+/* ==========================================================================
+   09-audience — «Подходит для любого повода»
+   Десктоп: 4 карточки в ряд, чётные сдвинуты вниз на --row-offset.
+   Мобильный: одна колонка.
+   ========================================================================== */
+
+.audience {
+  padding-block: var(--s-section);
+}
+
+/* ---- шапка секции -------------------------------------------------------- */
+
+.audience__section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-7);
+  margin-bottom: var(--s-8);
+  text-align: center;
+}
+
+.audience__subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-4);
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  line-height: 1.28;
+  color: var(--c-white);
+  margin: 0;
+}
+
+.audience__subtitle-icon {
+  flex-shrink: 0;
+}
+
+/* На десктопе шапка — горизонтальный ряд: заголовок у левого края, подпись со
+   звёздочкой у правого. В макете контейнер шапки 1721 с горизонтальным
+   auto-layout: заголовок на left 99, подпись на left 1530 (right 91), выровнены
+   по центру по вертикали. Раньше подпись стояла под заголовком по центру. */
+@media (min-width: 64em) {
+  .audience__section-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-9);
+    text-align: left;
+  }
+
+  .audience__subtitle {
+    /* 299px — ширина текстового блока подписи в макете, отсюда перенос
+       на две строки. */
+    max-width: 18.6875rem;
+    flex-shrink: 0;
+  }
+}
+
+/* ---- сетка карточек ------------------------------------------------------ */
+
+.audience__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  /* Мобильный: одна колонка */
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+/* ---- десктоп: 4 колонки с шахматным смещением --------------------------- */
+
+@media (min-width: 64em) {
+  .audience__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+    gap: var(--s-3);
+
+    /* Высота строки: карточка + максимальный сдвиг чтобы смещённые карточки
+       не обрезались снизу */
+    --row-offset: var(--s-10);
+    padding-bottom: var(--row-offset);
+  }
+
+  /* Чётные по счёту (2-я и 4-я карточки) — сдвигаем вниз */
+  .audience__item:nth-child(even) {
+    margin-top: var(--row-offset);
+  }
+}
+
+/* ---- карточка ------------------------------------------------------------ */
+
+.audience__card {
+  background: var(--c-paper);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 64em) {
+  .audience__card {
+    /* В макете 95px, но визуально скругление читалось как слишком круглое —
+       уменьшено до 70. Радиус фотографии ниже уменьшен на те же 25, чтобы
+       разница между карточкой и картинкой осталась макетной (95 против 90). */
+    border-radius: 4.375rem; /* 70 */
+  }
+}
+
+/* ---- фотография ---------------------------------------------------------- */
+
+.audience__figure {
+  /* Сверху отступ больше, чем по бокам: на живом сайте зазор над фотографией
+     примерно вдвое шире бокового (по бокам в макете 10 — карточка 421 при
+     картинке 401). */
+  margin: var(--s-5) var(--s-3) var(--s-3);
+  width: calc(100% - var(--s-3) * 2);
+  flex-shrink: 0;
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.audience__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 401 / 379;
+  object-fit: cover;
+}
+
+@media (min-width: 64em) {
+  .audience__figure {
+    border-radius: 4.0625rem; /* 65 — на 5 меньше карточки, как в макете */
+  }
+}
+
+/* ---- текстовый блок ------------------------------------------------------ */
+
+.audience__card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-3);
+  /* Отступы увеличены снизу и по бокам: в макете текстовый блок 277 внутри
+     карточки 421, то есть по бокам ~72. Идём в эту сторону — 40 по бокам,
+     60 снизу вместо прежних 20 и 30. */
+  padding: var(--s-5) var(--s-8) var(--s-10);
+  text-align: center;
+}
+
+.audience__card-title {
+  font-family: var(--f-display);
+  font-size: var(--t-lead);
+  line-height: var(--lh-tight);
+  color: var(--c-black);
+  margin: 0;
+}
+
+.audience__card-desc {
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--c-black-40);
+  margin: 0;
+}

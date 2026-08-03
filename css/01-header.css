@@ -1,0 +1,319 @@
+/* ============================================================
+   01-header.css — шапка сайта
+   Мобильный вариант по умолчанию, десктоп — через @media.
+   Префикс BEM: header__*
+   ============================================================ */
+
+/* padding-inline убран из .header — его задаёт .hero__header-wrap.
+   На десктопе header растягивается на всю ширину hero__header-wrap. */
+.header {
+  position: relative;
+  z-index: var(--z-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+  padding-block: 0;
+}
+
+/* ── Логотип ──────────────────────────────────────────────── */
+
+.header__logo-wrap {
+  background: var(--c-white);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-1);
+}
+
+.header__logo {
+  border-radius: var(--r-pill);
+  display: block;
+  width: clamp(3.5rem, 2rem + 6.5vw, 7.125rem); /* 56 → 114 */
+  height: auto;
+}
+
+/* ── Навигация ────────────────────────────────────────────── */
+
+/* мобайл: скрыта по умолчанию, drawer сверху */
+.header__nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  inset-inline: 0;
+  background: var(--c-forest);
+  border-bottom: 1px solid var(--c-white-20);
+  padding: var(--s-5) var(--gutter);
+  z-index: var(--z-overlay);
+}
+
+.header__nav--open {
+  display: block;
+}
+
+.header__nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.header__nav-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+}
+
+/* разделители — прямые вертикальные линии, без transform */
+.header__nav-divider {
+  /* вертикальный разделитель — только на десктопе */
+  display: none;
+  width: 1px;
+  height: 1.875rem; /* 30px */
+  background: var(--c-white-25);
+  flex-shrink: 0;
+}
+
+.header__nav-link {
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  font-weight: 700;
+  color: var(--c-white);
+  text-align: center;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.header__nav-link:hover,
+.header__nav-link:focus-visible {
+  opacity: 0.75;
+}
+
+/* ── Контакты (десктоп) ───────────────────────────────────── */
+
+.header__contacts {
+  display: none; /* скрыты на мобильном */
+  align-items: center;
+  gap: var(--s-8);
+}
+
+.header__contacts-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--s-5);
+}
+
+.header__contact-item {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--s-1);
+}
+
+/* разделитель между «Написать нам» и «Заказать звонок» — прямая вертикальная черта */
+.header__contacts-divider {
+  display: block;
+  width: 1px;
+  height: 3.4375rem; /* 55px */
+  background: var(--c-white);
+  flex-shrink: 0;
+}
+
+.header__contact-value {
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  font-weight: 500;
+  color: var(--c-white);
+  white-space: nowrap;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.header__contact-value:hover,
+.header__contact-value:focus-visible {
+  opacity: 0.75;
+}
+
+.header__contact-label {
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm);
+  font-weight: 700;
+  color: var(--c-white);
+  white-space: nowrap;
+  /* Это действия, а не подписи: кнопка, а не span. Логика появится позже,
+     сейчас нужны только состояния. */
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: inherit;
+  position: relative;
+  transition: color var(--dur) var(--ease);
+}
+
+/* Подчёркивание растёт от левого края, а не появляется целиком. */
+.header__contact-label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.125rem;
+  width: 100%;
+  height: 1px;
+  background: var(--c-lime);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur) var(--ease);
+}
+
+.header__contact-label:hover,
+.header__contact-label:focus-visible {
+  color: var(--c-lime);
+}
+
+.header__contact-label:hover::after,
+.header__contact-label:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.header__contact-label:active {
+  opacity: 0.7;
+}
+
+/* ── CTA — «Забронировать дом» ────────────────────────────── */
+
+/* высота 70px (из макета Frame 1000005451: 223x70).
+   Шрифт 16px/19px (t-body-sm, line-height ~1.2).
+   (70 - 19) / 2 = 25.5 → ближайший токен --s-6 = 25px → 25+19+25 = 69px. */
+.header__cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  padding-inline: var(--s-7);
+  padding-block: var(--s-6); /* 25px×2 + 19px строки ≈ 69px ≈ 70px из макета */
+  background: var(--c-lime);
+  border-radius: var(--r-sm);
+  font-family: var(--f-display);
+  font-size: var(--t-body-sm);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--c-black);
+  white-space: nowrap;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+/* Ховер инвертирует кнопку: лайм → чёрный, содержимое → белое.
+   Уголки нарисованы через currentColor, поэтому меняются вместе с
+   текстом сами — отдельного правила для них не нужно. */
+.header__cta:hover,
+.header__cta:focus-visible {
+  background: var(--c-black);
+  color: var(--c-white);
+}
+
+/* L-образные уголки (декор) */
+.header__cta-corner {
+  position: absolute;
+  pointer-events: none;
+}
+
+.header__cta-corner--tl {
+  top: var(--s-2);
+  left: var(--s-2);
+}
+
+/* Разворот больше не нужен: раньше в оба угла ставилась одна и та же
+   иконка и нижняя доворачивалась на 180°. Теперь уголки инлайновые, и у
+   нижнего свой путь — при повороте он превращался бы в верхний левый. */
+.header__cta-corner--br {
+  bottom: var(--s-2);
+  right: var(--s-2);
+}
+
+/* ── Мобильный блок: телефон + бургер ────────────────────── */
+
+.header__mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+}
+
+.header__burger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-2);
+  cursor: pointer;
+  padding: var(--s-1);
+  flex-shrink: 0;
+}
+
+.header__burger-icon {
+  display: block;
+}
+
+.header__burger-label {
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm);
+  font-weight: 400;
+  color: var(--c-white);
+  line-height: 1;
+}
+
+/* ============================================================
+   Desktop (≥ 1024px)
+   ============================================================ */
+
+@media (min-width: 64em) {
+  /* навигация «липнет» к логотипу слева.
+     header: логотип | nav (прижат к лого, auto-gap вправо) | contacts. */
+  .header {
+    gap: 0;
+  }
+
+  /* Показываем навигацию в потоке, прижатую к логотипу */
+  .header__nav {
+    display: flex;
+    position: static;
+    background: transparent;
+    border: none;
+    padding: 0;
+    flex: none;
+    margin-inline-start: var(--s-8); /* небольшой отступ от логотипа (≈40px) */
+    z-index: auto;
+  }
+
+  .header__nav-list {
+    flex-direction: row;
+    align-items: center;
+    gap: 0; /* gap задаётся через divider */
+  }
+
+  .header__nav-list li {
+    gap: 0;
+  }
+
+  /* разделитель показываем, строго вертикальный */
+  .header__nav-divider {
+    display: block;
+    height: 1.875rem;
+    /* горизонтальный отступ вокруг разделителя ≈ gap:57/2 из брифа */
+    margin-inline: calc(var(--s-7) / 2);
+  }
+
+  .header__nav-link {
+    font-size: 1.125rem; /* 18px */
+  }
+
+  /* Показываем контакты, прижатые к правому краю через margin-inline-start:auto */
+  .header__contacts {
+    display: flex;
+    margin-inline-start: auto;
+  }
+
+  /* Прячем мобильный блок */
+  .header__mobile-actions {
+    display: none;
+  }
+}

@@ -1,0 +1,390 @@
+/* ============================================================
+   03-advantages.css — «Наши преимущества»
+   Mobile-first. Префикс BEM: advantages__*
+   ============================================================ */
+
+.advantages {
+  position: relative;
+  padding-block: var(--s-section);
+  overflow: hidden;
+}
+
+/* ── Декоративные ветки ───────────────────────────────────── */
+
+.advantages__branch-left {
+  position: absolute;
+  left: 0;
+  top: calc(-1 * var(--s-12));
+  transform: matrix(-0.98, 0.2, 0.2, 0.98, 0, 0);
+  transform-origin: left center;
+  pointer-events: none;
+  width: clamp(11rem, 8rem + 12vw, 28.75rem); /* 176 → 460 */
+  height: auto;
+}
+
+.advantages__branch-right {
+  position: absolute;
+  right: 0;
+  top: calc(-1 * var(--s-10));
+  transform: matrix(0.98, 0.2, -0.2, 0.98, 0, 0);
+  transform-origin: right center;
+  pointer-events: none;
+  width: clamp(12rem, 8rem + 16vw, 37.0625rem); /* 192 → 593 */
+  height: auto;
+}
+
+/* ── Тег «Наши преимущества» ─────────────────────────────── */
+
+.advantages__tag-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-2);
+  margin-bottom: var(--s-7);
+}
+
+.advantages__tag-icon {
+  display: block;
+}
+
+.advantages__section-title {
+  font-family: var(--f-text);
+  font-size: clamp(0.9375rem, 0.8rem + 0.56vw, 1.5625rem); /* 15 → 25 */
+  font-weight: 400;
+  line-height: var(--lh-heading);
+  color: var(--c-white);
+  text-align: center;
+  margin: 0;
+}
+
+/* ── Список карточек ──────────────────────────────────────── */
+
+.advantages__card-list {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  /* горизонтальный скролл на мобильном */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-inline: var(--gutter);
+  /* убрать скроллбар визуально */
+  scrollbar-width: none;
+}
+
+.advantages__card-list::-webkit-scrollbar {
+  display: none;
+}
+
+.advantages__card-item {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+/* ── Карточка ─────────────────────────────────────────────── */
+
+.advantages__card {
+  position: relative;
+  background: var(--c-white-10);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: clamp(3.5rem, 2rem + 6.5vw, 9.375rem); /* 56 → 150 */
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-4);
+  /* Точки-маркеры сидят НА границе и наполовину выходят наружу —
+     обрезать содержимое нельзя. */
+  overflow: visible;
+  border: 1px solid var(--c-white-25);
+}
+
+/* Карточки читаются как прогресс: первая без правой границы, вторая
+   «зажигает» правую лаймом, третья обведена лаймом целиком. */
+/* Первая карточка — только нейтральная рамка, цвет ни одной грани
+   не меняем.
+
+   Лайм у второй и третьей рисуется отдельным слоем поверх нейтральной
+   рамки, а не подменой border-color: так он может быть толще и, главное,
+   обходить лишь часть контура. Через border-*-color этого не сделать —
+   грань у скруглённого блока обрезается по диагонали угла, а не по
+   середине стороны. */
+.advantages__card-item:nth-child(2) .advantages__card::before,
+.advantages__card-item:nth-child(3) .advantages__card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 2px solid var(--c-lime);
+  pointer-events: none;
+}
+
+/* Вторая: лайм идёт сверху вниз по правой половине контура —
+   от верхней середины, через правый бок, до нижней середины. */
+.advantages__card-item:nth-child(2) .advantages__card::before {
+  clip-path: inset(0 0 0 50%);
+}
+
+/* Третья: полный контур. clip-path задан явно, чтобы было что анимировать. */
+.advantages__card-item:nth-child(3) .advantages__card::before {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ── Отрисовка контура ────────────────────────────────────────────
+   Рисуется обводкой SVG через stroke-dashoffset, а не clip-path.
+
+   clip-path открывал ПОЛОСУ, растущую сверху вниз. Из-за этого у третьей
+   карточки левая и правая стороны проявлялись одновременно, вместо обхода
+   по кругу, а длинные горизонтальные кромки вспыхивали целиком за пару
+   кадров — отсюда рывок на старте и в конце. Обводка же рисуется одной
+   непрерывной линией: её длина растёт равномерно, поэтому и плавность
+   получается сама собой.
+
+   Путь строит скрипт по замеренным размерам карточки: он начинается в
+   верхней середине и идёт по часовой стрелке. У второй карточки путь
+   доходит только до нижней середины — это и есть правая половина.
+
+   Без JS путь пустой, поэтому базовым слоем остаётся ::before с clip-path:
+   он показывает тот же конечный контур. Класс --svg скрывает его, когда
+   скрипт отрисовал путь. */
+.advantages__outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.advantages__outline-path {
+  fill: none;
+  stroke: var(--c-lime);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* Скрипт отрисовал путь — статический слой больше не нужен. */
+.advantages--svg .advantages__card::before {
+  display: none;
+}
+
+/* До запуска линия спрятана, иначе она мигнёт целиком до начала анимации. */
+.advantages--svg .advantages__outline-path {
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+}
+
+.advantages--animate .advantages__outline-path {
+  animation: advantagesDraw 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.advantages--animate .advantages__card-item:nth-child(3) .advantages__outline-path {
+  animation-delay: 0.2s;
+}
+
+@keyframes advantagesDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Маркеры проявляются вместе с линией — каждый в момент, когда она до него
+   доходит. */
+.advantages--animate .advantages__card-item:nth-child(2) .advantages__card-mark,
+.advantages--animate .advantages__card-item:nth-child(3) .advantages__card-mark {
+  animation: advantagesMarkIn 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+.advantages--animate .advantages__card-mark--top {
+  animation-delay: 0.15s;
+}
+
+.advantages--animate .advantages__card-mark--right {
+  animation-delay: 0.75s;
+}
+
+.advantages--animate .advantages__card-mark--bottom {
+  animation-delay: 1.25s;
+}
+
+.advantages--animate .advantages__card-mark--left {
+  animation-delay: 1.6s;
+}
+
+@keyframes advantagesMarkIn {
+  to {
+    opacity: 1;
+  }
+}
+}
+
+.advantages__card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Расстояние между подписью и описанием. */
+  gap: var(--s-6);
+  position: relative;
+  z-index: 1;
+}
+
+.advantages__card-num-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap отрицательный в Figma (-20px / -12px) — число наезжает на подпись */
+  gap: -0.75em;
+}
+
+.advantages__card-num {
+  font-family: var(--f-display);
+  font-size: clamp(5.625rem, 2.5rem + 13.3vw, 9.375rem); /* 90 → 150 */
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--c-white);
+  text-align: center;
+  display: block;
+}
+
+.advantages__card-label {
+  font-family: var(--f-display);
+  font-size: clamp(1.25rem, 0.9rem + 1.75vw, 2.125rem); /* 20 → 34 */
+  font-weight: 400;
+  line-height: var(--lh-heading);
+  color: var(--c-white);
+  text-align: center;
+  display: block;
+  /* Отступ на самой подписи. gap родителя считается от края строчного
+     бокса, а он у крупного кегля заметно ниже базовой линии — визуально
+     воздуха получалось меньше заданного. */
+  margin-bottom: var(--s-3);
+}
+
+.advantages__card-desc {
+  margin: 0;
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  font-weight: 400;
+  line-height: var(--lh-relaxed);
+  color: var(--c-white-60);
+  text-align: center;
+  /* Центрируется собственными авто-отступами, а не выравниванием
+     родителя: при shrink-to-fit ширина .advantages__card-inner зависит
+     от самого широкого ребёнка, и результат становится неочевидным. */
+  width: 100%;
+  max-width: 22.25rem; /* 357px */
+  margin-inline: auto;
+}
+
+/* Декоративный маркер-точка */
+/* Маркеры на контуре карточки. Раньше верхний был единственным элементом,
+   а боковой рисовался через ::after у самой карточки — набор нельзя было
+   менять от карточки к карточке. Теперь каждый маркер — отдельный
+   .advantages__card-mark с модификатором стороны, поэтому у первой их
+   один, у второй три, у третьей четыре. */
+.advantages__card-mark {
+  position: absolute;
+  width: 1.4375rem; /* 23px */
+  height: 1.4375rem;
+  border-radius: var(--r-pill);
+  /* ореол — лайм на 40% */
+  background: color-mix(in srgb, var(--c-lime) 40%, transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* внутренняя яркая точка */
+.advantages__card-mark::before {
+  content: '';
+  position: absolute;
+  inset: 0.4375rem; /* центрируем 9x9 в 23x23 */
+  background: var(--c-lime);
+  border-radius: var(--r-pill);
+}
+
+/* Сидят серединой ровно на линии контура. */
+.advantages__card-mark--top {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.advantages__card-mark--bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.advantages__card-mark--left {
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.advantages__card-mark--right {
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+/* Нижний у второй карточки — сплошной белый: ореола нет, кружок залит
+   целиком, поэтому внутренняя точка не нужна. */
+.advantages__card-mark--white {
+  background: var(--c-white);
+}
+
+.advantages__card-mark--white::before {
+  content: none;
+}
+
+/* ============================================================
+   Desktop (≥ 768px): flex-row
+   ============================================================ */
+
+@media (min-width: 48em) {
+  .advantages__card-list {
+    flex-direction: row;
+    align-items: stretch;
+    overflow-x: visible;
+    padding-inline: var(--gutter);
+    gap: var(--s-7);
+  }
+
+  .advantages__card-item {
+    flex: 1;
+  }
+
+  .advantages__card {
+    height: 100%;
+    padding: var(--s-7) var(--s-5);
+  }
+}
+
+@media (min-width: 64em) {
+  .advantages__tag-wrap {
+    margin-bottom: var(--s-10);
+  }
+
+  .advantages__section-title {
+    font-size: 1.5625rem; /* 25px */
+  }
+
+  .advantages__card-desc {
+    font-size: 1.125rem; /* 18px */
+  }
+
+  .advantages__card-inner {
+    gap: var(--s-7);
+  }
+
+  .advantages__card-label {
+    margin-bottom: var(--s-4);
+  }
+}

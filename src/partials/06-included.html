@@ -1,0 +1,135 @@
+<section class="included" aria-labelledby="pricing-heading">
+
+  <!-- Скрытый h2: labelling the section without duplicating visual headings -->
+  <h2 id="pricing-heading" class="sr-only">Стоимость</h2>
+
+  <div class="container">
+    <div class="included__inner">
+
+      <!-- ─── Блок «Включено в стоимость» (лаймовый) ─────────────── -->
+      <div class="included__block included__block--lime">
+
+        <!-- Левая плашка с заголовком -->
+        <div class="included__label included__label--lime">
+          <h3 id="included-heading" class="included__label-heading">
+            Включено в стоимость
+          </h3>
+          <!-- Декоративный значок из макета -->
+          <div class="included__label-decor" aria-hidden="true">
+            <div class="included__label-decor-inner"></div>
+          </div>
+        </div>
+
+        <!-- Таблица данных -->
+        <div class="included__table-wrap">
+          <table class="included__table" aria-labelledby="included-heading">
+            <caption><span class="sr-only">Услуги, включённые в стоимость проживания</span></caption>
+            <thead class="included__thead">
+              <tr>
+                <th scope="col"><span class="sr-only">Номер</span></th>
+                <th scope="col"><span class="sr-only">Наименование</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="included__row">
+                <td class="included__cell-num" aria-hidden="true">01</td>
+                <td class="included__cell-label">Проживание (3 комнаты с двухспальными кроватями)</td>
+              </tr>
+              <tr class="included__row">
+                <td class="included__cell-num" aria-hidden="true">02</td>
+                <td class="included__cell-label">Беседка на территории</td>
+              </tr>
+              <tr class="included__row">
+                <td class="included__cell-num" aria-hidden="true">03</td>
+                <td class="included__cell-label">Мангальная зона</td>
+              </tr>
+              <tr class="included__row">
+                <td class="included__cell-num" aria-hidden="true">04</td>
+                <td class="included__cell-label">Бассейн (свой у каждого дома)</td>
+              </tr>
+              <!-- Последняя строка: растягивается на всю ширину на мобильном -->
+              <tr class="included__row included__row--span">
+                <td class="included__cell-num" aria-hidden="true">05</td>
+                <td class="included__cell-label">Чан (входит в стоимость)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- /.included__block--lime -->
+
+      <!-- ─── Блок «По желанию, за доплату» (чёрный) ─────────────── -->
+      <div class="included__block included__block--black">
+
+        <!-- Левая плашка с заголовком -->
+        <div class="included__label included__label--black">
+          <h3 id="extra-heading" class="included__label-heading">
+            По желанию, за доплату
+          </h3>
+          <!-- Значок здесь пустой: в макете у чёрной плашки только рамка,
+               вложенного квадрата нет (в отличие от лаймовой). -->
+          <div class="included__label-decor" aria-hidden="true"></div>
+        </div>
+
+        <!-- Таблица данных -->
+        <div class="included__table-wrap">
+          <table class="included__table" aria-labelledby="extra-heading">
+            <caption><span class="sr-only">Дополнительные услуги за отдельную плату</span></caption>
+            <thead class="included__thead">
+              <tr>
+                <th scope="col"><span class="sr-only">Номер</span></th>
+                <th scope="col"><span class="sr-only">Наименование</span></th>
+                <th scope="col"><span class="sr-only">Стоимость</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="included__row">
+                <td class="included__cell-num" aria-hidden="true">01</td>
+                <td class="included__cell-label">Костровая зона (Красный дом)</td>
+                <td class="included__cell-price">3 000 ₽/час</td>
+              </tr>
+              <tr class="included__row">
+                <td class="included__cell-num" aria-hidden="true">02</td>
+                <td class="included__cell-label">Подогрев чана</td>
+                <td class="included__cell-price">1 000 ₽</td>
+              </tr>
+              <tr class="included__row">
+                <td class="included__cell-num" aria-hidden="true">03</td>
+                <td class="included__cell-label">Запарка для чана</td>
+                <td class="included__cell-price">2 000 ₽</td>
+              </tr>
+              <tr class="included__row">
+                <td class="included__cell-num" aria-hidden="true">04</td>
+                <td class="included__cell-label">Веник для бани</td>
+                <td class="included__cell-price">1 000 ₽</td>
+              </tr>
+              <tr class="included__row">
+                <td class="included__cell-num" aria-hidden="true">05</td>
+                <td class="included__cell-label">Ментол / запарка</td>
+                <td class="included__cell-price">от 500 ₽</td>
+              </tr>
+              <tr class="included__row">
+                <td class="included__cell-num" aria-hidden="true">06</td>
+                <td class="included__cell-label">Дрова</td>
+                <td class="included__cell-price">500 ₽</td>
+              </tr>
+              <tr class="included__row">
+                <td class="included__cell-num" aria-hidden="true">07</td>
+                <td class="included__cell-label">Уголь</td>
+                <td class="included__cell-price">от 500 ₽</td>
+              </tr>
+              <tr class="included__row">
+                <td class="included__cell-num" aria-hidden="true">08</td>
+                <td class="included__cell-label">Доп. гость</td>
+                <td class="included__cell-price">2 000 ₽</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- /.included__block--black -->
+
+    </div><!-- /.included__inner -->
+  </div><!-- /.container -->
+
+</section>

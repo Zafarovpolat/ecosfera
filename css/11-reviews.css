@@ -1,0 +1,326 @@
+/* ============================================================
+   11-reviews.css — секция «Что говорят те кто уже побывал»
+   Карусель с тремя карточками, стрелки-гексагоны, счётчик.
+   Префикс BEM: reviews__*
+   ============================================================ */
+
+.reviews {
+  padding-block: var(--s-section);
+}
+
+/* ---- шапка: заголовок + кнопка Instagram ------------------ */
+
+.reviews__section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-7);
+  margin-bottom: var(--s-7);
+}
+
+@media (min-width: 64em) {
+  .reviews__section-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-8);
+  }
+}
+
+/* ---- кнопка Instagram (ссылка) с L-уголками --------------- */
+
+.reviews__instagram-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  background: var(--c-white);
+  border-radius: var(--r-sm);
+  padding: var(--s-6) var(--s-7);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.reviews__instagram-btn-text {
+  font-family: var(--f-display);
+  font-size: var(--t-body);
+  line-height: 1.18;
+  color: var(--c-black);
+}
+
+/* L-образные уголки — абсолютно позиционированы как декор */
+.reviews__corner-top-left,
+.reviews__corner-bottom-right {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reviews__corner-top-left {
+  top: var(--s-2);
+  left: var(--s-2);
+}
+
+.reviews__corner-bottom-right {
+  bottom: var(--s-2);
+  right: var(--s-2);
+  transform: rotate(180deg);
+}
+
+/* ---- обёртка карусели ------------------------------------- */
+
+.reviews__carousel-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-7); /* 30px между треком и управлением */
+}
+
+/* Внешний контейнер трека: overflow:visible — лишние карточки видны за правым краем */
+.reviews__track-outer {
+  /* Окно карусели. Обрезка нужна, чтобы уехавшие влево карточки не лезли на
+     соседний контент, но справа она уходит за край экрана — поэтому там
+     следующие слайды видны целиком, без заметного среза. */
+  overflow: hidden;
+  /* Доводим правый край окна до края экрана. Одного гуттера мало: контейнер
+     ещё и центрируется, поэтому до кромки оставалось расстояние и срез был
+     виден. 50% - 50vw — ровно этот остаток, с обратным знаком. */
+  margin-inline-end: calc(50% - 50vw);
+}
+
+/* ---- ряд карточек (горизонтальный, без переноса) ---------- */
+
+.reviews__card-list {
+  transition: transform 0.5s var(--ease);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-wrap: nowrap;   /* все карточки в одну строку */
+  gap: 0.625rem;       /* 10px из брифа */
+}
+
+/* ---- одна позиция в ряду ---------------------------------- */
+
+.reviews__card-item {
+  flex: 0 0 35.3125rem; /* 565px — размер карточки из брифа */
+  min-width: 0;
+}
+
+/* ---- одна карточка отзыва --------------------------------- */
+
+.reviews__card {
+  background: var(--c-paper);
+  border-radius: var(--r-xl);
+  padding: var(--s-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-8);
+  height: 100%;
+}
+
+/* ---- рейтинг ---------------------------------------------- */
+
+.reviews__rating {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+}
+
+.reviews__star {
+  flex-shrink: 0;
+}
+
+.reviews__rating-value {
+  font-family: var(--f-text);
+  font-size: var(--t-lead);
+  line-height: 1.28;
+  letter-spacing: -0.03em;
+  color: var(--c-black);
+}
+
+/* ---- цитата ----------------------------------------------- */
+
+.reviews__blockquote {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-8);
+  flex: 1;
+}
+
+.reviews__text {
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--c-black);
+  margin: 0;
+}
+
+/* ---- автор ------------------------------------------------- */
+
+.reviews__profile {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+}
+
+.reviews__avatar {
+  flex-shrink: 0;
+  border-radius: var(--r-sm);
+  object-fit: cover;
+  width: 3.9375rem; /* 63px */
+  height: 3.9375rem;
+}
+
+@media (max-width: 47.9375em) {
+  .reviews__avatar {
+    width: 3.125rem; /* 50px мобильный */
+    height: 3.125rem;
+  }
+}
+
+.reviews__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+
+.reviews__author-name {
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--c-black);
+  font-style: normal;
+}
+
+.reviews__date {
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm);
+  line-height: 1.25;
+  color: var(--c-black-40);
+}
+
+/* ---- управление каруселью --------------------------------- */
+/* Раскладка: стрелки сверху, счётчик снизу — по центру,
+   gap:22 из брифа home-10.txt (block gap:22),
+   форма и цвета совпадают с comparison__pagination */
+
+.reviews__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.375rem;   /* 22px из брифа block gap:22 */
+  margin-inline: auto;
+  justify-content: center;
+}
+
+/* ---- счётчик ---------------------------------------------- */
+
+.reviews__counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-4);           /* 15px — как comparison__pagination-counter */
+  background: var(--c-paper);   /* #f8f8f8 */
+  border-radius: var(--r-lg);   /* 20px */
+  font-family: var(--f-text);
+  font-size: var(--t-body);     /* 17px десктоп */
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--c-black-40);     /* rgba(0,0,0,0.4) */
+  min-width: 5.125rem;          /* ~82px */
+  text-align: center;
+}
+
+/* Разделитель «/05» — приглушённый, как comparison__pagination-total */
+.reviews__counter-sep {
+  color: var(--c-black-20);
+}
+
+/* ---- стрелки-гексагоны ------------------------------------ */
+/* Те же размеры, что у comparison__pagination-arrows: 124px wide */
+
+/* Стрелки — та же картинка, что в секции сравнения, с двумя прозрачными
+   кнопками поверх. Раньше здесь были нарисованные вручную инлайновые SVG:
+   они не совпадали с оригиналом и стрелки в них стояли не по центру. */
+.reviews__nav {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+.reviews__nav-img {
+  display: block;
+}
+
+.reviews__arrow-btn {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: var(--r-sm);
+  transition: opacity var(--dur) var(--ease);
+}
+
+.reviews__arrow-btn--prev {
+  left: 0;
+}
+
+.reviews__arrow-btn--next {
+  right: 0;
+}
+
+.reviews__arrow-btn:hover {
+  opacity: 0.75;
+}
+
+.reviews__arrow-btn:focus-visible {
+  outline: 2px solid var(--c-lime);
+  outline-offset: 3px;
+}
+
+/* Кнопка на краю списка неактивна. */
+.reviews__arrow-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Ховер как у остальных белых кнопок: фон чёрный, текст и уголки белые.
+   Уголки — картинки с чёрным рисунком, поэтому перекрашиваются инверсией:
+   стилями содержимое <img> не достать. */
+.reviews__instagram-btn {
+  transition:
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.reviews__instagram-btn-text {
+  transition: color var(--dur) var(--ease);
+}
+
+.reviews__corner-top-left,
+.reviews__corner-bottom-right {
+  transition: filter var(--dur) var(--ease);
+}
+
+.reviews__instagram-btn:hover {
+  background: var(--c-black);
+  color: var(--c-white);
+}
+
+.reviews__instagram-btn:hover .reviews__instagram-btn-text {
+  color: var(--c-white);
+}
+
+.reviews__instagram-btn:hover .reviews__corner-top-left,
+.reviews__instagram-btn:hover .reviews__corner-bottom-right {
+  filter: invert(1);
+}

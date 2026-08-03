@@ -1,0 +1,356 @@
+/* ==========================================================================
+   06-included — секция «Включено в стоимость» + «По желанию, за доплату»
+   Префикс БЭМ: included__
+   Mobile-first.
+   ========================================================================== */
+
+/* ── Секция ──────────────────────────────────────────────────────────────── */
+
+.included {
+  padding-block: var(--s-section);
+
+  /* Нижняя граница высоты блока. В макете ряд — 1720x366, от этого и считаем.
+     Именно min-height: контент при нехватке места вырастет, а не обрежется. */
+  --included-block-h: clamp(17.5rem, 16.2rem + 5.57vw, 22.875rem); /* 280@375 → 366@1920 */
+}
+
+/* Два блока подряд по вертикали на мобильном, горизонтально — на десктопе.
+   Дорожки 1fr тянут верхний блок до высоты нижнего. Высоту дальше принимают
+   и сами карточки — цепочка стретча ниже, иначе внутри остаётся пустое поле. */
+.included__inner {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--s-5);
+}
+
+/* ─── Один блок (лаймовый или чёрный) ──────────────────────────────────── */
+
+.included__block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+}
+
+/* Модификаторы обёртки (сейчас только структурные, без собственного фона) */
+.included__block--lime {}
+.included__block--black {}
+
+@media (min-width: 48em) {
+  .included__block {
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--s-3);
+  }
+}
+
+/* ─── Левая плашка ──────────────────────────────────────────────────────── */
+
+.included__label {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--s-2);
+  padding: var(--s-5);
+  border-radius: var(--r-xl);
+  flex-shrink: 0;
+}
+
+@media (min-width: 48em) {
+  .included__label {
+    width: 24%;
+    min-width: 14rem;
+    padding: var(--s-7);
+  }
+}
+
+@media (min-width: 90em) {
+  .included__label {
+    width: 24.13%; /* ~415/1720 */
+    /* По макету плашка 415, заголовок внутри 342 → по бокам ≈36px.
+       Берём 40 по шкале: ближайший шаг, разница 3px. */
+    padding: var(--s-9) var(--s-8);
+  }
+}
+
+.included__label--lime {
+  background: var(--c-lime);
+}
+
+.included__label--black {
+  background: var(--c-black);
+}
+
+.included__label-heading {
+  font-family: var(--f-display);
+  font-size: var(--t-h4);
+  line-height: var(--lh-heading);
+  font-weight: 400;
+  margin: 0;
+  /* В макете начертание w400, а у Forma DJR других весов нет — реального
+     bold не существует. Поэтому вес добирается обводкой по контуру: она
+     даёт ровное утолщение, тогда как синтетический bold браузера мажет
+     крупный дисплейный шрифт. */
+  -webkit-text-stroke: 0.4px currentColor;
+  paint-order: stroke fill;
+}
+
+.included__label--lime .included__label-heading {
+  color: var(--c-black);
+}
+
+.included__label--black .included__label-heading {
+  color: var(--c-white);
+}
+
+/* Декоративный «значок» из макета */
+.included__label-decor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--r-sm);
+  border: 2px solid var(--c-white);
+}
+
+@media (min-width: 90em) {
+  .included__label-decor {
+    width: 4.375rem;
+    height: 4.375rem;
+    border-radius: var(--r-md);
+    border-width: 3px;
+  }
+}
+
+.included__label-decor-inner {
+  width: 65%;
+  height: 65%;
+  border-radius: calc(var(--r-sm) - 2px);
+  background: var(--c-white);
+}
+
+/* ─── Обёртка таблицы ───────────────────────────────────────────────────── */
+
+.included__table-wrap {
+  flex: 1;
+  border-radius: var(--r-xl);
+  background: var(--c-paper);
+  padding: var(--s-1);
+  overflow: hidden;
+}
+
+/* ─── Таблица → карточки на мобильном, строки на десктопе ──────────────── */
+
+/*
+  Стратегия мобильного перестроения:
+  Таблица остаётся семантической (<table>/<tr>/<td>), но через
+  display:grid/block ячейки перестраиваются в карточечный вид.
+  thead скрывается (caption читается скринридером), каждый <tr> = карточка.
+*/
+
+.included__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Скрываем визуальный thead на мобиле (caption читается скринридером) */
+.included__thead {
+  display: none;
+}
+
+/* tbody: на мобильном — grid карточек */
+.included__table tbody {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-1);
+  padding: var(--s-1);
+}
+
+/* Каждая строка = карточка */
+.included__row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-8);
+}
+
+/* Порядковый номер */
+.included__cell-num {
+  font-family: var(--f-text);
+  font-size: var(--t-num);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--c-black-10);
+}
+
+/* Название позиции */
+.included__cell-label {
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--c-black);
+}
+
+/* Цена (только в «По желанию») */
+.included__cell-price {
+  font-family: var(--f-text);
+  font-size: var(--t-lead);
+  font-weight: 500;
+  line-height: var(--lh-body);
+  color: var(--c-black);
+}
+
+/* Последняя карточка «Включено»: растягивается на всю ширину на мобильном */
+.included__row--span {
+  grid-column: 1 / -1;
+}
+
+/* ─── Средние экраны (≥ 48em / 768px): tbody → нативная таблица ─────────── */
+
+@media (min-width: 48em) {
+  /* Показываем thead */
+  .included__thead {
+    display: table-header-group;
+  }
+
+  /* Возвращаем нативные роли таблицы */
+  .included__table {
+    display: table;
+  }
+
+  .included__table thead {
+    display: table-header-group;
+  }
+
+  .included__table tbody {
+    display: table-row-group;
+    padding: 0;
+  }
+
+  .included__row {
+    display: table-row;
+  }
+
+  .included__cell-num,
+  .included__cell-label,
+  .included__cell-price {
+    display: table-cell;
+    vertical-align: middle;
+    padding: var(--s-4) var(--s-4);
+  }
+}
+
+/* ─── Широкий десктоп (≥ 64em / 1024px): строки → карточки-столбцы ──────── */
+
+@media (min-width: 64em) {
+  /* Блок тянется минимум до макетной высоты ряда. Дорожки 1fr держат оба
+     блока равными, поэтому достаточно задать минимум одному правилу. */
+  .included__block {
+    min-height: var(--included-block-h);
+  }
+
+  /* Высота должна дойти до самих карточек, иначе внутри плашки остаётся
+     пустое место: обёртка → таблица → tbody → строки. */
+  .included__table-wrap {
+    display: flex;
+  }
+
+  .included__table {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .included__table thead {
+    display: none;
+  }
+
+  .included__table tbody {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    flex: 1;
+    min-height: 0;
+    /* В промежуточной зоне 1024–1440 восемь карточек в одну строку не влезают —
+       раньше две последние просто срезал overflow. Здесь они переносятся. */
+    flex-wrap: wrap;
+    gap: var(--s-1);
+    padding: var(--s-1);
+  }
+
+  .included__row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 8rem;
+    min-width: 0;
+    /* gap здесь — только страховка от склейки: высота фиксирована,
+       и space-between сам разносит номер к верху, подпись к низу. */
+    gap: var(--s-5);
+    /* В макете у карточки pad:19/21 — берём 20 по кругу. */
+    padding: var(--s-5);
+    background: var(--c-white);
+    border-radius: var(--r-lg);
+  }
+
+  /* Ячейки снова обычные блоки: отступы даёт карточка. Табличный padding
+     из режима ≥48em здесь лишний — он добавлял 90px высоты и обрезал цену. */
+  .included__cell-num,
+  .included__cell-label,
+  .included__cell-price {
+    padding: 0;
+  }
+
+  .included__cell-num {
+    display: block;
+    font-size: clamp(2rem, 2.5vw, 3.125rem);
+    line-height: 1.25;
+  }
+
+  .included__cell-label {
+    display: block;
+    font-size: clamp(0.875rem, 0.9vw, 1.0625rem);
+  }
+
+  .included__cell-price {
+    display: block;
+    font-size: clamp(1rem, 1.1vw, 1.25rem);
+  }
+}
+
+/* ─── Единый ряд (≥ 87.5em / 1400px) ────────────────────────────────────────
+   Порог намеренно ниже 1440: у окна 1440 вьюпорт ≈1425 из-за полосы прокрутки,
+   и на границе ровно 1440 восьмая карточка уходила на вторую строку.
+   Ниже 1400 перенос разрешён — иначе карточки становятся уже слова. */
+@media (min-width: 87.5em) {
+  .included__table tbody {
+    flex-wrap: nowrap;
+  }
+
+  .included__row {
+    flex: 1 1 0;
+  }
+}
+
+@media (min-width: 90em) {
+  .included__table tbody {
+    gap: var(--s-1);
+    padding: var(--s-1);
+  }
+
+  .included__cell-num {
+    font-size: 3.125rem;
+  }
+
+  .included__cell-label {
+    font-size: 1.0625rem;
+    line-height: 1.26;
+  }
+
+  .included__cell-price {
+    font-size: 1.25rem;
+  }
+}

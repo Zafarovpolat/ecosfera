@@ -1,0 +1,576 @@
+/* ==========================================================================
+   05-houses — секция «Наши дома»
+   Префикс БЭМ: houses__
+   Mobile-first.
+   ========================================================================== */
+
+/* ── Секция ──────────────────────────────────────────────────────────────── */
+
+.houses {
+  padding-block: var(--s-section);
+}
+
+/* ── Список домов ─────────────────────────────────────────────────────────── */
+
+.houses__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-9); /* 50px — readable separation between houses on mobile */
+  margin-top: var(--s-8); /* 40px gap from heading */
+}
+
+@media (min-width: 64em) {
+  .houses__list {
+    gap: 4.5rem; /* ~72px — desktop breathing room between two cards */
+  }
+}
+
+@media (min-width: 90em) {
+  .houses__list {
+    margin-top: var(--s-9);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   HouseCard — article: gallery left + content right
+   Desktop:   side-by-side 909px / 755px  (reversed: flipped)
+   Mobile:    stacked, gallery on top
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Mobile-first base ───────────────────────────────────────────────────── */
+
+.houses__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+.houses__gallery-panel {
+  width: 100%;
+}
+
+.houses__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+/* ── Title + specs ───────────────────────────────────────────────────────── */
+
+.houses__title-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.houses__title {
+  font-family: var(--f-display);
+  font-size: var(--t-h2); /* clamp 45→80px */
+  font-weight: 400;
+  line-height: var(--lh-heading);
+  color: var(--c-white);
+}
+
+.houses__specs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  align-items: center;
+}
+
+.houses__spec-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--s-3);
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm); /* 13→16px */
+  color: var(--c-white);
+  line-height: var(--lh-body);
+}
+
+.houses__spec-divider {
+  display: inline-block;
+  width: 0;
+  height: 1.125rem; /* ~18px */
+  border-left: 1px solid var(--c-white-25);
+  flex-shrink: 0;
+}
+
+/* ── Prices + amenities wrapper ──────────────────────────────────────────── */
+
+.houses__prices-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+
+.houses__price-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+
+.houses__price-item {
+  display: flex;
+}
+
+.houses__amenities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-1);
+}
+
+@media (min-width: 30em) {
+  /* 480px — amenities fit 6 in two rows of 3 already; widen slightly */
+  .houses__amenities {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+
+.houses__buttons {
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-1);
+  align-items: center;
+}
+
+.houses__book-btn {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-5) var(--s-5);
+  background: var(--c-black);
+  border-radius: var(--r-sm);
+  color: var(--c-white);
+  font-family: var(--f-display);
+  font-size: var(--t-body);
+  font-weight: 400;
+  line-height: 1.2;
+  min-height: 3.375rem; /* ~54px mobile */
+  /* Анимируются те же свойства, что меняет ховер. Стоял только opacity,
+     поэтому цвет и фон переключались рывком. */
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+/* Ховер инвертирует кнопку: чёрный → лайм, содержимое → чёрное.
+   Зеркально шапке, где лайм уходит в чёрный. */
+.houses__book-btn:hover,
+.houses__book-btn:focus-visible {
+  background: var(--c-lime);
+  color: var(--c-black);
+}
+
+.houses__book-label {
+  position: relative;
+  z-index: 1;
+}
+
+/* L-shaped corner brackets */
+.houses__corner-tl {
+  position: absolute;
+  top: var(--s-2);
+  left: var(--s-2);
+}
+
+.houses__corner-br {
+  position: absolute;
+  bottom: var(--s-2);
+  right: var(--s-2);
+}
+
+.houses__whatsapp-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem; /* ~52px mobile */
+  height: 3.375rem;
+  background: var(--c-whatsapp);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.houses__whatsapp-btn:hover {
+  opacity: 0.85;
+}
+
+.houses__whatsapp-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Footnote ────────────────────────────────────────────────────────────── */
+
+.houses__footnote {
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-4);
+  align-items: flex-start;
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm); /* 13→16px */
+  line-height: var(--lh-relaxed);
+  color: var(--c-white);
+}
+
+.houses__footnote-icon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   HouseGallery
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.houses__gallery {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  aspect-ratio: 909 / 750;
+}
+
+/* visually hidden live region */
+.houses__gallery-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.houses__gallery-track {
+  width: 100%;
+  height: 100%;
+}
+
+.houses__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+  pointer-events: none;
+}
+
+.houses__slide[data-active] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.houses__slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Arrows */
+.houses__gallery-arrows {
+  position: absolute;
+  bottom: var(--s-5);
+  right: var(--s-5);
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-1);
+  z-index: 2;
+}
+
+.houses__gallery-arrow-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.625rem; /* ~42px */
+  height: 2.625rem;
+  border-radius: var(--r-pill);
+  background: var(--c-white-10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--c-white);
+  transition: background var(--dur) var(--ease);
+}
+
+.houses__gallery-arrow-btn:hover {
+  background: var(--c-white-20);
+}
+
+/* Dots */
+.houses__gallery-dots {
+  position: absolute;
+  bottom: var(--s-5);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-2);
+  align-items: center;
+  padding: var(--s-2) var(--s-3);
+  background: var(--c-white-10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--r-pill);
+  z-index: 2;
+}
+
+.houses__gallery-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: var(--r-pill);
+  background: var(--c-white-40);
+  transition: background var(--dur) var(--ease), width var(--dur) var(--ease);
+  flex-shrink: 0;
+}
+
+.houses__gallery-dot[data-active] {
+  width: 1.3125rem; /* ~21px — active pill */
+  background: var(--c-white);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PriceCard
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.houses__price-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-3);
+  background: var(--c-paper);
+  border-radius: var(--r-md);
+  flex: 1;
+  min-width: 0;
+}
+
+.houses__price-period {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3125rem 0.625rem; /* 5/10 */
+  border-radius: var(--r-pill);
+  background: var(--c-lime);
+  font-family: var(--f-text);
+  font-size: 0.75rem; /* 12px mobile */
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--c-black);
+  align-self: flex-start;
+  margin: 0;
+}
+
+.houses__price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.houses__price-row,
+.houses__price-unit-row {
+  display: contents;
+}
+
+.houses__price-amount {
+  font-family: var(--f-display);
+  font-size: var(--t-h4); /* clamp 25→40px */
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--c-black);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.houses__price-currency {
+  font-size: 0.6em; /* half the number size — matches brief's smaller «руб.» */
+}
+
+.houses__price-unit {
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm);
+  line-height: var(--lh-body);
+  color: var(--c-black-40);
+  margin: 0;
+}
+
+.houses__price-arrow {
+  position: absolute;
+  top: var(--s-3);
+  right: var(--s-3);
+  border-radius: var(--r-md);
+  background: var(--c-white);
+  height: auto;
+  width: 3rem; /* ~49px mobile */
+  object-fit: contain;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   AmenityTile
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.houses__amenity-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-2) var(--s-3);
+  background: var(--c-paper);
+  border-radius: var(--r-md);
+}
+
+.houses__amenity-icon {
+  width: auto;
+  height: auto;
+  max-height: 3rem; /* ~48px */
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.houses__amenity-label {
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm);
+  line-height: var(--lh-body);
+  color: var(--c-black);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Desktop layout (≥ 64em / 1024px)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@media (min-width: 64em) {
+  .houses__card {
+    display: grid;
+    /* gallery ~53fr  content ~44fr of 1719px total */
+    grid-template-columns: minmax(0, 53fr) minmax(0, 44fr);
+    grid-template-areas: 'gallery content';
+    gap: var(--s-6); /* 25px */
+    align-items: start;
+  }
+
+  /* Reversed: фото справа, текст слева */
+  .houses__card--reversed {
+    grid-template-areas: 'content gallery';
+  }
+
+  .houses__gallery-panel {
+    grid-area: gallery;
+  }
+
+  .houses__content {
+    grid-area: content;
+    gap: var(--s-9); /* 50→35px matches brief's gap:35 */
+    padding-block: var(--s-5);
+  }
+
+  .houses__price-list {
+    flex-direction: row;
+    gap: var(--s-1);
+  }
+
+  .houses__price-item {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .houses__amenities {
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--s-2);
+  }
+
+  .houses__book-btn {
+    font-size: 1.0625rem; /* 17px */
+    min-height: 6.125rem; /* 98px */
+    padding: var(--s-5) var(--s-8);
+    flex: unset;
+    width: 18.1875rem; /* 291px */
+  }
+
+  .houses__corner-tl {
+    top: var(--s-3);
+    left: var(--s-3);
+  }
+
+  .houses__corner-br {
+    bottom: var(--s-3);
+    right: var(--s-3);
+  }
+
+  .houses__whatsapp-btn {
+    width: 5.8125rem; /* 93px */
+    height: 6.125rem; /* 98px */
+  }
+
+  .houses__footnote {
+    font-size: 1rem; /* 16px */
+    gap: var(--s-4);
+  }
+
+  /* PriceCard desktop */
+  .houses__price-card {
+    border-radius: var(--r-xl);
+    padding: var(--s-4) var(--s-4);
+  }
+
+  .houses__price-period {
+    font-size: 0.875rem; /* 14px */
+    padding: 0.3125rem 0.625rem;
+  }
+
+  .houses__price-amount {
+    font-size: 2.5rem; /* 40px */
+    line-height: 1.15;
+  }
+
+  .houses__price-unit {
+    font-size: 1.0625rem; /* 17px */
+  }
+
+  .houses__price-arrow {
+    width: 3.375rem; /* 54px */
+    top: var(--s-3);
+    right: var(--s-3);
+  }
+
+  /* AmenityTile desktop */
+  .houses__amenity-tile {
+    padding: var(--s-3) 0.6875rem; /* 11px sides matches brief */
+    gap: var(--s-5);
+    border-radius: var(--r-xl);
+  }
+
+  .houses__amenity-label {
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.26;
+  }
+
+  /* Gallery arrows large */
+  .houses__gallery-arrow-btn {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+@media (min-width: 90em) {
+  .houses__card {
+    gap: var(--s-5);
+  }
+
+  .houses__content {
+    gap: 2.1875rem; /* 35px — brief gap:35 */
+  }
+
+  .houses__title {
+    font-size: 5rem; /* 80px — exact desktop value */
+  }
+
+  .houses__spec-item {
+    font-size: 1rem; /* 16px */
+  }
+}

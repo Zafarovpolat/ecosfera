@@ -1,0 +1,250 @@
+      <div class="divider" aria-hidden="true">
+        <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
+      </div>
+<section class="booking" aria-labelledby="booking-heading">
+  <div class="container">
+    <div class="booking__glass">
+
+      <!-- Верхняя строка: заголовок + плашка предоплаты -->
+      <div class="booking__top-row">
+        <h2 id="booking-heading" class="section-heading">
+          Забронировать <span class="section-heading__accent section-heading__accent--inline">дом</span>
+        </h2>
+
+        <div class="booking__payment-badge">
+          <span class="booking__payment-icon" aria-hidden="true">
+            <img
+              src="icons/frame-387.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+              decoding="async"
+            />
+          </span>
+          <div class="booking__payment-text">
+            <strong class="booking__payment-title">Предоплата 50% от стоимости</strong>
+            <p class="booking__payment-detail">Оплачивается после подтверждения бронирования. Остаток — при заезде.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Внутренняя панель формы -->
+      <div class="booking__form-panel">
+        <p class="booking__form-title" aria-hidden="true">Проверить наличие</p>
+
+        <form class="booking__form" action="" method="post" novalidate>
+
+          <!-- Строка 1: Выберите дом (широкое поле) -->
+          <div class="booking__row-wide">
+            <div class="booking__field">
+              <label id="booking-house-label" class="booking__field-label" for="booking-house">Выберите дом</label>
+              <div class="booking__select-wrapper">
+                <select
+                  id="booking-house"
+                  name="house"
+                  required
+                  aria-invalid="false"
+                  aria-describedby="booking-house-error"
+                  class="booking__select"
+                >
+                  <option value="" disabled selected hidden>Выберите дом</option>
+                  <option value="brown">Коричневый дом</option>
+                  <option value="red">Красный дом</option>
+                </select>
+                <span class="booking__select-arrow" aria-hidden="true">
+                  <img src="icons/vector.svg" alt="" width="6" height="12" />
+                </span>
+              <span id="booking-house-error" class="booking__field-error" role="alert" hidden></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Строка 2: Даты (два поля рядом) -->
+          <div class="booking__row-dates">
+
+            <div class="booking__field">
+              <label id="booking-check-in-label" class="booking__field-label" for="booking-check-in">Дата заезда</label>
+              <div class="booking__input-wrapper">
+                <input
+                  id="booking-check-in"
+                  name="checkIn"
+                  type="text"
+                  data-date
+                  inputmode="numeric"
+                  placeholder="дд.мм.гггг"
+                  required
+                  aria-invalid="false"
+                  aria-describedby="booking-check-in-error"
+                  class="booking__input"
+                />
+                <span class="booking__input-icon" aria-hidden="true">
+                  <img
+                    src="icons/vuesax-bulk-calendar.svg"
+                    alt=""
+                    width="24"
+                    height="24"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+              <span id="booking-check-in-error" class="booking__field-error" role="alert" hidden></span>
+              </div>
+            </div>
+
+            <div class="booking__field">
+              <label id="booking-check-out-label" class="booking__field-label" for="booking-check-out">Дата выезда</label>
+              <div class="booking__input-wrapper">
+                <input
+                  id="booking-check-out"
+                  name="checkOut"
+                  type="text"
+                  data-date
+                  inputmode="numeric"
+                  placeholder="дд.мм.гггг"
+                  required
+                  aria-invalid="false"
+                  aria-describedby="booking-check-out-error"
+                  class="booking__input"
+                />
+                <span class="booking__input-icon" aria-hidden="true">
+                  <img
+                    src="icons/vuesax-bulk-calendar.svg"
+                    alt=""
+                    width="24"
+                    height="24"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+              <span id="booking-check-out-error" class="booking__field-error" role="alert" hidden></span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Строка 3: Количество гостей (широкое поле) -->
+          <div class="booking__row-wide">
+            <div class="booking__field">
+              <label id="booking-guests-label" class="booking__field-label" for="booking-guests">Количество гостей</label>
+              <div class="booking__select-wrapper">
+                <select
+                  id="booking-guests"
+                  name="guests"
+                  required
+                  aria-invalid="false"
+                  aria-describedby="booking-guests-error"
+                  class="booking__select"
+                >
+                  <option value="" disabled selected hidden>Количество гостей</option>
+                  <option value="1-2">1–2 человека</option>
+                  <option value="3-4">3–4 человека</option>
+                  <option value="5">5 человек</option>
+                </select>
+                <span class="booking__select-arrow" aria-hidden="true">
+                  <img src="icons/vector.svg" alt="" width="6" height="12" />
+                </span>
+              <span id="booking-guests-error" class="booking__field-error" role="alert" hidden></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Строка 4: Имя и телефон -->
+          <div class="booking__row-dates">
+
+            <div class="booking__field">
+              <label id="booking-name-label" class="booking__field-label" for="booking-name">Ваше имя</label>
+              <div class="booking__input-wrapper">
+                <input
+                  id="booking-name"
+                  name="name"
+                  type="text"
+                  placeholder=" "
+                  autocomplete="given-name"
+                  required
+                  aria-invalid="false"
+                  aria-describedby="booking-name-error"
+                  class="booking__input"
+                />
+              <span id="booking-name-error" class="booking__field-error" role="alert" hidden></span>
+              </div>
+            </div>
+
+            <div class="booking__field">
+              <label id="booking-phone-label" class="booking__field-label" for="booking-phone">Ваш телефон</label>
+              <div class="booking__input-wrapper">
+                <input
+                  id="booking-phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="+7 (___) ___-__-__"
+                  autocomplete="tel"
+                  inputmode="tel"
+                  required
+                  aria-invalid="false"
+                  aria-describedby="booking-phone-error"
+                  class="booking__input"
+                />
+              <span id="booking-phone-error" class="booking__field-error" role="alert" hidden></span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Строка 5: Кнопка + чекбокс согласия -->
+          <div class="booking__footer-row">
+
+            <button type="submit" class="booking__submit-btn">
+              <img
+                src="icons/vector-1-2.svg"
+                alt=""
+                aria-hidden="true"
+                width="9"
+                height="8"
+                class="booking__btn-mark booking__btn-mark--tl"
+              />
+              <span class="booking__btn-text">Забронировать дом</span>
+              <img
+                src="icons/vector-1-2.svg"
+                alt=""
+                aria-hidden="true"
+                width="9"
+                height="8"
+                class="booking__btn-mark booking__btn-mark--br"
+              />
+            </button>
+
+            <div class="booking__consent-row">
+              <input
+                id="booking-consent"
+                type="checkbox"
+                name="consent"
+                required
+                aria-invalid="false"
+                aria-describedby="booking-consent-error"
+                class="booking__checkbox"
+              />
+              <label for="booking-consent" class="booking__consent-label">
+                Я даю свое согласие на обработку персональных данных в
+                соответствии с ФЗ №152-ФЗ «О персональных данных» на
+                условиях и для целей, определенных
+                <a
+                  href="/privacy"
+                  class="booking__consent-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Политикой Конфиденциальности</a>.
+              </label>
+              <span id="booking-consent-error" class="booking__consent-error" role="alert" hidden></span>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+      <!-- /booking__form-panel -->
+
+    </div>
+    <!-- /booking__glass -->
+  </div>
+</section>

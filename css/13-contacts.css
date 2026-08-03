@@ -1,0 +1,324 @@
+/* ==========================================================================
+   13-contacts.css — секция «40 минут от Владивостока»
+   Desktop: карта 1920×736, поверх — белая панель 587×640.
+   Mobile: карта 375×887, панель в потоке под картой.
+   Префикс BEM: contacts__*
+   ========================================================================== */
+
+/* ── Внешняя секция ───────────────────────────────────────────────────────── */
+
+.contacts {
+  background: var(--c-white);
+}
+
+/* ── figure: обёртка карты + абсолютная панель ──────────────────────────── */
+
+.contacts__map-wrap {
+  position: relative;
+  margin: 0; /* сброс figure-margin */
+}
+
+/* ── Картинка карты ──────────────────────────────────────────────────────── */
+
+.contacts__map-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* мобильная карта — по умолчанию */
+.contacts__map-img--desktop {
+  display: none;
+}
+
+.contacts__map-img--mobile {
+  display: block;
+}
+
+/* ── Белая панель (figcaption) ───────────────────────────────────────────── */
+
+.contacts__panel {
+  background: var(--c-white);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  padding: var(--s-7);
+}
+
+/* ── Заголовок ───────────────────────────────────────────────────────────── */
+
+.contacts__heading {
+  font-family: var(--f-display);
+  font-size: clamp(1.875rem, 1.2rem + 2.8vw, 3.125rem); /* 30 → 50 */
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: var(--c-black);
+  margin: 0;
+}
+
+/* ── Список блоков ───────────────────────────────────────────────────────── */
+
+.contacts__block-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3); /* mobile: 10px */
+}
+
+/* ── Один блок ───────────────────────────────────────────────────────────── */
+
+.contacts__block {
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-4); /* mobile: ~15px */
+  align-items: center;
+}
+
+/* ── Иконка-кружок ───────────────────────────────────────────────────────── */
+
+.contacts__icon-wrap {
+  flex-shrink: 0;
+  width: 3.375rem; /* 54px mobile */
+  height: 3.375rem;
+  border-radius: var(--r-md); /* 15px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contacts__icon-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.contacts__icon-wrap--amber {
+  background: var(--c-amber-2);
+}
+
+.contacts__icon-wrap--black {
+  background: var(--c-black);
+}
+
+/* ── Текст блока ─────────────────────────────────────────────────────────── */
+
+.contacts__block-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1); /* 4px */
+  font-style: normal; /* для <address> */
+}
+
+.contacts__block-title {
+  font-family: var(--f-display);
+  font-size: var(--t-body); /* 14→18 */
+  line-height: var(--lh-body);
+  color: var(--c-black);
+  margin: 0;
+}
+
+.contacts__block-desc {
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm); /* 13→16 */
+  line-height: var(--lh-body);
+  color: var(--c-black-40);
+  margin: 0;
+}
+
+/* ── Ссылки на карты ─────────────────────────────────────────────────────── */
+
+.contacts__map-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-3); /* 10px */
+  flex-wrap: wrap;
+}
+
+.contacts__map-link {
+  display: inline-flex;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--c-paper);
+  transition: opacity var(--dur) var(--ease);
+}
+
+.contacts__map-link:hover,
+.contacts__map-link:focus-visible {
+  opacity: 0.8;
+}
+
+.contacts__map-link img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: 4.375rem; /* ~70px */
+}
+
+/* ==========================================================================
+   Desktop ≥ 1024px
+   ========================================================================== */
+
+@media (min-width: 64em) {
+  /* Показываем десктопную карту */
+  .contacts__map-img--desktop {
+    display: block;
+  }
+
+  .contacts__map-img--mobile {
+    display: none;
+  }
+
+  /* figure растягивается по высоте картинки — не ограничиваем */
+  .contacts__map-wrap {
+    height: auto; /* карта диктует высоту */
+  }
+
+  /* Панель абсолютно поверх карты, левый край, вертикально по центру карты.
+     Размеры из брифа: 587×640, pad:30/30/30/30, gap:38 */
+  .contacts__panel {
+    position: absolute;
+    top: 50%;
+    left: var(--gutter);
+    transform: translateY(-50%);
+    width: 36.6875rem;          /* 587px из брифа */
+    max-width: calc(100% - var(--gutter) * 2);
+    padding: 1.875rem;          /* 30px по всем сторонам из брифа pad:30/30/30/30 */
+    gap: 2.375rem;              /* 38px между heading / list / btns из брифа gap:38 */
+  }
+
+  /* Заголовок: 50/60, ls:-1.5 из брифа */
+  .contacts__heading {
+    font-size: 3.125rem;        /* 50px */
+    line-height: 1.2;           /* 60/50 = 1.2 */
+    letter-spacing: -0.09375rem; /* -1.5px */
+  }
+
+  /* Список блоков: gap:30 из брифа */
+  .contacts__block-list {
+    gap: 1.875rem;              /* 30px */
+  }
+
+  /* Один блок: gap:20 из брифа */
+  .contacts__block {
+    gap: 1.25rem;               /* 20px */
+    align-items: center;
+  }
+
+  /* Иконка: 66×66, radius:17 из брифа */
+  .contacts__icon-wrap {
+    width: 4.125rem;            /* 66px */
+    height: 4.125rem;
+    border-radius: 1.0625rem;   /* 17px */
+  }
+
+  /* Заголовок блока: 20/24 из брифа */
+  .contacts__block-title {
+    font-family: var(--f-display);
+    font-size: 1.25rem;         /* 20px */
+    line-height: 1.2;           /* 24/20 = 1.2 */
+  }
+
+  /* Описание блока: 17/21 из брифа */
+  .contacts__block-desc {
+    font-family: var(--f-text);
+    font-size: 1.0625rem;       /* 17px */
+    line-height: 1.235;         /* ~21/17 */
+  }
+
+  /* Логотипы карт: gap:13 из брифа btns gap — используем реальный gap между ссылками */
+  .contacts__map-links {
+    gap: 0.8125rem;             /* 13px */
+  }
+
+  .contacts__map-link img {
+    max-height: none;           /* не обрезаем, высота из атрибутов */
+  }
+}
+
+/* ==========================================================================
+   Правки блока контактов
+   ========================================================================== */
+
+/* Заголовок «40 минут от Владивостока» при кегле 50 умещался в одну строку и
+   растягивал панель. Предел заставляет перенос после «от». */
+.contacts__heading {
+  max-width: 22rem; /* 352 */
+}
+
+/* Больше воздуха между строками внутри пункта и между самими пунктами. */
+.contacts__block-text {
+  gap: var(--s-3);
+}
+
+.contacts__block-list {
+  gap: var(--s-6);
+}
+
+/* Кнопки карт: равные доли вместо флекса по содержимому — иначе «Яндекс Карты»
+   и «2ГИС» получались разной ширины из-за разной длины подписи. */
+.contacts__map-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-3);
+}
+
+/* Кнопка занимает всю долю грида, подпись стоит по центру в её натуральном
+   размере из макета (150x69). Растягивание подписи во всю ширину кнопки
+   делало её непропорционально высокой. */
+.contacts__map-link {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.contacts__map-link img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 4.3125rem; /* 69 — высота подписи в макете */
+}
+
+/* ── Встроенная карта ────────────────────────────────────────────────────── */
+
+.contacts__map-embed {
+  position: relative;
+  overflow: hidden;
+  display: none; /* мобильная версия остаётся картинкой */
+}
+
+@media (min-width: 48em) {
+  .contacts__map-embed {
+    display: block;
+  }
+}
+
+.contacts__map-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 46rem; /* 736 — как высота прежней картинки из макета */
+  border: 0;
+}
+
+/* Ссылки-подписи, которые требует виджет Яндекса: не мешают карте. */
+.contacts__map-embed-credit {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 1;
+  font-size: 0.75rem;
+  color: #eee;
+}
+
+.contacts__map-embed-credit--second {
+  inset-block-start: 14px;
+}

@@ -1,0 +1,68 @@
+name: Deploy
+
+# Собирает index.html из партиалов и публикует сайт в ветку gh-pages,
+# с которой GitHub Pages отдаёт https://zafarovpolat.github.io/ecosfera/
+#
+# Всё содержимое — статика, поэтому сборка занимает доли секунды.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Сборка
+        run: node build.mjs
+
+      - name: Проверка результата
+        run: |
+          test -s index.html || { echo "index.html пустой или отсутствует"; exit 1; }
+          # ни одна ссылка на локальный файл не должна вести в никуда
+          node --input-type=module -e '
+            import { readFileSync, existsSync } from "node:fs";
+            const html = readFileSync("index.html", "utf8");
+            const refs = [...html.matchAll(/(?:src|href)="([^"#:]+?)(?:\?[^"]*)?"/g)]
+              .map(m => m[1])
+              .filter(p => !p.startsWith("/") && !p.startsWith("#"));
+            const uniq = [...new Set(refs)];
+            const missing = uniq.filter(p => !existsSync(p));
+            if (missing.length) {
+              console.error("Битые ссылки:", missing);
+              process.exit(1);
+            }
+            console.log(`ссылок проверено: ${uniq.length}, битых нет`);
+          '
+
+      - name: Сборка каталога публикации
+        run: |
+          rm -rf _site
+          mkdir _site
+          cp -r index.html css js images icons fonts _site/
+          touch _site/.nojekyll
+          echo "файлов: $(find _site -type f | wc -l), объём: $(du -sh _site | cut -f1)"
+
+      - name: Публикация в gh-pages
+        run: |
+          cd _site
+          git init -q -b gh-pages
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Сборка из ${GITHUB_SHA::7}"
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages

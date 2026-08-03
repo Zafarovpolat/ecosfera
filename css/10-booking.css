@@ -1,0 +1,773 @@
+/* ==========================================================================
+   10-booking — секция бронирования. Mobile-first.
+   ========================================================================== */
+
+.booking {
+  padding-block: var(--s-section);
+}
+
+/* ── Стеклянная панель всей секции ─────────────────────────────────────── */
+
+.booking__glass {
+  border-radius: var(--r-xl);
+  background: var(--c-white-10);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+/* ── Верхняя строка: заголовок + плашка предоплаты ─────────────────────── */
+
+.booking__top-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+/* Плашка предоплата */
+.booking__payment-badge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--s-5);
+}
+
+.booking__payment-icon {
+  flex-shrink: 0;
+  /* Макет: Frame 387 64x64, radius 17, bg #fb8f2d, pad 21 — но эти 21px уже
+     вшиты в сам SVG (он экспортирован кадром 64x64, глиф в середине). Поэтому
+     паддинг здесь нулевой, а картинка растянута на весь квадрат: иначе глиф
+     уменьшался вместе с ней и оставался мелким. */
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 1.0625rem; /* 17 из макета */
+  background: var(--c-amber);
+  box-shadow: -1px -1.5px 3.5px 0 rgb(0 0 0 / 0.15);
+}
+
+.booking__payment-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Ширина ограничена так, чтобы заголовок лёг в одну строку, а пояснение
+   в две — вместе три строки, как на живом сайте. */
+.booking__payment-text {
+  /* Макет: заголовок 320 в одну строку, пояснение 312 в две — вместе три. */
+  max-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+
+.booking__payment-title {
+  font-family: var(--f-display);
+  font-size: var(--t-lead);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--c-white);
+}
+
+.booking__payment-detail {
+  font-family: var(--f-text);
+  font-size: 1rem; /* 16/20 из макета */
+  line-height: 1.25;
+  line-height: var(--lh-relaxed);
+  color: var(--c-white);
+  margin: 0;
+}
+
+/* ── Внутренняя панель формы ─────────────────────────────────────────────── */
+
+.booking__form-panel {
+  border-radius: var(--r-xl);
+  background: var(--c-white-10);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding: var(--s-5) var(--s-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.booking__form-title {
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--c-white);
+  margin: 0;
+}
+
+/* ── Форма ───────────────────────────────────────────────────────────────── */
+
+.booking__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+/* Строки раскладки */
+/* .booking__row-wide — мобильный: полная ширина, без дополнительных правил */
+
+.booking__row-dates {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+/* Строка кнопка + чекбокс */
+.booking__footer-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+/* ── Поле формы (FormField) ──────────────────────────────────────────────── */
+
+.booking__field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+/* Label — над полем. Раньше стоял order:1, из-за чего подпись уезжала под
+   поле; в макете и на живом сайте она сверху. Порядок теперь как в разметке. */
+.booking__field-label {
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm);
+  line-height: 1.25;
+  color: var(--c-white-60);
+  cursor: pointer;
+}
+
+/* ── Select ───────────────────────────────────────────────────────────────── */
+
+.booking__select-wrapper {
+  position: relative;
+}
+
+.booking__select {
+  display: block;
+  width: 100%;
+  padding: var(--s-2) var(--s-6) var(--s-2) var(--s-4);
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  line-height: 1.3;
+  color: var(--c-white);
+  background: var(--c-white-20);
+  border: none;
+  border-radius: var(--r-md);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline-offset: 2px;
+}
+
+.booking__select option {
+  background: var(--c-forest);
+  color: var(--c-white);
+}
+
+/* В макете у селекта шеврон вниз. Иконка vector.svg нарисована вправо,
+   поэтому доворачиваем её на 90°. */
+.booking__select-arrow img {
+  width: 0.75rem;
+  height: 0.75rem;
+  transform: rotate(90deg);
+}
+
+.booking__select-arrow {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: var(--s-4);
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Input ───────────────────────────────────────────────────────────────── */
+
+.booking__input-wrapper {
+  position: relative;
+}
+
+.booking__input {
+  display: block;
+  width: 100%;
+  padding: var(--s-2) var(--s-6) var(--s-2) var(--s-4);
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  line-height: 1.3;
+  color: var(--c-white);
+  background: var(--c-white-20);
+  border: none;
+  border-radius: var(--r-md);
+  outline-offset: 2px;
+}
+
+/* Нейтрализуем default-стиль date-пикера */
+.booking__input[type='date']::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.booking__input::placeholder {
+  color: var(--c-white-60);
+}
+
+/* Иконка внутри input (календарь) */
+.booking__input-icon {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: var(--s-4);
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Состояние ошибки ────────────────────────────────────────────────────── */
+
+.booking__field[aria-invalid="true"] .booking__input,
+.booking__field[aria-invalid="true"] .booking__select {
+  outline: 1px solid var(--c-danger);
+}
+
+.booking__field-error {
+  order: 2;
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm);
+  line-height: 1.25;
+  color: var(--c-danger);
+}
+
+.booking__field-error[hidden] {
+  display: none;
+}
+
+/* ── Кнопка отправки ─────────────────────────────────────────────────────── */
+
+.booking__submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  width: 100%;
+  padding: var(--s-5) var(--s-6);
+  font-family: var(--f-display);
+  font-size: var(--t-body);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--c-black);
+  background: var(--c-white);
+  border: none;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.booking__submit-btn:hover {
+  opacity: 0.88;
+}
+
+.booking__submit-btn:focus-visible {
+  outline: 2px solid var(--c-lime);
+  outline-offset: 2px;
+}
+
+.booking__btn-arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.booking__arrow-flipped {
+  transform: rotate(180deg);
+}
+
+/* ── Чекбокс согласия ────────────────────────────────────────────────────── */
+
+.booking__consent-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--s-3);
+}
+
+.booking__checkbox {
+  flex-shrink: 0;
+  width: 1.1875rem;   /* 19px */
+  height: 1.1875rem;
+  margin-top: 0.1em;
+  accent-color: var(--c-lime);
+  border-radius: var(--r-sm);
+  border: 2px solid var(--c-white-40);
+  cursor: pointer;
+}
+
+.booking__consent-label {
+  font-family: var(--f-text);
+  font-size: var(--t-caption);
+  line-height: var(--lh-relaxed);
+  color: var(--c-white);
+  cursor: pointer;
+  flex: 1;
+}
+
+.booking__consent-link {
+  color: var(--c-lime);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.booking__consent-link:hover {
+  text-decoration: none;
+}
+
+.booking__consent-error {
+  width: 100%;
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm);
+  color: var(--c-danger);
+}
+
+.booking__consent-error[hidden] {
+  display: none;
+}
+
+/* Высота, радиус и паддинги полей на десктопе заданы ниже, в блоке сетки —
+   отдельного переопределения здесь больше нет, чтобы значения не спорили. */
+
+/* ================================================================
+   Планшет 768+
+   ================================================================ */
+
+@media (min-width: 48em) {
+  .booking__glass {
+    padding: var(--s-7) var(--s-8);
+  }
+
+  .booking__row-dates {
+    flex-direction: row;
+    gap: var(--s-5);
+  }
+
+  .booking__row-dates > * {
+    flex: 1;
+  }
+
+  .booking__form-panel {
+    padding: var(--s-6);
+  }
+
+  .booking__footer-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--s-4);
+  }
+
+  .booking__submit-btn {
+    flex-shrink: 0;
+    width: auto;
+    padding-inline: var(--s-8);
+  }
+
+  .booking__consent-row {
+    flex: 1;
+  }
+}
+
+/* ================================================================
+   Десктоп 1024+
+   ================================================================ */
+
+@media (min-width: 64em) {
+  /* Контейнер этой секции шире остальных: стекло в макете 1890 при рабочей
+     ширине страницы 1720, то есть отступы по краям всего ~15 вместо гуттера. */
+  .booking .container {
+    max-width: 120rem;
+    padding-inline: 0.9375rem;
+  }
+
+  .booking__glass {
+    /* Макет: стекло 1890 при форме 1720 → по бокам 85. По вертикали ~56. */
+    padding: 3.5rem 5.3125rem;
+    border-radius: 3.125rem; /* 50 из макета */
+  }
+
+  /* Макет: текст согласия TEXT 15/19. */
+  .booking__consent-label {
+    font-size: 0.9375rem;
+    line-height: 1.27;
+  }
+
+  .booking__top-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Макет: form 1720x514, radius 25, паддинг ~30. */
+  .booking__form-panel {
+    padding: var(--s-7);
+    border-radius: 1.5625rem; /* 25 */
+  }
+
+  /* Макет: «Проверить наличие» TEXT 22/28 w500. */
+  .booking__form-title {
+    font-size: 1.375rem;
+    line-height: 1.27;
+  }
+
+  /* ─── Сетка формы: три колонки, как на живом сайте ──────────────────────
+     Широкое поле («Выберите дом», «Количество гостей») занимает две доли,
+     два узких — по одной. Итого 2 + 1 + 1 в каждой строке. */
+  .booking__form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Зазор выведен из макета: широкое поле 827 = 410 + 7 + 410. */
+    column-gap: 0.5rem;
+    row-gap: var(--s-6);
+  }
+
+  .booking__row-wide {
+    grid-column: span 2;
+    display: block;
+  }
+
+  .booking__row-dates {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.5rem;
+  }
+
+  /* Нижняя строка: кнопка на две доли, согласие на две. */
+  .booking__footer-row {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 0.9375rem; /* 15 из макета */
+    align-items: center;
+  }
+
+  .booking__submit-btn {
+    grid-column: span 2;
+    width: 100%;
+    min-height: 6.125rem; /* 98 */
+    border-radius: var(--r-sm); /* 10 */
+    font-size: 1.0625rem; /* 17/20 */
+  }
+
+  .booking__consent-row {
+    grid-column: span 2;
+  }
+
+  /* Поля: выше, круглее, с большим внутренним отступом. */
+  .booking__select,
+  .booking__input {
+    /* Макет: поле 103 высоты, pad 40/27, radius 25, значение TEXT 17/21.
+       Высоту даёт паддинг: 40 + 21 + 40 = 101. */
+    padding-block: var(--s-8);
+    padding-inline: 1.6875rem;
+    border-radius: 1.5625rem;
+    font-size: 1.0625rem;
+  }
+
+  .booking__select-arrow,
+  .booking__input-icon {
+    inset-inline-end: 1.6875rem; /* 27 — как боковой паддинг поля */
+  }
+}
+
+/* ==========================================================================
+   Поля: коробка вынесена на обёртку
+
+   Раньше фон, радиус и паддинг висели на самих input/select. Из-за этого
+   состояния приходилось описывать в двух местах, а сообщение об ошибке не
+   могло попасть внутрь коробки — а в UI KIT оно именно внутри, под значением.
+   Теперь обёртка — единственный владелец внешнего вида поля.
+
+   Состояния из UI KIT:
+     обычное  — без рамки, подпись и плейсхолдер 60% белого
+     active   — белая рамка, белый текст и подпись (наведение и фокус)
+     error    — красная рамка, красный текст и красное сообщение внутри
+   ========================================================================== */
+
+.booking__select-wrapper,
+.booking__input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  background: rgb(248 248 248 / 0.2);
+  border: 1px solid transparent;
+  border-radius: 1.5625rem; /* 25 из макета */
+  /* Паддинга здесь нет: он отдан самому полю, иначе мишенью для клика была
+     только строка текста, а поля вокруг неё не реагировали. */
+  padding: 0;
+  transition:
+    border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+/* Сами поля внутри коробки — прозрачные, без своих отступов и рамок. */
+.booking__input,
+.booking__select,
+.booking__combo {
+  width: 100%;
+  /* 40 / 27 из макета — теперь на самом поле, поэтому кликабельна вся коробка */
+  padding: var(--s-8) 1.6875rem;
+  background: none;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: var(--f-text);
+  font-size: 1.0625rem; /* 17/21 */
+  line-height: 1.24;
+  color: inherit;
+  text-align: start;
+}
+
+.booking__input:focus,
+.booking__combo:focus {
+  outline: none;
+}
+
+/* Наведение и фокус: рамка и текст белые. */
+.booking__select-wrapper:hover,
+.booking__input-wrapper:hover,
+.booking__select-wrapper:focus-within,
+.booking__input-wrapper:focus-within {
+  border-color: var(--c-white);
+  color: var(--c-white);
+}
+
+.booking__field:hover .booking__field-label,
+.booking__field:focus-within .booking__field-label {
+  color: var(--c-white);
+}
+
+/* Ошибка: рамка, текст и сообщение красные. */
+.booking__field--invalid .booking__select-wrapper,
+.booking__field--invalid .booking__input-wrapper {
+  border-color: var(--c-danger);
+  color: var(--c-danger);
+}
+
+.booking__field--invalid .booking__input::placeholder {
+  color: var(--c-danger);
+}
+
+.booking__field-error {
+  order: 0;
+  padding-inline: 1.6875rem;
+  padding-block-end: var(--s-5);
+  /* Поднимаем в нижний паддинг поля, чтобы строка не отодвигала коробку. */
+  margin-block-start: calc(-1 * var(--s-6));
+  font-family: var(--f-text);
+  font-size: 0.9375rem;
+  line-height: 1.27;
+  color: var(--c-danger);
+}
+
+/* Нативный select остаётся в разметке — он отправляет данные, — но скрыт:
+   вид рисует кнопка .booking__combo, список .booking__combo-list. */
+.booking__select--native {
+  /* Именно display:none, а не сжатие до 1px: поле получает общий паддинг 40px,
+     и при box-sizing:border-box его высота не может стать меньше паддинга —
+     скрытый select добавлял 80px и делал коробку вдвое выше остальных.
+     Значение при display:none всё равно уходит с формой. */
+  display: none;
+}
+
+.booking__combo {
+  cursor: pointer;
+}
+
+.booking__combo[data-placeholder='true'] {
+  color: var(--c-white-60);
+}
+
+/* ── Выпадающий список ────────────────────────────────────────────────────── */
+
+.booking__combo-list,
+.booking__cal {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: calc(100% + var(--s-2));
+  z-index: 5;
+  margin: 0;
+  padding: var(--s-3);
+  /* Стиль наследует поле: тот же радиус, тот же полупрозрачный белый фон.
+     Сплошной зелёный здесь был лишним — слои должны читаться как продолжение
+     инпутов, поэтому фон белый с прозрачностью плюс размытие под ним. */
+  border-radius: 1.5625rem;
+  border: 1px solid var(--c-white-40);
+  /* Материал тот же, что у полей — белый 20%, — но плавающий слой обязан
+     перекрывать то, что под ним: список наезжает на соседнее поле, и два
+     полупрозрачных текста складывались в кашу. Поэтому под тем жебелым
+     тинтом лежит плотная тёмная основа: на вид то же стекло, но непрозрачное.
+     Размытие тут само по себе не спасает — под слоем текст того же кегля. */
+  background:
+    linear-gradient(rgb(248 248 248 / 0.2), rgb(248 248 248 / 0.2)),
+    rgb(11 34 20 / 0.97);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  color: var(--c-white);
+  box-shadow: var(--sh-float);
+  list-style: none;
+  /* Появление плавное: прячем видимостью, а не display, иначе анимировать
+     нечего. */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-0.5rem);
+  transition:
+    opacity 0.24s var(--ease),
+    transform 0.24s var(--ease),
+    visibility 0.24s;
+}
+
+.booking__combo-list[data-popup-open='true'],
+.booking__cal[data-popup-open='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.booking__combo-option {
+  padding: var(--s-4) var(--s-5);
+  border-radius: var(--r-md);
+  font-size: 1.0625rem;
+  color: var(--c-white);
+  cursor: pointer;
+}
+
+.booking__combo-option:hover,
+.booking__combo-option.is-current {
+  background: var(--c-white-20);
+  outline: none;
+}
+
+.booking__combo-option[aria-selected='true'] {
+  color: var(--c-lime);
+}
+
+/* ── Календарь ────────────────────────────────────────────────────────────── */
+
+.booking__cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding-inline: var(--s-3);
+  margin-block-end: var(--s-3);
+}
+
+.booking__cal-title {
+  font-size: 1.0625rem;
+  color: var(--c-white);
+}
+
+.booking__cal-nav {
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--r-sm);
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--c-white);
+  background: var(--c-white-20);
+}
+
+.booking__cal-nav:hover {
+  background: var(--c-lime);
+  color: var(--c-black);
+}
+
+.booking__cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.booking__cal-weekday {
+  padding-block: var(--s-2);
+  font-size: 0.75rem;
+  text-align: center;
+  color: var(--c-white-60);
+}
+
+.booking__cal-day {
+  aspect-ratio: 1;
+  border-radius: var(--r-sm);
+  font-size: 0.9375rem;
+  color: var(--c-white);
+  background: none;
+}
+
+.booking__cal-day:hover:not(:disabled) {
+  background: var(--c-white-20);
+}
+
+.booking__cal-day:disabled {
+  color: var(--c-white-25);
+  cursor: default;
+}
+
+.booking__cal-day.is-selected {
+  background: var(--c-lime);
+  color: var(--c-black);
+}
+
+/* ── Уголки на кнопке ────────────────────────────────────────────────────── */
+
+.booking__submit-btn {
+  position: relative;
+  transition:
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.booking__btn-mark {
+  position: absolute;
+  width: 0.5625rem;
+  height: 0.5rem;
+  transition: filter var(--dur) var(--ease);
+}
+
+.booking__btn-mark--tl {
+  inset-block-start: 7px;
+  inset-inline-start: 7px;
+}
+
+.booking__btn-mark--br {
+  inset-block-end: 7px;
+  inset-inline-end: 7px;
+  transform: rotate(180deg);
+}
+
+/* Наведение: фон чёрный, текст и уголки белые. Иконки — картинки, поэтому
+   перекрашиваются инверсией: рисунок в них чёрный. */
+.booking__submit-btn:hover {
+  background: var(--c-black);
+  color: var(--c-white);
+  opacity: 1;
+}
+
+.booking__submit-btn:hover .booking__btn-mark {
+  filter: invert(1);
+}
