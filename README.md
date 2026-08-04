@@ -38,15 +38,13 @@ css/
   15-reveal.css     появление блоков при скролле
 
 js/
-  smooth-scroll.js  плавный скролл поверх Lenis
-  reveal.js         наблюдатель за попаданием секций во вьюпорт
+  reveal.js         обводка карточек преимуществ и запуск отрисовки
   reveal-in.js      сценарии появления элементов
   gallery.js        галерея фотографий
   comparison.js     блок сравнения
   reviews.js        карусель отзывов
   faq.js            аккордеон вопросов
   booking.js        форма бронирования
-  lib/lenis.min.js  инерционный скролл
 
 images/  icons/  fonts/
 ```

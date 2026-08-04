@@ -17,10 +17,11 @@
 
 .js-reveal [data-rv] {
   opacity: 0;
+  /* opacity чуть быстрее сдвига — карточка «уже видна», пока доезжает. */
   transition:
-    opacity 0.75s var(--ease),
-    translate 1s var(--ease),
-    scale 1s var(--ease);
+    opacity 0.55s var(--ease),
+    translate 0.75s var(--ease),
+    scale 0.75s var(--ease);
   transition-delay: var(--rv-delay, 0s);
 }
 
@@ -31,27 +32,34 @@
    сброс. translate и scale — отдельные свойства, они складываются с чужим
    transform и не конфликтуют. */
 .js-reveal [data-rv='up'] {
-  translate: 0 3rem;
+  translate: 0 2rem;
 }
 
 .js-reveal [data-rv='down'] {
-  translate: 0 -2rem;
+  translate: 0 -1.5rem;
 }
 
 .js-reveal [data-rv='left'] {
-  translate: -3.5rem 0;
+  translate: -2.5rem 0;
 }
 
 .js-reveal [data-rv='right'] {
-  translate: 3.5rem 0;
+  translate: 2.5rem 0;
 }
 
 .js-reveal [data-rv='zoom'] {
-  scale: 0.94;
+  scale: 0.96;
 }
 
 .js-reveal [data-rv='fade'] {
   translate: none;
+}
+
+/* Карточки домов почти в рост экрана: штатный сдвиг на них не читается.
+   Даём заметный подъём и лёгкое приближение — появление видно в кадре. */
+.js-reveal .houses__card[data-rv='up']:not(.is-in) {
+  translate: 0 4.5rem;
+  scale: 0.985;
 }
 
 .js-reveal [data-rv].is-in {
@@ -76,33 +84,6 @@
     scale: none !important;
     transition: opacity 0.4s linear;
   }
-}
-
-/* ==========================================================================
-   Инерционная прокрутка (Lenis)
-
-   Пока библиотека ведёт прокрутку, нативное scroll-behavior: smooth нужно
-   выключить — иначе два механизма тянут страницу одновременно и переходы по
-   якорям дёргаются. Классы .lenis* ставит на <html> сама библиотека, поэтому
-   если она не загрузилась, остаётся нативная плавность как запасной вариант.
-   ========================================================================== */
-
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-/* Внутренние прокручиваемые области (если появятся) не должны утягивать страницу. */
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
 }
 
 /* ==========================================================================

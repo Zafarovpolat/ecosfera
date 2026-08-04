@@ -37,7 +37,9 @@
 .included__block--lime {}
 .included__block--black {}
 
-@media (min-width: 48em) {
+/* Ряд (label слева, таблица справа) — только с 1025px; до 1024 включительно
+   блок остаётся колонкой. */
+@media (min-width: 64.0625em) {
   .included__block {
     flex-direction: row;
     align-items: stretch;
@@ -57,7 +59,7 @@
   flex-shrink: 0;
 }
 
-@media (min-width: 48em) {
+@media (min-width: 64.0625em) {
   .included__label {
     width: 24%;
     min-width: 14rem;
@@ -207,6 +209,19 @@
   grid-column: 1 / -1;
 }
 
+/* ── Дивайдер прибит к нижней кромке секции ─────────────────────
+   Вынесен из потока, чтобы не красть высоту у секции ниже. */
+.included__divider {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -2rem;
+  padding-block: var(--s-4);
+}
+
+.included__divider .divider__icon {
+  transform: rotate(90deg);
+}
+
 /* ─── Средние экраны (≥ 48em / 768px): tbody → нативная таблица ─────────── */
 
 @media (min-width: 48em) {
@@ -239,6 +254,73 @@
     display: table-cell;
     vertical-align: middle;
     padding: var(--s-4) var(--s-4);
+  }
+}
+
+/* <1024: обёртка не тянется на лишнюю высоту, карточки по 3 в ряд,
+   внутри карточки — колонка */
+@media (max-width: 63.9375em) {
+  /* Дорожки по контенту, а не 1fr: иначе второй блок вытягивает первый
+     на свою высоту, и внутри wrap появляется пустое место. */
+  .included__inner {
+    grid-template-rows: auto;
+  }
+
+  .included__table-wrap {
+    display: block;
+    height: fit-content;
+    /* Плотнее к краю не прижимаем: карточки дышат от рамки блока. */
+    padding: var(--s-4);
+  }
+
+  .included__table {
+    display: block;
+  }
+
+  .included__table tbody {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--s-4);
+  }
+
+  /* Оба блока: плашка и таблица дышат друг от друга. */
+  .included__block--lime,
+  .included__block--black {
+    gap: var(--s-5);
+  }
+
+  /* Карточки по 2 колонки, а 4-я и 5-я (в «Включено») и 7-я и 8-я
+     (в «По желанию») — по 3 колонки */
+  .included__row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--s-5);
+    padding: var(--s-5);
+    background: var(--c-white);
+    border-radius: var(--r-lg);
+    grid-column: span 2;
+  }
+
+  .included__block--lime .included__row:nth-child(4),
+  .included__block--lime .included__row:nth-child(5) {
+    grid-column: span 3;
+  }
+
+  .included__block--black .included__row:nth-child(7),
+  .included__block--black .included__row:nth-child(8) {
+    grid-column: span 3;
+  }
+
+  .included__row--span {
+    grid-column: auto;
+  }
+
+  .included__cell-num,
+  .included__cell-label,
+  .included__cell-price {
+    display: block;
+    padding: 0;
   }
 }
 

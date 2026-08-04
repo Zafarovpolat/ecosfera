@@ -317,3 +317,51 @@
     display: none;
   }
 }
+
+/* ============================================================
+   ≤ 1440px (и меньше): контакты ужимаем.
+   Скрываем второй контакт (телефон «Заказать звонок») и разделитель —
+   на экранах шире 1440 оба остаются видимыми.
+   ============================================================ */
+
+@media (max-width: 90em) {
+  .header__contacts-group .header__contact-item:last-child {
+    display: none;
+  }
+
+  .header__contacts-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 79.9375em) {
+  .header__cta {
+    padding-inline: var(--s-5);
+    padding-block: var(--s-4);
+    font-size: 0.9375rem;
+  }
+
+  .header__nav-divider {
+    margin-inline: calc(var(--s-5) / 2);
+  }
+
+  .header__logo {
+    width: clamp(3.5rem, 2rem + 6.5vw, 5.625rem);
+  }
+
+  .header__logo-wrap {
+    padding: calc(var(--s-1) / 2);
+  }
+
+  .header__contacts {
+    gap: var(--s-5);
+  }
+
+  .header__contacts-divider {
+    height: 2.5rem;
+  }
+
+  .header__nav {
+    padding-block: var(--s-3);
+  }
+}

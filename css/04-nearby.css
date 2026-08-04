@@ -126,6 +126,11 @@
 
 /* ── Десктоп (≥1024px) ──────────────────────────────────────────── */
 @media (min-width: 64em) {
+  /* Сетка без скролла — пагинация не нужна */
+  .nearby .nearby__pagination {
+    display: none;
+  }
+
   .nearby__list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -161,4 +166,70 @@
     padding: var(--s-6) var(--s-6);
   }
 
+}
+
+/* ── Компактные ширины (≤1279px) ────────────────────────────────
+   Ряд карточек выходит за правый край контейнера и виден до кромки
+   экрана: окно скролла растянуто до вьюпорта (как в reviews), поэтому
+   срез карточек уходит за экран и не виден. Управление — пагинация
+   в стиле comparison__pagination снизу. */
+@media (max-width: 79.9375em) {
+  .nearby {
+    overflow: visible;
+  }
+
+  .nearby__list {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-block-end: var(--s-2);
+    padding-inline-end: var(--s-8);
+    margin-block-end: var(--s-6);
+    margin-inline-end: calc(50% - 50vw);
+  }
+
+  /* Ширина карточки от вьюпорта, а не от контентной ширины списка: иначе
+     padding-inline-end сужает карточки и последняя становится недостижимой
+     для скролла (offsetLeft уходит за maxScroll). */
+  .nearby__card {
+    flex-basis: calc(100vw - var(--gutter) - var(--s-8));
+    scroll-snap-align: start;
+  }
+
+  .nearby .nearby__pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-4);
+    margin-inline: auto;
+    margin-block-start: var(--s-10);
+    margin-block-end: var(--s-6);
+  }
+
+  .nearby__pagination-arrows {
+    display: block;
+    height: auto;
+    width: 7.75rem;
+    margin-inline: auto;
+  }
+}
+
+/* ── Дивайдер прибит к нижней кромке секции ─────────────────────
+   Вынесен из потока, чтобы не красть высоту у секции ниже. */
+.nearby__divider {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -2rem;
+  padding-block: var(--s-4);
+}
+
+.nearby__divider .divider__icon {
+  transform: rotate(90deg);
+}
+
+/* 1024–1279: по три карточки в ряду, видно следующую за краем. */
+@media (min-width: 64em) and (max-width: 79.9375em) {
+  .nearby__card {
+    flex: 0 0 23rem;
+  }
 }

@@ -59,7 +59,17 @@
     '.advantages__card'
   ].join(',');
 
-  var STEP = 80; // мс между соседями в группе
+  /* Цельные блоки-витрины: появляются одним куском независимо от высоты.
+     Разбирать карточку дома на галерею, цены и удобства — та же ломаная
+     анимация: крупная карточка читается как один объект. */
+  var WHOLE_UNITS = '.houses__card';
+
+  /* Списки, которые НЕЛЬЗЯ группировать целиком: две карточки-витрины
+     выше любого экрана, и общая анимация превратила бы их в один плоский
+     блок. Каждая карточка приходит отдельно. */
+  var NO_GROUP = '.houses__list';
+
+  var STEP = 50; // мс между соседями в группе
 
   var targets = [];
 
@@ -120,9 +130,11 @@
      садилась на карточку-обёртку и глушила её содержимое. */
   var maxHeight = window.innerHeight * 0.36;
 
-  /* Потолок для группы близнецов: выше полутора экранов — разбираем на части,
-     иначе низ списка отыграет переход задолго до того, как его увидят. */
-  var groupMaxHeight = window.innerHeight * 1.5;
+  /* Потолок для группы близнецов: выше ~2.5 экранов — разбираем на части,
+     иначе низ списка отыграет переход задолго до того, как его увидят.
+     Раньше порог был 1.5 экрана, и на мобильном колонки карточек
+     разбирались по одной, хотя глаз читает их как единый лист. */
+  var groupMaxHeight = window.innerHeight * 2.5;
 
   /* Направление считается ОДИН раз на уровень — по положению родителя, а не
      каждому элементу отдельно. Иначе однотипные соседи разъезжались: одна
@@ -192,8 +204,9 @@
 
     /* Ряд близнецов — размечаем обёртку целиком и внутрь не спускаемся.
        Обёртка под замком (дорожка слайдера, лента галереи) не годится:
-       её трансформ занят чужой анимацией. */
-    if (node !== section && !node.closest(LOCKED) && uniformGroup(node)) {
+       её трансформ занят чужой анимацией. Списки-витрины (NO_GROUP)
+       тоже не годится: их карточки едут каждая сама. */
+    if (node !== section && !node.closest(LOCKED) && !node.matches(NO_GROUP) && uniformGroup(node)) {
       mark(section, node, dir, 0);
       if (node.hasAttribute('data-rv')) return;
     }
@@ -203,14 +216,20 @@
 
       if (el.closest(LOCKED)) continue;
 
+      /* Цельная карточка-витрина: помечаем её, внутрь не спускаемся. */
+      if (el.matches(WHOLE_UNITS)) {
+        mark(section, el, dir, 0);
+        continue;
+      }
+
       var box = el.getBoundingClientRect();
       var tall = box.height > maxHeight;
       var inner = el.querySelectorAll(CANDIDATE).length;
 
       if (el.matches(CANDIDATE) && !tall && inner < 2) {
-        /* Задержка по позиции среди соседей, с потолком: у длинных списков
-           хвост в две секунды выглядит как подвисание. */
-        mark(section, el, dir, Math.min(i, 6) * STEP);
+        /* Задержка по позиции среди соседей, с потолком: хвост дольше
+           трети секунды выглядит как подвисание на фоне плавного скролла. */
+        mark(section, el, dir, Math.min(i, 4) * STEP);
       } else {
         walk(section, el);
       }
@@ -346,7 +365,7 @@
     'resize',
     function () {
       maxHeight = window.innerHeight * 0.36;
-      groupMaxHeight = window.innerHeight * 1.5;
+      groupMaxHeight = window.innerHeight * 2.5;
     },
     { passive: true }
   );
@@ -374,7 +393,7 @@
     });
 
     visible.forEach(function (el, i) {
-      el.style.setProperty('--rv-delay', Math.min(i, 12) * 90 + 'ms');
+      el.style.setProperty('--rv-delay', Math.min(i, 8) * 80 + 'ms');
       reveal(el);
     });
   }

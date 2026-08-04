@@ -243,6 +243,31 @@
   }
 }
 
+@media (max-width: 79.9375em) {
+  .contacts__panel {
+    width: 28.125rem;
+    padding: 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .contacts__heading {
+    font-size: 2.5rem;
+  }
+
+  .contacts__icon-wrap {
+    width: 3.375rem;
+    height: 3.375rem;
+  }
+
+  .contacts__block-title {
+    font-size: 1.0625rem;
+  }
+
+  .contacts__block-desc {
+    font-size: 0.9375rem;
+  }
+}
+
 /* ==========================================================================
    Правки блока контактов
    ========================================================================== */

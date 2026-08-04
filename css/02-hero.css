@@ -5,7 +5,10 @@
 
 .hero {
   position: relative;
-  min-height: 100svh;
+  /* Первый блок всегда ровно во весь экран: 100vh как основа,
+     100svh для мобильных с динамическими панелями браузера. */
+  height: 100vh;
+  height: 100svh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -244,15 +247,20 @@
 
 /* ── Статистика ───────────────────────────────────────────── */
 
-/* статы по нижним углам, spacer по центру */
+/* статы по нижним углам, spacer по центру.
+   Блок закреплён у нижней кромки hero и НЕ участвует в потоке flex —
+   иначе контент flex:1 выталкивает его за пределы экрана и числа
+   обрезаются. Подъём цифр задаёт padding-bottom контейнера. */
 .hero__stats {
-  position: relative;
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
   z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  /* Статистика поднята от нижнего края. */
-  padding: 0 var(--gutter) var(--s-12);
+  /* Цифры подняты от нижней кромки экрана. */
+  padding: 0 var(--gutter) 2rem; /* 32px */
 }
 
 .hero__stat-item {
@@ -280,13 +288,12 @@
   max-width: 6rem;
 }
 
-/* Пустой разделитель между статами */
+/* Пустой разделитель между статами (собственного подъёма не имеет) */
 .hero__stats-spacer {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  padding-bottom: var(--s-12);
 }
 
 /* ============================================================
@@ -295,11 +302,8 @@
 
 @media (min-width: 48em) {
   .hero__stats {
-    padding-bottom: var(--s-14);
-  }
-
-  .hero__stats-spacer {
-    padding-bottom: var(--s-14);
+    /* Десктоп: цифры чуть выше. */
+    padding-bottom: 5.25rem; /* 84px */
   }
 
   .hero__stat-label {
@@ -311,13 +315,68 @@
 @media (min-width: 64em) {
   .hero__content {
     gap: var(--s-7);
-    /* Раздельные значения: общий padding-block перекрывал сдвиг блока вниз.
-       Верхний отступ удвоен от 100px по просьбе заказчика. */
-    padding-top: calc(var(--s-14) * 2);
+    /* Контент поднят выше: верхний отступ уменьшен относительно
+       прежних 200px, чтобы блок не уходил к нижней трети экрана. */
+    padding-top: calc(var(--s-14) * 1.5); /* 150px */
     padding-bottom: var(--s-7);
   }
 
   .hero__lead {
     gap: var(--s-2);
+  }
+}
+
+/* ============================================================
+   Wide (≥ 1440px): цифры статистики поднимаем ещё выше.
+   ============================================================ */
+
+/* ============================================================
+   ≤ 1440px (и меньше), от 1024px: контент первого экрана поднимается
+   чуть выше. Свободного пространства на средних высотах мало, поэтому
+   подъём делаем уменьшением верхнего отступа (150 → 130px), а не
+   margin: margin сдвигает только на половину и упирается в нехватку
+   места. Фактический подъём ≈ 10–16px.
+   ============================================================ */
+
+@media (max-width: 89.9375em) and (min-width: 64em) {
+  .hero__content {
+    /* Контент поднят выше за счёт меньшего верхнего отступа (150 → 40px). */
+    padding-top: 40px;
+  }
+}
+
+/* ============================================================
+   ≤ 1439px («после 1440» = 1440 и меньше): цифры статистики опущены.
+   ============================================================ */
+
+@media (min-width: 48em) and (max-width: 89.9375em) {
+  .hero__stats {
+    /* Цифры опущены ниже на экранах ≤1439. */
+    padding-bottom: 4.5rem; /* 72px */
+  }
+}
+
+@media (max-width: 79.9375em) {
+  .hero__content {
+    padding-top: var(--s-8);
+    padding-bottom: var(--s-5);
+    gap: var(--s-5);
+  }
+
+  .hero__heading {
+    font-size: calc(var(--t-hero) * 0.85);
+  }
+
+  .hero__accent {
+    font-size: clamp(2.1875rem, 1.2rem + 4.2vw, 4.6875rem);
+  }
+
+  .hero__lead {
+    max-width: 34rem;
+  }
+
+  .hero__scroll-btn {
+    width: clamp(3rem, 2rem + 4vw, 4.5rem);
+    height: clamp(3rem, 2rem + 4vw, 4.5rem);
   }
 }

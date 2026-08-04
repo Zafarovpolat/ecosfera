@@ -8,23 +8,23 @@
   <meta name="theme-color" content="#123206">
   <link rel="preload" href="fonts/FormaDJRCyrillicDisplay-Regular-Testing.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/CoFoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/tokens.css?v=1785750781">
-  <link rel="stylesheet" href="css/base.css?v=1785750781">
-  <link rel="stylesheet" href="css/01-header.css?v=1785750781">
-  <link rel="stylesheet" href="css/02-hero.css?v=1785750781">
-  <link rel="stylesheet" href="css/03-advantages.css?v=1785750781">
-  <link rel="stylesheet" href="css/04-nearby.css?v=1785750781">
-  <link rel="stylesheet" href="css/05-houses.css?v=1785750781">
-  <link rel="stylesheet" href="css/06-included.css?v=1785750781">
-  <link rel="stylesheet" href="css/07-gallery.css?v=1785750781">
-  <link rel="stylesheet" href="css/08-comparison.css?v=1785750781">
-  <link rel="stylesheet" href="css/09-audience.css?v=1785750781">
-  <link rel="stylesheet" href="css/10-booking.css?v=1785750781">
-  <link rel="stylesheet" href="css/11-reviews.css?v=1785750781">
-  <link rel="stylesheet" href="css/12-faq.css?v=1785750781">
-  <link rel="stylesheet" href="css/13-contacts.css?v=1785750781">
-  <link rel="stylesheet" href="css/14-footer.css?v=1785750781">
-  <link rel="stylesheet" href="css/15-reveal.css?v=1785750781">
+  <link rel="stylesheet" href="css/tokens.css?v=1785847379">
+  <link rel="stylesheet" href="css/base.css?v=1785847379">
+  <link rel="stylesheet" href="css/01-header.css?v=1785847379">
+  <link rel="stylesheet" href="css/02-hero.css?v=1785847379">
+  <link rel="stylesheet" href="css/03-advantages.css?v=1785847379">
+  <link rel="stylesheet" href="css/04-nearby.css?v=1785847379">
+  <link rel="stylesheet" href="css/05-houses.css?v=1785847379">
+  <link rel="stylesheet" href="css/06-included.css?v=1785847379">
+  <link rel="stylesheet" href="css/07-gallery.css?v=1785847379">
+  <link rel="stylesheet" href="css/08-comparison.css?v=1785847379">
+  <link rel="stylesheet" href="css/09-audience.css?v=1785847379">
+  <link rel="stylesheet" href="css/10-booking.css?v=1785847379">
+  <link rel="stylesheet" href="css/11-reviews.css?v=1785847379">
+  <link rel="stylesheet" href="css/12-faq.css?v=1785847379">
+  <link rel="stylesheet" href="css/13-contacts.css?v=1785847379">
+  <link rel="stylesheet" href="css/14-footer.css?v=1785847379">
+  <link rel="stylesheet" href="css/15-reveal.css?v=1785847379">
   <script>
     /* Прячем страницу до первой отрисовки, чтобы контент не мелькал.
        Страховка на 4 секунды: если основной скрипт не отработает,
@@ -262,7 +262,7 @@
         <img class="page-backdrop__img" src="images/vertical-shot-cabin-forest-surrounded-by-lot-gre-ccf609efd1.webp" alt="" loading="lazy" decoding="async">
         <div class="page-backdrop__veil"></div>
       </div>
-<section class="advantages" aria-labelledby="advantages-heading" id="advantages">
+<section class="advantages advantages--svg advantages--animate" aria-labelledby="advantages-heading" id="advantages">
 
   <!-- Декоративная ветка слева -->
   <img
@@ -362,10 +362,12 @@
 
   </ul>
 
+  <!-- Дивайдер прибит к нижней кромке секции: не забирает высоту из потока -->
+  <div class="divider advantages__divider" aria-hidden="true">
+    <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
+  </div>
+
 </section>
-      <div class="divider" aria-hidden="true">
-        <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
-      </div>
 <section class="nearby" aria-labelledby="nearby-benefits-heading">
 
   <!-- Фоновое изображение -->
@@ -419,12 +421,42 @@
 
     </ol>
 
+    <!-- Управление слайдером в компактной полосе 1024–1279px -->
+    <div class="comparison__pagination nearby__pagination">
+      <p class="comparison__pagination-counter" aria-live="polite">
+        <span class="comparison__pagination-current">01</span>
+        <span class="comparison__pagination-total">/03</span>
+      </p>
+      <div class="comparison__nav">
+        <!-- Стрелки в макете — одна картинка, поэтому она остаётся визуалом,
+             а поверх лежат две настоящие кнопки. -->
+        <img
+          src="icons/arrows.svg"
+          alt=""
+          class="comparison__pagination-arrows"
+          aria-hidden="true"
+        />
+        <button
+          type="button"
+          class="comparison__nav-btn comparison__nav-btn--prev"
+          aria-label="Предыдущее жильё рядом"
+        ></button>
+        <button
+          type="button"
+          class="comparison__nav-btn comparison__nav-btn--next"
+          aria-label="Следующее жильё рядом"
+        ></button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Дивайдер прибит к нижней кромке секции: не забирает высоту из потока -->
+  <div class="divider nearby__divider" aria-hidden="true">
+    <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
   </div>
 
 </section>
-      <div class="divider" aria-hidden="true">
-        <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
-      </div>
 <section class="houses" aria-labelledby="houses-heading" id="doma">
   <div class="container">
 
@@ -1206,10 +1238,11 @@
     </div><!-- /.included__inner -->
   </div><!-- /.container -->
 
+  <div class="divider included__divider" aria-hidden="true">
+    <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
+  </div>
+
 </section>
-      <div class="divider" aria-hidden="true">
-        <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
-      </div>
 <section class="photo-gallery" aria-labelledby="photo-gallery-heading">
 
   <div class="container">
@@ -1592,10 +1625,11 @@
 
   </div><!-- /.photo-gallery__mobile -->
 
+  <div class="divider photo-gallery__divider" aria-hidden="true">
+    <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
+  </div>
+
 </section>
-      <div class="divider" aria-hidden="true">
-        <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
-      </div>
 <section class="comparison" aria-labelledby="comparison-heading">
 
   <!-- Заголовок -->
@@ -1718,10 +1752,11 @@
     </div>
   </div>
 
+  <div class="divider comparison__divider" aria-hidden="true">
+    <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
+  </div>
+
 </section>
-      <div class="divider" aria-hidden="true">
-        <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
-      </div>
 <section class="audience" aria-labelledby="audience-heading">
   <div class="container">
 
@@ -1828,10 +1863,12 @@
     </ul>
 
   </div>
+
+  <div class="divider audience__divider" aria-hidden="true">
+    <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
+  </div>
+
 </section>
-      <div class="divider" aria-hidden="true">
-        <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
-      </div>
 <section class="booking" aria-labelledby="booking-heading">
   <div class="container">
     <div class="booking__glass">
@@ -2078,10 +2115,12 @@
     </div>
     <!-- /booking__glass -->
   </div>
+
+  <div class="divider booking__divider" aria-hidden="true">
+    <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
+  </div>
+
 </section>
-      <div class="divider" aria-hidden="true">
-        <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
-      </div>
 <section class="reviews" aria-labelledby="reviews-heading">
   <div class="container">
 
@@ -2355,10 +2394,12 @@
 
     </div><!-- /.reviews__carousel-wrapper -->
   </div>
+
+  <div class="divider reviews__divider" aria-hidden="true">
+    <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
+  </div>
+
 </section>
-      <div class="divider" aria-hidden="true">
-        <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
-      </div>
 <section class="faq" id="faq" aria-labelledby="faq-heading">
   <div class="container">
     <div class="faq__inner">
@@ -2543,10 +2584,12 @@
       </ul>
     </div>
   </div>
+
+  <div class="divider faq__divider" aria-hidden="true">
+    <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
+  </div>
+
 </section>
-      <div class="divider" aria-hidden="true">
-        <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
-      </div>
 <section id="contacts" class="contacts" aria-labelledby="contacts-heading">
 
   <!-- Карта + панель -->
@@ -2848,14 +2891,13 @@
     </div>
   </div>
 </footer>
-  <script src="js/lib/lenis.min.js?v=1785750781" defer></script>
-  <script src="js/smooth-scroll.js?v=1785750781" defer></script>
-  <script src="js/reveal.js?v=1785750781" defer></script>
-  <script src="js/comparison.js?v=1785750781" defer></script>
-  <script src="js/booking.js?v=1785750781" defer></script>
-  <script src="js/gallery.js?v=1785750781" defer></script>
-  <script src="js/reviews.js?v=1785750781" defer></script>
-  <script src="js/faq.js?v=1785750781" defer></script>
-  <script src="js/reveal-in.js?v=1785750781" defer></script>
+  <script src="js/reveal.js?v=1785847379" defer></script>
+  <script src="js/comparison.js?v=1785847379" defer></script>
+  <script src="js/booking.js?v=1785847379" defer></script>
+  <script src="js/gallery.js?v=1785847379" defer></script>
+  <script src="js/reviews.js?v=1785847379" defer></script>
+  <script src="js/faq.js?v=1785847379" defer></script>
+  <script src="js/reveal-in.js?v=1785847379" defer></script>
+ <script src="js/nearby.js?v=1785847379" defer></script>
 </body>
 </html>

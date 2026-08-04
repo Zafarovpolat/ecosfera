@@ -5,6 +5,7 @@
    ============================================================ */
 
 .reviews {
+  position: relative;
   padding-block: var(--s-section);
 }
 

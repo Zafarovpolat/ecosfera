@@ -406,8 +406,8 @@
   right: var(--s-3);
   border-radius: var(--r-md);
   background: var(--c-white);
-  height: auto;
-  width: 3rem; /* ~49px mobile */
+  width: 3rem;
+  height: 5.5rem;
   object-fit: contain;
 }
 
@@ -426,9 +426,8 @@
 }
 
 .houses__amenity-icon {
-  width: auto;
-  height: auto;
-  max-height: 3rem; /* ~48px */
+  width: 3rem;
+  height: 3rem;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -438,6 +437,8 @@
   font-size: var(--t-body-sm);
   line-height: var(--lh-body);
   color: var(--c-black);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -533,9 +534,8 @@
   }
 
   .houses__price-arrow {
-    width: 3.375rem; /* 54px */
-    top: var(--s-3);
-    right: var(--s-3);
+    width: 3.375rem;
+    height: 6.5rem;
   }
 
   /* AmenityTile desktop */
@@ -554,6 +554,36 @@
   .houses__gallery-arrow-btn {
     width: 3rem;
     height: 3rem;
+  }
+}
+
+@media (max-width: 79.9375em) {
+  .houses__content {
+    gap: var(--s-6);
+    padding-block: var(--s-3);
+  }
+
+  .houses__book-btn {
+    font-size: 0.9375rem;
+    min-height: 5rem;
+    width: 15.625rem;
+  }
+
+  .houses__whatsapp-btn {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .houses__price-amount {
+    font-size: 2rem;
+  }
+
+  .houses__price-unit {
+    font-size: 0.9375rem;
+  }
+
+  .houses__title {
+    font-size: var(--t-h2);
   }
 }
 

@@ -19,6 +19,19 @@
   --gallery-cycle: 330s;
 }
 
+/* ── Дивайдер прибит к нижней кромке секции ─────────────────────
+   Вынесен из потока, чтобы не красть высоту у секции ниже. */
+.photo-gallery__divider {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -2rem;
+  padding-block: var(--s-4);
+}
+
+.photo-gallery__divider .divider__icon {
+  transform: rotate(90deg);
+}
+
 /* ── Иконка видео в акцентной плашке заголовка ───────────────────────────── */
 
 .photo-gallery__video-icon {
@@ -32,7 +45,7 @@
 /* ── Десктопная галерея — два ряда ───────────────────────────────────────── */
 
 .photo-gallery__desktop {
-  display: none; /* скрыта на мобиле */
+  display: flex;
   flex-direction: column;
   gap: var(--s-3);
   margin-block-start: var(--s-5);
@@ -114,17 +127,10 @@
 
 /* ── Мобильная галерея — один горизонтальный ряд ────────────────────────── */
 
+/* Мобильный скролл-блок больше не нужен: на всех ширинах показываем
+   два бегущих ряда с автоплеем. */
 .photo-gallery__mobile {
-  display: flex;
-  flex-direction: row;
-  gap: var(--s-3);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-inline: var(--gutter);
-  padding-block-end: var(--s-2);
-  margin-block-start: var(--s-5);
-  border-radius: var(--r-lg);
+  display: none;
 }
 
 .photo-gallery__mobile::-webkit-scrollbar {
@@ -153,10 +159,6 @@
     display: flex;
   }
 
-  .photo-gallery__mobile {
-    display: none;
-  }
-
   .photo-gallery__figure {
     width: 467px;
     height: 323px;
@@ -165,6 +167,18 @@
   .photo-gallery__figure .photo-gallery__photo {
     width: 467px;
     height: 323px;
+  }
+}
+
+@media (max-width: 79.9375em) {
+  .photo-gallery__figure {
+    width: 340px;
+    height: 235px;
+  }
+
+  .photo-gallery__figure .photo-gallery__photo {
+    width: 340px;
+    height: 235px;
   }
 }
 

@@ -32,6 +32,21 @@
   var CENTER = 3; // номер центральной позиции в веере
   var shift = 0; // сдвиг набора по кругу
 
+  /* На ширинах с обычным слайдером (≤1024) кнопки и стрелки листают
+     горизонтальный список карточек, а не вращают веер. */
+  var small = window.matchMedia('(max-width: 63.9375em)');
+
+  function cardStep() {
+    if (cards.length < 2) return 0;
+    var second = cards[1].getBoundingClientRect().left;
+    var first = cards[0].getBoundingClientRect().left;
+    return second - first;
+  }
+
+  function scrollList(direction) {
+    list.scrollBy({ left: direction * cardStep(), behavior: 'smooth' });
+  }
+
   function mod(n, m) {
     return ((n % m) + m) % m;
   }
@@ -57,9 +72,26 @@
     }
   }
 
+  /* На слайдере счётчик показывает номер листаемой карточки. */
+  if (small.matches) {
+    list.addEventListener('scroll', function () {
+      var step = cardStep() || 1;
+      var index = Math.round(list.scrollLeft / step);
+      if (counter) {
+        counter.textContent = String(Math.min(Math.max(index % total, 0), total - 1) + 1).padStart(2, '0');
+      }
+    }, { passive: true });
+  }
+
   var movingTimer = null;
 
   function step(direction) {
+    /* Обычный слайдер (≤1024): листаем список. */
+    if (small.matches) {
+      scrollList(direction);
+      return;
+    }
+
     shift -= direction; // вперёд: следующая справа уезжает в центр
     render();
 

@@ -119,6 +119,27 @@ table{border-collapse:collapse;width:100%}
 .divider{display:flex;justify-content:center;padding-block:var(--s-section)}
 .divider__icon{width:1.625rem;height:1.75rem;opacity:.5}
 
+/* Дивайдеры после секций прибиты к нижней кромке своей секции — не крадут
+   высоту у следующей секции ни в одной зоне. */
+.comparison__divider,
+.audience__divider,
+.booking__divider,
+.reviews__divider,
+.faq__divider {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -2rem;
+  padding-block: var(--s-4);
+}
+
+.comparison__divider .divider__icon,
+.audience__divider .divider__icon,
+.booking__divider .divider__icon,
+.reviews__divider .divider__icon,
+.faq__divider .divider__icon {
+  transform: rotate(90deg);
+}
+
 /* Сквозной фон ниже первого экрана. */
 .page-body{position:relative;isolation:isolate}
 .page-body > *:not(.page-backdrop){position:relative;z-index:1}
@@ -139,3 +160,27 @@ html{scrollbar-width:thin;scrollbar-color:rgb(255 255 255 / .3) transparent}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:rgb(255 255 255 / .3);border-radius:99px;border:3px solid transparent;background-clip:content-box}
 ::-webkit-scrollbar-thumb:hover{background:rgb(255 255 255 / .5);background-clip:content-box}
+
+/* ============================================================
+   1024–1279px: компактная полоса.
+   Все токены (rem) сжимаются автоматически на ~6% за счёт корневого
+   масштаба. Пиксельные значения в отдельных файлах (футер и т.д.)
+   остаются как есть — они уже настроены для этого диапазона.
+   ============================================================ */
+@media (min-width: 64em) and (max-width: 79.9375em) {
+  html { font-size: 93.75%; /* 15px вместо 16 */ }
+}
+
+@media (max-width: 79.9375em) {
+  .section-heading {
+    font-size: calc(var(--t-h2) * 0.85);
+  }
+
+  .section-heading__accent {
+    font-size: calc(var(--t-h2-sub) * 0.85);
+  }
+
+  .section-heading__accent--lg {
+    font-size: calc(var(--t-h2) * 0.85);
+  }
+}

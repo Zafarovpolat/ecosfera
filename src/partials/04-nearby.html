@@ -1,6 +1,3 @@
-      <div class="divider" aria-hidden="true">
-        <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
-      </div>
 <section class="nearby" aria-labelledby="nearby-benefits-heading">
 
   <!-- Фоновое изображение -->
@@ -54,6 +51,39 @@
 
     </ol>
 
+    <!-- Управление слайдером в компактной полосе 1024–1279px -->
+    <div class="comparison__pagination nearby__pagination">
+      <p class="comparison__pagination-counter" aria-live="polite">
+        <span class="comparison__pagination-current">01</span>
+        <span class="comparison__pagination-total">/03</span>
+      </p>
+      <div class="comparison__nav">
+        <!-- Стрелки в макете — одна картинка, поэтому она остаётся визуалом,
+             а поверх лежат две настоящие кнопки. -->
+        <img
+          src="icons/arrows.svg"
+          alt=""
+          class="comparison__pagination-arrows"
+          aria-hidden="true"
+        />
+        <button
+          type="button"
+          class="comparison__nav-btn comparison__nav-btn--prev"
+          aria-label="Предыдущее жильё рядом"
+        ></button>
+        <button
+          type="button"
+          class="comparison__nav-btn comparison__nav-btn--next"
+          aria-label="Следующее жильё рядом"
+        ></button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Дивайдер прибит к нижней кромке секции: не забирает высоту из потока -->
+  <div class="divider nearby__divider" aria-hidden="true">
+    <img class="divider__icon" src="icons/fi-ss-angle-double-small-right.svg" alt="" width="26" height="28">
   </div>
 
 </section>
