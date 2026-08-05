@@ -385,6 +385,11 @@
 }
 
 @media (min-width: 64em) {
+  /* На десктопе (≥1024) слайдера нет — пагинация не нужна. */
+  .advantages .advantages__pagination {
+    display: none;
+  }
+
   .advantages__tag-wrap {
     margin-bottom: var(--s-10);
   }
