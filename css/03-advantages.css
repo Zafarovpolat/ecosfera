@@ -450,8 +450,11 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    /* Вертикальные отступы обязательны: overflow-x: auto неявно делает и
+       overflow-y: auto, и маркеры-точки, торчащие за верх/низ карточки
+       (translate 50%), срезались бы по Y. Плюс место под полосу прокрутки. */
     padding-inline: var(--gutter);
-    padding-block-end: var(--s-2); /* место для полосы прокрутки */
+    padding-block: var(--s-4);
     /* Ряд карточек выходит за правый край контейнера и виден до кромки
        экрана: окно скролла растянуто до вьюпорта, поэтому срез карточек
        уходит за экран и не виден. */
@@ -465,10 +468,12 @@
 
   /* Ширина карточки от вьюпорта, а не от контентной ширины списка:
      иначе padding-inline-end сужает карточки и последняя становится
-     недостижимой для скролла. */
+     недостижимой для скролла.
+     scroll-snap-align: center — активный слайд встаёт по центру окна,
+     а не липнет к левому краю (как было со start). */
   .advantages__card-item {
     flex: 0 0 calc(100vw - var(--gutter) - var(--s-8));
-    scroll-snap-align: start;
+    scroll-snap-align: center;
   }
 
   .advantages__card {

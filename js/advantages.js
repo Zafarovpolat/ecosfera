@@ -43,14 +43,22 @@
     return card.getBoundingClientRect().left - listRect.left + list.scrollLeft;
   }
 
-  /* Шаг листания: расстояние между левыми краями соседних карточек. */
-  function step() {
-    if (total < 2) return 0;
-    return cardLeft(cards[1]) - cardLeft(cards[0]);
-  }
 
   function maxScroll() {
     return Math.max(0, list.scrollWidth - list.clientWidth);
+  }
+
+  /* Середина карточки в координатах содержимого списка. */
+  function cardCenter(card) {
+    return cardLeft(card) + card.getBoundingClientRect().width / 2;
+  }
+
+  /* Позиция скролла, при которой карточка встаёт в центр окна. */
+  function centerTarget(i) {
+    return Math.max(0, Math.min(
+      cardCenter(cards[i]) - list.clientWidth / 2,
+      maxScroll()
+    ));
   }
 
   function pad(n) {
@@ -64,9 +72,8 @@
   }
 
   function scrollToCard(i) {
-    var target = Math.min(cardLeft(cards[i]), maxScroll());
     list.scrollTo({
-      left: target,
+      left: centerTarget(i),
       behavior: 'smooth'
     });
   }
@@ -94,13 +101,20 @@
     });
   }
 
-  /* При ручном скролле (свайп) следим за счётчиком и индексом. */
+  /* При ручном скролле (свайп) следим за счётчиком и индексом: активным
+     считается слайд, чья середина ближе всего к центру окна. */
   list.addEventListener('scroll', function () {
-    var by = step();
-    if (!by) return;
-    var center = list.scrollLeft + list.clientWidth / 2;
-    var i = Math.round(center / by - 0.5);
-    index = Math.max(0, Math.min(total - 1, i));
+    var viewportCenter = list.scrollLeft + list.clientWidth / 2;
+    var best = 0;
+    var bestDist = Infinity;
+    for (var i = 0; i < total; i++) {
+      var d = Math.abs(cardCenter(cards[i]) - viewportCenter);
+      if (d < bestDist) {
+        bestDist = d;
+        best = i;
+      }
+    }
+    index = best;
     render();
   });
 
