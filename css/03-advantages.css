@@ -79,12 +79,21 @@
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding-inline: var(--gutter);
-  /* убрать скроллбар визуально */
-  scrollbar-width: none;
 }
 
-.advantages__card-list::-webkit-scrollbar {
-  display: none;
+/* Скрываем полосу только там, где слайдера нет (≥1024: карточки в ряд,
+   overflow-x: visible). На слайдере (≤1024) scrollbar-width задать нельзя:
+   в Chrome любое его значение отключает ::-webkit-scrollbar, и инсет
+   (margin-inline) на треке перестаёт работать — полоса встаёт вплотную
+   к краям экрана. */
+@media (min-width: 64em) {
+  .advantages__card-list {
+    scrollbar-width: none;
+  }
+
+  .advantages__card-list::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .advantages__card-item {
@@ -469,17 +478,12 @@
   }
 
   /* Кастомная полоса прокрутки — белая с полупрозрачным фоном, как у
-     nearby__list и audience__grid (а не скрытая, как было на десктопе).
-     НЕ задаём scrollbar-width/scrollbar-color: в Chrome они отключают
-     WebKit-скроллбар и инсет (margin-inline) на треке перестаёт работать. */
-  .advantages__card-list {
-    /* Firefox: не прятать полосу (базовое правило ставит none). */
-    scrollbar-width: auto;
-  }
+     nearby__list и audience__grid. scrollbar-width здесь не задаём вовсе
+     (см. комментарий у базового правила): иначе в Chrome отключается
+     WebKit-скроллбар и инсет на треке перестаёт работать. */
+
   /* Safari/WebKit: кастомная полоса — постоянно видна, не только при скролле. */
   .advantages__card-list::-webkit-scrollbar {
-    /* Сброс скрытой полосы из базового правила. */
-    display: block;
     height: 6px;
   }
   .advantages__card-list::-webkit-scrollbar-track {
@@ -524,5 +528,14 @@
     height: auto;
     width: 7.75rem;
     margin-inline: auto;
+  }
+}
+
+/* ── Телефоны (≤640px): слайд во всю ширину контента ─────────
+   База ≤1024 оставляет справа запас (gutter + s-8) под выглядывающую
+   карточку; на телефоне слайд должен занимать всю ширину. */
+@media (max-width: 40em) {
+  .advantages__card-item {
+    flex: 0 0 calc(100vw - var(--gutter) * 2);
   }
 }

@@ -364,13 +364,52 @@
   }
 }
 
-@media (max-width: 30em) {
+/* ≤640: карточка на 77.4% ширины, контейнер веера ниже —
+   высота карточки растёт вместе с шириной, пропорция держит её внутри.
+   Коэффициент тот же, что у других ступеней: 77.4 / 26.07 ≈ 2.969,
+   560 × 2.969 ≈ 1663. */
+@media (max-width: 40em) {
+  .comparison__heading {
+    font-size: calc(var(--t-h2) * 0.8);
+  }
+
+  .comparison__heading-accent {
+    font-size: calc(var(--t-h2-sub) * 0.8);
+  }
+
+  /* Воздух над и под веером. */
+  .comparison__cards {
+    padding-block: var(--s-6);
+    padding-inline: var(--s-3);
+  }
+
   .comparison__card-list {
-    aspect-ratio: 1818 / 1232; /* 560 × 2.20 */
+    aspect-ratio: 1818 / 1663;
+    padding-block: var(--s-4);
   }
   .comparison__card-list > .comparison__card,
   .comparison__card {
-    width: 57.4%; /* 26.07% × 2.20 */
+    width: 77.4%;
+  }
+
+  /* Внутренние отступы самой карточки сверху и снизу. */
+  .comparison__card {
+    padding-block: var(--s-7);
+  }
+
+  /* Текст закреплён у низа карточки (margin-top: auto из базового правила). */
+  .comparison__card-body {
+    margin-block-start: auto;
+  }
+
+  .comparison__badge {
+    width: 4.25rem; /* 68 */
+    height: 4.25rem;
+    border-radius: 0.9375rem; /* 15 */
+  }
+
+  .comparison__badge-num {
+    font-size: 1.25rem; /* 20 */
   }
 }
 

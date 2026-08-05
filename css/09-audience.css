@@ -64,9 +64,9 @@
   padding: 0;
 
   /* ≤1024: горизонтальный слайдер по одной карточке за раз (как nearby__list).
-     Окно скролла тянется вправо до кромки вьюпорта (margin-inline-end), поэтому
-     соседняя карточка выходит за край секции и НЕ обрезается overflow: hidden —
-     секция его не ставит. */
+     Окно скролла растянуто до кромок вьюпорта с обеих сторон, поэтому
+     выглядывающие карточки видны целиком — обрезки по линии гуттера нет.
+     padding-inline возвращает выровненные карточки на место гуттеров. */
   display: flex;
   flex-direction: row;
   gap: var(--s-5);
@@ -75,7 +75,9 @@
   -webkit-overflow-scrolling: touch;
   /* padding-block-end — зазор между карточками и скроллбаром снизу. */
   padding-block-end: var(--s-6);
+  margin-inline-start: calc(-1 * var(--gutter));
   margin-inline-end: calc(50% - 50vw);
+  padding-inline: var(--gutter);
   /* НЕ задаём scrollbar-width/scrollbar-color: в Chrome они отключают
      WebKit-скроллбар и инсет (margin-inline) на треке не работает. */
 }
@@ -155,7 +157,8 @@
     overflow-x: visible;
     scroll-snap-type: none;
     padding-block-end: 0;
-    margin-inline-end: 0;
+    margin-inline: 0;
+    padding-inline: 0;
 
     /* Высота строки: карточка + максимальный сдвиг чтобы смещённые карточки
        не обрезались снизу */
@@ -304,5 +307,23 @@
 
   .audience__card-body {
     padding: var(--s-3) var(--s-5) var(--s-6);
+  }
+}
+
+/* ── Телефоны (≤640px) ──────────────────────────────────────────────────── */
+
+@media (max-width: 40em) {
+  /* Подпись: звёздочка сверху, текст снизу, всё по центру. */
+  .audience__subtitle {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-2);
+    text-align: center;
+  }
+
+  /* Слайд во всю ширину контента контейнера (между гуттерами): карточки
+     не липнут к краям экрана, последняя доскролливается до правого гуттера. */
+  .audience__item {
+    flex: 0 0 calc(100vw - var(--gutter) * 2);
   }
 }

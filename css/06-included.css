@@ -436,3 +436,37 @@
     font-size: 1.25rem;
   }
 }
+
+/* ─── Телефоны (≤640px): ровные два столбца ──────────────────────────────
+   Шестидорожечная сетка с span-2/span-3 из блока ≤1024 на телефоне
+   даёт слишком узкие карточки. Здесь все карточки в одну долю. */
+@media (max-width: 40em) {
+  /* Меньше воздуха вокруг самой обёртки таблицы. */
+  .included__table-wrap {
+    padding: var(--s-2);
+  }
+
+  .included__table tbody {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-2);
+  }
+
+  .included__row,
+  .included__block--lime .included__row:nth-child(4),
+  .included__block--lime .included__row:nth-child(5),
+  .included__block--black .included__row:nth-child(7),
+  .included__block--black .included__row:nth-child(8) {
+    grid-column: span 1;
+  }
+
+  /* Карточка 05 («Чан») снова на обе колонки. Специфичность выше,
+     чем у nth-child-правил строкой выше, иначе они перебивали бы. */
+  .included__table tbody .included__row.included__row--span {
+    grid-column: 1 / 3;
+  }
+
+  .included__row {
+    padding: var(--s-4);
+    gap: var(--s-4);
+  }
+}

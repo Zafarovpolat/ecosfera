@@ -184,3 +184,30 @@ html{scrollbar-width:thin;scrollbar-color:rgb(255 255 255 / .3) transparent}
     font-size: calc(var(--t-h2) * 0.85);
   }
 }
+
+/* ============================================================
+   Телефоны (≤640px): заголовки компактнее.
+   clamp уже тянет кегль вниз, но на телефоне добавляем ещё один
+   коэффициент, чтобы строки не выглядели плакатными.
+   ============================================================ */
+@media (max-width: 40em) {
+  .section-heading {
+    font-size: calc(var(--t-h2) * 0.8);
+  }
+
+  .section-heading__accent {
+    font-size: calc(var(--t-h2-sub) * 0.8);
+  }
+
+  .section-heading__accent--lg {
+    font-size: calc(var(--t-h2) * 0.8);
+  }
+
+  /* «Забронировать дом»: строка переносится, и плашка «дом» уходит
+     на вторую строку. Делаем её блочной строкой и прижимаем к правому
+     краю бокса заголовка, а не оставляем слева. */
+  .section-heading__accent--inline {
+    display: flex;
+    margin: -0.14em 0 0 auto;
+  }
+}

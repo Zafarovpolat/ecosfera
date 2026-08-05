@@ -193,3 +193,17 @@
     margin-block-start: var(--s-7);
   }
 }
+
+/* ── Телефоны (≤640px): слайды дорожек мельче ────────────────────────────
+   340×235 из блока ≤1279 на телефоне велики; пропорция 467:323 сохранена. */
+@media (max-width: 40em) {
+  .photo-gallery__figure,
+  .photo-gallery__figure .photo-gallery__photo {
+    width: 260px;
+    height: 180px;
+  }
+
+  .photo-gallery__figure {
+    border-radius: var(--r-lg); /* 20px вместо 35 */
+  }
+}

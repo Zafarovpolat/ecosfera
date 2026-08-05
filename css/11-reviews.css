@@ -355,3 +355,29 @@
 .reviews__instagram-btn:hover .reviews__corner-bottom-right {
   filter: invert(1);
 }
+
+/* ============================================================
+   Телефоны (≤640px): слайд почти во всю ширину экрана.
+   Базовые 565px шире самого вьюпорта — карточка уходила за край.
+   Шаг карусели измеряется скриптом по фактической ширине, поэтому
+   пересчёт не нужен.
+   ============================================================ */
+@media (max-width: 40em) {
+  .reviews__section-header {
+    align-items: center;
+    text-align: center;
+  }
+
+  .reviews__card-item {
+    flex: 0 0 calc(100vw - var(--gutter) - var(--s-5));
+  }
+
+  .reviews__card {
+    padding: var(--s-5);
+    gap: var(--s-6);
+  }
+
+  .reviews__instagram-btn {
+    padding: var(--s-4) var(--s-5);
+  }
+}

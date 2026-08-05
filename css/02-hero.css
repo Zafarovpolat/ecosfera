@@ -310,6 +310,11 @@
     font-size: var(--t-body);
     max-width: none;
   }
+
+  /* Перенос «Уютных / дома» — только мобильный; здесь одна строка. */
+  .hero__stat-label br {
+    display: none;
+  }
 }
 
 @media (min-width: 64em) {
@@ -378,5 +383,14 @@
   .hero__scroll-btn {
     width: clamp(3rem, 2rem + 4vw, 4.5rem);
     height: clamp(3rem, 2rem + 4vw, 4.5rem);
+  }
+}
+
+/* ── Телефоны (≤640px): подписи статистики переносятся ──────
+   Длинные слова без переноса вылезали за свой стат. */
+@media (max-width: 40em) {
+  .hero__stat-label {
+    overflow-wrap: break-word;
+    max-width: 5.5rem;
   }
 }

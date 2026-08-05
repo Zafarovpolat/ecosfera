@@ -107,3 +107,24 @@ html.rv-boot.rv-ready body {
   opacity: 1;
   transition: opacity 0.35s var(--ease);
 }
+
+/* ==========================================================================
+   ≤640: общее уменьшение пагинации всех слайдеров
+   Файл грузится последним, поэтому правила перекрывают секционные.
+   ========================================================================== */
+
+@media (max-width: 40em) {
+  /* Стрелки: comparison/advantages/nearby/audience используют один класс. */
+  .comparison__pagination-arrows,
+  .reviews__nav-img {
+    width: 6rem;
+  }
+
+  /* Счётчики компактнее. */
+  .comparison__pagination-counter,
+  .reviews__counter {
+    padding: var(--s-3);
+    border-radius: var(--r-md);
+    font-size: 0.9375rem;
+  }
+}

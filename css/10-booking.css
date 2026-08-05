@@ -803,3 +803,88 @@
 .booking__submit-btn:hover .booking__btn-mark {
   filter: invert(1);
 }
+
+/* ================================================================
+   Телефоны (≤640px): компактнее поля, кнопка и панель формы.
+   Базовый паддинг полей 40px по вертикали на телефоне съедает
+   пол-экрана. Стоит в конце файла, чтобы перебить и базовые правила
+   «коробки», и min-height кнопки из блока ≤1024.
+   ================================================================ */
+@media (max-width: 40em) {
+  /* Контейнер секции на телефонах — боковые отступы сильно меньше. */
+  .booking .container {
+    padding-inline: var(--s-3);
+  }
+
+  /* Заголовок «Забронировать дом» — во всю ширину, плашка «дом» у правого края. */
+  .booking .section-heading {
+    width: 100%;
+  }
+
+  /* Плашка предоплаты: компактнее и ПЕРЕНЕСЕНА под форму.
+     top-row растворяется (display:contents), его дети становятся прямыми
+     детьми glass-панели, и order ставит бейдж после form-panel. */
+  .booking__top-row {
+    display: contents;
+  }
+
+  .booking__payment-badge {
+    order: 1;
+    gap: var(--s-3);
+  }
+
+  .booking__payment-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.8125rem; /* 13 */
+  }
+
+  .booking__payment-text {
+    max-width: none;
+  }
+
+  .booking__payment-title {
+    font-size: 1rem;
+  }
+
+  .booking__payment-detail {
+    font-size: 0.875rem;
+  }
+
+  .booking__form-panel {
+    padding: var(--s-4);
+    gap: var(--s-3);
+  }
+
+  .booking__form {
+    gap: var(--s-3);
+  }
+
+  .booking__input,
+  .booking__select,
+  .booking__combo {
+    padding: var(--s-4);
+    font-size: 1rem;
+  }
+
+  .booking__select-wrapper,
+  .booking__input-wrapper {
+    border-radius: var(--r-lg); /* 20 */
+  }
+
+  .booking__select-arrow,
+  .booking__input-icon {
+    inset-inline-end: var(--s-4);
+  }
+
+  .booking__submit-btn {
+    min-height: 3.5rem; /* 56 — вместо 98 */
+    padding-block: var(--s-4);
+  }
+
+  .booking__field-error {
+    padding-inline: var(--s-4);
+    padding-block-end: var(--s-3);
+    margin-block-start: calc(-1 * var(--s-3));
+  }
+}

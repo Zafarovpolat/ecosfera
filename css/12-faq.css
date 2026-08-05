@@ -468,4 +468,22 @@
   .faq__item--open {
     border-radius: var(--r-lg); /* 20px */
   }
+
+  /* Длина ответа ограничена, как на десктопе (там 100% − 132px):
+     минус 70px — ширина круга с плюсом (44px) и зазор до него. */
+  .faq__answer {
+    max-width: calc(100% - 70px);
+  }
+}
+
+/* ≤640: заголовок секции по центру (CTA на этих ширинах скрыт). */
+@media (max-width: 40em) {
+  .faq__top-row {
+    align-items: center;
+    text-align: center;
+  }
+
+  .faq .section-heading {
+    margin-inline: auto;
+  }
 }

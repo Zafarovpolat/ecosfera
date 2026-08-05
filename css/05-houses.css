@@ -274,39 +274,46 @@
   display: block;
 }
 
-/* Arrows */
+/* Arrows — прямоугольник arrows.svg + две прозрачные половины-кнопки,
+   как в comparison__nav. Одна половина белая, вторая прозрачная — это
+   нарисовано в самой картинке. */
 .houses__gallery-arrows {
   position: absolute;
-  bottom: var(--s-5);
+  bottom: var(--s-3);
   right: var(--s-5);
-  display: flex;
-  flex-direction: row;
-  gap: var(--s-1);
+  display: inline-block;
+  line-height: 0;
   z-index: 2;
 }
 
-.houses__gallery-arrow-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.625rem; /* ~42px */
-  height: 2.625rem;
-  border-radius: var(--r-pill);
-  background: var(--c-white-10);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: var(--c-white);
-  transition: background var(--dur) var(--ease);
+.houses__gallery-arrows-img {
+  display: block;
+  width: 7.75rem; /* как у comparison__pagination-arrows */
+  height: auto;
 }
 
-.houses__gallery-arrow-btn:hover {
-  background: var(--c-white-20);
+.houses__gallery-arrow-btn {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.houses__gallery-arrow-btn--prev {
+  left: 0;
+}
+
+.houses__gallery-arrow-btn--next {
+  right: 0;
 }
 
 /* Dots */
 .houses__gallery-dots {
   position: absolute;
-  bottom: var(--s-5);
+  bottom: var(--s-3);
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -549,12 +556,6 @@
     font-size: 1.0625rem; /* 17px */
     line-height: 1.26;
   }
-
-  /* Gallery arrows large */
-  .houses__gallery-arrow-btn {
-    width: 3rem;
-    height: 3rem;
-  }
 }
 
 @media (max-width: 79.9375em) {
@@ -602,5 +603,20 @@
 
   .houses__spec-item {
     font-size: 1rem; /* 16px */
+  }
+}
+
+/* ── ≤640: мобильные правки галереи ─────────────────────────────────────── */
+
+@media (max-width: 40em) {
+  /* Точки — у левого края вместо центра. */
+  .houses__gallery-dots {
+    left: var(--s-4);
+    transform: none;
+  }
+
+  /* Стрелки компактнее, как остальная пагинация на мобильных. */
+  .houses__gallery-arrows-img {
+    width: 6rem;
   }
 }

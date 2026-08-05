@@ -325,3 +325,56 @@
 .contacts__map-embed-credit--second {
   inset-block-start: 14px;
 }
+
+/* ==========================================================================
+   Телефоны (≤640px): панель прижата к верху карты и заметно компактнее,
+   чтобы саму карту было видно.
+   ========================================================================== */
+
+@media (max-width: 40em) {
+  .contacts__panel {
+    top: var(--s-3);
+    transform: none; /* не центруем — крепим к верху */
+    padding: var(--s-4);
+    gap: var(--s-3);
+  }
+
+  .contacts__heading {
+    font-size: 1.375rem; /* 22 */
+    max-width: none;
+  }
+
+  .contacts__block-list {
+    gap: var(--s-3);
+  }
+
+  .contacts__block {
+    gap: var(--s-3);
+  }
+
+  .contacts__icon-wrap {
+    width: 2.5rem; /* 40 */
+    height: 2.5rem;
+    border-radius: var(--r-sm);
+  }
+
+  .contacts__block-text {
+    gap: 0;
+  }
+
+  .contacts__block-title {
+    font-size: 0.9375rem; /* 15 */
+  }
+
+  .contacts__block-desc {
+    font-size: 0.8125rem; /* 13 */
+  }
+
+  .contacts__map-links {
+    gap: var(--s-2);
+  }
+
+  .contacts__map-link img {
+    max-height: 2.75rem; /* 44 */
+  }
+}
