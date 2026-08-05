@@ -356,11 +356,11 @@
 
 @media (max-width: 47.9375em) {
   .comparison__card-list {
-    aspect-ratio: 1818 / 952; /* 560 × 1.70 */
+    aspect-ratio: 1818 / 1045; /* 560 × 1.87 */
   }
   .comparison__card-list > .comparison__card,
   .comparison__card {
-    width: 44.3%; /* 26.07% × 1.70 */
+    width: 48.7%; /* 26.07% × 1.87 */
   }
 }
 
@@ -493,6 +493,13 @@
 @media (max-width: 63.9375em) {
   .comparison__pagination {
     margin-block-start: calc(-1 * var(--s-7));
+  }
+}
+
+/* ≤768: пагинацию опускаем ниже (в блоке ≤1024 она подтянута вверх). */
+@media (max-width: 47.9375em) {
+  .comparison__pagination {
+    margin-block-start: var(--s-2);
   }
 }
 

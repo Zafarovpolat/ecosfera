@@ -160,7 +160,7 @@
   justify-content: center;
   width: clamp(3.875rem, 2.4rem + 6.3vw, 6.25rem); /* 62 → 100 */
   height: clamp(3.875rem, 2.4rem + 6.3vw, 6.25rem);
-  border-radius: var(--r-xl);
+  border-radius: var(--r-md);
   background: var(--c-white-10);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -177,7 +177,7 @@
 /* иконка шеврона, повёрнутая вниз (svg смотрит вправо → rotate 90deg) */
 .hero__scroll-btn-icon {
   display: block;
-  width: 1.625rem; /* 26px */
+  width: 1.25rem; /* 20px */
   height: auto;
   transform: rotate(90deg);
   flex-shrink: 0;
