@@ -87,6 +87,8 @@
   height: 6px;
 }
 .audience__grid::-webkit-scrollbar-track {
+  /* Боковые отступы, как у самих слайдов (--gutter). */
+  margin-inline: var(--gutter);
   background: var(--c-white-20);
   border-radius: var(--r-pill);
 }

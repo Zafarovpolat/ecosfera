@@ -477,6 +477,9 @@
     height: 6px;
   }
   .advantages__card-list::-webkit-scrollbar-track {
+    /* Боковые отступы, как у самих слайдов (--gutter), — иначе полоса
+       растянута на всю ширину блока-скроллера, а карточки вписаны с полями. */
+    margin-inline: var(--gutter);
     background: var(--c-white-20);
     border-radius: var(--r-pill);
   }
