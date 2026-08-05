@@ -414,6 +414,9 @@
 
   .booking__submit-btn {
     width: 100%;
+    /* Высоту возвращаем как на десктопе: иначе при ≤1024 кнопка была ниже
+       (без min-height оставалась только padding). */
+    min-height: 6.125rem; /* 98 */
   }
 
   .booking__consent-row {
