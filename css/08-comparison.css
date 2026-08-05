@@ -346,31 +346,31 @@
    overflow секции подрезать верх карточек. */
 @media (max-width: 63.9375em) {
   .comparison__card-list {
-    aspect-ratio: 1818 / 812; /* 560 × 1.45 — под увеличенную карточку */
+    aspect-ratio: 1818 / 898; /* 560 × 1.60 — под увеличенную карточку */
   }
   .comparison__card-list > .comparison__card,
   .comparison__card {
-    width: 37.8%; /* 26.07% × 1.45 */
+    width: 41.7%; /* 26.07% × 1.60 */
   }
 }
 
 @media (max-width: 47.9375em) {
   .comparison__card-list {
-    aspect-ratio: 1818 / 1045; /* 560 × 1.87 */
+    aspect-ratio: 1818 / 1120; /* 560 × 2.00 */
   }
   .comparison__card-list > .comparison__card,
   .comparison__card {
-    width: 48.7%; /* 26.07% × 1.87 */
+    width: 52%; /* 26.07% × 2.00 */
   }
 }
 
 @media (max-width: 30em) {
   .comparison__card-list {
-    aspect-ratio: 1818 / 1176; /* 560 × 2.10 */
+    aspect-ratio: 1818 / 1232; /* 560 × 2.20 */
   }
   .comparison__card-list > .comparison__card,
   .comparison__card {
-    width: 54.7%; /* 26.07% × 2.10 */
+    width: 57.4%; /* 26.07% × 2.20 */
   }
 }
 

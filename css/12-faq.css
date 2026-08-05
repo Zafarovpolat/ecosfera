@@ -155,6 +155,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Размер задан и на мобильном: без ширины/высоты иконка (плюс из
+     абсолютных ::before/::after в процентах) схлопывается в ноль — на
+     экранах <1024 она еле видна. */
+  width: 2.75rem; /* 44px */
+  height: 2.75rem;
 }
 
 /* ── Панель ответа ── */
@@ -454,5 +459,13 @@
 @media (max-width: 63.9375em) {
   .faq__cta {
     display: none;
+  }
+}
+
+/* ≤768: компактнее — меньший радиус скругления пунктов. */
+@media (max-width: 47.9375em) {
+  .faq__item,
+  .faq__item--open {
+    border-radius: var(--r-lg); /* 20px */
   }
 }
