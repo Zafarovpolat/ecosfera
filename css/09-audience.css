@@ -73,13 +73,18 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding-block-end: var(--s-2); /* место под полосу прокрутки */
+  /* padding-block-end — зазор между карточками и скроллбаром снизу. */
+  padding-block-end: var(--s-6);
   margin-inline-end: calc(50% - 50vw);
+  /* Тонкая, всегда видимая полоса прокрутки (стандарт Chrome/Firefox). */
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-white) var(--c-white-20);
 }
 
-/* Полоса прокрутки — тонкая, как у nearby. */
+/* Полоса прокрутки — тонкая, как у nearby. Safari/WebKit: кастомная полоса
+   постоянно видна, не только при скролле. */
 .audience__grid::-webkit-scrollbar {
-  height: 3px;
+  height: 6px;
 }
 .audience__grid::-webkit-scrollbar-track {
   background: var(--c-white-20);
@@ -160,7 +165,8 @@
     align-items: center;
     gap: var(--s-4);
     margin-inline: auto;
-    margin-block-start: var(--s-8);
+    margin-block-start: var(--s-6);
+    margin-block-end: var(--s-6);
   }
 
   .audience__pagination-arrows {

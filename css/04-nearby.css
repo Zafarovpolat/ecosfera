@@ -182,10 +182,27 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding-block-end: var(--s-2);
+    /* padding-block-end — зазор между карточками и скроллбаром снизу. */
+    padding-block-end: var(--s-6);
     padding-inline-end: var(--s-8);
     margin-block-end: var(--s-6);
     margin-inline-end: calc(50% - 50vw);
+    /* Тонкая, всегда видимая полоса прокрутки (стандарт Chrome/Firefox). */
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-white) var(--c-white-20);
+  }
+
+  /* Safari/WebKit: кастомная полоса — постоянно видна, не только при скролле. */
+  .nearby__list::-webkit-scrollbar {
+    height: 6px;
+  }
+  .nearby__list::-webkit-scrollbar-track {
+    background: var(--c-white-20);
+    border-radius: var(--r-pill);
+  }
+  .nearby__list::-webkit-scrollbar-thumb {
+    background: var(--c-white);
+    border-radius: var(--r-pill);
   }
 
   /* Ширина карточки от вьюпорта, а не от контентной ширины списка: иначе
@@ -202,7 +219,7 @@
     align-items: center;
     gap: var(--s-4);
     margin-inline: auto;
-    margin-block-start: var(--s-10);
+    margin-block-start: var(--s-6);
     margin-block-end: var(--s-6);
   }
 

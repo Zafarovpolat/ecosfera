@@ -452,9 +452,11 @@
     -webkit-overflow-scrolling: touch;
     /* Вертикальные отступы обязательны: overflow-x: auto неявно делает и
        overflow-y: auto, и маркеры-точки, торчащие за верх/низ карточки
-       (translate 50%), срезались бы по Y. Плюс место под полосу прокрутки. */
+       (translate 50%), срезались бы по Y. Плюс место под полосу прокрутки:
+       padding-block-end задаёт зазор между карточками и скроллбаром. */
     padding-inline: var(--gutter);
-    padding-block: var(--s-4);
+    padding-block-start: var(--s-4);
+    padding-block-end: var(--s-6);
     /* Ряд карточек выходит за правый край контейнера и виден до кромки
        экрана: окно скролла растянуто до вьюпорта, поэтому срез карточек
        уходит за экран и не виден. */
@@ -464,13 +466,15 @@
   /* Кастомная полоса прокрутки — белая с полупрозрачным фоном, как у
      nearby__list и audience__grid (а не скрытая, как было на десктопе). */
   .advantages__card-list {
+    /* Тонкая, всегда видимая полоса прокрутки (стандарт Chrome/Firefox). */
     scrollbar-width: thin;
     scrollbar-color: var(--c-white) var(--c-white-20);
   }
+  /* Safari/WebKit: кастомная полоса — постоянно видна, не только при скролле. */
   .advantages__card-list::-webkit-scrollbar {
     /* Сброс скрытой полосы из базового правила. */
     display: block;
-    height: 3px;
+    height: 6px;
   }
   .advantages__card-list::-webkit-scrollbar-track {
     background: var(--c-white-20);
@@ -502,7 +506,7 @@
     align-items: center;
     gap: var(--s-4);
     margin-inline: auto;
-    margin-block-start: var(--s-10);
+    margin-block-start: var(--s-6);
     margin-block-end: var(--s-6);
   }
 
