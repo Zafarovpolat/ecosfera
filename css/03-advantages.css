@@ -469,11 +469,12 @@
   }
 
   /* Кастомная полоса прокрутки — белая с полупрозрачным фоном, как у
-     nearby__list и audience__grid (а не скрытая, как было на десктопе). */
+     nearby__list и audience__grid (а не скрытая, как было на десктопе).
+     НЕ задаём scrollbar-width/scrollbar-color: в Chrome они отключают
+     WebKit-скроллбар и инсет (margin-inline) на треке перестаёт работать. */
   .advantages__card-list {
-    /* Тонкая, всегда видимая полоса прокрутки (стандарт Chrome/Firefox). */
-    scrollbar-width: thin;
-    scrollbar-color: var(--c-white) var(--c-white-20);
+    /* Firefox: не прятать полосу (базовое правило ставит none). */
+    scrollbar-width: auto;
   }
   /* Safari/WebKit: кастомная полоса — постоянно видна, не только при скролле. */
   .advantages__card-list::-webkit-scrollbar {

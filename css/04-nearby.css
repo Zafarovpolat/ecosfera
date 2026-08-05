@@ -187,9 +187,8 @@
     padding-inline-end: var(--s-8);
     margin-block-end: var(--s-6);
     margin-inline-end: calc(50% - 50vw);
-    /* Тонкая, всегда видимая полоса прокрутки (стандарт Chrome/Firefox). */
-    scrollbar-width: thin;
-    scrollbar-color: var(--c-white) var(--c-white-20);
+    /* НЕ задаём scrollbar-width/scrollbar-color: в Chrome они отключают
+       WebKit-скроллбар и инсет (margin-inline) на треке не работает. */
   }
 
   /* Safari/WebKit: кастомная полоса — постоянно видна, не только при скролле. */

@@ -76,9 +76,8 @@
   /* padding-block-end — зазор между карточками и скроллбаром снизу. */
   padding-block-end: var(--s-6);
   margin-inline-end: calc(50% - 50vw);
-  /* Тонкая, всегда видимая полоса прокрутки (стандарт Chrome/Firefox). */
-  scrollbar-width: thin;
-  scrollbar-color: var(--c-white) var(--c-white-20);
+  /* НЕ задаём scrollbar-width/scrollbar-color: в Chrome они отключают
+     WebKit-скроллбар и инсет (margin-inline) на треке не работает. */
 }
 
 /* Полоса прокрутки — тонкая, как у nearby. Safari/WebKit: кастомная полоса
@@ -274,7 +273,8 @@
    текстового блока ужаты со всех сторон. */
 @media (max-width: 80em) {
   .audience__figure {
-    margin: var(--s-4) var(--s-3) var(--s-3);
+    /* Строго одинаковый отступ со всех сторон. */
+    margin: var(--s-4);
   }
 
   .audience__card-body {
