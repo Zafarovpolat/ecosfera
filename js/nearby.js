@@ -1,9 +1,9 @@
 /* ==========================================================================
-   Слайдер «Уезжать далеко — не нужно» (пагинация под списком карточек).
+   Слайдер «Уезжать далеко — не нужно» (кнопки под списком карточек).
 
    Список карточек — горизонтальный скролл (≤1279px, overflow-x: auto со
-   scroll-snap). Скрипт двигает список на одну карточку вперёд/назад и
-   обновляет счётчик «01/03».
+   scroll-snap). Скрипт двигает список на одну карточку вперёд/назад
+   кнопками. Счётчика-цифр нет — только кнопки.
 
    Геометрия карточек берётся по getBoundingClientRect относительно списка,
    а не по offsetLeft: у списка есть margin-inline-end (calc(50% - 50vw)),
@@ -28,7 +28,6 @@
   var total = cards.length;
   if (!total) return;
 
-  var counter = section.querySelector('.comparison__pagination-current');
   var btnPrev = section.querySelector('.comparison__nav-btn--prev');
   var btnNext = section.querySelector('.comparison__nav-btn--next');
 
@@ -52,16 +51,6 @@
     return Math.max(0, list.scrollWidth - list.clientWidth);
   }
 
-  function pad(n) {
-    return n < 10 ? '0' + n : String(n);
-  }
-
-  function render() {
-    if (counter) {
-      counter.textContent = pad(index + 1);
-    }
-  }
-
   function scrollToCard(i) {
     var target = Math.min(cardLeft(cards[i]), maxScroll());
     list.scrollTo({
@@ -73,7 +62,6 @@
   function stepBy(direction) {
     if (!canScroll()) return;
     index = Math.max(0, Math.min(total - 1, index + direction));
-    render();
     scrollToCard(index);
   }
 
@@ -93,24 +81,20 @@
     });
   }
 
-  /* При ручном скролле (свайп) следим за счётчиком и индексом. */
+  /* При ручном скролле (свайп) следим за индексом, чтобы кнопки продолжили
+     с нужного места. */
   list.addEventListener('scroll', function () {
     var by = step();
+    if (!by) return;
     var center = list.scrollLeft + list.clientWidth / 2;
-    var i = Math.round(center / by - 0.5);
-    index = Math.max(0, Math.min(total - 1, i));
-    render();
+    index = Math.max(0, Math.min(total - 1, Math.round(center / by - 0.5)));
   });
 
   window.addEventListener('resize', function () {
     index = Math.min(index, total - 1);
-    render();
   });
 
   window.addEventListener('load', function () {
     index = 0;
-    render();
   });
-
-  render();
 })();

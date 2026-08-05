@@ -27,17 +27,11 @@
   );
   if (!cards.length) return;
 
-  var curEl = section.querySelector('.comparison__pagination-current');
-  var totEl = section.querySelector('.comparison__pagination-total');
   var btnPrev = section.querySelector('.comparison__nav-btn--prev');
   var btnNext = section.querySelector('.comparison__nav-btn--next');
 
   var stops = [0]; // позиции scrollLeft для каждой страницы
   var index = 0;
-
-  function pad(n) {
-    return n < 10 ? '0' + n : String(n);
-  }
 
   /* Левый край карточки в координатах содержимого списка. rect.left уже учёл
      прокрутку, поэтому возвращаем scrollLeft обратно. */
@@ -77,15 +71,9 @@
     return best;
   }
 
-  function render() {
-    if (curEl) curEl.textContent = pad(index + 1);
-    if (totEl) totEl.textContent = '/' + pad(stops.length);
-  }
-
   function goTo(i) {
     index = Math.max(0, Math.min(stops.length - 1, i));
     list.scrollTo({ left: stops[index], behavior: 'smooth' });
-    render();
   }
 
   /* Пересчёт после смены размеров/загрузки картинок: геометрия карточек, а с
@@ -93,7 +81,6 @@
   function refresh() {
     computeStops();
     index = nearestStop(list.scrollLeft);
-    render();
   }
 
   if (btnNext) {

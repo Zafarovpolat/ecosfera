@@ -459,11 +459,26 @@
        экрана: окно скролла растянуто до вьюпорта, поэтому срез карточек
        уходит за экран и не виден. */
     margin-inline-end: calc(50% - 50vw);
-    scrollbar-width: none;
   }
 
+  /* Кастомная полоса прокрутки — белая с полупрозрачным фоном, как у
+     nearby__list и audience__grid (а не скрытая, как было на десктопе). */
+  .advantages__card-list {
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-white) var(--c-white-20);
+  }
   .advantages__card-list::-webkit-scrollbar {
-    display: none;
+    /* Сброс скрытой полосы из базового правила. */
+    display: block;
+    height: 3px;
+  }
+  .advantages__card-list::-webkit-scrollbar-track {
+    background: var(--c-white-20);
+    border-radius: var(--r-pill);
+  }
+  .advantages__card-list::-webkit-scrollbar-thumb {
+    background: var(--c-white);
+    border-radius: var(--r-pill);
   }
 
   /* Ширина карточки от вьюпорта, а не от контентной ширины списка:

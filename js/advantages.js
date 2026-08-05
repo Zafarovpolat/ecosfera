@@ -1,13 +1,13 @@
 /* ==========================================================================
-   Слайдер «Наши преимущества» (пагинация под списком карточек).
+   Слайдер «Наши преимущества» (кнопки под списком карточек).
 
    Работает по образцу nearby.js: при ≤1024px список карточек — это
    горизонтальный слайдер с scroll-snap. Скрипт двигает список на одну
-   карточку вперёд/назад кнопками и обновляет счётчик «01/03».
+   карточку вперёд/назад кнопками. Счётчика-цифр нет — только кнопки.
 
    На десктопе (≥1024) список — ряд без скролла, пагинация скрыта в CSS
-   (display: none), а canScroll() возвращает false, так что кнопки и счётчик
-   остаются без эффекта даже если их трогать из консоли.
+   (display: none), а canScroll() возвращает false, так что кнопки остаются
+   без эффекта даже если их трогать из консоли.
 
    Геометрия карточек берётся по getBoundingClientRect относительно списка,
    а не по offsetLeft: у списка есть margin-inline-end (calc(50% - 50vw)),
@@ -29,7 +29,6 @@
   var total = cards.length;
   if (!total) return;
 
-  var counter = section.querySelector('.comparison__pagination-current');
   var btnPrev = section.querySelector('.comparison__nav-btn--prev');
   var btnNext = section.querySelector('.comparison__nav-btn--next');
 
@@ -42,7 +41,6 @@
     var listRect = list.getBoundingClientRect();
     return card.getBoundingClientRect().left - listRect.left + list.scrollLeft;
   }
-
 
   function maxScroll() {
     return Math.max(0, list.scrollWidth - list.clientWidth);
@@ -61,16 +59,6 @@
     ));
   }
 
-  function pad(n) {
-    return n < 10 ? '0' + n : String(n);
-  }
-
-  function render() {
-    if (counter) {
-      counter.textContent = pad(index + 1);
-    }
-  }
-
   function scrollToCard(i) {
     list.scrollTo({
       left: centerTarget(i),
@@ -81,7 +69,6 @@
   function stepBy(direction) {
     if (!canScroll()) return;
     index = Math.max(0, Math.min(total - 1, index + direction));
-    render();
     scrollToCard(index);
   }
 
@@ -101,8 +88,8 @@
     });
   }
 
-  /* При ручном скролле (свайп) следим за счётчиком и индексом: активным
-     считается слайд, чья середина ближе всего к центру окна. */
+  /* Ручной скролл (свайп): активным считаем слайд, чья середина ближе всего
+     к центру окна — чтобы кнопка «дальше» продолжила с нужного места. */
   list.addEventListener('scroll', function () {
     var viewportCenter = list.scrollLeft + list.clientWidth / 2;
     var best = 0;
@@ -115,18 +102,13 @@
       }
     }
     index = best;
-    render();
   });
 
   window.addEventListener('resize', function () {
     index = Math.min(index, total - 1);
-    render();
   });
 
   window.addEventListener('load', function () {
     index = 0;
-    render();
   });
-
-  render();
 })();
