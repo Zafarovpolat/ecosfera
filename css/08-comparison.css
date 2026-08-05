@@ -504,4 +504,10 @@
   .comparison__heading-nl {
     display: block;
   }
+
+  /* Плашка «от других» по центру (по умолчанию прижата вправо свесом). */
+  .comparison__heading-accent {
+    align-self: center;
+    margin-inline: 0;
+  }
 }
