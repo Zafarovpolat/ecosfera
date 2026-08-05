@@ -436,3 +436,60 @@
 .advantages__divider .divider__icon {
   transform: rotate(90deg);
 }
+
+/* ============================================================
+   Слайдер при ≤1024px — по образцу nearby__list.
+   Широкие экраны (≥1024): карточки в ряд, слайдера нет.
+   При ≤1024 список — горизонтальный слайдер со scroll-snap,
+   пагинация показывается снизу. Перебивает @media 48em
+   (flex-row + overflow-x: visible), поэтому блок стоит в конце.
+   ============================================================ */
+@media (max-width: 63.9375em) {
+  .advantages__card-list {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-inline: var(--gutter);
+    padding-block-end: var(--s-2); /* место для полосы прокрутки */
+    /* Ряд карточек выходит за правый край контейнера и виден до кромки
+       экрана: окно скролла растянуто до вьюпорта, поэтому срез карточек
+       уходит за экран и не виден. */
+    margin-inline-end: calc(50% - 50vw);
+    scrollbar-width: none;
+  }
+
+  .advantages__card-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Ширина карточки от вьюпорта, а не от контентной ширины списка:
+     иначе padding-inline-end сужает карточки и последняя становится
+     недостижимой для скролла. */
+  .advantages__card-item {
+    flex: 0 0 calc(100vw - var(--gutter) - var(--s-8));
+    scroll-snap-align: start;
+  }
+
+  .advantages__card {
+    height: 100%;
+  }
+
+  /* Пагинация снизу, как у nearby. */
+  .advantages .advantages__pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-4);
+    margin-inline: auto;
+    margin-block-start: var(--s-10);
+    margin-block-end: var(--s-6);
+  }
+
+  .advantages__pagination-arrows {
+    display: block;
+    height: auto;
+    width: 7.75rem;
+    margin-inline: auto;
+  }
+}
