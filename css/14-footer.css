@@ -103,6 +103,13 @@
   justify-content: space-between;
 }
 
+/* ≤1024: колонки навигации без распределения по ширине. */
+@media (max-width: 63.9375em) {
+  .site-footer__nav-columns {
+    justify-content: flex-start;
+  }
+}
+
 .site-footer__nav-list {
   list-style: none;
   margin: 0;

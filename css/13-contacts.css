@@ -18,27 +18,19 @@
   margin: 0; /* сброс figure-margin */
 }
 
-/* ── Картинка карты ──────────────────────────────────────────────────────── */
-
-.contacts__map-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-/* мобильная карта — по умолчанию */
-.contacts__map-img--desktop {
-  display: none;
-}
-
-.contacts__map-img--mobile {
-  display: block;
-}
-
 /* ── Белая панель (figcaption) ───────────────────────────────────────────── */
 
 .contacts__panel {
+  /* Панель всегда поверх карты (оверлей на всех размерах). На узких экранах
+     ширину держит max-width, чтобы панель не вылезала за гуттеры; по вертикали
+     — по центру карты. На десктопе ширина/отступы переопределены в медиа ниже. */
+  position: absolute;
+  top: 50%;
+  left: var(--gutter);
+  right: var(--gutter);
+  transform: translateY(-50%);
+  max-width: calc(100% - var(--gutter) * 2);
+
   background: var(--c-white);
   border-radius: var(--r-xl);
   box-shadow: var(--sh-card);
@@ -167,15 +159,6 @@
    ========================================================================== */
 
 @media (min-width: 64em) {
-  /* Показываем десктопную карту */
-  .contacts__map-img--desktop {
-    display: block;
-  }
-
-  .contacts__map-img--mobile {
-    display: none;
-  }
-
   /* figure растягивается по высоте картинки — не ограничиваем */
   .contacts__map-wrap {
     height: auto; /* карта диктует высоту */
@@ -187,6 +170,7 @@
     position: absolute;
     top: 50%;
     left: var(--gutter);
+    right: auto;
     transform: translateY(-50%);
     width: 36.6875rem;          /* 587px из брифа */
     max-width: calc(100% - var(--gutter) * 2);
@@ -317,13 +301,7 @@
 .contacts__map-embed {
   position: relative;
   overflow: hidden;
-  display: none; /* мобильная версия остаётся картинкой */
-}
-
-@media (min-width: 48em) {
-  .contacts__map-embed {
-    display: block;
-  }
+  display: block; /* карта-виджет на всех размерах — под панелью-оверлеем */
 }
 
 .contacts__map-frame {

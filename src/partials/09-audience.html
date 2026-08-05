@@ -103,6 +103,34 @@
 
     </ul>
 
+    <!-- Управление слайдером (≤1024): счётчик и стрелки, как в nearby -->
+    <div class="comparison__pagination audience__pagination">
+      <p class="comparison__pagination-counter" aria-live="polite">
+        <span class="comparison__pagination-current">01</span>
+        <span class="comparison__pagination-total">/04</span>
+      </p>
+      <div class="comparison__nav">
+        <!-- Стрелки в макете — одна картинка, поэтому она остаётся визуалом,
+             а поверх лежат две настоящие кнопки. -->
+        <img
+          src="icons/arrows.svg"
+          alt=""
+          class="comparison__pagination-arrows"
+          aria-hidden="true"
+        />
+        <button
+          type="button"
+          class="comparison__nav-btn comparison__nav-btn--prev"
+          aria-label="Предыдущий вариант"
+        ></button>
+        <button
+          type="button"
+          class="comparison__nav-btn comparison__nav-btn--next"
+          aria-label="Следующий вариант"
+        ></button>
+      </div>
+    </div>
+
   </div>
 
   <div class="divider audience__divider" aria-hidden="true">

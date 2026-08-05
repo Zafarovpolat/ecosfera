@@ -63,25 +63,87 @@
   margin: 0;
   padding: 0;
 
-  /* Мобильный: одна колонка */
+  /* ≤1024: горизонтальный слайдер по одной карточке за раз (как nearby__list).
+     Окно скролла тянется вправо до кромки вьюпорта (margin-inline-end), поэтому
+     соседняя карточка выходит за край секции и НЕ обрезается overflow: hidden —
+     секция его не ставит. */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: var(--s-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-block-end: var(--s-2); /* место под полосу прокрутки */
+  margin-inline-end: calc(50% - 50vw);
+}
+
+/* Полоса прокрутки — тонкая, как у nearby. */
+.audience__grid::-webkit-scrollbar {
+  height: 3px;
+}
+.audience__grid::-webkit-scrollbar-track {
+  background: var(--c-white-20);
+  border-radius: var(--r-pill);
+}
+.audience__grid::-webkit-scrollbar-thumb {
+  background: var(--c-white);
+  border-radius: var(--r-pill);
+}
+
+/* Карточка-слайд: в окно попадает ~2.9 карточки (видно край следующей — сигнал,
+   что список листается). Ширина в чистых vw (без rem-капа), чтобы доля видимой
+   карточки была одинаковой на любой ширине ≤1024. Число страниц пагинация
+   считает динамически (js/audience.js), поэтому ширину можно менять свободно. */
+.audience__item {
+  flex: 0 0 32vw;
+  scroll-snap-align: start;
+}
+
+/* Слайдер (≤1024): все карточки одной высоты. Флекс-список растягивает <li> по
+   самому высокому, но <article> внутри оставался натуральной высоты — карточка
+   с более длинным текстом (2-я) торчала выше соседних. Заставляем карточку
+   заполнять всю высоту <li>. */
+@media (max-width: 63.9375em) {
+  .audience__item {
+    display: flex;
+  }
+
+  .audience__card {
+    flex: 1;
+    width: 100%;
+  }
 }
 
 /* ---- десктоп: 4 колонки с шахматным смещением --------------------------- */
 
 @media (min-width: 64em) {
+  /* Сетка без скролла — пагинация не нужна. */
+  .audience .audience__pagination {
+    display: none;
+  }
+
   .audience__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     align-items: start;
     gap: var(--s-3);
 
+    /* Возврат из режима слайдера в сетку. */
+    overflow-x: visible;
+    scroll-snap-type: none;
+    padding-block-end: 0;
+    margin-inline-end: 0;
+
     /* Высота строки: карточка + максимальный сдвиг чтобы смещённые карточки
        не обрезались снизу */
     --row-offset: var(--s-10);
     padding-bottom: var(--row-offset);
+  }
+
+  .audience__item {
+    /* Сброс слайдерной ширины и привязки. */
+    flex: unset;
+    scroll-snap-align: unset;
   }
 
   /* Чётные по счёту (2-я и 4-я карточки) — сдвигаем вниз */
@@ -90,11 +152,32 @@
   }
 }
 
+/* Пагинация слайдера (≤1024) — в стиле comparison/nearby, снизу по центру. */
+@media (max-width: 63.9375em) {
+  .audience .audience__pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-4);
+    margin-inline: auto;
+    margin-block-start: var(--s-8);
+  }
+
+  .audience__pagination-arrows {
+    display: block;
+    height: auto;
+    width: 7.75rem;
+    margin-inline: auto;
+  }
+}
+
 /* ---- карточка ------------------------------------------------------------ */
 
 .audience__card {
   background: var(--c-paper);
-  border-radius: var(--r-pill);
+  /* Слайдер (≤1024): умеренное скругление вместо pill, иначе карточки-овалы.
+     На десктопе перекрывается на 70px в блоке ≥64em ниже. */
+  border-radius: var(--r-2xl); /* 30 */
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -119,7 +202,9 @@
   margin: var(--s-5) var(--s-3) var(--s-3);
   width: calc(100% - var(--s-3) * 2);
   flex-shrink: 0;
-  border-radius: var(--r-pill);
+  /* Слайдер: фото со скруглением на 10 меньше карточки (как на десктопе 70/65).
+     На десктопе перекрывается на 65px ниже. */
+  border-radius: var(--r-xl); /* 25 */
   overflow: hidden;
 }
 

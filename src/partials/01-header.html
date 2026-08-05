@@ -40,6 +40,37 @@
         <a href="#contacts" class="header__nav-link">Контакты</a>
       </li>
     </ul>
+
+    <!-- Мобильное меню: продублированные скрытые действия шапки
+         (email «Написать нам», телефон «Заказать звонок», CTA).
+         На десктопе скрыто — там эти элементы живут в .header__contacts. -->
+    <div class="header__nav-extra">
+      <address class="header__contact-item">
+        <a href="mailto:Ecosfera2026@mail.ru" class="header__contact-value">
+          Ecosfera2026@mail.ru
+        </a>
+        <button type="button" class="header__contact-label">Написать нам</button>
+      </address>
+
+      <address class="header__contact-item">
+        <a href="tel:+79502824382" class="header__contact-value">
+          +7 (950) 282-43-82
+        </a>
+        <button type="button" class="header__contact-label">Заказать звонок</button>
+      </address>
+
+      <a href="#booking" class="header__cta">
+        <svg class="header__cta-corner header__cta-corner--tl" width="9" height="8"
+             viewBox="0 0 9 8" fill="none" aria-hidden="true" focusable="false">
+          <path d="M1 8V1H9" stroke="currentColor" stroke-width="1" />
+        </svg>
+        <span>Забронировать дом</span>
+        <svg class="header__cta-corner header__cta-corner--br" width="9" height="8"
+             viewBox="0 0 9 8" fill="none" aria-hidden="true" focusable="false">
+          <path d="M8 0V7H0" stroke="currentColor" stroke-width="1" />
+        </svg>
+      </a>
+    </div>
   </nav>
 
   <!-- Контакты + CTA (десктоп) -->
@@ -96,14 +127,11 @@
       aria-controls="mobile-menu"
       aria-label="Открыть меню"
     >
-      <img
-        src="icons/vector-2.svg"
-        alt=""
-        aria-hidden="true"
-        class="header__burger-icon"
-        width="33"
-        height="9"
-      />
+      <!-- Две полоски: в открытом состоянии складываются в крестик (см. CSS). -->
+      <span class="header__burger-box" aria-hidden="true">
+        <span class="header__burger-bar"></span>
+        <span class="header__burger-bar"></span>
+      </span>
       <span class="header__burger-label">Меню</span>
     </button>
   </div>

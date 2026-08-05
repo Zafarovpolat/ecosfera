@@ -20,20 +20,48 @@
 }
 
 @media (min-width: 64em) {
-  .reviews__section-header {
-    flex-direction: row;
+  /* Грид на контейнере возвращает раскладку десктопа: заголовок слева,
+     кнопка Instagram справа в одну строку, карусель — во всю ширину ниже.
+     Кнопка физически лежит в конце .container, но грид-области ставят её в
+     первую строку. */
+  .reviews .container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'heading button'
+      'carousel carousel';
     align-items: center;
-    justify-content: space-between;
-    gap: var(--s-8);
+    column-gap: var(--s-8);
+    row-gap: var(--s-7);
+  }
+
+  .reviews__section-header {
+    grid-area: heading;
+    margin-bottom: 0;
+  }
+
+  .reviews__instagram-btn {
+    grid-area: button;
+    justify-self: end;
+    width: auto;
+    margin-top: 0;
+  }
+
+  .reviews__carousel-wrapper {
+    grid-area: carousel;
   }
 }
 
 /* ---- кнопка Instagram (ссылка) с L-уголками --------------- */
 
+/* ≤1024 (база): кнопка стоит последним блоком в .container — под управлением
+   каруселью — и растянута на всю ширину. На десктопе грид возвращает её в
+   шапку (см. блок 64em ниже). */
 .reviews__instagram-btn {
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--s-3);
   background: var(--c-white);
   border-radius: var(--r-sm);
@@ -41,6 +69,8 @@
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
+  width: 100%;
+  margin-top: var(--s-7);
 }
 
 .reviews__instagram-btn-text {

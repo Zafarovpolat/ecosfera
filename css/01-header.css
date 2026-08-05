@@ -36,26 +36,73 @@
 
 /* ── Навигация ────────────────────────────────────────────── */
 
-/* мобайл: скрыта по умолчанию, drawer сверху */
+/* мобайл: полноэкранное меню. Прячем через opacity/visibility/transform (а не
+   display), чтобы открытие/закрытие можно было анимировать. */
 .header__nav {
-  display: none;
-  position: absolute;
-  top: 100%;
-  inset-inline: 0;
-  background: var(--c-forest);
-  border-bottom: 1px solid var(--c-white-20);
-  padding: var(--s-5) var(--gutter);
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  /* Стеклянный фон: тёмно-зелёный с лёгкой прозрачностью + размытие подложки. */
+  background: rgb(18 50 6 / 0.85);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass));
+  padding: var(--s-12) var(--gutter) var(--s-9);
   z-index: var(--z-overlay);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--s-8);
+  overflow-y: auto;
+
+  /* закрытое состояние */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-1rem);
+  transition:
+    opacity var(--dur) var(--ease),
+    transform var(--dur) var(--ease),
+    visibility var(--dur) var(--ease);
 }
 
 .header__nav--open {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Блок скрытых действий шапки внутри меню (email, телефон, CTA). */
+.header__nav-extra {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-7);
+  padding-top: var(--s-8);
+  border-top: 1px solid var(--c-white-20);
+}
+
+.header__nav-extra .header__contact-item {
+  align-items: flex-start;
+}
+
+.header__nav-extra .header__contact-value {
+  font-size: 1.25rem; /* 20px */
+}
+
+.header__nav-extra .header__contact-label {
+  font-size: 1.0625rem; /* 17px */
+}
+
+.header__nav-extra .header__cta {
+  width: 100%;
+  max-width: 22rem;
+  font-size: 1.125rem; /* 18px */
 }
 
 .header__nav-list {
   display: flex;
   flex-direction: column;
-  gap: var(--s-4);
+  gap: var(--s-7);
 }
 
 .header__nav-list li {
@@ -76,7 +123,7 @@
 
 .header__nav-link {
   font-family: var(--f-text);
-  font-size: var(--t-body);
+  font-size: 1.75rem; /* 28px — крупный шрифт для полноэкранного меню */
   font-weight: 700;
   color: var(--c-white);
   text-align: center;
@@ -237,20 +284,61 @@
   display: flex;
   align-items: center;
   gap: var(--s-5);
+  /* Поверх полноэкранного меню (z-overlay=200), чтобы крестик оставался
+     видимым и кликабельным. */
+  position: relative;
+  z-index: calc(var(--z-overlay) + 1);
 }
 
 .header__burger {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--s-2);
+  gap: var(--s-4);
   cursor: pointer;
   padding: var(--s-1);
   flex-shrink: 0;
+  background: none;
+  border: 0;
 }
 
-.header__burger-icon {
+/* Коробка под две полоски. Размер как у исходной иконки (33×9). */
+.header__burger-box {
+  position: relative;
   display: block;
+  width: 2.0625rem; /* 33px */
+  height: 0.5625rem; /* 9px */
+}
+
+.header__burger-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--c-white);
+  border-radius: 2px;
+  transition:
+    top var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.header__burger-bar:nth-child(1) {
+  top: 0;
+}
+
+.header__burger-bar:nth-child(2) {
+  top: calc(100% - 2px);
+}
+
+/* Открыто: обе полоски съезжаются в центр и разворачиваются в крестик. */
+.header__burger[aria-expanded='true'] .header__burger-bar:nth-child(1) {
+  top: calc(50% - 1px);
+  transform: rotate(45deg);
+}
+
+.header__burger[aria-expanded='true'] .header__burger-bar:nth-child(2) {
+  top: calc(50% - 1px);
+  transform: rotate(-45deg);
 }
 
 .header__burger-label {
@@ -272,16 +360,34 @@
     gap: 0;
   }
 
-  /* Показываем навигацию в потоке, прижатую к логотипу */
+  /* Показываем навигацию в потоке, прижатую к логотипу. Сбрасываем drawer:
+     скрытие через opacity/visibility/transform больше не нужно. */
   .header__nav {
     display: flex;
+    flex-direction: row;
     position: static;
+    inset: auto;
+    height: auto;
+    overflow: visible;
     background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     border: none;
     padding: 0;
     flex: none;
     margin-inline-start: var(--s-8); /* небольшой отступ от логотипа (≈40px) */
     z-index: auto;
+    gap: 0;
+
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+  }
+
+  /* Дублирующий блок действий — только для мобильного меню. */
+  .header__nav-extra {
+    display: none;
   }
 
   .header__nav-list {
@@ -360,7 +466,12 @@
   .header__contacts-divider {
     height: 2.5rem;
   }
+}
 
+/* Вертикальный отступ навигации — только для десктопа 1024–1279.
+   На мобильном (≤1023) паддинги задаёт полноэкранное меню, поэтому нельзя
+   применять эту правку ко всему диапазону ≤1279. */
+@media (min-width: 64em) and (max-width: 79.9375em) {
   .header__nav {
     padding-block: var(--s-3);
   }
