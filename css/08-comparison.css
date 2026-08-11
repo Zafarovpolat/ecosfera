@@ -1,0 +1,559 @@
+/* ==========================================================================
+   08-comparison — «Чем ЭКОСФЕРА отличается от других»
+   Фон не задан — сквозная фотография страницы просвечивает.
+   Mobile-first.
+   ========================================================================== */
+
+.comparison {
+  position: relative;
+  padding-block: var(--s-section);
+  overflow: hidden;
+}
+
+/* ─── Заголовок ─────────────────────────────────────────────────────────── */
+
+.comparison__heading-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  /* Плашка прижата к правому краю строки, а не по центру: в макете её правая
+     кромка на 18px правее конца строки «отличается». Обёртка обнимает контент
+     и центрируется целиком — как группа 951x200 в макете. */
+  align-items: flex-end;
+  width: fit-content;
+  margin-inline: auto;
+  gap: 0;
+  margin-block-end: var(--s-7);
+}
+
+.comparison__heading {
+  font-family: var(--f-display);
+  font-size: var(--t-h2);
+  font-weight: 400;
+  line-height: var(--lh-tight);
+  color: var(--c-white);
+  text-align: center;
+  margin: 0;
+}
+
+/* Лаймовая скошенная плашка «от других» */
+.comparison__heading-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Макет: плашка 302x110 при тексте «от других» 272x70 — паддинг 15 по кругу.
+     Кегль плашки 70, значит 15px = .214em, а строка внутри 80 (line-height
+     1.14) даёт ровно 110 высоты. Раньше стояло .12em от кегля 80 — это всего
+     9.6px по вертикали, отсюда и уменьшенная плашка. */
+  font-size: var(--t-h2-sub);
+  line-height: 1.14;
+  padding: 0.214em;
+  background: var(--c-lime);
+  border-radius: var(--r-md) 0 var(--r-md) 0;
+  box-shadow: -2px -3px 7px rgb(0 0 0 / 0.15);
+  transform: rotate(-2.4deg);
+  margin-block-start: -0.14em;
+  /* Свес за правый край строки. В макете 18px, но визуально плашка просила
+     ещё правее — .6em от кегля плашки 70 даёт 42px. */
+  margin-inline-end: -0.6em;
+}
+
+.comparison__heading-accent-text {
+  font-family: var(--f-display);
+  font-weight: 400;
+  line-height: inherit;
+  color: var(--c-black);
+}
+
+/* ─── Декоративные фото ─────────────────────────────────────────────────── */
+
+/* Скрыты на мобильном, появляются на широких экранах */
+.comparison__photos {
+  display: none;
+}
+
+@media (min-width: 64em) {
+  .comparison__photos {
+    display: block;
+  }
+}
+
+/* Декоративные фреймы — абсолютно позиционированы поверх секции */
+.comparison__photo-frame {
+  position: absolute;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  pointer-events: none;
+}
+
+.comparison__photo-frame--left {
+  top: 5%;
+  left: -2%;
+  width: 33%;
+  max-width: 50rem;
+  /* У этого узла в макете определитель матрицы отрицательный — ветка
+     отражена по горизонтали, а не просто повёрнута. Через rotate() выходила
+     зеркальная копия, и ветка читалась как другая фотография. Матрица из
+     Figma целиком: [[-0.9797, 0.2006], [0.2006, 0.9797]]. */
+  transform: matrix(-0.9797, 0.2006, 0.2006, 0.9797, 0, 0);
+}
+
+.comparison__photo-frame--right {
+  top: 25%;
+  right: -1%;
+  width: 22%;
+  max-width: 30rem;
+  transform: rotate(18.4deg);
+}
+
+.comparison__photo-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ─── Карточки ──────────────────────────────────────────────────────────── */
+
+.comparison__cards {
+  position: relative;
+  z-index: 1;
+  padding-inline: var(--s-7);
+}
+
+.comparison__card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--s-2);
+  /* Обычный слайдер, как в «Преимуществах»: горизонтальный скролл
+     с привязкой карточек (≤1024; на широких — веер из js/comparison.js). */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.comparison__card-list::-webkit-scrollbar {
+  display: none;
+}
+
+.comparison__card-list > .comparison__card {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: 84%;
+}
+
+@media (min-width: 48em) {
+  .comparison__card-list > .comparison__card {
+    width: calc(50% - var(--s-2));
+  }
+}
+
+/* Одна карточка */
+.comparison__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-9);
+  padding: var(--s-5) var(--s-8) var(--s-5);
+  background: var(--c-white-10);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  border-radius: var(--r-xl);
+}
+
+/* Размытие — самое дорогое, что тут есть: пять слоёв, каждый размывает всё под
+   собой. В покое оно нужно, а вот на время переезда карточек его снимаем —
+   именно совпадение анимации и размытия рвало кадры на слабой видеокарте.
+   Класс ставит и снимает js/comparison.js. */
+.comparison__card-list.is-moving .comparison__card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+@media (min-width: 48em) {
+  .comparison__card {
+    flex: 1 1 calc(50% - var(--s-4));
+  }
+}
+
+/* Оранжевый бейдж с номером. Базовое правило: фон, центрирование, размер по
+   умолчанию. Размеры для веера переопределяются переменной позиции ниже. */
+.comparison__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: var(--r-md);
+  background: var(--c-amber-2);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Веер из макета. Ключевой момент: это ОДНА карточка, отмасштабированная,
+   а не три разных набора размеров. Проверка по числам макета:
+
+                 центр   ×0.8797   в макете   ×0.6498   в макете
+     заголовок    30      26.4       26         19.5      20
+     описание     17      15.0       15         11.0      11
+     бейдж       104      91.5       92         67.6      68
+     карточка    474     417.0      417        308.0     308
+
+   Отсюда масштабы 417/474 = 0.8797 и 308/474 = 0.6498. Поэтому кегли,
+   отступы и бейдж заданы один раз по центральной карточке, а мельче она
+   становится общим scale(). Иначе текст внутри перевёрстывается прямо
+   во время перехода — размеры и паддинги меняются каждый по своему закону.
+
+   Позиция задаётся атрибутом data-pos: DOM не переупорядочивается, меняются
+   только left / top / transform, поэтому переезд плавный и на трансформах.
+   ============================================================ */
+/* Веер теперь на всех ширинах: при ≤1024 тоже показываем веер, а не
+   горизонтальный слайдер. Крайние карточки на узком экране частично уходят
+   за край секции (её overflow: hidden их подрезает) — для веера это норма,
+   все пять карточек помещаться в экран и не должны. */
+@media (min-width: 0) {
+  .comparison__card-list {
+    position: relative;
+    display: block;
+    /* Веер, а не слайдер: горизонтальный скролл и привязка не нужны. */
+    overflow-x: visible;
+    scroll-snap-type: none;
+    /* Макет 1818x608, но карточки стали ниже на 40 — контейнер сжимаем
+       пропорционально до 560. Проценты центров и коэффициенты translate при
+       этом не меняются: и высота карточки, и высота контейнера уменьшились
+       в одинаковой пропорции. */
+    aspect-ratio: 1818 / 560;
+  }
+
+  /* Слайдерное правило `.comparison__card-list > .comparison__card` из блока
+     48em задаёт ширину 50% и по специфичности (0,2,0) перебивает width из
+     `.comparison__card` ниже (0,1,0) — на ширинах ≥64em срабатывают оба
+     медиа-запроса, и карточки веера раздувались вдвое. Возвращаем веерную
+     ширину с той же специфичностью, что у слайдерного правила. */
+  .comparison__card-list > .comparison__card {
+    width: 26.07%;
+  }
+
+  .comparison__card {
+    position: absolute;
+    /* Позиция задаётся только трансформом. Раньше анимировались left и top —
+       это свойства раскладки, браузер пересчитывал её на каждом кадре, и на
+       слабой видеокарте переход рвался. Проценты в translate() считаются от
+       самой карточки, поэтому значения пересчитаны: её ширина 26.07% от
+       контейнера (коэффициент 3.836), высота 508/608 (коэффициент 1.197). */
+    top: 50%;
+    left: 50%;
+    width: 26.07%; /* 474/1818 — размер центральной, базовый для всех */
+    /* Высота уменьшена на 40 от макетных 508: карточки читались слишком
+       высокими. Ширина не менялась, поэтому правим только пропорцию. */
+    aspect-ratio: 474 / 468;
+    gap: 0;
+    /* Процент у padding считается от ширины контейнера: 2.2% = 40px по
+       вертикали (вдвое больше исходных 20), 4.95% = 90px по бокам.
+       Боковое значение подобрано так, чтобы «40 минут от Владивостока»
+       переносилось на две строки, как в макете (204x46): при одной раскладке
+       на все позиции длинная строка иначе доезжает до соседней карточки. */
+    padding: 2.2% 4.95%;
+    border-radius: 1.5625rem; /* 25 */
+    transform: translate(
+        calc(-50% + var(--card-tx)),
+        calc(-50% + var(--card-ty))
+      )
+      scale(var(--card-scale)) rotate(var(--card-rot));
+    transform-origin: center center;
+    z-index: var(--card-z);
+    will-change: transform;
+    transition: transform 0.55s var(--ease);
+  }
+
+  /* Внутренности — один раз, по центральной карточке. Дальше их уменьшает
+     тот же scale, поэтому пропорции внутри всегда одинаковые. */
+  .comparison__card-body {
+    gap: var(--s-2);
+    margin-block-start: auto;
+  }
+
+  .comparison__card-title {
+    font-size: 1.875rem; /* 30 */
+    line-height: 1.2;
+  }
+
+  .comparison__card-desc {
+    font-size: 1.0625rem; /* 17 */
+  }
+
+  .comparison__badge {
+    width: 6.5rem; /* 104 */
+    height: 6.5rem;
+    border-radius: 1.25rem; /* 20 */
+    align-self: center;
+  }
+
+  /* ─── Позиции веера ─────────────────────────────────────────────────── */
+
+  .comparison__card[data-pos='3'] {
+    --card-tx: 0%;
+    --card-ty: -9.84%; /* центр 254/608 */
+    --card-scale: 1;
+    --card-rot: 0deg;
+    --card-z: 3;
+  }
+
+  .comparison__card[data-pos='2'] {
+    --card-tx: -91.37%; /* -433/1818 */
+    --card-ty: 1.58%; /* центр 312/608 */
+    --card-scale: 0.8797; /* 417/474 */
+    --card-rot: -5.44deg;
+    --card-z: 2;
+  }
+
+  .comparison__card[data-pos='4'] {
+    --card-tx: 91.37%;
+    --card-ty: 1.58%;
+    --card-scale: 0.8797;
+    --card-rot: 5.44deg;
+    --card-z: 2;
+  }
+
+  .comparison__card[data-pos='1'] {
+    --card-tx: -153.3%; /* -726.5/1818 */
+    --card-ty: 22.14%; /* центр 416.5/608 */
+    --card-scale: 0.6498; /* 308/474 */
+    --card-rot: -10.93deg;
+    --card-z: 1;
+  }
+
+  .comparison__card[data-pos='5'] {
+    --card-tx: 153.3%;
+    --card-ty: 22.14%;
+    --card-scale: 0.6498;
+    --card-rot: 10.93deg;
+    --card-z: 1;
+  }
+}
+
+/* На узких экранах (≤1024) веер тот же, но карточки крупнее — иначе на
+   планшете и телефоне они читались слишком мелкими. Ширину карточки и высоту
+   контейнера увеличиваем одним коэффициентом: translate у позиций считается
+   от самой карточки, поэтому расстояния между карточками растут вместе с ней,
+   а пропорциональный рост высоты контейнера держит веер по центру и не даёт
+   overflow секции подрезать верх карточек. */
+@media (max-width: 63.9375em) {
+  .comparison__card-list {
+    aspect-ratio: 1818 / 898; /* 560 × 1.60 — под увеличенную карточку */
+  }
+  .comparison__card-list > .comparison__card,
+  .comparison__card {
+    width: 41.7%; /* 26.07% × 1.60 */
+  }
+}
+
+@media (max-width: 47.9375em) {
+  .comparison__card-list {
+    aspect-ratio: 1818 / 1120; /* 560 × 2.00 */
+  }
+  .comparison__card-list > .comparison__card,
+  .comparison__card {
+    width: 52%; /* 26.07% × 2.00 */
+  }
+}
+
+/* ≤640: карточка на 77.4% ширины, контейнер веера ниже —
+   высота карточки растёт вместе с шириной, пропорция держит её внутри.
+   Коэффициент тот же, что у других ступеней: 77.4 / 26.07 ≈ 2.969,
+   560 × 2.969 ≈ 1663. */
+@media (max-width: 40em) {
+  .comparison__heading {
+    font-size: calc(var(--t-h2) * 0.8);
+  }
+
+  .comparison__heading-accent {
+    font-size: calc(var(--t-h2-sub) * 0.8);
+  }
+
+  /* Воздух над и под веером. */
+  .comparison__cards {
+    padding-block: var(--s-6);
+    padding-inline: var(--s-3);
+  }
+
+  .comparison__card-list {
+    aspect-ratio: 1818 / 1663;
+    padding-block: var(--s-4);
+  }
+  .comparison__card-list > .comparison__card,
+  .comparison__card {
+    width: 77.4%;
+  }
+
+  /* Внутренние отступы самой карточки сверху и снизу. */
+  .comparison__card {
+    padding-block: var(--s-7);
+  }
+
+  /* Текст закреплён у низа карточки (margin-top: auto из базового правила). */
+  .comparison__card-body {
+    margin-block-start: auto;
+  }
+
+  .comparison__badge {
+    width: 4.25rem; /* 68 */
+    height: 4.25rem;
+    border-radius: 0.9375rem; /* 15 */
+  }
+
+  .comparison__badge-num {
+    font-size: 1.25rem; /* 20 */
+  }
+}
+
+/* ─── Кнопки слайдера ───────────────────────────────────────────────────────
+   Стрелки в макете — одна картинка, поэтому она остаётся визуалом, а сверху
+   лежат две настоящие кнопки: по ним работает клик и клавиатура. */
+.comparison__nav {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+.comparison__nav-btn {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--r-sm);
+}
+
+.comparison__nav-btn--prev {
+  left: 0;
+}
+
+.comparison__nav-btn--next {
+  right: 0;
+}
+
+/* Размеры бейджа задаются переменной позиции в блоке веера выше — отдельных
+   переопределений на 1440 больше нет, иначе они перебивали бы веер. */
+
+.comparison__badge-num {
+  font-family: var(--f-text);
+  /* В макете у центральной карточки номер 22px, но визуально он читался мелко.
+     Кегль задан один раз по центральной — в остальных позициях его уменьшает
+     общий scale карточки, как и всё остальное внутри. */
+  font-size: 1.75rem; /* 28 */
+  font-weight: 500;
+  line-height: 1;
+  color: var(--c-white);
+}
+
+/* Текстовый блок карточки */
+.comparison__card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-2);
+  text-align: center;
+}
+
+.comparison__card-title {
+  font-family: var(--f-display);
+  font-size: clamp(1rem, 1.5vw, 1.875rem);
+  font-weight: 400;
+  line-height: var(--lh-heading);
+  color: var(--c-white);
+  margin: 0;
+}
+
+/* Карточка 03 — заголовок чуть крупнее */
+@media (min-width: 90em) {
+  /* Кегль заголовка тоже приходит из переменной позиции. */
+}
+
+.comparison__card-desc {
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--c-white-60);
+  margin: 0;
+}
+
+/* ─── Пагинация (декоративная) — по центру секции ───────────────────────── */
+
+.comparison__pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-4);
+  /* Подтянуто к карточкам: было 20 сверху. */
+  margin-block-start: calc(-1 * var(--s-5));
+  margin-inline: auto;
+  justify-content: center;
+}
+
+.comparison__pagination-counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-4);
+  background: var(--c-paper);
+  border-radius: var(--r-lg);
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--c-black);
+}
+
+.comparison__pagination-total {
+  color: var(--c-black-20);
+}
+
+.comparison__pagination-arrows {
+  display: block;
+  height: auto;
+  width: 7.75rem;
+  margin-inline: auto;
+}
+
+/* На 1024 и меньше веер стал выше (aspect-ratio контейнера растёт вместе с
+   карточкой), и под центральной карточкой остаётся пустое место — поэтому
+   пагинацию подтягиваем вверх отрицательным отступом, как на десктопе, а не
+   отодвигаем на 60px вниз, иначе счётчик висел слишком низко под веером. */
+@media (max-width: 63.9375em) {
+  .comparison__pagination {
+    margin-block-start: calc(-1 * var(--s-7));
+  }
+}
+
+/* ≤768: пагинацию опускаем ниже (в блоке ≤1024 она подтянута вверх). */
+@media (max-width: 47.9375em) {
+  .comparison__pagination {
+    margin-block-start: var(--s-2);
+  }
+}
+
+/* ============================================================
+   Заголовок сравнения при ≤1024: «отличается» переносится на
+   отдельную строку под «Чем ЭКОСФЕРА».
+   ============================================================ */
+@media (max-width: 63.9375em) {
+  .comparison__heading-nl {
+    display: block;
+  }
+
+  /* Плашка «от других» по центру (по умолчанию прижата вправо свесом). */
+  .comparison__heading-accent {
+    align-self: center;
+    margin-inline: 0;
+  }
+}

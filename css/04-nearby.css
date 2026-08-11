@@ -1,0 +1,275 @@
+/* ============================================================
+   04-nearby.css — «Уезжать далеко — не нужно»
+   Mobile-first. Мобиль: горизонтальный скролл.
+   Десктоп (≥1024): три колонки в ряд.
+   Префикс BEM: nearby__*
+   ============================================================ */
+
+.nearby {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--s-section);
+  isolation: isolate;
+}
+
+/* Фоновое изображение — декор, растягивается на всю секцию */
+.nearby__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Нумерованный список карточек */
+.nearby__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  /* Мобиль: горизонтальный скролл */
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-3);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-block-end: var(--s-2); /* место для полосы прокрутки */
+  margin-block-start: var(--s-5);
+}
+
+/* Скрываем полосу прокрутки визуально, но оставляем функциональность */
+.nearby__list::-webkit-scrollbar {
+  height: 3px;
+}
+.nearby__list::-webkit-scrollbar-track {
+  background: var(--c-white-20);
+  border-radius: var(--r-pill);
+}
+.nearby__list::-webkit-scrollbar-thumb {
+  background: var(--c-white);
+  border-radius: var(--r-pill);
+}
+
+/* Карточка — <li> */
+.nearby__card {
+  position: relative;
+  flex: 0 0 calc(100% - var(--s-8)); /* почти полная ширина на мобиле */
+  scroll-snap-align: start;
+  border-radius: var(--r-2xl); /* 30px */
+  background: var(--c-white-10);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: var(--s-3);
+  /* Карточка высокая с рамкой: сверху прозрачное поле с номерным бейджем,
+     белая плашка с текстом прижата к низу. */
+  min-height: clamp(15rem, 10rem + 12vw, 17.5rem); /* 240 → 280 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Зазор между номером и плашкой с текстом: пять шагов шкалы.
+     Записан произведением, чтобы кратность читалась в коде. */
+  gap: calc(var(--s-6) * 5); /* 125px */
+  border: 1px solid var(--c-white-40);
+}
+
+/* Бейдж с номером — обычный элемент потока, а не абсолют.
+
+   Абсолютный он не входил в высоту карточки: 10 + 108 (бейдж) + 155
+   (плашка) + 10 = 283px против min-height 280, поэтому бейдж
+   перекрывал плашку на 3px и зазор было физически некуда поставить.
+   В потоке карточка растёт ровно на нужную величину, а gap работает
+   по-настоящему. */
+.nearby__badge {
+  align-self: flex-start;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-xl); /* 25px */
+  background: var(--c-amber);
+  color: var(--c-white);
+  font-family: var(--f-display);
+  font-size: var(--t-h3); /* clamp 30→60 */
+  line-height: 1;
+  padding: var(--s-4) var(--s-5);
+}
+
+/* Белая плашка с текстом внутри карточки */
+.nearby__content {
+  border-radius: var(--r-xl); /* 25px */
+  background: var(--c-white);
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.nearby__card-title {
+  margin: 0;
+  font-family: var(--f-display);
+  font-size: var(--t-h4); /* clamp 25→40 */
+  line-height: var(--lh-heading);
+  font-weight: 400;
+  color: var(--c-black);
+}
+
+.nearby__card-desc {
+  margin: 0;
+  font-family: var(--f-text);
+  font-size: var(--t-body); /* clamp 14→18 */
+  line-height: var(--lh-relaxed);
+  font-weight: 400;
+  color: var(--c-black-40);
+}
+
+/* ── Десктоп (≥1024px) ──────────────────────────────────────────── */
+@media (min-width: 64em) {
+  /* Сетка без скролла — пагинация не нужна */
+  .nearby .nearby__pagination {
+    display: none;
+  }
+
+  .nearby__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-3);
+    overflow-x: visible;
+    scroll-snap-type: none;
+    padding-block-end: 0;
+  }
+
+  .nearby__card {
+    flex: unset;
+    scroll-snap-align: unset;
+    padding-block-start: var(--s-3);
+    padding-inline: var(--s-3);
+    padding-block-end: var(--s-3);
+    border-radius: 2.1875rem; /* 35px; нет токена 35 */
+  }
+}
+
+/* ── Широкий экран (≥1440px) ────────────────────────────────────── */
+@media (min-width: 90em) {
+  .nearby {
+    padding-block: var(--s-12);
+  }
+
+  .nearby__list {
+    gap: var(--s-3);
+    margin-block-start: var(--s-7);
+  }
+
+  .nearby__badge {
+    font-size: var(--t-h3); /* clamp уже достиг max */
+    padding: var(--s-6) var(--s-6);
+  }
+
+}
+
+/* ── Компактные ширины (≤1279px) ────────────────────────────────
+   Ряд карточек выходит за правый край контейнера и виден до кромки
+   экрана: окно скролла растянуто до вьюпорта (как в reviews), поэтому
+   срез карточек уходит за экран и не виден. Управление — пагинация
+   в стиле comparison__pagination снизу. */
+@media (max-width: 79.9375em) {
+  .nearby {
+    overflow: visible;
+  }
+
+  .nearby__list {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    /* padding-block-end — зазор между карточками и скроллбаром снизу. */
+    padding-block-end: var(--s-6);
+    padding-inline-end: var(--s-8);
+    margin-block-end: var(--s-6);
+    margin-inline-end: calc(50% - 50vw);
+    /* НЕ задаём scrollbar-width/scrollbar-color: в Chrome они отключают
+       WebKit-скроллбар и инсет (margin-inline) на треке не работает. */
+  }
+
+  /* Safari/WebKit: кастомная полоса — постоянно видна, не только при скролле. */
+  .nearby__list::-webkit-scrollbar {
+    height: 6px;
+  }
+  .nearby__list::-webkit-scrollbar-track {
+    /* Боковые отступы, как у самих слайдов (--gutter). */
+    margin-inline: var(--gutter);
+    background: var(--c-white-20);
+    border-radius: var(--r-pill);
+  }
+  .nearby__list::-webkit-scrollbar-thumb {
+    background: var(--c-white);
+    border-radius: var(--r-pill);
+  }
+
+  /* Ширина карточки от вьюпорта, а не от контентной ширины списка: иначе
+     padding-inline-end сужает карточки и последняя становится недостижимой
+     для скролла (offsetLeft уходит за maxScroll). */
+  .nearby__card {
+    flex-basis: calc(100vw - var(--gutter) - var(--s-8));
+    scroll-snap-align: start;
+  }
+
+  .nearby .nearby__pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-4);
+    margin-inline: auto;
+    margin-block-start: var(--s-6);
+    margin-block-end: var(--s-6);
+  }
+
+  .nearby__pagination-arrows {
+    display: block;
+    height: auto;
+    width: 7.75rem;
+    margin-inline: auto;
+  }
+}
+
+/* ── Дивайдер прибит к нижней кромке секции ─────────────────────
+   Вынесен из потока, чтобы не красть высоту у секции ниже. */
+.nearby__divider {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -2rem;
+  padding-block: var(--s-4);
+}
+
+.nearby__divider .divider__icon {
+  transform: rotate(90deg);
+}
+
+/* 1024–1279: по три карточки в ряду, видно следующую за краем. */
+@media (min-width: 64em) and (max-width: 79.9375em) {
+  .nearby__card {
+    flex: 0 0 23rem;
+  }
+}
+
+/* ── Телефоны (≤640px) ──────────────────────────────────────
+   Зазор «бейдж — плашка» 125px рассчитан на высокие карточки
+   десктопа; на телефоне он распирает карточку. */
+@media (max-width: 40em) {
+  /* Слайд во всю ширину контента (минус оба гуттера). */
+  .nearby__card {
+    flex-basis: calc(100vw - var(--gutter) * 2);
+    gap: var(--s-8); /* 40px вместо 125 */
+    min-height: 0;
+    padding: var(--s-3);
+  }
+
+  .nearby__list {
+    padding-inline-end: var(--gutter); /* симметричный зазор справа */
+  }
+
+  .nearby__content {
+    gap: var(--s-3);
+    padding: var(--s-4);
+  }
+}

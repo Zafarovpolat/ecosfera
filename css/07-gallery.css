@@ -1,0 +1,209 @@
+/* ==========================================================================
+   07-gallery — секция «Живые фото без фильтров»
+   Префикс БЭМ: photo-gallery__
+   Mobile-first. Мобиль: горизонтальный скролл.
+   Десктоп (≥1024): два ряда с горизонтальным скроллом / overflow.
+   ========================================================================== */
+
+/* ── Секция ──────────────────────────────────────────────────────────────── */
+
+.photo-gallery {
+  padding-block: var(--s-section);
+  overflow: hidden;
+
+  /* Скорость бега дорожек — одно число на всю секцию.
+     Один круг = сдвиг на ширину одного набора (5 фото по 467 + зазоры ≈ 2385px).
+     330s ≈ 7px/с, 220s ≈ 11px/с, 140s ≈ 17px/с, 70s ≈ 34px/с.
+     Важно: длительность одинакова на любой машине, поэтому если движение
+     кажется быстрее, чем здесь указано, значит применился старый CSS. */
+  --gallery-cycle: 330s;
+}
+
+/* ── Дивайдер прибит к нижней кромке секции ─────────────────────
+   Вынесен из потока, чтобы не красть высоту у секции ниже. */
+.photo-gallery__divider {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -2rem;
+  padding-block: var(--s-4);
+}
+
+.photo-gallery__divider .divider__icon {
+  transform: rotate(90deg);
+}
+
+/* ── Иконка видео в акцентной плашке заголовка ───────────────────────────── */
+
+.photo-gallery__video-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em; /* масштабируется с размером шрифта */
+  height: 1em;
+  margin-inline-end: 0.2em;
+}
+
+/* ── Десктопная галерея — два ряда ───────────────────────────────────────── */
+
+.photo-gallery__desktop {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  margin-block-start: var(--s-5);
+}
+
+/* Ряд — окно, за края которого уходит дорожка. Прокрутки нет: ряд едет сам. */
+.photo-gallery__row {
+  overflow: hidden;
+}
+
+/* Дорожка: набор фотографий и его копия подряд. Сдвиг на половину ширины
+   дорожки = ровно один набор, поэтому петля бесшовная. */
+.photo-gallery__track {
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-3);
+  width: max-content;
+  /* will-change здесь убран намеренно. Дорожка шириной под 5000px — слой,
+     который при постоянном will-change держится в памяти всегда; на слабой
+     видеокарте это упирается в лимит и композитинг откатывается в софтверный,
+     а он даёт рывки. Слой всё равно поднимается самой анимацией трансформа. */
+  backface-visibility: hidden;
+}
+
+/* Верхний ряд стартует из-за левой границы и течёт вправо. */
+.photo-gallery__row--right .photo-gallery__track {
+  margin-inline-start: -14rem;
+  animation: galleryRight var(--gallery-cycle) linear infinite;
+}
+
+/* Нижний ряд стоит от левого края и уходит за правую границу, течёт влево. */
+.photo-gallery__row--left .photo-gallery__track {
+  margin-inline-start: 0;
+  animation: galleryLeft var(--gallery-cycle) linear infinite;
+}
+
+/* Когда движением управляет скрипт (js/gallery.js), CSS-анимацию гасим:
+   иначе она перебивает инлайновый transform. Сама анимация остаётся запасным
+   вариантом на случай, если скрипт не выполнился. */
+.photo-gallery--js .photo-gallery__track {
+  animation: none;
+}
+
+/* translate3d, а не translateX: третья координата держит слой на композиторе
+   всё время движения. Статический translateZ(0) тут не помог бы — анимация
+   transform его перебивает, и подсказка теряется именно на ходу. */
+@keyframes galleryLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes galleryRight {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.photo-gallery__figure {
+  margin: 0;
+  flex: 0 0 auto;
+  border-radius: 2.1875rem; /* 35px из макета */
+  overflow: hidden;
+  line-height: 0; /* убираем gap под inline-img */
+}
+
+.photo-gallery__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Мобильная галерея — один горизонтальный ряд ────────────────────────── */
+
+/* Мобильный скролл-блок больше не нужен: на всех ширинах показываем
+   два бегущих ряда с автоплеем. */
+.photo-gallery__mobile {
+  display: none;
+}
+
+.photo-gallery__mobile::-webkit-scrollbar {
+  display: none;
+}
+
+.photo-gallery__mobile-figure {
+  margin: 0;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  border-radius: var(--r-lg); /* 20px */
+  overflow: hidden;
+  line-height: 0;
+}
+
+.photo-gallery__mobile-figure .photo-gallery__photo {
+  width: 219px;
+  height: 149px;
+  object-fit: cover;
+}
+
+/* ── Десктоп (≥ 64em / 1024px) ──────────────────────────────────────────── */
+
+@media (min-width: 64em) {
+  .photo-gallery__desktop {
+    display: flex;
+  }
+
+  .photo-gallery__figure {
+    width: 467px;
+    height: 323px;
+  }
+
+  .photo-gallery__figure .photo-gallery__photo {
+    width: 467px;
+    height: 323px;
+  }
+}
+
+@media (max-width: 79.9375em) {
+  .photo-gallery__figure {
+    width: 340px;
+    height: 235px;
+  }
+
+  .photo-gallery__figure .photo-gallery__photo {
+    width: 340px;
+    height: 235px;
+  }
+}
+
+/* ── Широкий экран (≥ 90em / 1440px) ────────────────────────────────────── */
+
+@media (min-width: 90em) {
+  .photo-gallery {
+    padding-block: var(--s-12);
+  }
+
+  .photo-gallery__desktop {
+    margin-block-start: var(--s-7);
+  }
+}
+
+/* ── Телефоны (≤640px): слайды дорожек мельче ────────────────────────────
+   340×235 из блока ≤1279 на телефоне велики; пропорция 467:323 сохранена. */
+@media (max-width: 40em) {
+  .photo-gallery__figure,
+  .photo-gallery__figure .photo-gallery__photo {
+    width: 260px;
+    height: 180px;
+  }
+
+  .photo-gallery__figure {
+    border-radius: var(--r-lg); /* 20px вместо 35 */
+  }
+}
