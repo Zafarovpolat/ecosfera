@@ -1,0 +1,396 @@
+/* ============================================================
+   02-hero.css — первый экран
+   Mobile-first. Префикс BEM: hero__*
+   ============================================================ */
+
+.hero {
+  position: relative;
+  /* Первый блок всегда ровно во весь экран: 100vh как основа,
+     100svh для мобильных с динамическими панелями браузера. */
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Фон ──────────────────────────────────────────────────── */
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 0 0 var(--r-lg) var(--r-lg);
+  overflow: hidden;
+}
+
+.hero__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* MIRRORED в брифе = scaleX(-1) */
+  transform: scaleX(-1);
+  border-radius: inherit;
+}
+
+/* нижний виньетирующий градиент (light → dark снизу) */
+.hero__bg-gradient-bottom {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0.1deg, var(--c-veil) 3.75%, transparent 37.92%);
+}
+
+/* верхний затемняющий градиент */
+.hero__bg-gradient-top {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--c-forest) -7%, transparent 41%);
+}
+
+/* ── Шапка ────────────────────────────────────────────────── */
+
+/* шапка получает те же боковые поля что и контент через padding-inline */
+.hero__header-wrap {
+  position: relative;
+  z-index: var(--z-header);
+  border-bottom: 1px solid var(--c-white-20);
+  padding-inline: var(--gutter);
+}
+
+/* ── Основное содержимое ──────────────────────────────────── */
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-6);
+  /* Блок опущен ниже: верхний отступ увеличен, нижний уменьшен. */
+  padding: var(--s-14) var(--gutter) var(--s-7);
+  text-align: center;
+}
+
+/* ── H1 ───────────────────────────────────────────────────── */
+
+/* По брифу: кегль 120, строка 80 (TEXT 120/80). Группа из двух строк
+   имеет высоту 177 → шаг 88.5px, то есть 0.74 от кегля. */
+.hero__heading {
+  font-family: var(--f-display);
+  font-size: var(--t-hero);
+  font-weight: 400;
+  line-height: 0.74;
+  color: var(--c-white);
+  text-align: center;
+  margin: 0;
+}
+
+.hero__heading-line {
+  display: block;
+}
+
+/* «становится» — сплошной белый, без градиента */
+.hero__heading-gradient {
+  color: var(--c-white);
+}
+
+/* Обёртка для плашки — задаёт relative для rotate */
+/* Плашка вплотную под «становится».
+   Заказчик просил -0.4em, но это значение подбиралось при кегле 150px:
+   после приведения к макетным 120px и строке 0.74 отрицательные -48px
+   накрывали нижнюю половину слова. -0.06em даёт ту же плотность без
+   перекрытия. */
+.hero__accent-wrap {
+  display: block;
+  position: relative;
+  margin-top: -0.06em;
+}
+
+/* Повёрнутая лаймовая плашка «вашим комфортом» */
+.hero__accent {
+  display: inline-block;
+  background: var(--c-lime);
+  color: var(--c-black);
+  font-family: var(--f-display);
+  font-size: clamp(2.1875rem, 1.2rem + 4.2vw, 4.6875rem); /* 35 → 75 */
+  font-weight: 400;
+  line-height: var(--lh-tight);
+  padding: 0.06em 0.22em 0.14em;
+  border-radius: 0 var(--r-md) 0 var(--r-md);
+  box-shadow: 3px -3px 9px 0px var(--c-black-40);
+  transform: rotate(-2.3deg);
+}
+
+/* ── Лид-абзац ────────────────────────────────────────────── */
+
+.hero__lead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-2);
+  max-width: 40.75rem; /* 652px */
+}
+
+.hero__lead-icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* лид → --t-lead (16→25px) с line-height 32px / 1.28 ≈ --lh-body */
+.hero__lead-text {
+  font-family: var(--f-text);
+  font-size: var(--t-lead);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--c-white);
+  text-align: center;
+}
+
+/* ── Кнопка прокрутки вниз ────────────────────────────────── */
+
+/* кнопка 100x100 на десктопе, 62x62 на мобильном */
+.hero__scroll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(3.875rem, 2.4rem + 6.3vw, 6.25rem); /* 62 → 100 */
+  height: clamp(3.875rem, 2.4rem + 6.3vw, 6.25rem);
+  border-radius: var(--r-md);
+  background: var(--c-white-10);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease);
+  flex-shrink: 0;
+}
+
+.hero__scroll-btn:hover,
+.hero__scroll-btn:focus-visible {
+  background: var(--c-white-20);
+}
+
+/* иконка шеврона, повёрнутая вниз (svg смотрит вправо → rotate 90deg) */
+.hero__scroll-btn-icon {
+  display: block;
+  width: 1.25rem; /* 20px */
+  height: auto;
+  transform: rotate(90deg);
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+/* Градация из макета (0.95 / 0.6 / 0.35) не вспыхивает, а ЕДЕТ по
+   шевронам: все три меняются синхронно, а значения прозрачности
+   перетекают между позициями сверху вниз.
+
+   Один общий keyframes и отрицательные задержки в треть цикла — так
+   каждый шеврон стартует со своей ступени, и в любой момент времени
+   ровно один яркий, один средний, один тусклый.
+
+   На старте: верхний 0.95, средний 0.6, нижний 0.35.
+   Заливка у всех сплошная белая — градация задаётся только opacity,
+   иначе альфа заливки перемножилась бы с ней и ярче базовой уже
+   не поднять. --1 верхний, --3 нижний (иконка повёрнута на 90°,
+   поэтому в файле пути идут снизу вверх). */
+.hero__scroll-btn-chevron {
+  fill: var(--c-white);
+  animation: heroScrollChase 1.5s linear infinite;
+}
+
+/* Трек ВОЗРАСТАЮЩИЙ: внутри цикла шеврон разгорается 0.35 → 0.6 → 0.95
+   и в последней трети гаснет обратно. Значит ярче всего он в момент 66%,
+   а не в нуле — поэтому задержки идут от большей к нулю.
+
+   Почему именно так. При убывающем треке (0.95 → 0.6 → 0.35) и задержках
+   0 / -0.5 / -1 подсветка обходила шевроны в порядке верх → низ → серед:
+   начальный кадр выглядел правильно, но дальше яркость перескакивала
+   через один и глаз читал движение как снизу вверх. Здесь порядок
+   верх → серед → низ — ровно сверху вниз. */
+.hero__scroll-btn-chevron--1 {
+  animation-delay: -1s;
+}
+
+.hero__scroll-btn-chevron--2 {
+  animation-delay: -0.5s;
+}
+
+.hero__scroll-btn-chevron--3 {
+  animation-delay: 0s;
+}
+
+@keyframes heroScrollChase {
+  0% {
+    opacity: 0.35;
+  }
+  33.33% {
+    opacity: 0.6;
+  }
+  66.66% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0.35;
+  }
+}
+
+/* На наведение градация едет быстрее. */
+.hero__scroll-btn:hover .hero__scroll-btn-chevron,
+.hero__scroll-btn:focus-visible .hero__scroll-btn-chevron {
+  animation-duration: 0.9s;
+}
+
+
+/* ── Статистика ───────────────────────────────────────────── */
+
+/* статы по нижним углам, spacer по центру.
+   Блок закреплён у нижней кромки hero и НЕ участвует в потоке flex —
+   иначе контент flex:1 выталкивает его за пределы экрана и числа
+   обрезаются. Подъём цифр задаёт padding-bottom контейнера. */
+.hero__stats {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  /* Цифры подняты от нижней кромки экрана. */
+  padding: 0 var(--gutter) 2rem; /* 32px */
+}
+
+.hero__stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-1);
+}
+
+.hero__stat-number {
+  font-family: var(--f-text);
+  font-size: var(--t-num);
+  font-weight: 700;
+  line-height: 1.26;
+  color: var(--c-white-50);
+}
+
+.hero__stat-label {
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm);
+  font-weight: 500;
+  line-height: var(--lh-body);
+  color: var(--c-white);
+  text-align: center;
+  max-width: 6rem;
+}
+
+/* Пустой разделитель между статами (собственного подъёма не имеет) */
+.hero__stats-spacer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* ============================================================
+   Desktop (≥ 768px)
+   ============================================================ */
+
+@media (min-width: 48em) {
+  .hero__stats {
+    /* Десктоп: цифры чуть выше. */
+    padding-bottom: 5.25rem; /* 84px */
+  }
+
+  .hero__stat-label {
+    font-size: var(--t-body);
+    max-width: none;
+  }
+
+  /* Перенос «Уютных / дома» — только мобильный; здесь одна строка. */
+  .hero__stat-label br {
+    display: none;
+  }
+}
+
+@media (min-width: 64em) {
+  .hero__content {
+    gap: var(--s-7);
+    /* Контент поднят выше: верхний отступ уменьшен относительно
+       прежних 200px, чтобы блок не уходил к нижней трети экрана. */
+    padding-top: calc(var(--s-14) * 1.5); /* 150px */
+    padding-bottom: var(--s-7);
+  }
+
+  .hero__lead {
+    gap: var(--s-2);
+  }
+}
+
+/* ============================================================
+   Wide (≥ 1440px): цифры статистики поднимаем ещё выше.
+   ============================================================ */
+
+/* ============================================================
+   ≤ 1440px (и меньше), от 1024px: контент первого экрана поднимается
+   чуть выше. Свободного пространства на средних высотах мало, поэтому
+   подъём делаем уменьшением верхнего отступа (150 → 130px), а не
+   margin: margin сдвигает только на половину и упирается в нехватку
+   места. Фактический подъём ≈ 10–16px.
+   ============================================================ */
+
+@media (max-width: 89.9375em) and (min-width: 64em) {
+  .hero__content {
+    /* Контент поднят выше за счёт меньшего верхнего отступа (150 → 40px). */
+    padding-top: 40px;
+  }
+}
+
+/* ============================================================
+   ≤ 1439px («после 1440» = 1440 и меньше): цифры статистики опущены.
+   ============================================================ */
+
+@media (min-width: 48em) and (max-width: 89.9375em) {
+  .hero__stats {
+    /* Цифры опущены ниже на экранах ≤1439. */
+    padding-bottom: 4.5rem; /* 72px */
+  }
+}
+
+@media (max-width: 79.9375em) {
+  .hero__content {
+    padding-top: var(--s-8);
+    padding-bottom: var(--s-5);
+    gap: var(--s-5);
+  }
+
+  .hero__heading {
+    font-size: calc(var(--t-hero) * 0.85);
+  }
+
+  .hero__accent {
+    font-size: clamp(2.1875rem, 1.2rem + 4.2vw, 4.6875rem);
+  }
+
+  .hero__lead {
+    max-width: 34rem;
+  }
+
+  .hero__scroll-btn {
+    width: clamp(3rem, 2rem + 4vw, 4.5rem);
+    height: clamp(3rem, 2rem + 4vw, 4.5rem);
+  }
+}
+
+/* ── Телефоны (≤640px): подписи статистики переносятся ──────
+   Длинные слова без переноса вылезали за свой стат. */
+@media (max-width: 40em) {
+  .hero__stat-label {
+    overflow-wrap: break-word;
+    max-width: 5.5rem;
+  }
+}

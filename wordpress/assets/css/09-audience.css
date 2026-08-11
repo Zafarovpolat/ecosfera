@@ -1,0 +1,329 @@
+/* ==========================================================================
+   09-audience — «Подходит для любого повода»
+   Десктоп: 4 карточки в ряд, чётные сдвинуты вниз на --row-offset.
+   Мобильный: одна колонка.
+   ========================================================================== */
+
+.audience {
+  position: relative;
+  padding-block: var(--s-section);
+}
+
+/* ---- шапка секции -------------------------------------------------------- */
+
+.audience__section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-7);
+  margin-bottom: var(--s-8);
+  text-align: center;
+}
+
+.audience__subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-4);
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  line-height: 1.28;
+  color: var(--c-white);
+  margin: 0;
+}
+
+.audience__subtitle-icon {
+  flex-shrink: 0;
+}
+
+/* На десктопе шапка — горизонтальный ряд: заголовок у левого края, подпись со
+   звёздочкой у правого. В макете контейнер шапки 1721 с горизонтальным
+   auto-layout: заголовок на left 99, подпись на left 1530 (right 91), выровнены
+   по центру по вертикали. Раньше подпись стояла под заголовком по центру. */
+@media (min-width: 64em) {
+  .audience__section-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-9);
+    text-align: left;
+  }
+
+  .audience__subtitle {
+    /* 299px — ширина текстового блока подписи в макете, отсюда перенос
+       на две строки. */
+    max-width: 18.6875rem;
+    flex-shrink: 0;
+  }
+}
+
+/* ---- сетка карточек ------------------------------------------------------ */
+
+.audience__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  /* ≤1024: горизонтальный слайдер по одной карточке за раз (как nearby__list).
+     Окно скролла растянуто до кромок вьюпорта с обеих сторон, поэтому
+     выглядывающие карточки видны целиком — обрезки по линии гуттера нет.
+     padding-inline возвращает выровненные карточки на место гуттеров. */
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  /* padding-block-end — зазор между карточками и скроллбаром снизу. */
+  padding-block-end: var(--s-6);
+  margin-inline-start: calc(-1 * var(--gutter));
+  margin-inline-end: calc(50% - 50vw);
+  padding-inline: var(--gutter);
+  /* НЕ задаём scrollbar-width/scrollbar-color: в Chrome они отключают
+     WebKit-скроллбар и инсет (margin-inline) на треке не работает. */
+}
+
+/* Полоса прокрутки — тонкая, как у nearby. Safari/WebKit: кастомная полоса
+   постоянно видна, не только при скролле. */
+.audience__grid::-webkit-scrollbar {
+  height: 6px;
+}
+.audience__grid::-webkit-scrollbar-track {
+  /* Боковые отступы, как у самих слайдов (--gutter). */
+  margin-inline: var(--gutter);
+  background: var(--c-white-20);
+  border-radius: var(--r-pill);
+}
+.audience__grid::-webkit-scrollbar-thumb {
+  background: var(--c-white);
+  border-radius: var(--r-pill);
+}
+
+/* Карточка-слайд: в окно попадает ~2.9 карточки (видно край следующей — сигнал,
+   что список листается). Ширина в чистых vw (без rem-капа), чтобы доля видимой
+   карточки была одинаковой на любой ширине ≤1024. Число страниц пагинация
+   считает динамически (js/audience.js), поэтому ширину можно менять свободно. */
+.audience__item {
+  flex: 0 0 32vw;
+  scroll-snap-align: start;
+}
+
+/* Слайдер (≤1024): все карточки одной высоты. Флекс-список растягивает <li> по
+   самому высокому, но <article> внутри оставался натуральной высоты — карточка
+   с более длинным текстом (2-я) торчала выше соседних. Заставляем карточку
+   заполнять всю высоту <li>. */
+@media (max-width: 63.9375em) {
+  .audience__item {
+    display: flex;
+  }
+
+  .audience__card {
+    flex: 1;
+    width: 100%;
+  }
+}
+
+/* ≤768: карточка слишком сжата — убираем лишний верхний отступ у фотографии
+   (делаем его одинаковым с боковыми) и уменьшаем внутренние отступы
+   текстового блока со всех сторон. */
+/* ≤768: карточки аудитории держат фиксированную ширину (не сжимаются),
+   и зазор между ними чуть меньше. */
+@media (max-width: 47.9375em) {
+  .audience__grid {
+    gap: var(--s-4);
+  }
+
+  .audience__item {
+    /* Фиксированная ширина слайда, чтобы карточки не уменьшались. */
+    flex: 0 0 18.75rem; /* 300px */
+    scroll-snap-align: start;
+  }
+}
+
+/* ---- десктоп: 4 колонки с шахматным смещением --------------------------- */
+
+@media (min-width: 64em) {
+  /* Сетка без скролла — пагинация не нужна. */
+  .audience .audience__pagination {
+    display: none;
+  }
+
+  .audience__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+    gap: var(--s-3);
+
+    /* Возврат из режима слайдера в сетку. */
+    overflow-x: visible;
+    scroll-snap-type: none;
+    padding-block-end: 0;
+    margin-inline: 0;
+    padding-inline: 0;
+
+    /* Высота строки: карточка + максимальный сдвиг чтобы смещённые карточки
+       не обрезались снизу */
+    --row-offset: var(--s-10);
+    padding-bottom: var(--row-offset);
+  }
+
+  .audience__item {
+    /* Сброс слайдерной ширины и привязки. */
+    flex: unset;
+    scroll-snap-align: unset;
+  }
+
+  /* Чётные по счёту (2-я и 4-я карточки) — сдвигаем вниз */
+  .audience__item:nth-child(even) {
+    margin-top: var(--row-offset);
+  }
+}
+
+/* Пагинация слайдера (≤1024) — в стиле comparison/nearby, снизу по центру. */
+@media (max-width: 63.9375em) {
+  .audience .audience__pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-4);
+    margin-inline: auto;
+    margin-block-start: var(--s-6);
+    margin-block-end: var(--s-6);
+  }
+
+  .audience__pagination-arrows {
+    display: block;
+    height: auto;
+    width: 7.75rem;
+    margin-inline: auto;
+  }
+}
+
+/* ---- карточка ------------------------------------------------------------ */
+
+.audience__card {
+  background: var(--c-paper);
+  /* Слайдер (≤1024): умеренное скругление вместо pill, иначе карточки-овалы.
+     На десктопе перекрывается на 70px в блоке ≥64em ниже. */
+  border-radius: var(--r-2xl); /* 30 */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 64em) {
+  .audience__card {
+    /* В макете 95px, но визуально скругление читалось как слишком круглое —
+       уменьшено до 70. Радиус фотографии ниже уменьшен на те же 25, чтобы
+       разница между карточкой и картинкой осталась макетной (95 против 90). */
+    border-radius: 4.375rem; /* 70 */
+  }
+}
+
+/* ---- фотография ---------------------------------------------------------- */
+
+.audience__figure {
+  /* Сверху отступ больше, чем по бокам: на живом сайте зазор над фотографией
+     примерно вдвое шире бокового (по бокам в макете 10 — карточка 421 при
+     картинке 401). */
+  margin: var(--s-5) var(--s-3) var(--s-3);
+  width: calc(100% - var(--s-3) * 2);
+  flex-shrink: 0;
+  /* Слайдер: фото со скруглением на 10 меньше карточки (как на десктопе 70/65).
+     На десктопе перекрывается на 65px ниже. */
+  border-radius: var(--r-xl); /* 25 */
+  overflow: hidden;
+}
+
+.audience__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 401 / 379;
+  object-fit: cover;
+}
+
+@media (min-width: 64em) {
+  .audience__figure {
+    border-radius: 4.0625rem; /* 65 — на 5 меньше карточки, как в макете */
+  }
+}
+
+/* ---- текстовый блок ------------------------------------------------------ */
+
+.audience__card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-3);
+  /* Отступы увеличены снизу и по бокам: в макете текстовый блок 277 внутри
+     карточки 421, то есть по бокам ~72. Идём в эту сторону — 40 по бокам,
+     60 снизу вместо прежних 20 и 30. */
+  padding: var(--s-5) var(--s-8) var(--s-10);
+  text-align: center;
+}
+
+.audience__card-title {
+  font-family: var(--f-display);
+  font-size: var(--t-lead);
+  line-height: var(--lh-tight);
+  color: var(--c-black);
+  margin: 0;
+}
+
+.audience__card-desc {
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--c-black-40);
+  margin: 0;
+}
+
+/* ============================================================
+   Компактные карточки на узких экранах.
+   Стоят ПОСЛЕ базовых правил, чтобы перебивать их по порядку
+   источника (раньше медиа-блок шёл до базового .audience__figure
+   и тот выигрывал по каскаду).
+   ============================================================ */
+
+/* ≤1280: верхний отступ фото чуть меньше, внутренние отступы
+   текстового блока ужаты со всех сторон. */
+@media (max-width: 80em) {
+  .audience__figure {
+    /* Строго одинаковый отступ со всех сторон. */
+    margin: var(--s-4);
+  }
+
+  .audience__card-body {
+    padding: var(--s-4) var(--s-7) var(--s-8);
+  }
+}
+
+/* ≤768: ещё компактнее — фото с равными отступами со всех сторон. */
+@media (max-width: 47.9375em) {
+  .audience__figure {
+    margin: var(--s-3);
+  }
+
+  .audience__card-body {
+    padding: var(--s-3) var(--s-5) var(--s-6);
+  }
+}
+
+/* ── Телефоны (≤640px) ──────────────────────────────────────────────────── */
+
+@media (max-width: 40em) {
+  /* Подпись: звёздочка сверху, текст снизу, всё по центру. */
+  .audience__subtitle {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-2);
+    text-align: center;
+  }
+
+  /* Слайд во всю ширину контента контейнера (между гуттерами): карточки
+     не липнут к краям экрана, последняя доскролливается до правого гуттера. */
+  .audience__item {
+    flex: 0 0 calc(100vw - var(--gutter) * 2);
+  }
+}

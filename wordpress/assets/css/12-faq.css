@@ -1,0 +1,489 @@
+/* ============================================================
+   12-faq.css — секция «Часто спрашивают»
+   Аккордеон. Первый вопрос раскрыт по умолчанию.
+   Префикс BEM: faq__*
+   ============================================================ */
+
+.faq {
+  position: relative;
+  padding-block: var(--s-section);
+}
+
+.faq__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-8); /* 40px */
+}
+
+/* ── Верхняя строка: заголовок + CTA ── */
+
+.faq__top-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+/* Блок «Не нашли ответ» */
+.faq__cta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.faq__cta-text {
+  font-family: var(--f-text);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--c-white);
+  margin: 0;
+}
+
+/* Кнопка WhatsApp */
+.faq__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  align-self: flex-start;
+  padding: var(--s-5) var(--s-6);
+  font-family: var(--f-display);
+  font-size: var(--t-body);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--c-black);
+  background: var(--c-white);
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.faq__cta-btn:hover {
+  opacity: 0.88;
+}
+
+.faq__cta-btn:focus-visible {
+  outline: 2px solid var(--c-lime);
+  outline-offset: 2px;
+}
+
+.faq__btn-arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.faq__arrow-flipped {
+  transform: rotate(180deg);
+}
+
+/* ── Список вопросов ── */
+
+.faq__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1); /* 5px мобильный */
+}
+
+/* ── Один элемент аккордеона ── */
+
+.faq__item {
+  border-radius: var(--r-2xl);
+  background: rgb(248 248 248 / 0.1);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  overflow: hidden;
+  transition: background var(--dur) var(--ease);
+}
+
+/* ── Кнопка-заголовок ── */
+
+.faq__question {
+  margin: 0;
+}
+
+.faq__toggle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--s-5);
+  width: 100%;
+  padding: var(--s-3) var(--s-4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: start;
+  justify-content: flex-start;
+}
+
+.faq__toggle:focus-visible {
+  outline: 2px solid var(--c-lime);
+  outline-offset: -2px;
+}
+
+/* Номер — белый квадратик */
+.faq__number {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1875rem; /* 35px мобильный */
+  height: 2.25rem;
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm);
+  line-height: 1.25;
+  color: var(--c-black);
+  background: var(--c-white);
+  border-radius: var(--r-sm);
+  padding: var(--s-4);
+}
+
+/* Текст вопроса */
+.faq__question-text {
+  flex: 1;
+  font-family: var(--f-display);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--c-white);
+}
+
+/* Иконка раскрытия */
+.faq__icon {
+  flex-shrink: 0;
+  margin-inline-start: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Размер задан и на мобильном: без ширины/высоты иконка (плюс из
+     абсолютных ::before/::after в процентах) схлопывается в ноль — на
+     экранах <1024 она еле видна. */
+  width: 2.75rem; /* 44px */
+  height: 2.75rem;
+}
+
+/* ── Панель ответа ── */
+
+.faq__panel {
+  padding: 0 var(--s-4) var(--s-3);
+  padding-inline-start: calc(var(--s-4) + 2.1875rem + var(--s-5));
+}
+
+.faq__panel[hidden] {
+  display: none;
+}
+
+.faq__answer {
+  font-family: var(--f-text);
+  font-size: var(--t-body-sm);
+  line-height: var(--lh-relaxed);
+  color: var(--c-white);
+  margin: 0;
+}
+
+/* ================================================================
+   Планшет 768+
+   ================================================================ */
+
+@media (min-width: 48em) {
+  .faq__cta {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--s-6);
+  }
+}
+
+/* ================================================================
+   Десктоп 1024+
+   ================================================================ */
+
+@media (min-width: 64em) {
+  .faq__top-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* btns — горизонтальный ряд: текст + кнопка WhatsApp рядом, gap:25 из брифа */
+  .faq__cta {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5625rem; /* 25px из брифа btns gap:25 */
+  }
+
+  .faq__list {
+    gap: var(--s-2); /* 10px десктоп */
+  }
+
+  .faq__item {
+    border-radius: 2.1875rem; /* 35px */
+  }
+
+  .faq__toggle {
+    padding: var(--s-4) var(--s-6);
+    gap: var(--s-6);
+  }
+
+  .faq__number {
+    width: 3.4375rem; /* 55px */
+    height: 3.4375rem;
+    font-size: 1.25rem; /* 20px */
+  }
+
+  .faq__question-text {
+    font-size: 1.4375rem; /* 23px десктоп */
+    line-height: 1.217;
+  }
+
+  .faq__icon {
+    width: 4.4375rem; /* 71px */
+    height: 4.5rem;
+  }
+
+  .faq__panel {
+    padding-inline-start: calc(var(--s-6) + 3.4375rem + var(--s-6));
+    padding-bottom: var(--s-5);
+  }
+}
+
+/* ==========================================================================
+   Аккордеон: круг с плюсом, состояния и плавное раскрытие
+   ========================================================================== */
+
+/* Плюс рисуем двумя полосками, а не берём готовой картинкой и не ставим
+   символом «+». Причина: цвет знака и фон круга меняются по состоянию, а
+   содержимое <img> стилями не достать; текстовый символ же зависит от шрифта
+   и не встаёт ровно по центру. Две полоски дают точный крест, который к тому
+   же поворачивается в минус. */
+.faq__icon {
+  position: relative;
+  flex-shrink: 0;
+  margin-inline-start: auto;
+  border-radius: 50%;
+  background: var(--c-white);
+  border: 1px solid var(--c-white);
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.faq__icon::before,
+.faq__icon::after {
+  content: '';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  background: var(--c-black);
+  border-radius: 1px;
+  transition:
+    background-color var(--dur) var(--ease),
+    opacity var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+/* Горизонтальная полоска — она же остаётся минусом у раскрытого пункта. */
+.faq__icon::before {
+  width: 42%;
+  height: 2px;
+  transform: translate(-50%, -50%);
+}
+
+/* Вертикальная — исчезает с поворотом, превращая плюс в минус. */
+.faq__icon::after {
+  width: 2px;
+  height: 42%;
+  transform: translate(-50%, -50%);
+}
+
+/* Раскрытый: прозрачный фон, белый контур, белый знак. */
+.faq__toggle[aria-expanded='true'] .faq__icon {
+  background: transparent;
+}
+
+.faq__toggle[aria-expanded='true'] .faq__icon::before,
+.faq__toggle[aria-expanded='true'] .faq__icon::after {
+  background: var(--c-white);
+}
+
+.faq__toggle[aria-expanded='true'] .faq__icon::after {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* Ховер: у закрытого круг слегка растёт, у раскрытого подсвечивается контур. */
+.faq__toggle:hover .faq__icon {
+  transform: scale(1.08);
+}
+
+.faq__item:hover {
+  background: rgb(248 248 248 / 0.16);
+}
+
+/* ── Плавное раскрытие ────────────────────────────────────────────────────
+   Панель больше не прячется через hidden: display animate нельзя. Высоту
+   задаёт скрипт (js/faq.js) в пикселях, поэтому переход честный, без
+   «примерно max-height». */
+.faq__panel {
+  overflow: hidden;
+  height: 0;
+  /* Паддинга здесь быть не должно: при box-sizing:border-box бокс не может
+     стать ниже своих вертикальных отступов, поэтому при height:0 оставалась
+     полоска и текст проступал у закрытых пунктов. Все отступы — на внутренней
+     обёртке, она внутри обрезаемой области. */
+  padding: 0;
+  transition: height 0.34s var(--ease);
+}
+
+.faq__panel[hidden] {
+  display: block;
+}
+
+/* Описание вплотную к вопросу. Отрицательный отступ здесь не годится: он
+   выносит содержимое за верхний край панели, overflow его срезает посередине
+   строки, а высота панели считается уже со смещением — ломается и раскрытие.
+   Поэтому сближаем за счёт нижнего паддинга кнопки, ниже. */
+.faq__panel-inner {
+  padding-block-start: 0;
+  padding-inline: var(--s-4);
+  padding-inline-start: calc(var(--s-4) + 2.1875rem + var(--s-5));
+  padding-block-end: var(--s-3);
+}
+
+/* ── Кнопка Whatsapp ─────────────────────────────────────────────────────── */
+
+.faq__cta-btn {
+  position: relative;
+  /* Чуть шире: было по содержимому. */
+  min-width: 13.75rem;
+  justify-content: center;
+  transition:
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+/* Уголки по углам с отступом 7px — как у кнопки «Забронировать дом».
+   Раньше обе иконки лежали в потоке рядом с текстом. */
+.faq__cta-mark {
+  position: absolute;
+  width: 0.5625rem;
+  height: 0.5rem;
+  transition: filter var(--dur) var(--ease);
+}
+
+.faq__cta-mark--tl {
+  inset-block-start: 7px;
+  inset-inline-start: 7px;
+}
+
+.faq__cta-mark--br {
+  inset-block-end: 7px;
+  inset-inline-end: 7px;
+  transform: rotate(180deg);
+}
+
+.faq__cta-btn:hover {
+  background: var(--c-black);
+  color: var(--c-white);
+  opacity: 1;
+}
+
+/* Рисунок в уголках чёрный, поэтому перекрашивается инверсией. */
+.faq__cta-btn:hover .faq__cta-mark {
+  filter: invert(1);
+}
+
+/* ── Квадратики с номерами ───────────────────────────────────────────────── */
+
+@media (min-width: 64em) {
+  .faq__number {
+    /* В эталоне это не квадрат: высота больше ширины, радиус крупнее. */
+    width: 3.4375rem; /* 55 */
+    height: 4rem; /* 64 */
+    border-radius: var(--r-lg); /* 20 */
+  }
+
+  .faq__icon {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  /* Сверху воздуха больше, снизу — минимум: иначе описание отъедет от вопроса.
+     Нижний отступ пункта добавлен ниже, у самого .faq__item. */
+  .faq__toggle {
+    padding-block-start: var(--s-6);
+    padding-block-end: var(--s-2);
+  }
+
+  /* Отступ снизу даём пункту, а не кнопке: он лежит уже под панелью, поэтому
+     не влияет ни на расстояние «вопрос — ответ», ни на расчёт раскрытия. */
+  .faq__item {
+    padding-block-end: var(--s-4);
+  }
+
+  /* Зазор давал не паддинг, а сам квадратик с номером: он выше строки вопроса,
+     и панель начинается уже под ним.
+
+     Поднимаем содержимое трансформом, а не отступом. Отрицательный
+     margin-block-start у панели уменьшал высоту самого пункта — у закрытых
+     элементов нижняя граница подтягивалась вверх на те же 18px. Трансформ в
+     раскладке не участвует: габариты пунктов остаются исходными, а у закрытой
+     панели высота нулевая, поэтому сдвиг там вообще ничего не двигает. */
+  /* Сдвигаем ПАНЕЛЬ, а не её содержимое. Трансформ на внутренней обёртке
+     уводил текст за верхнюю кромку панели, и её overflow его срезал. У панели
+     же вместе со сдвигом уезжает и сама область обрезки, поэтому ответ цел.
+     В раскладке трансформ не участвует — высота пунктов остаётся исходной. */
+  .faq__panel {
+    transform: translateY(-1.125rem); /* 18 */
+  }
+
+  /* Круг с плюсом стоит у правого края и перекрывал конец строки — ограничиваем
+     ширину текста. */
+  .faq__answer {
+    max-width: calc(100% - 132px);
+  }
+
+  /* Единственное десктопное объявление обёртки: раньше их было три подряд, и
+     последнее возвращало нижний отступ, гася предыдущие правки.
+     Своего нижнего отступа тут нет — воздух под ответом даёт нижний паддинг
+     самого пункта. */
+  .faq__panel-inner {
+    padding-inline-start: calc(var(--s-6) + 3.4375rem + var(--s-6));
+    padding-block-end: 0;
+  }
+}
+
+/* ================================================================
+   ≤1024: блок «Не нашли ответ» + кнопка WhatsApp скрыты.
+   ================================================================ */
+@media (max-width: 63.9375em) {
+  .faq__cta {
+    display: none;
+  }
+}
+
+/* ≤768: компактнее — меньший радиус скругления пунктов. */
+@media (max-width: 47.9375em) {
+  .faq__item,
+  .faq__item--open {
+    border-radius: var(--r-lg); /* 20px */
+  }
+
+  /* Длина ответа ограничена, как на десктопе (там 100% − 132px):
+     минус 70px — ширина круга с плюсом (44px) и зазор до него. */
+  .faq__answer {
+    max-width: calc(100% - 70px);
+  }
+}
+
+/* ≤640: заголовок секции по центру (CTA на этих ширинах скрыт). */
+@media (max-width: 40em) {
+  .faq__top-row {
+    align-items: center;
+    text-align: center;
+  }
+
+  .faq .section-heading {
+    margin-inline: auto;
+  }
+}

@@ -1,0 +1,124 @@
+/* WordPress-слой поверх исходной вёрстки: внутренние страницы, форма, админ-бар. */
+
+.header__contact-label {
+	display: inline-block;
+	font: inherit;
+	color: inherit;
+	background: none;
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a.houses__book-btn {
+	text-decoration: none;
+	color: inherit;
+}
+
+a.hero__scroll-btn {
+	text-decoration: none;
+	color: inherit;
+}
+
+.header__logo-link {
+	display: block;
+	color: inherit;
+}
+
+.booking__notice {
+	margin: 0 0 var(--s-6);
+	padding: var(--s-4) var(--s-5);
+	border-radius: var(--r-md);
+	font-size: var(--t-body);
+}
+
+.booking__notice--ok {
+	background: rgb(160 244 71 / 0.18);
+	color: var(--c-lime);
+}
+
+.booking__notice--err {
+	background: rgb(255 68 51 / 0.16);
+	color: #ffb4ad;
+}
+
+.ecosfera-inner {
+	position: relative;
+	z-index: 1;
+	min-height: 70vh;
+	padding-block: calc(var(--s-14) + 4rem) var(--s-12);
+	background: var(--c-forest);
+}
+
+.ecosfera-inner__wrap {
+	max-width: 52rem;
+}
+
+.ecosfera-inner__head {
+	margin-bottom: var(--s-8);
+}
+
+.ecosfera-inner__back {
+	margin-bottom: var(--s-5);
+	opacity: 0.7;
+}
+
+.ecosfera-inner__back a:hover {
+	color: var(--c-lime);
+}
+
+.ecosfera-inner__content {
+	color: rgb(255 255 255 / 0.88);
+	font-size: var(--t-body);
+	line-height: var(--lh-relaxed);
+}
+
+.ecosfera-inner__content h2,
+.ecosfera-inner__content h3 {
+	margin: var(--s-8) 0 var(--s-4);
+	color: var(--c-white);
+}
+
+.ecosfera-inner__content p {
+	margin: 0 0 var(--s-5);
+}
+
+.ecosfera-inner__content a {
+	color: var(--c-lime);
+	text-decoration: underline;
+}
+
+.ecosfera-inner__list {
+	display: grid;
+	gap: var(--s-6);
+	margin-top: var(--s-8);
+}
+
+.ecosfera-inner__card {
+	padding: var(--s-6);
+	border: 1px solid var(--c-white-20);
+	border-radius: var(--r-lg);
+}
+
+.site-footer .menu,
+.site-footer__nav-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.site-footer__nav-list a:not(.site-footer__nav-link) {
+	color: inherit;
+}
+
+/* Фиксированная шапка не прячется под админ-бар. */
+.admin-bar .header {
+	top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+	.admin-bar .header {
+		top: 46px;
+	}
+}

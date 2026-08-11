@@ -1,0 +1,28 @@
+/*
+Theme Name: Экосфера
+Theme URI: https://zafarovpolat.github.io/ecosfera/
+Author: порт лендинга Экосфера
+Author URI: https://ruso.ru/
+Description: Тема одностраничного лендинга загородного отдыха «Экосфера» — 40 минут от Владивостока. Полный перенос вёрстки в WordPress: дома, услуги, галерея, отзывы, FAQ, карта, форма бронирования, редактируемые тексты и медиа.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.8
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: ecosfera
+Tags: one-column, custom-logo, custom-menu, featured-images, translation-ready, block-styles
+
+Все визуальные стили лежат в assets/css/. Этот файл — только паспорт темы.
+*/
+
+/* Смещение фиксированной шапки под админ-бар WordPress. */
+.admin-bar .header {
+	top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+	.admin-bar .header {
+		top: 46px;
+	}
+}
